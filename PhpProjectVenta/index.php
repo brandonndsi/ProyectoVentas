@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Descripcion esta paguina es la encargada de redireccionar a la paguina principal 
+por el momento esta solo para la pantalla de empleado.
+@author David Salas.
 -->
 <html>
     <head>
@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+        header("Location: view/personaView.php");
         ?>
     </body>
 </html>
