@@ -4,23 +4,22 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Inventario Semen</title>
-    <link rel="icon" href="../resources/icons/bull.png">
-    <link rel="stylesheet" href="../resources/css/css.css">
+    <!--<link rel="stylesheet" href="../resources/css/css.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <?php
-    include '../business/bullBusiness.php';
+    /*include '../business/empleadoBusiness.php';*/
     ?>
 
 </head>
 
 <body>
 
-    <header> 
+   <!-- <header> 
     </header>
 
-    <?php
-    $ranchId = $_GET['id'];
+    <?php/*
+    $ranchId = $_GET['id'];*/
     ?>
 
     <nav>
@@ -41,9 +40,9 @@
                 <th>Precio x Pajillas</th>
                 <th></th>
             </tr>
-            <form method="post" enctype="multipart/form-data" action="../business/bullAction.php">
+            <form method="post" enctype="multipart/form-data" action="../business/empleadoAction.php">
                 <tr>
-                    <input type="hidden" name="ranch" value="<?php echo $ranchId ;?>">
+                    <input type="hidden" name="ranch" value="<?/*php echo $ranchId ;*/?>">
                     <td><input required type="text" name="code" id="code"/></td>
                     <td><input required type="text" name="name" id="name"/></td>
                     <td><input required type="text" name="commercialcase" id="commercialcase"/></td>
@@ -54,9 +53,9 @@
                 </tr>
             </form>
             <?php
-            $bullBusiness = new BullBusiness();
-            $allBulls = $bullBusiness->getAllTBBull();
-            foreach ($allBulls as $current) {
+           /* $empleadoBusiness = new empleadoBusiness();
+            $allEmpleados = $EmpleadoBusiness->getAllTBEmpleado();
+            foreach ($allEmpleados as $current) {
                 echo '<form method="post" enctype="multipart/form-data" action="../business/bullAction.php">';
                 echo '<input type="hidden" name="idBull" value="' . $current->getIdTBBull() . '">';
                 echo '<tr>';
@@ -71,7 +70,7 @@
                 echo '<td><input type="submit" value="Eliminar" name="delete" id="delete"/></td>';
                 echo '</tr>';
                 echo '</form>';
-            }
+            }*/
             ?>
 
 
@@ -79,7 +78,7 @@
                 <td></td>
                 <td>
                     <?php
-                    if (isset($_GET['error'])) {
+                    /*if (isset($_GET['error'])) {
                         if ($_GET['error'] == "emptyField") {
                             echo '<p style="color: red">Campo(s) vacio(s)</p>';
                         } else if ($_GET['error'] == "numberFormat") {
@@ -89,7 +88,7 @@
                         }
                     } else if (isset($_GET['success'])) {
                         echo '<p style="color: green">Transacción realizada</p>';
-                    }
+                    }*/
                     ?>
                 </td>
             </tr>
@@ -97,7 +96,7 @@
     </section>
 
     <footer>
-    </footer>
-
+    </footer>-->
+   <h1>Hola mundo</h1>
 </body>
 </html>
