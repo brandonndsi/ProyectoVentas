@@ -2,7 +2,7 @@
 <!--
 Descripcion esta paguina es la encargada de redireccionar a la paguina principal 
 por el momento esta solo para la pantalla de empleado.
-@author David Salas.
+@author David Salas.guapo
 -->
 <html>
     <head>
