@@ -7,5 +7,29 @@
  * @author David Salas Lorente
  */
 class clienteBusiness {
-    //put your code here
+   private $clienteData;
+
+    public function empleadoBusiness() {
+        $this->clienteData = new clienteData();
+    }
+
+    public function insertTBCliente($cliente) {
+        return $this->clienteData->insertTBCliente($cliente);
+    }
+
+    public function updateTBEmpleado($cliente) {
+        return $this->clienteData->updateTBCliente($cliente);
+    }
+
+    public function deleteTBEmpleado($idCliente) {
+        return $this->clienteData->deleteTBCliente($idCliente);
+    }
+
+    public function getAllTBCliente() {
+        return $this->clienteData->getAllTBcliente();
+    }
+    
+    public function getClienteInventary() {
+        return $this->clientedoData->getClienteInventary();
+    }
 }

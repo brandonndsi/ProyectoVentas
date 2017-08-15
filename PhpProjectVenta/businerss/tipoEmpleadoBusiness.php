@@ -7,5 +7,29 @@
  * @author David Salas Lorente
  */
 class tipoEmpleadoBusiness {
-    //put your code here
+    private $tipoEmpleadoData;
+
+    public function empleadoBusiness() {
+        $this->tipoEmpleadoData = new tipoEmpleadoData();
+    }
+
+    public function insertTBTipoEmpleado($tipoEmpleado) {
+        return $this->tipoEmpleadoData->insertTBTipoEmpleado($tipoEmpleado);
+    }
+
+    public function updateTBTipoEmpleado($TipoEnpleado) {
+        return $this->tipoEmpleadoData->updateTBTipoEmpleado($tipoEmpleado);
+    }
+
+    public function deleteTBTipoEmpleado($idTipoEmpleado) {
+        return $this->tipoEmpleadoData->deleteTBTipoEmpleado($idTipoEmpleado);
+    }
+
+    public function getAllTBTipoEmpleado() {
+        return $this->tipoEmpleadoData->getAllTBTipoEmpleado();
+    }
+    
+    public function getTipoEmpleadoInventary() {
+        return $this->tipoEmpleadoData->getTipoEmpleadoInventary();
+    }
 }

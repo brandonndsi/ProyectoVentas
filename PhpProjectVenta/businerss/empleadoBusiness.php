@@ -20,7 +20,7 @@ class empleadoBusiness {
         return $this->empleadoData->insertTBEmpleado($empleado);
     }
 
-    public function updateTBBull($empleado) {
+    public function updateTBEmpleado($empleado) {
         return $this->empleadoData->updateTBEmpleado($empleado);
     }
 

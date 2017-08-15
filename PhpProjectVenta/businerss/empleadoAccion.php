@@ -71,7 +71,7 @@ if (isset($_POST['update'])) {
     } else {
         header("location: ../view/empleadoView.php?error=error");
     }
-} else if (isset($_POST['create'])) {
+} else if (isset($_POST['Create'])) {
 
     if (isset($_POST['CedulaEmpleado']) && isset($_POST['NombreEmpleado']) && isset($_POST['Apellido1Empleado']) && isset($_POST['Apellido2Empleado'])
             && isset($_POST['EdadEmpleado']) && isset($_POST['SexoEmpleado']) && isset($_POST['EstadoEmpleado']) && isset($_POST['Telefono1Empleado'])
