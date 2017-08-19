@@ -1,7 +1,7 @@
 <?php
 
 include_once 'data.php';
-include '../domain/empleado.php';
+include '../domain/Empleado.php';
 
 class empleadoData extends Data {
 
@@ -20,18 +20,15 @@ class empleadoData extends Data {
         $queryInsert = "INSERT INTO tbempleado VALUES (" . $nextId . ",'" .
                 $empleado->getIdEmpleado() . "','" .
                 $empleado->getCedulaEmpleado() . "','" .
-                $empleado->getNombreEmpleado() . "','" .
-                $empleado->getApellido1Empleado() . "'," .
-                $empleado->getApellido2Empleado() . "," .
-                $empleado->getEdadEmpleado() . "," .
-                $empleado->getSexoEmpleado() . "','" .
-                $empleado->getEstadoEmpleado() . "','" .
-                $empleado->getTelefonoEmpleado() . "','" .
-                $empleado->getTelefono2Empleado() . "'," .
+                $empleado->getContrasenaEmpleado() . "," .
                 $empleado->getCorreoEmpleado() . "," .
-                $empleado->getDireccionEmpleado() . "," .
-                $empleado->getCuentaBancariaEmpleado() . ");";
-
+                $empleado->getCuentaBancariaEmpleado() . 
+                $empleado->getSexoEmpleado() . "','" .
+                $empleado->getEstadoCivilEmpleado() . "','" .
+                $empleado->getEdadEmpleado() . "," .
+                $empleado->getSalarioBaseEmpleado() . "," .
+                $empleado->getDescripcionEmpleado() . "," . ");";       
+                
         $result = mysqli_query($conexion, $queryInsert);
         mysqli_close($conexion);
         return $result;
