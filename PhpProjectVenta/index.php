@@ -8,6 +8,7 @@
     <body>
         <?php
         
+        echo 'hola';
         ?>
     </body>
 </html>
