@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-08-2017 a las 06:31:43
+-- Tiempo de generación: 20-08-2017 a las 00:32:57
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -29,15 +29,24 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbempleado` (
   `idEmpleado` int(11) NOT NULL,
   `cedulaEmpleado` int(11) NOT NULL,
-  `contraseñaEmpleado` int(11) NOT NULL,
+  `contraseñaEmpleado` varchar(30) NOT NULL,
   `correoEmpleado` varchar(50) NOT NULL,
   `cuentaBancariaEmpleado` int(11) NOT NULL,
   `sexoEmpleado` varchar(10) NOT NULL,
   `estadoCivilEmpleado` varchar(20) NOT NULL,
   `edadEmpleado` int(11) NOT NULL,
-  `salarioBaseEmpleado` int(11) NOT NULL,
-  `descripcionEmpleado` varchar(100) NOT NULL
+  `descripcionEmpleado` varchar(100) NOT NULL,
+  `salarioBaseEmpleado` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbempleado`
+--
+
+INSERT INTO `tbempleado` (`idEmpleado`, `cedulaEmpleado`, `contraseñaEmpleado`, `correoEmpleado`, `cuentaBancariaEmpleado`, `sexoEmpleado`, `estadoCivilEmpleado`, `edadEmpleado`, `descripcionEmpleado`, `salarioBaseEmpleado`) VALUES
+(1, 207210905, '2904017b', 'brandon-ndsi@hotmail.com', 1244251234, 'Masculino', 'Soltero', 23, 'Puede agregar empleados,productos, zonas, etc\r\n', 600000),
+(2, 609870234, '12345', 'juaracha@gmail.com', 1265748392, 'Masculino', 'Union Libre', 23, 'Puede agregar empleados,productos, zonas, etc\r\n', 600000),
+(3, 304560948, '123', 'salasgates@hotmail.com', 1241454634, 'Masculino', 'Casado', 22, 'Solo puede vender\r\n', 350000);
 
 -- --------------------------------------------------------
 
