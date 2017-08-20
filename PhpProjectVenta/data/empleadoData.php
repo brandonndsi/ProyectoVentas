@@ -45,7 +45,7 @@ class empleadoData extends Data {
                 ", edadempleado=" . $empleado->getEdadEmpleado() .
                 "', sexoempleado='" . $empleado->getSexoEmpleado() .
                 "', estadoempleado='" . $empleado->getEstadoEmpleado() .
-                "', estado1empleado='" . $empleado->getTelefonoEmpleado() .
+                "', estado1empleado='" . $empleado->getTelefono1Empleado() .
                 "', estado2empleado=" . $empleado->getTelefono2Empleado() .
                 ", correoempleado=" . $empleado->getCorreoEmpleado() .
                 ", direccionempleado=" . $empleado->getDireccionEmpleado() .
