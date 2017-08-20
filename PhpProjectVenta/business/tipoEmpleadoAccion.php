@@ -10,7 +10,7 @@ include './tipoEmpleadoBusiness.php';
 
 if (isset($_POST['update'])){
 
-    if (isset($_POST['idEmpleado']) && isset($_POST['nombrePersona']) && isset($_POST['apellido1Persona']) && isset($_POST['apellido2Persona'])
+    if (isset($_POST['idPersona']) && isset($_POST['nombrePersona']) && isset($_POST['apellido1Persona']) && isset($_POST['apellido2Persona'])
             && isset($_POST['tipoUsuarioPersona']) && isset($_POST['idZona']) && isset($_POST['telefonoPersona']) ) {
           
         $telefonoPersona = $_POST('telefonoPersona');
@@ -19,7 +19,7 @@ if (isset($_POST['update'])){
         $apellido2Persona = $_POST('apellido2Persona');
         $tipoUsuarioPersona = $_POST('tipoUsuarioPersona');
         $idZona = $_POST('idZona');
-        $IdEmpleado=$_POST('idEmpleado');
+        $IdEmpleado=$_POST('idPersona');
         
         if (strlen($IdEmpleado) > 0 &&strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
             strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
@@ -46,9 +46,9 @@ if (isset($_POST['update'])){
     }
 } else if (isset($_POST['delete'])) {
 
-    if (isset($_POST['idTipoEmpleado'])) {
+    if (isset($_POST['idPersona'])) {
 
-        $idEmpleado = $_POST['idTipoEmpleado'];
+        $idEmpleado = $_POST['idPersona'];
 
         $tipoEmpleadoBusiness = new tipoEmpleadoBusiness();
         $result = $tipoEmpleadoBusiness->deleteTBTipoEmpleado($idTipoEmpleado);

@@ -11,30 +11,25 @@ include './clienteBusiness.php';
 
     if (isset($_POST['update'])) {
 
-    if (isset($_POST['Idcliente']) && isset($_POST['CedulaCliente']) && isset($_POST['NombreCliente']) && isset($_POST['Apellido1Cliente']) && isset($_POST['Apellido2Cliente'])
-             && isset($_POST['Telefono1Cliente']) && isset($_POST['Telefono2Cliente']) && isset($_POST['DireccionCliente']) && isset($_POST['IdUbicacion'])) {
-            
-        $idCliente = $_POST['IdCliente'];
-        $cedulaCliente = $_POST['CedulaCliente'];
-        $nombreCliente = $_POST['NombreCliente'];
-        $apellido1Cliente= $_POST['Apellido1Cliente'];
-        $apellido2Cliente= $_POST['Apellido2Cliente'];
-        $telefono1Cliente= $_POST['Telefono1Cliente'];
-        $telefono2Cliente= $_POST['Telefono2Cliente'];
-        $direccionCliente= $_POST['DireccionCliente'];
-        $idUbicacion= $_POST['IdUbicacion'];
+     if (isset($_POST['idPersona']) && isset($_POST['nombrePersona']) && isset($_POST['apellido1Persona']) && isset($_POST['apellido2Persona'])
+            && isset($_POST['tipoUsuarioPersona']) && isset($_POST['idZona']) && isset($_POST['telefonoPersona']) ) {
+          
+        $telefonoPersona = $_POST('telefonoPersona');
+        $nombrePersona =$_POST('nombrePersona');
+        $apellido1Persona =$_POST('apellido1Persona');
+        $apellido2Persona = $_POST('apellido2Persona');
+        $tipoUsuarioPersona = $_POST('tipoUsuarioPersona');
+        $idZona = $_POST('idZona');
+        $IdEmpleado=$_POST('idPersona');
+        
+        if (strlen($IdEmpleado) > 0 &&strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
+            strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
+            if (!is_numeric($nombreTipoEmpleado)) {
+                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $tipoUsuarioPersona, $idZona,IdEmpleado);
 
-        if (strlen($idCliente) > 0 && strlen($cedulaCliente) > 0 && strlen($nombreCliente) > 0 && strlen($apellido1Cliente) > 0 
-                && strlen($apellido2Cliente) > 0 && strlen($telefono1Cliente) > 0 
-                && strlen($telefono2Cliente) > 0 && strlen($direccionCliente) > 0
-                && strlen($idUbicacion) > 0) {
-            if (!is_numeric($nameCliente)) {
-                $cliente = new cliente($idCliente, $cedulaCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente,
-                 $telefono1Cliente, $telefono2Cliente,$direccionCliente,$idUbicacion);
+                $tipoEmpledoBusiness = new tipoEmpleadoBusiness();
 
-                $clienteBusiness = new clienteBusiness();
-
-                $result = $clienteBusiness->updateTBCliente($cliente);
+                $result = $tipoEmpleadoBusiness->updateTBTipoEmpleado($Persona);
                 if ($result == 1) {
                     header("location: ../view/clienteView.php?success=updated");
                 } else {
@@ -53,9 +48,9 @@ include './clienteBusiness.php';
     }
 } else if (isset($_POST['delete'])) {
 
-    if (isset($_POST['idCliente'])) {
+    if (isset($_POST['idPersona'])) {
 
-        $idCliente = $_POST['idCliente'];
+        $idCliente = $_POST['idPersona'];
 
         $clienteBusiness = new clienteBusiness();
         $result = $clienteBusiness->deleteTBCliente($idCliente);
@@ -70,29 +65,25 @@ include './clienteBusiness.php';
     }
 } else if (isset($_POST['Create'])) {
 
-    if (isset($_POST['CedulaCliente']) && isset($_POST['NombreCliente']) && isset($_POST['Apellido1Cliente']) && isset($_POST['Apellido2Cliente'])
-            && isset($_POST['Telefono1Cliente']) && isset($_POST['Telefono2Cliente']) && isset($_POST['DireccionCliente']) && isset($_POST['IdUbicacion'])) {
-            
-        $cedulaCliente=$_POST['CedulaCliente'];
-        $nombreCliente=$_POST['NombreCliente'];
-        $apellido1Cliente=$_POST['Apellido1Cliente'];
-        $apellido2Cliente=$_POST['Apellido2Cliente'];
-        $telefono1Cliente=$_POST['Telefono1CLiente'];
-        $telefono2CLiente=$_POST['Telefono2Cliente'];
-        $direccionCliente=$_POST['DireccionCliente'];
-        $idUbicacion=$_POST['IdUbicacion'];
+     if (isset($_POST['nombrePersona']) && isset($_POST['apellido1Persona']) && isset($_POST['apellido2Persona'])
+            && isset($_POST['tipoUsuarioPersona']) && isset($_POST['idZona']) && isset($_POST['telefonoPersona']) ) {
+          
+        $telefonoPersona = $_POST('telefonoPersona');
+        $nombrePersona =$_POST('nombrePersona');
+        $apellido1Persona =$_POST('apellido1Persona');
+        $apellido2Persona = $_POST('apellido2Persona');
+        $tipoUsuarioPersona = $_POST('tipoUsuarioPersona');
+        $idZona = $_POST('idZona');
         
 
-        if (strlen($cedulaCliente) > 0 && strlen($nombreCliente) > 0 && strlen($apellido1Cliente) > 0 
-                && strlen($apellido2Cliente) > 0  && strlen($telefono1Cliente) > 0 && strlen($telefono2Cliente) > 0
-                 && strlen($direccionCliente) > 0 && strlen($idUbicacion) > 0) {
-            if (!is_numeric($nombreCliente)) {
-                $cliente = new cliente(0, $cedulaCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente,
-                        $telefono1Cliente,$telefono2Cliente,$direccionCliente,$idUbicacion);
+       if (strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
+            strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
+            if (!is_numeric($nombreTipoEmpleado)) {
+                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $tipoUsuarioPersona, $idZona,0);
 
                 $clienteBusiness = new clienteBusiness();
 
-                $result = $clienteBusiness->insertTBCliente($cliente);
+                $result = $clienteBusiness->insertTBCliente($Persona);
 
                 if ($result == 1) {
                     header("location: ../view/clienteView.php?success=inserted");
