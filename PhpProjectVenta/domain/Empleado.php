@@ -11,7 +11,7 @@
  *
  * @author Brandon
  */
-class Empleado extends Persona {
+class Empleado{
     
 private $idEmpleado;
 private $cedulaEmpleado;
