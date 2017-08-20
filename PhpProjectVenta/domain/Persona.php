@@ -23,6 +23,7 @@ private $idEmpleado;
 
 
 function Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $tipoUsuarioPersona, $idZona, $idEmpleado) {
+    $this->super();
     $this->telefonoPersona = $telefonoPersona;
     $this->nombrePersona = $nombrePersona;
     $this->apellido1Persona = $apellido1Persona;
