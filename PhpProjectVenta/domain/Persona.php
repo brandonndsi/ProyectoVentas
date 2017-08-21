@@ -11,9 +11,9 @@
  *
  * @author Brandon
  */
-class Persona {
+class Persona extends Empleado{
 
-private $telefonoPersona ;
+private $telefonoPersona;
 private $nombrePersona;
 private $apellido1Persona;
 private $apellido2Persona;
