@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2017 a las 07:22:38
+-- Tiempo de generación: 21-08-2017 a las 03:58:41
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -209,7 +209,9 @@ ALTER TABLE `tbempleado`
 -- Indices de la tabla `tbfactura`
 --
 ALTER TABLE `tbfactura`
-  ADD PRIMARY KEY (`idFactura`);
+  ADD PRIMARY KEY (`idFactura`),
+  ADD KEY `telefonoPersona` (`telefonoPersona`),
+  ADD KEY `telefonoPersona_2` (`telefonoPersona`);
 
 --
 -- Indices de la tabla `tbmateriaprima`
@@ -221,7 +223,9 @@ ALTER TABLE `tbmateriaprima`
 -- Indices de la tabla `tbpersona`
 --
 ALTER TABLE `tbpersona`
-  ADD PRIMARY KEY (`telefonoPersona`);
+  ADD PRIMARY KEY (`telefonoPersona`),
+  ADD KEY `idZona` (`idZona`),
+  ADD KEY `idEmpleado` (`idEmpleado`);
 
 --
 -- Indices de la tabla `tbproducto`
@@ -233,7 +237,11 @@ ALTER TABLE `tbproducto`
 -- Indices de la tabla `tbventa`
 --
 ALTER TABLE `tbventa`
-  ADD PRIMARY KEY (`idVenta`);
+  ADD PRIMARY KEY (`idVenta`),
+  ADD KEY `idEmpleado` (`idEmpleado`),
+  ADD KEY `idProducto` (`idProducto`),
+  ADD KEY `idZona` (`idZona`),
+  ADD KEY `idFactura` (`idFactura`);
 
 --
 -- Indices de la tabla `tbzona`
