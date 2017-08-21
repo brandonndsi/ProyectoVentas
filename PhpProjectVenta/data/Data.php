@@ -13,7 +13,7 @@ class Data {
         $this->server = "localhost";
         $this->user = "root";
         $this->password = "";
-        $this->dbname = "bdproyectoventa";
+        $this->db = "bdproyectoventa";
     }
     
     function crearData(){
