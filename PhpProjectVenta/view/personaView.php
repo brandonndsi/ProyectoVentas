@@ -1,58 +1,70 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Inventario Semen</title>
-    <!--<link rel="stylesheet" href="../resources/css/css.css">-->
+    <title>Ventana Persona</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <?php
-    /*include '../business/empleadoBusiness.php';*/
+    //include '../business/clienteBusiness.php';
+    //Include '../business/empleadoBusiness.php';
+    //include '../business/tipoEmpleadoBusiness.php';
     ?>
 
 </head>
 
-<body>
-
-   <!-- <header> 
-    </header>
-
-    <?php/*
-    $ranchId = $_GET['id'];*/
-    ?>
-
-    <nav>
-        <ul>
-            <li><a href="indexToUser.php?idRanch=<?php echo $ranchId; ?>">Fincas</a></li>
-        </ul>
-    </nav>
-    
-
-    <section id="form">
-        <table>
-            <tr>
-                <th>Serie</th>
-                <th>Nombre</th>
-                <th>Casa Comercial</th>
-                <th>Fecha Compra</th>
-                <th>Cantidad Pajillas</th>
-                <th>Precio x Pajillas</th>
-                <th></th>
-            </tr>
-            <form method="post" enctype="multipart/form-data" action="../business/empleadoAction.php">
-                <tr>
-                    <input type="hidden" name="ranch" value="<?/*php echo $ranchId ;*/?>">
-                    <td><input required type="text" name="code" id="code"/></td>
-                    <td><input required type="text" name="name" id="name"/></td>
-                    <td><input required type="text" name="commercialcase" id="commercialcase"/></td>
-                    <td><input required type="date" name="buydate" id="buydate"/></td>
-                    <td><input required type="number" name="strawsquantity" id="sstrawsquantity"/></td>
-                    <td><input required type="number" name="strawsprice" id="sstrawsprice"/></td>
-                    <td><input type="submit" value="Crear" name="create" id="create"/></td>
-                </tr>
-            </form>
+<body  bgcolor="#303030" text="E5E5E5" font face="tahoma" font size="3">
+    <p align="center">
+    <form name="form" action="insetarCliente.php" method="Post">
+        <strong>
+            
+        
+        <h2>
+            Formulario para insertar el cliente a la base de datos.
+        </h2>
+            <hr size="8" color="ffffff" width="100%" align=" left">
+            </strong>
+        <h5>
+            Cedula: 
+            <input name="cedulaCliente" type="text" size="45" required>
+        </h5>
+        <h5>
+            Nombre: 
+            <input name="nombreCliente" type="text" size="45" required>
+        </h5>
+        <h5>
+            Primer Apellido: 
+            <input name="apellido1Cliente" type="text" size="45" required>
+        </h5>
+        <h5>
+            Segundo apellido: 
+            <input name="apellido2Cliente" type="text" size="45" required>
+        </h5>
+        <h5>
+            Tipo de Usuario: 
+            <input name="tipoCliente" type="text" size="45" required>
+        </h5>
+        <h5>
+            Zona: 
+            <input name="zonaCliente" type="text" size="45" required>
+        </h5>
+        <hr size="4" color="ffffff" width="100%" align="left">
+        <input name="Enviar" type="submit" value="Enviar">
+    </form>
+        
+        
+    </p>
             <?php
+            /*
+elefonoPersona;
+private $nombrePersona;
+private $apellido1Persona;
+private $apellido2Persona;
+private $tipoUsuarioPersona;
+private $idZona;
+private $idEmpleado;
+             *              */
            /* $empleadoBusiness = new empleadoBusiness();
             $allEmpleados = $EmpleadoBusiness->getAllTBEmpleado();
             foreach ($allEmpleados as $current) {
@@ -73,10 +85,6 @@
             }*/
             ?>
 
-
-            <tr>
-                <td></td>
-                <td>
                     <?php
                     /*if (isset($_GET['error'])) {
                         if ($_GET['error'] == "emptyField") {
@@ -90,13 +98,9 @@
                         echo '<p style="color: green">Transacción realizada</p>';
                     }*/
                     ?>
-                </td>
-            </tr>
-        </table>
-    </section>
+  
 
     <footer>
-    </footer>-->
-   <h1>Hola mundo</h1>
+    </footer>
 </body>
 </html>
