@@ -3,7 +3,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Ventana Persona</title>
+    <title>Ventana Cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <?php
@@ -26,45 +26,43 @@
             <hr size="8" color="ffffff" width="100%" align=" left">
             </strong>
         <h5>
-            Cedula: 
-            <input name="cedulaCliente" type="text" size="45" required>
-        </h5>
-        <h5>
             Nombre: 
-            <input name="nombreCliente" type="text" size="45" required>
+            <input name="nombrePersona" type="text" size="45" required>
         </h5>
         <h5>
             Primer Apellido: 
-            <input name="apellido1Cliente" type="text" size="45" required>
+            <input name="apellido1Persona" type="text" size="45" required>
         </h5>
         <h5>
             Segundo apellido: 
-            <input name="apellido2Cliente" type="text" size="45" required>
+            <input name="apellido2Persona" type="text" size="45" required>
         </h5>
         <h5>
             Tipo de Usuario: 
-            <input name="tipoCliente" type="text" size="45" required>
+            <input name="tipoUsuarioPersona" type="text" size="45" required>
         </h5>
         <h5>
             Zona: 
-            <input name="zonaCliente" type="text" size="45" required>
+            <input name="idzona" type="text" size="45" required>
         </h5>
+        <h5>
+            TelefonoPersona: 
+            <input name="telefono Persona" type="text" size="45" required>
+        </h5>
+        
         <hr size="4" color="ffffff" width="100%" align="left">
-        <input name="Enviar" type="submit" value="Enviar">
+        <input name="Create" type="submit" value="Enviar">
     </form>
         
         
     </p>
             <?php
-            /*
-elefonoPersona;
-private $nombrePersona;
-private $apellido1Persona;
-private $apellido2Persona;
+       /*
+        * private $telefonoPersona;
+
 private $tipoUsuarioPersona;
-private $idZona;
 private $idEmpleado;
-             *              */
+        */
            /* $empleadoBusiness = new empleadoBusiness();
             $allEmpleados = $EmpleadoBusiness->getAllTBEmpleado();
             foreach ($allEmpleados as $current) {

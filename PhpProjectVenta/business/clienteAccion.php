@@ -22,6 +22,7 @@ include './clienteBusiness.php';
         $idZona = $_POST('idZona');
         $IdEmpleado=$_POST('idPersona');
         
+        
         if (strlen($IdEmpleado) > 0 &&strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
             strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
             if (!is_numeric($nombreTipoEmpleado)) {
