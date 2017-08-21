@@ -6,14 +6,14 @@ class Data {
     private $user;
     private $password;
     private $db;
-    private $conexion;
+    public $conexion;
     
     
     public function Data(){
-        $this->server = "";
-        $this->user = "";
+        $this->server = "localhost";
+        $this->user = "root";
         $this->password = "";
-        $this->dbname = "";
+        $this->dbname = "bdproyectoventa";
     }
     
     function crearData(){
@@ -22,5 +22,8 @@ class Data {
     }
     function cerrarData(){
 	mysqli_close ($this->conexion);                        
+    }
+    function getConexion(){
+        return $this->conexion;
     }
 }

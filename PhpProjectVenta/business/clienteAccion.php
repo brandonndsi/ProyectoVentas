@@ -83,7 +83,7 @@ include './clienteBusiness.php';
                 $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $tipoUsuarioPersona, $idZona,0);
 
                 $clienteBusiness = new clienteBusiness();
-
+                echo 'datos';
                 $result = $clienteBusiness->insertTBCliente($Persona);
 
                 if ($result == 1) {
@@ -99,6 +99,7 @@ include './clienteBusiness.php';
         }
     } else {
         header("location: ../view/clienteView.php?error=error");
+        
     }
 }
 
