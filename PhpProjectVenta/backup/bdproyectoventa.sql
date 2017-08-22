@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-08-2017 a las 00:42:37
+-- Tiempo de generación: 22-08-2017 a las 03:26:08
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -19,26 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bdproyectoventa`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `bdtipoempleado`
---
-
-CREATE TABLE `bdtipoempleado` (
-  `tipoEmpleado` varchar(20) NOT NULL,
-  `salarioBaseEmpleado` double NOT NULL,
-  `descripcionEmpleado` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `bdtipoempleado`
---
-
-INSERT INTO `bdtipoempleado` (`tipoEmpleado`, `salarioBaseEmpleado`, `descripcionEmpleado`) VALUES
-('Administrador', 600000, 'Puede agregar,modificar,buscar y eliminar:(zonas,persona,empleados,productos,precios,combos,realizar ventas etc..)'),
-('Cajero', 350000, 'Puede realizar una venta y registrar personas.');
 
 -- --------------------------------------------------------
 
@@ -125,7 +105,6 @@ CREATE TABLE `tbpersona` (
   `nombrePersona` varchar(20) NOT NULL,
   `apellido1Persona` varchar(20) NOT NULL,
   `apellido2Persona` varchar(20) NOT NULL,
-  `tipoUsuarioPersona` varchar(20) NOT NULL,
   `idZona` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -133,12 +112,12 @@ CREATE TABLE `tbpersona` (
 -- Volcado de datos para la tabla `tbpersona`
 --
 
-INSERT INTO `tbpersona` (`telefonoPersona`, `nombrePersona`, `apellido1Persona`, `apellido2Persona`, `tipoUsuarioPersona`, `idZona`) VALUES
-(62091232, 'Brandon', 'Rodriguez', 'Mendez', 'Administrador', 1),
-(64358765, 'Juan', 'Chavarria', 'Arroyo', 'Administrador', 3),
-(73950274, 'David', 'Salas', 'Salas', 'Empleado', 4),
-(82345436, 'Elisabeth', 'Rodriguez', 'Castro', 'Cliente', 2),
-(88940376, 'Oscar', 'Mejias', 'Morera', 'Cliente', 2);
+INSERT INTO `tbpersona` (`telefonoPersona`, `nombrePersona`, `apellido1Persona`, `apellido2Persona`, `idZona`) VALUES
+(62091232, 'Brandon', 'Rodriguez', 'Mendez', 1),
+(64358765, 'Juan', 'Chavarria', 'Arroyo', 3),
+(73950274, 'David', 'Salas', 'Salas', 4),
+(82345436, 'Elisabeth', 'Rodriguez', 'Castro', 2),
+(88940376, 'Oscar', 'Mejias', 'Morera', 2);
 
 -- --------------------------------------------------------
 
@@ -162,6 +141,26 @@ INSERT INTO `tbproducto` (`idProducto`, `nombreProducto`, `precioProducto`) VALU
 (3, '4Piezas', 2500),
 (4, 'HamburquesaJunior', 1300),
 (5, 'Combo1', 4000);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbtipoempleado`
+--
+
+CREATE TABLE `tbtipoempleado` (
+  `tipoEmpleado` varchar(20) NOT NULL,
+  `salarioBaseEmpleado` double NOT NULL,
+  `descripcionEmpleado` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbtipoempleado`
+--
+
+INSERT INTO `tbtipoempleado` (`tipoEmpleado`, `salarioBaseEmpleado`, `descripcionEmpleado`) VALUES
+('Administrador', 600000, 'Puede agregar,modificar,buscar y eliminar:(zonas,productos,cajeros,persona,precios,combos, etc...'),
+('Cajero', 350000, 'Puede realizar una venta y registrar personas.');
 
 -- --------------------------------------------------------
 
@@ -252,6 +251,12 @@ ALTER TABLE `tbpersona`
 --
 ALTER TABLE `tbproducto`
   ADD PRIMARY KEY (`idProducto`);
+
+--
+-- Indices de la tabla `tbtipoempleado`
+--
+ALTER TABLE `tbtipoempleado`
+  ADD PRIMARY KEY (`tipoEmpleado`);
 
 --
 -- Indices de la tabla `tbventa`

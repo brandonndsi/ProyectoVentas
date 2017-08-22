@@ -41,14 +41,15 @@ class DataPersona {
         }
     }
 
+    //funcional
     function obtener($id) {
         $conexcion = new DBConexion;
         $persona;
 
         if ($conexcion->conectar() == true) {
-            $query = "SELECT telefonoPersona, nombrePersona, apellido1Persona,
-			apellido2Persona, idZona
-			FROM tbpersona WHERE telefonoPersona=$id";
+
+            $query = mysql_query("SELECT * FROM tbpersona p INNER JOIN tbzona z ON p.idZona= z.idZona"
+                    . " WHERE telefonoPersona=$id") or die(mysql_error());
 
             $result = mysql_query($query);
 
@@ -69,12 +70,13 @@ class DataPersona {
         if ($conexcion->conectar() == true) {
 
             $query = "UPDATE tbpersona SET 
-					telefonoPersona='" . $persona->get_telefonoPersona() . "',  
-					nombrePersona='" . $persona->get_nombrePersona() . "',
-					apellido1Persona='" . $persona->get_apellido1Persona() . "',
-					apellido2Persona='" . $persona->get_apellido2Persona() . "',
-                                        idZona='" . $persona->get_idZona() . "',    
-					WHERE telefonoPersona =" . $persona->get_telefonoPersona() . "";
+		telefonoPersona='" . $persona->get_telefonoPersona() . "',  
+		nombrePersona='" . $persona->get_nombrePersona() . "',
+		apellido1Persona='" . $persona->get_apellido1Persona() . "',
+		apellido2Persona='" . $persona->get_apellido2Persona() . "',
+                idZona='" . $persona->get_idZona() . "',    
+		WHERE telefonoPersona =" . $persona->get_telefonoPersona() . "";
+            
             $result = mysql_query($query);
             if (!$result) {
                 return false;
@@ -90,10 +92,8 @@ class DataPersona {
         $lista = array();
 
         if ($conexcion->conectar() == true) {
-            $query = "SELECT telefonoPersona, nombrePersona, apellido1Persona,
-			apellido2Persona, idZona
-			FROM tbpersona";
-            
+            $query = mysql_query("SELECT * FROM tbpersona p INNER JOIN tbzona z ON p.idZona= z.idZona") or die(mysql_error());
+
             $result = mysql_query($query);
 
             while ($row = mysql_fetch_array($result)) {
@@ -106,8 +106,8 @@ class DataPersona {
                 return $lista;
             }
         }
-    } 
-    
+    }
+
 }
 
 ?>
