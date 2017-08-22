@@ -24,27 +24,27 @@ class Zona {
         $this->precioZona = $precioZona;
     }
 
-    function getIdZona() {
+    public function getIdZona() {
         return $this->idZona;
     }
 
-    function getNombreZona() {
+    public function getNombreZona() {
         return $this->nombreZona;
     }
 
-    function getPrecioZona() {
+    public function getPrecioZona() {
         return $this->precioZona;
     }
 
-    function setIdZona($idZona) {
+    public function setIdZona($idZona) {
         $this->idZona = $idZona;
     }
 
-    function setNombreZona($nombreZona) {
+    public function setNombreZona($nombreZona) {
         $this->nombreZona = $nombreZona;
     }
 
-    function setPrecioZona($precioZona) {
+    public function setPrecioZona($precioZona) {
         $this->precioZona = $precioZona;
     }
     

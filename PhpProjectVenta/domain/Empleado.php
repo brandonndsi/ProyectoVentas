@@ -11,109 +11,110 @@
  *
  * @author Brandon
  */
-class Empleado{
+class Empleado extends Persona{
     
 private $idEmpleado;
+private $tipoEmpleado;
+private $telefonoPersona;
 private $cedulaEmpleado;
 private $contraseñaEmpleado;
 private $correoEmpleado;
-private $cuentaBancariaEmpleado;
+private $edadEmpleado;
 private $sexoEmpleado;
 private $estadoCivilEmpleado;
-private $edadEmpleado;
-private $salarioBaseEmpleado;
-private $descripcionEmpleado;
+private $cuentaBancariaEmpleado;
 
-function Empleado($idEmpleado, $cedulaEmpleado, $contraseñaEmpleado, $correoEmpleado, $cuentaBancariaEmpleado, $sexoEmpleado, $estadoCivilEmpleado, $edadEmpleado, $salarioBaseEmpleado, $descripcionEmpleado) {
+function Empleado($idEmpleado, $tipoEmpleado, $telefonoPersona, $cedulaEmpleado, $contraseñaEmpleado, $correoEmpleado, $edadEmpleado, $sexoEmpleado, $estadoCivilEmpleado, $cuentaBancariaEmpleado) {
     $this->idEmpleado = $idEmpleado;
+    $this->tipoEmpleado = $tipoEmpleado;
+    $this->telefonoPersona = $telefonoPersona;
     $this->cedulaEmpleado = $cedulaEmpleado;
     $this->contraseñaEmpleado = $contraseñaEmpleado;
     $this->correoEmpleado = $correoEmpleado;
-    $this->cuentaBancariaEmpleado = $cuentaBancariaEmpleado;
+    $this->edadEmpleado = $edadEmpleado;
     $this->sexoEmpleado = $sexoEmpleado;
     $this->estadoCivilEmpleado = $estadoCivilEmpleado;
-    $this->edadEmpleado = $edadEmpleado;
-    $this->salarioBaseEmpleado = $salarioBaseEmpleado;
-    $this->descripcionEmpleado = $descripcionEmpleado;
+    $this->cuentaBancariaEmpleado = $cuentaBancariaEmpleado;
 }
-function getIdEmpleado() {
+
+public function getIdEmpleado() {
     return $this->idEmpleado;
 }
 
-function getCedulaEmpleado() {
+public function getTipoEmpleado() {
+    return $this->tipoEmpleado;
+}
+
+public function getTelefonoPersona() {
+    return $this->telefonoPersona;
+}
+
+public function getCedulaEmpleado() {
     return $this->cedulaEmpleado;
 }
 
-function getContraseñaEmpleado() {
+public function getContraseñaEmpleado() {
     return $this->contraseñaEmpleado;
 }
 
-function getCorreoEmpleado() {
+public function getCorreoEmpleado() {
     return $this->correoEmpleado;
 }
 
-function getCuentaBancariaEmpleado() {
-    return $this->cuentaBancariaEmpleado;
-}
-
-function getSexoEmpleado() {
-    return $this->sexoEmpleado;
-}
-
-function getEstadoCivilEmpleado() {
-    return $this->estadoCivilEmpleado;
-}
-
-function getEdadEmpleado() {
+public function getEdadEmpleado() {
     return $this->edadEmpleado;
 }
 
-function getSalarioBaseEmpleado() {
-    return $this->salarioBaseEmpleado;
+public function getSexoEmpleado() {
+    return $this->sexoEmpleado;
 }
 
-function getDescripcionEmpleado() {
-    return $this->descripcionEmpleado;
+public function getEstadoCivilEmpleado() {
+    return $this->estadoCivilEmpleado;
 }
 
-function setIdEmpleado($idEmpleado) {
+public function getCuentaBancariaEmpleado() {
+    return $this->cuentaBancariaEmpleado;
+}
+
+public function setIdEmpleado($idEmpleado) {
     $this->idEmpleado = $idEmpleado;
 }
 
-function setCedulaEmpleado($cedulaEmpleado) {
+public function setTipoEmpleado($tipoEmpleado) {
+    $this->tipoEmpleado = $tipoEmpleado;
+}
+
+public function setTelefonoPersona($telefonoPersona) {
+    $this->telefonoPersona = $telefonoPersona;
+}
+
+public function setCedulaEmpleado($cedulaEmpleado) {
     $this->cedulaEmpleado = $cedulaEmpleado;
 }
 
-function setContraseñaEmpleado($contraseñaEmpleado) {
+public function setContraseñaEmpleado($contraseñaEmpleado) {
     $this->contraseñaEmpleado = $contraseñaEmpleado;
 }
 
-function setCorreoEmpleado($correoEmpleado) {
+public function setCorreoEmpleado($correoEmpleado) {
     $this->correoEmpleado = $correoEmpleado;
 }
 
-function setCuentaBancariaEmpleado($cuentaBancariaEmpleado) {
-    $this->cuentaBancariaEmpleado = $cuentaBancariaEmpleado;
-}
-
-function setSexoEmpleado($sexoEmpleado) {
-    $this->sexoEmpleado = $sexoEmpleado;
-}
-
-function setEstadoCivilEmpleado($estadoCivilEmpleado) {
-    $this->estadoCivilEmpleado = $estadoCivilEmpleado;
-}
-
-function setEdadEmpleado($edadEmpleado) {
+public function setEdadEmpleado($edadEmpleado) {
     $this->edadEmpleado = $edadEmpleado;
 }
 
-function setSalarioBaseEmpleado($salarioBaseEmpleado) {
-    $this->salarioBaseEmpleado = $salarioBaseEmpleado;
+public function setSexoEmpleado($sexoEmpleado) {
+    $this->sexoEmpleado = $sexoEmpleado;
 }
 
-function setDescripcionEmpleado($descripcionEmpleado) {
-    $this->descripcionEmpleado = $descripcionEmpleado;
+public function setEstadoCivilEmpleado($estadoCivilEmpleado) {
+    $this->estadoCivilEmpleado = $estadoCivilEmpleado;
+}
+
+public function setCuentaBancariaEmpleado($cuentaBancariaEmpleado) {
+    $this->cuentaBancariaEmpleado = $cuentaBancariaEmpleado;
 }
 
 }

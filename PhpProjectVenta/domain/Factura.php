@@ -23,27 +23,28 @@ class Factura extends Persona{
         $this->telefonoPersona = $telefonoPersona;
         $this->fechaFactura = $fechaFactura;
     }
-    function getIdFactura() {
+    
+    public function getIdFactura() {
         return $this->idFactura;
     }
 
-    function getTelefonoPersona() {
+    public function getTelefonoPersona() {
         return $this->telefonoPersona;
     }
 
-    function getFechaFactura() {
+    public function getFechaFactura() {
         return $this->fechaFactura;
     }
 
-    function setIdFactura($idFactura) {
+    public function setIdFactura($idFactura) {
         $this->idFactura = $idFactura;
     }
 
-    function setTelefonoPersona($telefonoPersona) {
+    public function setTelefonoPersona($telefonoPersona) {
         $this->telefonoPersona = $telefonoPersona;
     }
 
-    function setFechaFactura($fechaFactura) {
+    public function setFechaFactura($fechaFactura) {
         $this->fechaFactura = $fechaFactura;
     }
 }

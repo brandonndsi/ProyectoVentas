@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2017 a las 03:58:41
+-- Tiempo de generación: 22-08-2017 a las 00:42:37
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -23,30 +23,50 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `bdtipoempleado`
+--
+
+CREATE TABLE `bdtipoempleado` (
+  `tipoEmpleado` varchar(20) NOT NULL,
+  `salarioBaseEmpleado` double NOT NULL,
+  `descripcionEmpleado` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `bdtipoempleado`
+--
+
+INSERT INTO `bdtipoempleado` (`tipoEmpleado`, `salarioBaseEmpleado`, `descripcionEmpleado`) VALUES
+('Administrador', 600000, 'Puede agregar,modificar,buscar y eliminar:(zonas,persona,empleados,productos,precios,combos,realizar ventas etc..)'),
+('Cajero', 350000, 'Puede realizar una venta y registrar personas.');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbempleado`
 --
 
 CREATE TABLE `tbempleado` (
   `idEmpleado` int(11) NOT NULL,
+  `tipoEmpleado` varchar(20) NOT NULL,
+  `telefonoPersona` int(11) NOT NULL,
   `cedulaEmpleado` int(11) NOT NULL,
-  `contraseñaEmpleado` varchar(30) NOT NULL,
+  `contrasenaEmpleado` varchar(30) NOT NULL,
   `correoEmpleado` varchar(50) NOT NULL,
-  `cuentaBancariaEmpleado` int(11) NOT NULL,
+  `edadEmpleado` int(11) NOT NULL,
   `sexoEmpleado` varchar(10) NOT NULL,
   `estadoCivilEmpleado` varchar(20) NOT NULL,
-  `edadEmpleado` int(11) NOT NULL,
-  `descripcionEmpleado` varchar(100) NOT NULL,
-  `salarioBaseEmpleado` double NOT NULL
+  `cuentaBancariaEmpleado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbempleado`
 --
 
-INSERT INTO `tbempleado` (`idEmpleado`, `cedulaEmpleado`, `contraseñaEmpleado`, `correoEmpleado`, `cuentaBancariaEmpleado`, `sexoEmpleado`, `estadoCivilEmpleado`, `edadEmpleado`, `descripcionEmpleado`, `salarioBaseEmpleado`) VALUES
-(1, 207210905, '2904017b', 'brandon-ndsi@hotmail.com', 1244251234, 'Masculino', 'Soltero', 23, 'Puede agregar empleados,productos, zonas, etc\r\n', 600000),
-(2, 609870234, '12345', 'juaracha@gmail.com', 1265748392, 'Masculino', 'Union Libre', 23, 'Puede agregar empleados,productos, zonas, etc\r\n', 600000),
-(3, 304560948, '123', 'salasgates@hotmail.com', 1241454634, 'Masculino', 'Casado', 22, 'Solo puede vender\r\n', 350000);
+INSERT INTO `tbempleado` (`idEmpleado`, `tipoEmpleado`, `telefonoPersona`, `cedulaEmpleado`, `contrasenaEmpleado`, `correoEmpleado`, `edadEmpleado`, `sexoEmpleado`, `estadoCivilEmpleado`, `cuentaBancariaEmpleado`) VALUES
+(1, 'Administrador', 62091232, 207210905, '2904017b', 'brandon-ndsi@hotmail.com', 23, 'Masculino', 'Soltero', 1244251234),
+(2, 'Administrador', 64358765, 609870234, '12345', 'juaracha@gmail.com', 23, 'Masculino', 'Union Libre', 1265748392),
+(3, 'Cajero', 73950274, 304560948, '123', 'salasgates@hotmail.com', 22, 'Masculino', 'Casado', 1241454634);
 
 -- --------------------------------------------------------
 
@@ -106,20 +126,19 @@ CREATE TABLE `tbpersona` (
   `apellido1Persona` varchar(20) NOT NULL,
   `apellido2Persona` varchar(20) NOT NULL,
   `tipoUsuarioPersona` varchar(20) NOT NULL,
-  `idZona` int(11) NOT NULL,
-  `idEmpleado` int(11) NOT NULL
+  `idZona` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbpersona`
 --
 
-INSERT INTO `tbpersona` (`telefonoPersona`, `nombrePersona`, `apellido1Persona`, `apellido2Persona`, `tipoUsuarioPersona`, `idZona`, `idEmpleado`) VALUES
-(62091232, 'Brandon', 'Rodriguez', 'Mendez', 'Administrador', 1, 1),
-(64358765, 'Juan', 'Chavarria', 'Arroyo', 'Administrador', 3, 2),
-(73950274, 'David', 'Salas', 'Salas', 'Empleado', 4, 3),
-(82345436, 'Elisabeth', 'Rodriguez', 'Castro', 'Cliente', 2, 0),
-(88940376, 'Oscar', 'Mejias', 'Morera', 'Cliente', 2, 0);
+INSERT INTO `tbpersona` (`telefonoPersona`, `nombrePersona`, `apellido1Persona`, `apellido2Persona`, `tipoUsuarioPersona`, `idZona`) VALUES
+(62091232, 'Brandon', 'Rodriguez', 'Mendez', 'Administrador', 1),
+(64358765, 'Juan', 'Chavarria', 'Arroyo', 'Administrador', 3),
+(73950274, 'David', 'Salas', 'Salas', 'Empleado', 4),
+(82345436, 'Elisabeth', 'Rodriguez', 'Castro', 'Cliente', 2),
+(88940376, 'Oscar', 'Mejias', 'Morera', 'Cliente', 2);
 
 -- --------------------------------------------------------
 
@@ -203,7 +222,9 @@ INSERT INTO `tbzona` (`idZona`, `nombreZona`, `precioZona`) VALUES
 -- Indices de la tabla `tbempleado`
 --
 ALTER TABLE `tbempleado`
-  ADD PRIMARY KEY (`idEmpleado`);
+  ADD PRIMARY KEY (`idEmpleado`),
+  ADD KEY `tipoEmpleado` (`tipoEmpleado`),
+  ADD KEY `telefonoPersona` (`telefonoPersona`);
 
 --
 -- Indices de la tabla `tbfactura`
@@ -224,8 +245,7 @@ ALTER TABLE `tbmateriaprima`
 --
 ALTER TABLE `tbpersona`
   ADD PRIMARY KEY (`telefonoPersona`),
-  ADD KEY `idZona` (`idZona`),
-  ADD KEY `idEmpleado` (`idEmpleado`);
+  ADD KEY `idZona` (`idZona`);
 
 --
 -- Indices de la tabla `tbproducto`

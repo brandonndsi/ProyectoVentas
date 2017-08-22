@@ -11,54 +11,42 @@
  *
  * @author Brandon
  */
-class Persona extends Empleado{
+class Persona{
 
 private $telefonoPersona;
 private $nombrePersona;
 private $apellido1Persona;
 private $apellido2Persona;
-private $tipoUsuarioPersona;
 private $idZona;
-private $idEmpleado;
 
 
-function Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $tipoUsuarioPersona, $idZona, $idEmpleado) {
+function Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $idZona) {
     $this->super();
     $this->telefonoPersona = $telefonoPersona;
     $this->nombrePersona = $nombrePersona;
     $this->apellido1Persona = $apellido1Persona;
     $this->apellido2Persona = $apellido2Persona;
-    $this->tipoUsuarioPersona = $tipoUsuarioPersona;
     $this->idZona = $idZona;
-    $this->idEmpleado = $idEmpleado;
 }
 
-function getTelefonoPersona() {
+public function getTelefonoPersona() {
     return $this->telefonoPersona;
 }
 
-function getNombrePersona() {
+public function getNombrePersona() {
     return $this->nombrePersona;
 }
 
-function getApellido1Persona() {
+public function getApellido1Persona() {
     return $this->apellido1Persona;
 }
 
-function getApellido2Persona() {
+public function getApellido2Persona() {
     return $this->apellido2Persona;
 }
 
-function getTipoPersona() {
-    return $this->tipoPersona;
-}
-
-function getIdZona() {
+public function getIdZona() {
     return $this->idZona;
-}
-
-function getIdEmpleado() {
-    return $this->idEmpleado;
 }
 
 function setTelefonoPersona($telefonoPersona) {
@@ -77,16 +65,8 @@ function setApellido2Persona($apellido2Persona) {
     $this->apellido2Persona = $apellido2Persona;
 }
 
-function setTipoUsuarioPersona($tipoUsuarioPersona) {
-    $this->tipoUsuarioPersona = $tipoUsuarioPersona;
-}
-
 function setIdZona($idZona) {
     $this->idZona = $idZona;
-}
-
-function setIdEmpleado($idEmpleado) {
-    $this->idEmpleado = $idEmpleado;
 }
 
 }

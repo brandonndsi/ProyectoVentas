@@ -36,75 +36,75 @@ class Venta {
         $this->idFactura = $idFactura;
     }
 
-    function getIdVenta() {
+    public function getIdVenta() {
         return $this->idVenta;
     }
 
-    function getIdEmpleado() {
+    public function getIdEmpleado() {
         return $this->idEmpleado;
     }
 
-    function getCantidadProductoVenta() {
+    public function getCantidadProductoVenta() {
         return $this->cantidadProductoVenta;
     }
 
-    function getIdProducto() {
+    public function getIdProducto() {
         return $this->idProducto;
     }
 
-    function getIdZona() {
+    public function getIdZona() {
         return $this->idZona;
     }
 
-    function getTotalVenta() {
+    public function getTotalVenta() {
         return $this->totalVenta;
     }
 
-    function getPagaVenta() {
+    public function getPagaVenta() {
         return $this->pagaVenta;
     }
 
-    function getVueltoVenta() {
+    public function getVueltoVenta() {
         return $this->vueltoVenta;
     }
 
-    function getIdFactura() {
+    public function getIdFactura() {
         return $this->idFactura;
     }
 
-    function setIdVenta($idVenta) {
+    public function setIdVenta($idVenta) {
         $this->idVenta = $idVenta;
     }
 
-    function setIdEmpleado($idEmpleado) {
+    public function setIdEmpleado($idEmpleado) {
         $this->idEmpleado = $idEmpleado;
     }
 
-    function setCantidadProductoVenta($cantidadProductoVenta) {
+    public function setCantidadProductoVenta($cantidadProductoVenta) {
         $this->cantidadProductoVenta = $cantidadProductoVenta;
     }
 
-    function setIdProducto($idProducto) {
+    public function setIdProducto($idProducto) {
         $this->idProducto = $idProducto;
     }
 
-    function setIdZona($idZona) {
+    public function setIdZona($idZona) {
         $this->idZona = $idZona;
     }
 
-    function setTotalVenta($totalVenta) {
+    public function setTotalVenta($totalVenta) {
         $this->totalVenta = $totalVenta;
     }
 
-    function setPagaVenta($pagaVenta) {
+    public function setPagaVenta($pagaVenta) {
         $this->pagaVenta = $pagaVenta;
     }
 
-    function setVueltoVenta($vueltoVenta) {
+    public function setVueltoVenta($vueltoVenta) {
         $this->vueltoVenta = $vueltoVenta;
     }
 
-    function setIdFactura($idFactura) {
+    public function setIdFactura($idFactura) {
         $this->idFactura = $idFactura;
     }
 

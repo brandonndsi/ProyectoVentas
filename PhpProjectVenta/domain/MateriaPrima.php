@@ -23,27 +23,28 @@ class MateriaPrima {
         $this->nombreMateriaPrima = $nombreMateriaPrima;
         $this->precioMateriaPrima = $precioMateriaPrima;
     }
-    function getIdMateriaPrima() {
+    
+    public function getIdMateriaPrima() {
         return $this->idMateriaPrima;
     }
 
-    function getNombreMateriaPrima() {
+    public function getNombreMateriaPrima() {
         return $this->nombreMateriaPrima;
     }
 
-    function getPrecioMateriaPrima() {
+    public function getPrecioMateriaPrima() {
         return $this->precioMateriaPrima;
     }
 
-    function setIdMateriaPrima($idMateriaPrima) {
+    public function setIdMateriaPrima($idMateriaPrima) {
         $this->idMateriaPrima = $idMateriaPrima;
     }
 
-    function setNombreMateriaPrima($nombreMateriaPrima) {
+    public function setNombreMateriaPrima($nombreMateriaPrima) {
         $this->nombreMateriaPrima = $nombreMateriaPrima;
     }
 
-    function setPrecioMateriaPrima($precioMateriaPrima) {
+    public function setPrecioMateriaPrima($precioMateriaPrima) {
         $this->precioMateriaPrima = $precioMateriaPrima;
     }
     

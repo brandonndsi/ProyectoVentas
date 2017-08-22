@@ -26,34 +26,35 @@ class Producto extends MateriaPrima{
         $this->precioProducto = $precioProducto;
         $this->$idMateriaPrima = $idMateriaPrima;
     }
-    function getIdProducto() {
+    
+    public function getIdProducto() {
         return $this->idProducto;
     }
 
-    function getNombreProducto() {
+    public function getNombreProducto() {
         return $this->nombreProducto;
     }
 
-    function getPrecioProducto() {
+    public function getPrecioProducto() {
         return $this->precioProducto;
     }
 
-    function setIdProducto($idProducto) {
+    public function setIdProducto($idProducto) {
         $this->idProducto = $idProducto;
     }
 
-    function setNombreProducto($nombreProducto) {
+    public function setNombreProducto($nombreProducto) {
         $this->nombreProducto = $nombreProducto;
     }
 
-    function setPrecioProducto($precioProducto) {
+    public function setPrecioProducto($precioProducto) {
         $this->precioProducto = $precioProducto;
     }
-    function getIdMateriaPrima() {
+    public function getIdMateriaPrima() {
         return $this->idMateriaPrima;
     }
 
-    function setIdMateriaPrima($idMateriaPrima) {
+    public function setIdMateriaPrima($idMateriaPrima) {
         $this->idMateriaPrima = $idMateriaPrima;
     }
 }
