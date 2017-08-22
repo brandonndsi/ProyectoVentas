@@ -11,26 +11,28 @@ include './clienteBusiness.php';
 
     if (isset($_POST['update'])) {
 
-     if (isset($_POST['idPersona']) && isset($_POST['nombrePersona']) && isset($_POST['apellido1Persona']) && isset($_POST['apellido2Persona'])
-            && isset($_POST['tipoUsuarioPersona']) && isset($_POST['idZona']) && isset($_POST['telefonoPersona']) ) {
+     if (isset($_POST['idCliente']) && isset($_POST['nombreCliente']) && isset($_POST['apellido1Cliente']) && isset($_POST['apellido2Cliente'])
+            && isset($_POST['tipoUsuarioCliente']) && isset($_POST['telefonoCliente']) && isset($_POST['idZona']) && isset($_POST['idFactura'])&& isset($_POST['fechaFactura']) ) {
           
-        $telefonoPersona = $_POST('telefonoPersona');
-        $nombrePersona =$_POST('nombrePersona');
-        $apellido1Persona =$_POST('apellido1Persona');
-        $apellido2Persona = $_POST('apellido2Persona');
-        $tipoUsuarioPersona = $_POST('tipoUsuarioPersona');
+        $idCliente= $_POST('idCliente');
+        $nombreCliente =$_POST('nombreCliente');
+        $apellido1Cliente =$_POST('apellido1Cliente');
+        $apellido2Cliente = $_POST('apellido2Cliente');
+        $tipoUsuarioCliente = $_POST('tipoUsuarioCliente');
+        $telefonoCliente=$_POST('telefonoCliente');
         $idZona = $_POST('idZona');
-        $IdEmpleado=$_POST('idPersona');
-        
-        
-        if (strlen($IdEmpleado) > 0 &&strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
-            strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
-            if (!is_numeric($nombreTipoEmpleado)) {
-                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $tipoUsuarioPersona, $idZona,IdEmpleado);
+        $idFactura=$_POST('idFactura');
+        $fechaFactura=$_POST('fechaFactura');
+            
+        if (strlen($idCliente) > 0 &&strlen($nombreCliente) > 0 && strlen($apellido1Cliente) > 0 && strlen($apellido2Cliente) > 0 && 
+            strlen($tipoUsuarioCliente) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 && strlen($idFactura) > 0 && strlen($fechaFactura) > 0) {
+            if (!is_numeric($nombreCliente)) {
+                $Cliente = new Cliente($idCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente, 
+                        $tipoUsuarioCliente, $telefonoCliente, $idZona, $idFactura, $fechaFactura);
 
-                $tipoEmpledoBusiness = new tipoEmpleadoBusiness();
+                $ClienteAccion = new clienteBusiness();
 
-                $result = $tipoEmpleadoBusiness->updateTBTipoEmpleado($Persona);
+                $result = $ClienteAccion->updateTBCliente($Cliente);
                 if ($result == 1) {
                     header("location: ../view/clienteView.php?success=updated");
                 } else {
@@ -49,9 +51,9 @@ include './clienteBusiness.php';
     }
 } else if (isset($_POST['delete'])) {
 
-    if (isset($_POST['idPersona'])) {
+    if (isset($_POST['idCliente'])) {
 
-        $idCliente = $_POST['idPersona'];
+        $idCliente = $_POST['idCliente'];
 
         $clienteBusiness = new clienteBusiness();
         $result = $clienteBusiness->deleteTBCliente($idCliente);
@@ -66,25 +68,29 @@ include './clienteBusiness.php';
     }
 } else if (isset($_POST['Create'])) {
 
-     if (isset($_POST['nombrePersona']) && isset($_POST['apellido1Persona']) && isset($_POST['apellido2Persona'])
-            && isset($_POST['tipoUsuarioPersona']) && isset($_POST['idZona']) && isset($_POST['telefonoPersona']) ) {
+     if (isset($_POST['nombreCliente']) && isset($_POST['apellido1Cliente']) && isset($_POST['apellido2Cliente'])
+            && isset($_POST['tipoUsuarioCliente']) && isset($_POST['telefonoCliente']) && isset($_POST['idZona']) 
+             && isset($_POST['idFactura']) && isset($_POST['fechaFactura'])) {
           
-        $telefonoPersona = $_POST('telefonoPersona');
-        $nombrePersona =$_POST('nombrePersona');
-        $apellido1Persona =$_POST('apellido1Persona');
-        $apellido2Persona = $_POST('apellido2Persona');
-        $tipoUsuarioPersona = $_POST('tipoUsuarioPersona');
+        $nombreCliente =$_POST('nombreCliente');
+        $apellido1CLiente =$_POST('apellido1Cliente');
+        $apellido2Cliente = $_POST('apellido2Cliente');
+        $tipoUsuarioCliente = $_POST('tipoUsuarioCliente');
+        $telefonoCliente = $_POST('telefonoCliente');
         $idZona = $_POST('idZona');
-        
+        $idFactura = $_POST('idFactura');
+        $fechaFactura = $_POST('fechaFactura');
 
-       if (strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
-            strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
-            if (!is_numeric($nombreTipoEmpleado)) {
-                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $tipoUsuarioPersona, $idZona,0);
+       if (strlen($nombreCliente) > 0 && strlen($apellido1Cliente) > 0 && strlen($apellido2Cliente) > 0 && 
+            strlen($tipoUsuarioPersona) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 
+             && strlen($idFactura) > 0 && strlen($fechaFactura) > 0 ) {
+            if (!is_numeric($nombreCliente)) {
+                $Cliente = new Cliente($idCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente, 
+                        $tipoUsuarioCliente, $telefonoCliente, $idZona, $idFactura, $fechaFactura);
 
                 $clienteBusiness = new clienteBusiness();
                 echo 'datos';
-                $result = $clienteBusiness->insertTBCliente($Persona);
+                $result = $clienteBusiness->insertTBCliente($Cliente);
 
                 if ($result == 1) {
                     header("location: ../view/clienteView.php?success=inserted");

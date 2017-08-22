@@ -6,130 +6,111 @@
  *
  * @author David Salas.
  */
-include './empleadoBusiness.php';
 
-        $idEmpleado;
-        $cedulaEmpleado;
-        $nombreEmpleado;
-        $apellido1Empleado;
-        $apellido2Empleado;
-        $edadEmpleado;
-        $sexoEmpleado;
-        $estadoEmpleado;
-        $telefono1Empleado;
-        $telefono2Empleado;
-        $correoEmpleado;
-        $direccionEmpleado;
-        $cuentaBancariaEmpleado;
+include './empleadoBusiness.php';
 
 
 if (isset($_POST['update'])) {
 
-    if (isset($_POST['IdEmpleado']) && isset($_POST['CedulaEmpleado']) && isset($_POST['NombreEmpleado']) && isset($_POST['Apellido1Empleado']) && isset($_POST['Apellido2Empleado'])
-            && isset($_POST['EdadEmpleado']) && isset($_POST['SexoEmpleado']) && isset($_POST['EstadoEmpleado'])
-             && isset($_POST['Telefono1Empleado']) && isset($_POST['Telefono2Empleado']) && isset($_POST['CorreoEmpleado']) && isset($_POST['DireccionEmpleado']) && isset($_POST['CuentaBancariaEmpleado'])) {
+    if (isset($_POST['idEmpleado']) && isset($_POST['cedulaEmpleado']) && isset($_POST['contrasenaEmpleado']) && isset($_POST['correoEmpleado']) && isset($_POST['cuentaBancariaEmpleado'])
+            && isset($_POST['sexoEmpleado']) && isset($_POST['estadoCivilEmpleado']) && isset($_POST['edadEmpleado'])
+             && isset($_POST['salarioBaseEmpleado']) && isset($_POST['descripcionEmpleado'])) {
              
         $idEmpleado = $_POST['idEmpleado'];
-        $cedulaEmpleado = $_POST['CedulaEmpleado'];
-        $nombreEmpleado = $_POST['NombreEmpleado'];
-        $apellido1Empleado= $_POST['Apellido1Empleado'];
-        $apellido2Empleado= $_POST['Apellido2Empleado'];
-        $edadEmpleado= $_POST['EdadEmpleado'];
-        $sexoEmpleado= $_POST['SexoEmpleado'];
-        $estadoEmpleado= $_POST['EstadoEmpleado'];
-        $telefono1Empleado= $_POST['Telefono1Empleado'];
-        $telefono2Empleado= $_POST['Telefono2Empleado'];
-        $correoEmpleado= $_POST['CorreoEmpleado'];
-        $direccionEmpleado= $_POST['DireccionEmpleado'];
-        $cuentaBancariaEmpleado= $_POST['CuentaBancariaEmpleado'];
+        $cedulaEmpleado = $_POST['cedulaEmpleado'];
+        $contrasenaEmpleado = $_POST['contrasenaEmpleado'];
+        $correoEmpleado= $_POST['correoEmpleado'];
+        $cuentaBancariaEmpleado= $_POST['cuentaBancariaEmpleado'];
+        $sexoEmpleado= $_POST['sexoEmpleado'];
+        $estadoCivilEmpleado= $_POST['estadoCivilEmpleado'];
+        $edadEmpleado= $_POST['edadEmpleado'];
+        $salarioBaseEmpleado= $_POST['salarioBaseEmpleado'];
+        $descripcionEmpleado= $_POST['descripcionEmpleado'];
 
-        if (strlen($idempleado) > 0 && strlen($cedulaempleado) > 0 && strlen($nombreEmpleado) > 0 && strlen($apellido1Empleado) > 0 
-                && strlen($apellido2Empleado) > 0 && strlen($edadEmpleado) > 0 && strlen($telefono1Empleado) > 0 
-                && strlen($telefono2Empleado) > 0 && strlen($correoEmpleado) > 0 && strlen($direccionEmpleado) > 0
-                && strlen($cuentaBancariaEmpleado) > 0) {
-            if (!is_numeric($nombreEmpleado)) {
-                $empleado = new empleado($idempleado, $cedulaempleado, $nombreEmpleado, $apellido1Empleado, $apellido2Empleado, $edadEmpleado,
-                        $telefono1Empleado, $telefono2Empleado,$correoEmpleado,$direccionEmpleado,$cuentaBancariaEmpleado);
+        if (strlen($idEmpleado) > 0 && strlen($cedulaEmpleado) > 0 && strlen($contrasenaEmpleado) > 0 && strlen($correoEmpleado) > 0 
+                && strlen($cuentaBancariaEmpleado) > 0 && strlen($sexoEmpleado) > 0 && strlen($estadoCivilEmpleado) > 0 
+                && strlen($edadEmpleado) > 0 && strlen($salarioBaseEmpleado) > 0 && strlen($descripcionEmpleado) > 0) {
+            if (is_numeric($cedulaEmpleado)) {
+                $Empleado = new Empleado($idEmpleado, $cedulaEmpleado, $contrasenaEmpleado, $correoEmpleado,
+                        $cuentaBancariaEmpleado, $sexoEmpleado, $estadoCivilEmpleado, $edadEmpleado, $salarioBaseEmpleado,
+                        $descripcionEmpleado);
 
                 $empledoBusiness = new empleadoBusiness();
 
-                $result = $empleadoBusiness->updateTBEmpleado($empleado);
+                $result = $empleadoBusiness->updateTBEmpleado($Empleado);
                 if ($result == 1) {
-                    header("location: ../view/personaView.php?success=updated");
+                    header("location: ../view/empleadoView.php?success=updated");
                 } else {
-                    header("location: ../view/personaView.php?error=dbError");
+                    header("location: ../view/empleadoView.php?error=dbError");
                 }
             } else {
-                header("location: ../view/personaView.php?error=numberFormat");
+                header("location: ../view/empleadoView.php?error=numberFormat");
             }
         } else {
-            header("location: ../view/personaView.php?error=emptyField");
+            header("location: ../view/empleadoView.php?error=emptyField");
         }
     } else {
-        header("location: ../view/personaView.php?error=error");
+        header("location: ../view/empleadoView.php?error=error");
     }
 } else if (isset($_POST['delete'])) {
 
-    if (isset($_POST['CedulaEmpleado'])) {
+    if (isset($_POST['cedulaEmpleado'])) {
 
-        $idEmpleado = $_POST['CedulaEmpleado'];
+        $idEmplead = $_POST['cedulaEmpleado'];
 
         $empleadoBusiness = new empleadoBusiness();
-        $result = $empleadoBusiness->deleteTBEmpleado($idEmpleado);
+        $result = $empleadoBusiness->deleteTBEmpleado($idEmplead);
 
         if ($result == 1) {
-            header("location: ../view/personaView.php?success=deleted");
+            header("location: ../view/empleadoView.php?success=deleted");
         } else {
-            header("location: ../view/personaView.php?error=dbError");
+            header("location: ../view/empleadoView.php?error=dbError");
         }
     } else {
-        header("location: ../view/personaView.php?error=error");
+        header("location: ../view/empleadoView.php?error=error");
     }
 } else if (isset($_POST['Create'])) {
 
-    if (isset($_POST['CedulaEmpleado']) && isset($_POST['NombreEmpleado']) && isset($_POST['Apellido1Empleado']) && isset($_POST['Apellido2Empleado'])
-            && isset($_POST['EdadEmpleado']) && isset($_POST['SexoEmpleado']) && isset($_POST['EstadoEmpleado']) && isset($_POST['Telefono1Empleado'])
-             && isset($_POST['Telefono2Empleado']) && isset($_POST['CorreoEmpleado']) && isset($_POST['DireccionEmpleado']) && isset($_POST['CuentaBancariaEmpleado'])) {
-            
+    if (isset($_POST['cedulaEmpleado']) && isset($_POST['contrasenaEmpleado']) && isset($_POST['correoEmpleado']) && isset($_POST['cuentaBancariaEmpleado'])
+            && isset($_POST['sexoEmpleado']) && isset($_POST['estadoCivilEmpleado']) && isset($_POST['edadEmpleado']) && isset($_POST['salarioBaseEmpleado'])
+             && isset($_POST['descripcionEmpleado'])) {
+                    
         $cedulaEmpleado=$_POST['CedulaEmpleado'];
-        $nombreEmpleado=$_POST['NombreEmpleado'];
-        $apellido1Empleado=$_POST['Apellido1Empleado'];
-        $apellido2Empleado=$_POST['Apellido2Empleado'];
-        $edadEmpleado=$_POST['EdadEmpleado'];
-        $sexoEmpleado=$_POST['SexoEmpleado'];
-        $estadoEmpleado=$_POST['EstadoEmpleado'];
-        $telefono1Empleado=$_POST['Telefono1Empleado'];
-        $telefono2Empleado=$_POST['Telefono2Empleado'];
-        $correoEmpleado=$_POST['CorreoEmpleado'];
-        $direccionEmpleado=$_POST['DireccionEmpleado'];
-        $cuentabancariaEmpleado=$_POST['CuentaBancariaEmpleado'];
+        $contrasenaEmpleado=$_POST['contrasenaEmpleado'];
+        $correoEmpleado=$_POST['correoEmpleado'];
+        $cuentaBancariaEmpleado=$_POST['cuentaBancariaEmpleado'];
+        $sexoEmpleado=$_POST['sexoEmpleado'];
+        $estadoCivilEmpleado=$_POST['estadoCivilEmpleado'];
+        $edadEmpleado=$_POST['edadEmpleado'];
+        $salarioBaseEmpleado=$_POST['salarioBaseEmpleado'];
+        $descripcionEmpleado=$_POST['descripcionEmpleado'];
         
 
-        if (strlen($cedulaEmpleado) > 0 && strlen($nombreEmpleado) > 0 && strlen($apellido1Empleado) > 0 
-                && strlen($apellido2Empleado) > 0 && strlen($edadEmpleado) > 0 
-                && strlen($sexoEmpleado) > 0 && strlen($estadoEmpleado) > 0 && strlen($telefono1Empleado) > 0 && strlen($telefono2Empleado) > 0
-                 && strlen($correoEmpleado) > 0 && strlen($direccionEmpleado) > 0 && strlen($cuentabancariaEmpleado) > 0) {
-            if (!is_numeric($nombreEmpleado)) {
-                $empleado = new empleado(0, $cedulaempleado, $nombreEmpleado, $apellido1Empleado, $apellido2Empleado,
-                        $edadEmpleado, $sexoEmpleado, $estadoEmpleado,$telefono1Empleado,$telefono2Empleado
-                        ,$correoEmpleado,$direccionEmpleado,$cuentabancariaEmpleado);
+        if (strlen($cedulaEmpleado) > 0 && strlen($contrasenaEmpleado) > 0 && strlen($correoEmpleado) > 0 
+            && strlen($cuentaBancariaEmpleado) > 0 && strlen($sexoEmpleado) > 0 && strlen($estadoCivilEmpleado) > 0 
+            && strlen($edadEmpleado) > 0 && strlen($salarioBaseEmpleado) > 0 && strlen($descripcionEmpleado) > 0) {
+            
+            if (is_numeric($cedulaEmpleado)) {
+                $empleado = new Empleado($idEmpleado, $cedulaEmpleado, $contraseñaEmpleado, $correoEmpleado, 
+                $cuentaBancariaEmpleado, $sexoEmpleado, $estadoCivilEmpleado, $edadEmpleado, $salarioBaseEmpleado, $descripcionEmpleado);
 
                 $empleadoBusiness = new empleadoBusiness();
 
                 $result = $empleadoBusiness->insertTBEmpleado($empleado);
 
                 if ($result == 1) {
-                    header("location: ../view/personaView.php?success=inserted");
+                    header("location: ../view/empleadoView.php?success=inserted");
                 } else {
-                    header("location: ../view/personaView.php?error=dbError");
+                    header("location: ../view/empleadoView.php?error=dbError");
                 }
             } else {
-                header("location: ../view/personaView.php?error=numberFormat");
+                header("location: ../view/empleadoView.php?error=numberFormat");
             }
         } else {
-            header("location: ../view/personaView.php?error=emptyField");
+            header("location: ../view/empleadoView.php?error=emptyField");
         }
     } else {
-        header("location: ../view/personaView.php?error=error");
+        header("location: ../view/empleadoView.php?error=error");
     }
 }
+?>

@@ -19,8 +19,8 @@ class empleadoBusiness {
     public function insertTBEmpleado($empleado) {
         return $this->empleadoData->insertTBEmpleado($empleado);
     }
-
-    public function updateTBEmpleado($empleado) {
+    
+    public function updateTBEmpleado($empleado){
         return $this->empleadoData->updateTBEmpleado($empleado);
     }
 
@@ -32,8 +32,8 @@ class empleadoBusiness {
         return $this->empleadoData->getAllTBEmpleado();
     }
     
-    public function getEmpleadosInventary() {
+    /*public function getEmpleadosInventary() {
         return $this->empleadoData->getEmpleadosInventary();
-    }
+    }*/
     
 }

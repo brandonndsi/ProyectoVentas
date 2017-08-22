@@ -19,13 +19,13 @@ if (isset($_POST['update'])){
         $apellido2Persona = $_POST('apellido2Persona');
         $tipoUsuarioPersona = $_POST('tipoUsuarioPersona');
         $idZona = $_POST('idZona');
-        $IdEmpleado=$_POST('idPersona');
+        $idEmpleado=$_POST('idPersona');
         
-        if (strlen($IdEmpleado) > 0 &&strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
+        if (strlen($idEmpleado) > 0 &&strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
             strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
             if (!is_numeric($nombreTipoEmpleado)) {
-                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $tipoUsuarioPersona, $idZona,IdEmpleado);
-
+                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona, 
+                        $apellido2Persona, $tipoUsuarioPersona, $idZona, $idEmpleado);
                 $tipoEmpledoBusiness = new tipoEmpleadoBusiness();
 
                 $result = $tipoEmpleadoBusiness->updateTBTipoEmpleado($Persona);
@@ -51,7 +51,7 @@ if (isset($_POST['update'])){
         $idEmpleado = $_POST['idPersona'];
 
         $tipoEmpleadoBusiness = new tipoEmpleadoBusiness();
-        $result = $tipoEmpleadoBusiness->deleteTBTipoEmpleado($idTipoEmpleado);
+        $result = $tipoEmpleadoBusiness->deleteTBTipoEmpleado($idEmpleado);
 
         if ($result == 1) {
             header("location: ../view/tipoEmpleadoView.php?success=deleted");
@@ -77,7 +77,8 @@ if (isset($_POST['update'])){
        if (strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
             strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
             if (!is_numeric($nombreTipoEmpleado)) {
-                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona, $apellido2Persona, $tipoUsuarioPersona, $idZona,0);
+                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona,
+                        $apellido2Persona, $tipoUsuarioPersona, $idZona,0);
 
                 $tipoEmpleadoBusiness = new tipoEmpleadoBusiness();
 

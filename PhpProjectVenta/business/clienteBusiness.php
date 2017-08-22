@@ -3,9 +3,11 @@
  * Descripcion es el encargado de agarrar los datos mandados y efectuar el metodo
  * correspondiente, inbocando a el metodo de data persona y pasandole como parameros los datos
  * recogidos en las variables.
- *
+ * 
  * @author David Salas Lorente
  */
+
+
 class clienteBusiness {
    private $clienteData;
 
@@ -17,11 +19,11 @@ class clienteBusiness {
         return $this->clienteData->insertTBCliente($cliente);
     }
 
-    public function updateTBEmpleado($cliente) {
+    public function updateTBCliente($Cliente){
         return $this->clienteData->updateTBCliente($cliente);
     }
 
-    public function deleteTBEmpleado($idCliente) {
+    public function deleteTBCliente($idCliente) {
         return $this->clienteData->deleteTBCliente($idCliente);
     }
 
