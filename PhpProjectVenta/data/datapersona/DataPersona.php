@@ -3,14 +3,14 @@
 class DataPersona {
 
     function DataPersona() {
-        
+        include_once '../dbconexion/DBConexcion.php';
     }
 
     function insertar($persona) {
         $conexcion = new DBConexion;
         if ($conexcion->conectar() == true) {
 
-            $query = "INSERT INTO tbpersona(telefonoPersona, nombrePersona, apellido1Persona,
+            $query = "INSERT INTO tbpersonas(telefonoPersona, nombrePersona, apellido1Persona,
 			 apellido2Persona, idZona) VALUES (
                                 '" . $persona->get_telefonoPersona() . "',
 				'" . $persona->get_nombrePersona() . "',
@@ -48,19 +48,22 @@ class DataPersona {
 
         if ($conexcion->conectar() == true) {
 
-            $query = mysql_query("SELECT * FROM tbpersona p INNER JOIN tbzona z ON p.idZona= z.idZona"
-                    . " WHERE telefonoPersona=$id") or die(mysql_error());
+            $query = mysql_query("SELECT * FROM tbpersonas p INNER JOIN tbzonas z ON p.zonaid= z.zonaid"
+                    . " WHERE personatelefono=$id") or die(mysql_error());
 
             $result = mysql_query($query);
 
             if ($row = mysql_fetch_array($result)) {
-                $persona = new persona($row[0], $row[1], $row[2], $row[3], $row[4]);
+                //$persona = new persona($row[0], $row[1], $row[2], $row[3], $row[4]);
+                $arr=array();
+                $arr=$row;
+            $persona;
             }
 
             if (!$persona) {
                 return false;
             } else {
-                return $persona;
+                return $row;
             }
         }
     }
@@ -107,7 +110,20 @@ class DataPersona {
             }
         }
     }
-
+    function selec($tipo){
+         $conexcion = new DBConexion;
+        $lista = array();
+        $i=1;
+        $query=mysql_query("CALL tipoempleadoseleccionar(".$tipo."')");
+        $row = mysql_fetch_array($query);
+            
+            array_push($lista, $row);
+            
+            return $lista;
+    }
 }
+$data=new DataPersona();
+$per=$data->selec('Administrador');
+print_r($per);
 
 ?>
