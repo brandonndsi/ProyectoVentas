@@ -3,8 +3,17 @@
 class DBConexion {
 
     var $conect;
+    private $server;
+    private $user;
+    private $password;
+    private $dbname;
+    private $conexion;
 
     function DBConexion() {
+        $this->server="localhost";
+        $this->user="root";
+        $this->password="";
+        $this->dbname="bdproyectoventa";
         
     }
 
@@ -25,7 +34,17 @@ class DBConexion {
     function getCon() {
         return $this->conect;
     }
+    //las funciones creadas por mi david salas para conectarse y desconectarse de la base de datos.
 
+    function crearConexion(){
+        $this->conexion=mysql_connect($this->server,$this->user,$this->password,$this->dbname);
+        return conexion;
+    }
+
+    function cerrarConexion(){
+        mysql_close($this->conexion);
+    }
+    //terminacion de la conexion de la base de datos heco por david salas.
 }
 
 ?>
