@@ -10,7 +10,7 @@ class tipoEmpleadoBusiness {
     private $tipoEmpleadoData;
 
     public function empleadoBusiness() {
-        $this->tipoEmpleadoData = new tipoEmpleadoData();
+        $this->tipoEmpleadoData = new DataTipoEmpleado();
     }
 
     public function insertTBTipoEmpleado($tipoEmpleado) {
@@ -31,5 +31,9 @@ class tipoEmpleadoBusiness {
     
     public function getTipoEmpleadoInventary() {
         return $this->tipoEmpleadoData->getTipoEmpleadoInventary();
+    }
+
+    public function tipoEmpleadoBuscar($tipoempleado){
+        return 0;
     }
 }

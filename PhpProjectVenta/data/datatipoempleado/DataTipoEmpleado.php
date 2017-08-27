@@ -1,10 +1,13 @@
 <?php
 
 class DataTipoEmpleado {
-
+    
+        private $conexion;
+        
+        //parte de la incluir los datos iniciales al conextarse.
         function DataTipoEmpleado() {
-            include('../dbconexion/DBConexion.php');
-           private  $conexcion=new DBConexion();
+           include('../dbconexion/DBConexion.php');
+           $this->conexcion=new DBConexion();
         }
 
             function obtenerTipoEmpleado($correo, $contraseña){
@@ -32,17 +35,22 @@ class DataTipoEmpleado {
             }
     
             function tipoempleadoseleccionar($tipoempleado){
-                $result;
-                $conexion->conectar()==true){
-                $result=$conexion->conectar()->query("CALL tipoempleadobuscar('".$tipoempleado."')");
+                $array= array();
+                $this->conexion->crearConexion()->set_charset('utf8');
+                
+                $tipo=$this->conexion->crearConexion()->query("CALL tipoempleadobuscar('$tipoempleado')");
+                while($resultado=$tipo->fetch_assoc()){
+                    array_push($array, $resultado);
+                }
+                            
 
-                            }
-
-                return echo json_decode($result);
+                return  $array;
             }
 }
 
 
-$dat=nw DataTipoEmpleado();
-$dat->tipoempleadoseleccionar("Administrador");
+//$datafe=nw DataTipoEmpleado();
+$datafe->tipoempleadoseleccionar("Administrador");
 print_r($dat);
+
+?>

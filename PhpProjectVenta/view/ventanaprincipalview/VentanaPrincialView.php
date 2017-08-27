@@ -7,14 +7,14 @@
     <meta charset="UTF-8">
     <title>El Expresso</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="estilos.css">
-     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+     <script type="text/javascript" src="../../js/jquery.min.js"></script>
    
 
     <style>
       #muro_tags{
-          background-image: url(images/fondob.jpg);
+          background-image: url(../../images/fondob.jpg);
           background-attachment: fixed;
           background-position: top right;
           margin-top: 60px;
@@ -39,13 +39,13 @@
 
       </div>
      
-      <a class="navbar-brand" href="index.html">El Expresito</a>
+      <a class="navbar-brand" href="../../index.php">El Expresito</a>
       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
         <ul class="nav navbar-nav">
-          <li><a href="index.html">Principal</a></li>
-          <li><a href="catalogo.html">Menu</a></li>
+          <li><a href="../../index.php">Principal</a></li>
+          <li><a href="../catalogo/Catalogo.php">Menu</a></li>
         </ul>
 
         <form class="navbar-form navbar-right" id="barraBusqueda">
@@ -58,7 +58,8 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="" data-toggle="modal" data-target="#NuevaVenta-modal">Nuevo Express</a></li>
           <li><a href="" data-toggle="modal" data-target="#registrar-modal">Registar</a></li>
-          <li><a href="" data-toggle="modal" data-target="#login-modal">Ingresar</a></li>          
+          <li><a href="" data-toggle="modal" data-target="#login-modal">Ingresar</a>
+          </li>          
         </ul>
       </div>
     </div>
@@ -104,9 +105,9 @@
           </ol>
   <!-- Carousel items -->
           <div class="carousel-inner">
-            <div class="active item"><img  src="images/combo1.jpg" alt="banner1"></div>
-            <div class="item"><img  src="images/combo2.jpg" alt="banner2"></div>
-            <div class="item"><img  src="images/combi.jpg" alt="banner3"></div>
+            <div class="active item"><img  src="../../images/combo1.jpg" alt="banner1"></div>
+            <div class="item"><img  src="../../images/combo2.jpg" alt="banner2"></div>
+            <div class="item"><img  src="../../images/combi.jpg" alt="banner3"></div>
           </div>
 <!-- Carousel nav -->
           <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
@@ -312,8 +313,8 @@
 
 
     
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
 
 </body>
 </html>
