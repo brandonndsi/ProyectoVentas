@@ -10,14 +10,17 @@ class Personas extends Zonas {
     private $personaNombre;
     private $personaApellido1;
     private $personaApellido2;
+    private $correo;
     private $idZona;
     
-    public function Personas($personaTelefono, $personaNombre, $personaApellido1, $personaApellido2, $idZona) {
+
+        public function Personas($personaTelefono, $personaNombre, $personaApellido1, $personaApellido2, $idZona, $correo) {
         $this->personaTelefono = $personaTelefono;
         $this->personaNombre = $personaNombre;
         $this->personaApellido1 = $personaApellido1;
         $this->personaApellido2 = $personaApellido2;
         $this->idZona = $idZona;
+        $this->correo = $correo;
     }
     
     public function getPersonaTelefono() {
@@ -39,6 +42,10 @@ class Personas extends Zonas {
     public function getIdZona() {
         return $this->idZona;
     }
+    
+    public function getCorreo() {
+        return $this->correo;
+    }
 
     public function setPersonaTelefono($personaTelefono) {
         $this->personaTelefono = $personaTelefono;
@@ -59,7 +66,9 @@ class Personas extends Zonas {
     public function setIdZona($idZona) {
         $this->idZona = $idZona;
     }
-
+    public function setCorreo($correo) {
+        $this->correo = $correo;
+    }
 
 }
 ?>

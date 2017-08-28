@@ -11,18 +11,18 @@ class Ventas {
     private $ventaid;
     private $empleadoid;
     private $ventacantidadproducto;
-    private $idProducto;
+    private $productoid;
     private $zonaid;
     private $ventatotal;
     private $ventapagacon;
     private $ventavuelto;
     private $facturaid;
   
-    public function Ventas($ventaid, $empleadoid, $ventacantidadproducto, $idProducto, $zonaid, $ventatotal, $ventapagacon, $ventavuelto, $facturaid) {
+    public function Ventas($ventaid, $empleadoid, $ventacantidadproducto, $productoid, $zonaid, $ventatotal, $ventapagacon, $ventavuelto, $facturaid) {
         $this->ventaid = $ventaid;
         $this->empleadoid = $empleadoid;
         $this->ventacantidadproducto = $ventacantidadproducto;
-        $this->idProducto = $idProducto;
+        $this->productoid = $productoid;
         $this->zonaid = $zonaid;
         $this->ventatotal = $ventatotal;
         $this->ventapagacon = $ventapagacon;
@@ -41,8 +41,8 @@ class Ventas {
         return $this->ventacantidadproducto;
     }
 
-    public function getIdProducto() {
-        return $this->idProducto;
+    public function getProductoid() {
+        return $this->productoid;
     }
 
     public function getZonaid() {
@@ -77,8 +77,8 @@ class Ventas {
         $this->ventacantidadproducto = $ventacantidadproducto;
     }
 
-    public function setIdProducto($idProducto) {
-        $this->idProducto = $idProducto;
+    public function setProductoid($productoid) {
+        $this->productoid = $productoid;
     }
 
     public function setZonaid($zonaid) {
