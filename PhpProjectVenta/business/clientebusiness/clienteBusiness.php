@@ -9,29 +9,39 @@
 
 
 class clienteBusiness {
-   private $clienteData;
+    
+   private $DataPersona;
 
-    public function empleadoBusiness() {
-        $this->clienteData = new clienteData();
-    }
-
-    public function insertTBCliente($cliente) {
-        return $this->clienteData->insertTBCliente($cliente);
-    }
-
-    public function updateTBCliente($Cliente){
-        return $this->clienteData->updateTBCliente($cliente);
-    }
-
-    public function deleteTBCliente($idCliente) {
-        return $this->clienteData->deleteTBCliente($idCliente);
-    }
-
-    public function getAllTBCliente() {
-        return $this->clienteData->getAllTBcliente();
+    public function clienteBusiness() {
+        
+        require_once '../../data/datapersona/DataPersona.php';
+        $this->DataPersona= new DataPersona();
+        
     }
     
-    public function getClienteInventary() {
-        return $this->clientedoData->getClienteInventary();
+    //se encarga de introducir el nuevo cliente persona
+    public function getTBClienteNuevo($cliente) {
+        return $this->DataPersona->getTBClienteNuevo($cliente);
     }
+    
+    //se encarga de actualizar los datos del cliente en la tabla.
+    public function getTBClienteActualizar($Cliente){
+        return $this->DataPersona->getTBClienteActualizar($cliente);
+    }
+    
+    //se encarga de eliminar el cliente que desea en la base de datos.
+    public function getTBClienteEliminar($idCliente) {
+        return $this->DataPersona->getTBClienteEliminar($idCliente);
+    }
+    
+    //se encarga de seleccionar todo los datos del cliente.
+    public function getTBClienteTodo() {
+        return $this->DataPersona->getTBclienteTodo();
+    }
+    
+    //se encarga de la busqueda d elos clientes en la base de datos.
+    public function getTBClienteBuscar($cliente) {
+        return $this->DataPersona->getTBClienteBuscar($cliente);
+    }
+    
 }
