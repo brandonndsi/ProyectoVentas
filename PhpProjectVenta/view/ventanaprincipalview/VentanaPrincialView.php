@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-   @author Juan Chavarria.
-
 <html>
 <head>
     <meta charset="UTF-8">
