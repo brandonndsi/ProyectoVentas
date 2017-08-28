@@ -80,7 +80,7 @@
                 $empleado = new Empleados($empleadoid, $personaid, $empleadotipo, $empleadocedula, 
                  $empleadocontrasena, $empleadoedad, $empleadosexo, $empleadoestadoCivil, 
                   $empleadocuentabancaria, $empleadolicenciaid);
-           include '../clientebusiness/clienteBusiness.php';
+           include '../empleadobusiness/empleadoBusiness.php';
            
            $empleadoBusiness=new empleadoBusiness();
            

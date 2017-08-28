@@ -6,96 +6,139 @@
  *
  * @author David Salas.
  */
-include './tipoEmpleadoBusiness.php';
+$accion = $_POST['accion'];//busca la accion a realizar 
+ 
+    if($accion=="nuevo"){
 
-if (isset($_POST['update'])){
-
-    if (isset($_POST['idPersona']) && isset($_POST['nombrePersona']) && isset($_POST['apellido1Persona']) && isset($_POST['apellido2Persona'])
-            && isset($_POST['tipoUsuarioPersona']) && isset($_POST['idZona']) && isset($_POST['telefonoPersona']) ) {
-          
-        $telefonoPersona = $_POST('telefonoPersona');
-        $nombrePersona =$_POST('nombrePersona');
-        $apellido1Persona =$_POST('apellido1Persona');
-        $apellido2Persona = $_POST('apellido2Persona');
-        $tipoUsuarioPersona = $_POST('tipoUsuarioPersona');
-        $idZona = $_POST('idZona');
-        $idEmpleado=$_POST('idPersona');
+    if (isset($_POST['tipoempleado']) && isset($_POST['tipoempleadodescripcion']) 
+           && isset($_POST['tipoempleadosalariobase']) && isset($_POST['tipoempleadohoraextra'])) {
+             
+        $tipoEmpleado = $_POST['tipoempleado'];
+        $tipoempleadodescripcion = $_POST['tipoempleadodescripcion'];
+        $tipoempleadosalariobase = $_POST['tipoempleadosalariobase'];
+        $tipoempleadohoraextra = $_POST['tipoempleadohoraextra'];
         
-        if (strlen($idEmpleado) > 0 &&strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
-            strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
-            if (!is_numeric($nombreTipoEmpleado)) {
-                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona, 
-                        $apellido2Persona, $tipoUsuarioPersona, $idZona, $idEmpleado);
-                $tipoEmpledoBusiness = new tipoEmpleadoBusiness();
+        if (strlen($tipoempleadosalariobase) > 0 && strlen($tipoempleadodescripcion) > 0 && strlen($tipoempleadohoraextra) > 0 && 
+            strlen($tipoEmpleado) > 0) {
+            if (!is_numeric($tipoEmpleado)) {
+                
+                $tipoEmpleado = new TipoEmpleados($tipoEmpleado, $tipoempleadosalariobase, 
+                 $tipoempleadodescripcion, $tipoempleadohoraextra);
+                
+                include '../empleadobusiness/empleadoBusiness.php';
 
-                $result = $tipoEmpleadoBusiness->updateTBTipoEmpleado($Persona);
-                if ($result == 1) {
-                    header("location: ../view/tipoEmpleadoView.php?success=updated");
-                } else {
-                    //echo $idSickness." - ".$bullName;
-                    header("location: ../view/tipoEmpleadoView.php?error=dbError");
-                }
-            } else {
-                header("location: ../view/tipoEmpleadoView.php?error=numberFormat");
+            $empleadoBusiness=new empleadoBusiness();
+
+             $result= $empleadoBusiness->getTBEmpleadoNuevo($empleado);
+
+             echo json_encode($result);     }
+             
             }
-        } else {
-            header("location: ../view/tipoEmpleadoView.php?error=emptyField");
-        }
-    } else {
-        header("location: ../view/tipoEmpleadoView.php?error=error");
-    }
-} else if (isset($_POST['delete'])) {
-
-    if (isset($_POST['idPersona'])) {
-
-        $idEmpleado = $_POST['idPersona'];
-
-        $tipoEmpleadoBusiness = new tipoEmpleadoBusiness();
-        $result = $tipoEmpleadoBusiness->deleteTBTipoEmpleado($idEmpleado);
-
-        if ($result == 1) {
-            header("location: ../view/tipoEmpleadoView.php?success=deleted");
-        } else {
-            header("location: ../view/tipoEmpleadoView.php?error=dbError");
-        }
-    } else {
-        header("location: ../view/tipoEmpleadoView.php?error=error");
-    }
-} else if (isset($_POST['Create'])) {
-
-    if (isset($_POST['nombrePersona']) && isset($_POST['apellido1Persona']) && isset($_POST['apellido2Persona'])
-            && isset($_POST['tipoUsuarioPersona']) && isset($_POST['idZona']) && isset($_POST['telefonoPersona']) ) {
-          
-        $telefonoPersona = $_POST('telefonoPersona');
-        $nombrePersona =$_POST('nombrePersona');
-        $apellido1Persona =$_POST('apellido1Persona');
-        $apellido2Persona = $_POST('apellido2Persona');
-        $tipoUsuarioPersona = $_POST('tipoUsuarioPersona');
-        $idZona = $_POST('idZona');
+             
+         }else  {
+             // retorna un error al tratar de ingresar los datos del nuevo cliente
+               $error="ErrorNuevo";
+               echo json_encode($error);
+             } 
+        /*
+         * Verifica si la accion es la e actualizar los datos del cliente
+         */
+    }else if($accion=="actualizar"){
         
-
-       if (strlen($nombrePersona) > 0 && strlen($apellido1Persona) > 0 && strlen($apellido2Persona) > 0 && 
-            strlen($tipoUsuarioPersona) > 0 && strlen($idZona) > 0 && strlen($telefonoPersona) > 0 ) {
-            if (!is_numeric($nombreTipoEmpleado)) {
-                $Persona = new Persona($telefonoPersona, $nombrePersona, $apellido1Persona,
-                        $apellido2Persona, $tipoUsuarioPersona, $idZona,0);
-
-                $tipoEmpleadoBusiness = new tipoEmpleadoBusiness();
-
-                $result = $tipoEmpleadoBusiness->insertTBTipoEmpleado($tipoEmpleado);
-
-                if ($result == 1) {
-                    header("location: ../view/tipoEmpleadoView.php?success=inserted");
-                } else {
-                    header("location: ../view/tipoEmpleadoView.php?error=dbError");
-                }
-            } else {
-                header("location: ../view/tipoEmpleadoView.php?error=numberFormat");
+        if (isset($_POST['tipoempleado']) && isset($_POST['tipoempleadodescripcion']) 
+           && isset($_POST['tipoempleadosalariobase']) && isset($_POST['tipoempleadohoraextra'])) {
+             
+        $tipoEmpleado = $_POST['tipoempleado'];
+        $tipoempleadodescripcion = $_POST['tipoempleadodescripcion'];
+        $tipoempleadosalariobase = $_POST['tipoempleadosalariobase'];
+        $tipoempleadohoraextra = $_POST['tipoempleadohoraextra'];
+        
+        if (strlen($tipoempleadosalariobase) > 0 && strlen($tipoempleadodescripcion) > 0 && strlen($tipoempleadohoraextra) > 0 && 
+            strlen($tipoEmpleado) > 0) {
+            if (!is_numeric($tipoEmpleado)) {
+                
+                $tipoEmpleado = new TipoEmpleados($tipoEmpleado, $tipoempleadosalariobase, 
+                 $tipoempleadodescripcion, $tipoempleadohoraextra);
+                
+           include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
+           
+           $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
+           
+            $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoActualizar($tipoEmpleado);
+            
+            echo json_encode($result);}
+            
             }
-        } else {
-            header("location: ../view/tipoEmpleadoView.php?error=emptyField");
-        }
-    } else {
-        header("location: ../view/tipoEmpleadoView.php?error=error");
+            
+    }else       {
+        // presenta el error al actualizar los datos algun dato esta mal o esta basio.
+                    $error="ErrorActualizar";
+                   echo json_encode($error);
+                } 
+    /*
+     * La accion de eliminar provando si es esta accion la que desea realizar
+     */
+    }else if($accion=="eliminar"){
+        
+    if(isset($_POST['clientenombre'])){
+        
+            $empleado=$_POST['clientenombre'];
+           include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
+           
+           $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
+           
+            $result= $tipoEmpleadoBusiness->getTBtipoEmpleadoEliminar($empleado);
+            
+            echo json_encode($result);
+        
+    }else{
+        //esto es porsi a la hora de eliminar el dato es vacio
+         $error="ErrorEliminar";
+        echo json_encode($error);
     }
-}
+    
+    /*
+     *  Esta consulta lo que debe devolver es el datos del cliente.por nombre   
+      */
+    } else if($accion=="buscar"){
+        
+       if(isset($_POST['clientenombre'])){
+           $empleadonombre=$_POST['clientenombre'];
+            
+           include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
+           
+           $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
+           
+            $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoBuscar($empleadonombre);
+            
+            echo json_encode($result); 
+    
+        
+    }else{
+        //lo que hace es retornar el error en un json el cual informa que algun
+        // dato de busqueda no esta bieno no se encontro nada
+         $error="ErrorBuscar";
+        echo json_encode($error);
+    }
+    
+    /*
+     *  Esta conslta lo que debe devolver es todos los datos de los clientes.   
+      */
+    }else  if($accion=="todo"){
+        
+            
+           include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
+           
+           $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
+           
+            $result= $TipoEmpleadoBusiness->getTBTipoEmpleadoTodo();
+            
+            echo json_encode($result);  
+            
+    }else{
+        //esto lo que retorna es un json  que dice que hay un error al tratar de obtener todos lo datos
+                $error="ErrorTodo";
+                echo json_encode($error);
+                }
+    
+?>
