@@ -137,7 +137,6 @@
       */
     }else  if($accion=="todo"){
         
-      if(isset($_POST['dsd'])){
             
            include '../clientebusiness/clienteBusiness.php';
            
@@ -152,12 +151,5 @@
                 $error="ErrorTodo";
                 echo json_encode($error);
                 }
-    }else{
-        /*
-         * Esto es por si la accion a la que esta consultando es vacia o no conside con ninguna.
-         */
-       $error="ErrorAccion";
-        echo json_encode($error); 
-        
-    }
+    
 ?>
