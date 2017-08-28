@@ -31,7 +31,7 @@
             strlen($empleadocedula) > 0 && strlen($empleadocontrasena) > 0 && strlen($empleadoedad) > 0 
              && strlen($empleadosexo) > 0 && strlen($empleadoestadoCivil) >
              0 && strlen($empleadoestadocuentabancaria) > 0  && strlen($empleadolicenciaid) > 0) {
-            if (!is_numeric($empleadocedula)) {
+            if (is_numeric($empleadocedula)) {
                 $empleado = new Empleados($empleadoid, $personaid, $empleadotipo, $empleadocedula, 
                  $empleadocontrasena, $empleadoedad, $empleadosexo, $empleadoestadoCivil, 
                   $empleadocuentabancaria, $empleadolicenciaid);
@@ -76,7 +76,7 @@
             strlen($empleadocedula) > 0 && strlen($empleadocontrasena) > 0 && strlen($empleadoedad) > 0 
              && strlen($empleadosexo) > 0 && strlen($empleadoestadoCivil) >
              0 && strlen($empleadoestadocuentabancaria) > 0  && strlen($empleadolicenciaid) > 0) {
-            if (!is_numeric($empleadocedula)) {
+            if (is_numeric($empleadocedula)) {
                 $empleado = new Empleados($empleadoid, $personaid, $empleadotipo, $empleadocedula, 
                  $empleadocontrasena, $empleadoedad, $empleadosexo, $empleadoestadoCivil, 
                   $empleadocuentabancaria, $empleadolicenciaid);

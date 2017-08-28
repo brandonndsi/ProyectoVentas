@@ -17,7 +17,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
         
         if (strlen($productoid) > 0 && strlen($productonombre) > 0 
                 && strlen($productoprecio) > 0) {
-            if (!is_numeric($productoid)) {
+            if (is_numeric($productoid)) {
                 
                 $producto = new Productos($productoid, $productonombre, $productoprecio, $productoprecio);
                 
@@ -50,7 +50,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
         
         if (strlen($productoid) > 0 && strlen($productonombre) > 0 
                 && strlen($productoprecio) > 0) {
-            if (!is_numeric($productoid)) {
+            if (is_numeric($productoid)) {
                 
                 $producto = new Productos($productoid, $productonombre, $productoprecio, $productoprecio);
                 
@@ -76,6 +76,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
     if(isset($_POST['productoid'])){
         
             $producto=$_POST['productoid'];
+            
              include '../productobusiness/ProductoBusiness.php';
 
             $ProductoBusiness=new ProductoBusiness();

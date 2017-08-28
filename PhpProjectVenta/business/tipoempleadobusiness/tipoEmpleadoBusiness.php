@@ -33,7 +33,7 @@ class tipoEmpleadoBusiness {
     }
     
     //se encarga de seleccionar todos los empleado y retornar el resultado.
-    public function getTBTipoEmpleadoTodos() {
+    public function getTBTipoEmpleadoTodo() {
         return $this->DataTipoEmpleado->tipoEmpleadoTodos();
     }
     

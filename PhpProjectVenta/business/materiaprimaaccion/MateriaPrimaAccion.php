@@ -19,16 +19,16 @@ $accion = $_POST['accion'];//busca la accion a realizar
         
         if (strlen($materiaprimatipoempleadosalariobase) > 0 && strlen($materiaprimatipoempleadodescripcion) > 0 
                 && strlen($materiaprimatipoempleadohoraextra) > 0 && strlen($materiaprimatipoEmpleado) > 0) {
-            if (!is_numeric($tipoEmpleado)) {
+            if (is_numeric($materiaprimaid)) {
                 
-                $tipoEmpleado = new TipoEmpleados($tipoEmpleado, $tipoempleadosalariobase, 
-                 $tipoempleadodescripcion, $tipoempleadohoraextra);
+                $materiaprimas = new MateriasPrimas($materiaprimaid, $materiaprimanombre,
+                        $materiaprimaprecio, $tipomateriaprimaid);
                 
                 include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
 
-             $result= $MateriaPrimaBusiness->getTBMateriaPrimaNuevo($tipoEmpleado);
+             $result= $MateriaPrimaBusiness->getTBMateriaPrimaNuevo($materiaprimas);
 
              echo json_encode($result);     }
              
@@ -54,16 +54,16 @@ $accion = $_POST['accion'];//busca la accion a realizar
         
         if (strlen($materiaprimatipoempleadosalariobase) > 0 && strlen($materiaprimatipoempleadodescripcion) > 0 
                 && strlen($materiaprimatipoempleadohoraextra) > 0 && strlen($materiaprimatipoEmpleado) > 0) {
-            if (!is_numeric($tipoEmpleado)) {
+            if (is_numeric($materiaprimaid)) {
                 
-                $tipoEmpleado = new TipoEmpleados($tipoEmpleado, $tipoempleadosalariobase, 
-                 $tipoempleadodescripcion, $tipoempleadohoraextra);
+                $materiaprimas = new MateriasPrimas($materiaprimaid, $materiaprimanombre, 
+                        $materiaprimaprecio, $tipomateriaprimaid);
                 
                 include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
 
-             $result= $MateriaPrimaBusiness->getTBMateriaPrimaActualizar($tipoEmpleado);
+             $result= $MateriaPrimaBusiness->getTBMateriaPrimaActualizar($materiaprimas);
             echo json_encode($result);}
             
             }
@@ -80,12 +80,13 @@ $accion = $_POST['accion'];//busca la accion a realizar
         
     if(isset($_POST['materiaprimanombre'])){
         
-            $empleado=$_POST['materiaprimanombre'];
+            $materias=$_POST['materiaprimanombre'];
+            
              include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
            
-            $result= $tipoEmpleadoBusiness->getTBMateriaPrimaEliminar($empleado);
+            $result= $MateriaPrimaBusiness->getTBMateriaPrimaEliminar($materias);
             
             echo json_encode($result);
         
@@ -101,13 +102,13 @@ $accion = $_POST['accion'];//busca la accion a realizar
     } else if($accion=="buscar"){
         
        if(isset($_POST['materiaprimanombre'])){
-           $empleadonombre=$_POST['materiaprimanombre'];
+           $materias=$_POST['materiaprimanombre'];
             
              include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
            
-            $result= $tipoEmpleadoBusiness->getTBMateriaPrimaBuscar($empleadonombre);
+            $result= $MateriaPrimaBusiness->getTBMateriaPrimaBuscar($materias);
             
             echo json_encode($result); 
     
@@ -129,7 +130,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
            
-            $result= $TipoEmpleadoBusiness->getTBMateriaPrimaTodo();
+            $result= $MateriaPrimaBusiness->getTBMateriaPrimaTodo();
             
             echo json_encode($result);  
             

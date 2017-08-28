@@ -22,14 +22,14 @@ $accion = $_POST['accion'];//busca la accion a realizar
             strlen($tipoEmpleado) > 0) {
             if (!is_numeric($tipoEmpleado)) {
                 
-                $tipoEmpleado = new TipoEmpleados($tipoEmpleado, $tipoempleadosalariobase, 
+                $tipoEmpleador = new TipoEmpleados($tipoEmpleado, $tipoempleadosalariobase, 
                  $tipoempleadodescripcion, $tipoempleadohoraextra);
                 
-                include '../empleadobusiness/empleadoBusiness.php';
+                include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
 
-            $empleadoBusiness=new empleadoBusiness();
+            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
 
-             $result= $empleadoBusiness->getTBEmpleadoNuevo($empleado);
+             $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoNuevo($tipoEmpleador);
 
              echo json_encode($result);     }
              
@@ -57,14 +57,14 @@ $accion = $_POST['accion'];//busca la accion a realizar
             strlen($tipoEmpleado) > 0) {
             if (!is_numeric($tipoEmpleado)) {
                 
-                $tipoEmpleado = new TipoEmpleados($tipoEmpleado, $tipoempleadosalariobase, 
+                $tipoEmpleador = new TipoEmpleados($tipoEmpleado, $tipoempleadosalariobase, 
                  $tipoempleadodescripcion, $tipoempleadohoraextra);
                 
            include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
            
            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
            
-            $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoActualizar($tipoEmpleado);
+            $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoActualizar($tipoEmpleador);
             
             echo json_encode($result);}
             
@@ -102,8 +102,8 @@ $accion = $_POST['accion'];//busca la accion a realizar
       */
     } else if($accion=="buscar"){
         
-       if(isset($_POST['clientenombre'])){
-           $empleadonombre=$_POST['clientenombre'];
+       if(isset($_POST['tipoempleado'])){
+           $empleadonombre=$_POST['tipoempleado'];
             
            include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
            
@@ -131,7 +131,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
            
            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
            
-            $result= $TipoEmpleadoBusiness->getTBTipoEmpleadoTodo();
+            $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoTodo();
             
             echo json_encode($result);  
             
