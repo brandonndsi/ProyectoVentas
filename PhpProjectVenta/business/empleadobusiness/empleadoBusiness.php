@@ -6,7 +6,6 @@
  *
  * @author David Salas Lorente
  */
-include '../data/empleadoData.php';
 
 class empleadoBusiness {
 
@@ -18,7 +17,7 @@ class empleadoBusiness {
         $this->DataEmpleado = new DataEmpleado();
     }
     
-    //se enecarga de la crear el nuevo empleado a la base de dattos
+    //se encarga de la crear el nuevo empleado a la base de datos
     public function getTBEmpleadoNuevo($empleado) {
         return $this->DataEmpleado->insertar($empleado);
     }
@@ -44,3 +43,4 @@ class empleadoBusiness {
     }
     
 }
+?>

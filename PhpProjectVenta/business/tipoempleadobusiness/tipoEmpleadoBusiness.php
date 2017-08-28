@@ -42,3 +42,5 @@ class tipoEmpleadoBusiness {
         return $this->DataTipoEmpleado->tipoempleadoseleccionar($tipoempleado);
     }
 }
+
+?>
