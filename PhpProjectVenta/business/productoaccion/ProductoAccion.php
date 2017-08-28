@@ -19,7 +19,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
                 && strlen($productoprecio) > 0) {
             if (is_numeric($productoid)) {
                 
-                $producto = new Productos($productoid, $productonombre, $productoprecio, $productoprecio);
+                $producto = new Productos($productoid, $productonombre, $productoprecio);
                 
                 include '../productobusiness/ProductoBusiness.php';
 
@@ -52,7 +52,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
                 && strlen($productoprecio) > 0) {
             if (is_numeric($productoid)) {
                 
-                $producto = new Productos($productoid, $productonombre, $productoprecio, $productoprecio);
+                $producto = new Productos($productoid, $productonombre, $productoprecio);
                 
                 include '../productobusiness/ProductoBusiness.php';
 
