@@ -7,33 +7,38 @@
  * @author David Salas Lorente
  */
 class tipoEmpleadoBusiness {
-    private $tipoEmpleadoData;
+    
+    private $DataTipoEmpleado;
 
     public function empleadoBusiness() {
-        $this->tipoEmpleadoData = new DataTipoEmpleado();
-    }
-
-    public function insertTBTipoEmpleado($tipoEmpleado) {
-        return $this->tipoEmpleadoData->insertTBTipoEmpleado($tipoEmpleado);
-    }
-
-    public function updateTBTipoEmpleado($TipoEnpleado) {
-        return $this->tipoEmpleadoData->updateTBTipoEmpleado($tipoEmpleado);
-    }
-
-    public function deleteTBTipoEmpleado($idTipoEmpleado) {
-        return $this->tipoEmpleadoData->deleteTBTipoEmpleado($idTipoEmpleado);
-    }
-
-    public function getAllTBTipoEmpleado() {
-        return $this->tipoEmpleadoData->getAllTBTipoEmpleado();
+        
+        include_once '../../data/datatipoempleado/DataTipoEmpleado.php';
+        $this->DataTipoEmpleado = new DataTipoEmpleado();
+        
     }
     
-    public function getTipoEmpleadoInventary() {
-        return $this->tipoEmpleadoData->getTipoEmpleadoInventary();
+    //se encarga de crear un nuevo elemento en la tabla de la base de datos.
+    public function getTBTipoEmpleadoNuevo($tipoEmpleado) {
+        return $this->DataTipoEmpleado->getTBTipoEmpleadoNuevo($tipoEmpleado);
     }
-
-    public function tipoEmpleadoBuscar($tipoempleado){
-        return 0;
+    
+    //se encarga de actualizar los datos de la tabla empleado.
+    public function getTBTipoEmpleadoActualizar($TipoEnpleado) {
+        return $this->DataTipoEmpleado>getTBTipoEmpleadoActualizar($tipoEmpleado);
+    }
+    
+    //se encarga de eliminar el tipo de empleado de la tabla.
+    public function getTBTipoEmpleadoEliminar($idTipoEmpleado) {
+        return $this->DataTipoEmpleado->getTBTipoEmpleadoEliminar($idTipoEmpleado);
+    }
+    
+    //se encarga de seleccionar todos los empleado y retornar el resultado.
+    public function getTBTipoEmpleadoTodos() {
+        return $this->DataTipoEmpleado->getTBTipoEmpleadoTodos();
+    }
+    
+    //se encarga de buscar un dato en la tabla y retornar dicho resultado si existe.
+    public function getTBTipoEmpleadoBuscar($tipoempleado){
+        return $this->DataTipoEmpleado->getTBTipoEmpleadoBuscar($tipoempleado);
     }
 }
