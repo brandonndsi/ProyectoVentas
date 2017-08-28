@@ -20,27 +20,27 @@ class empleadoBusiness {
     
     //se enecarga de la crear el nuevo empleado a la base de dattos
     public function getTBEmpleadoNuevo($empleado) {
-        return $this->DataEmpleado->getTBEmpleadoNuevo($empleado);
+        return $this->DataEmpleado->insertar($empleado);
     }
     
     //se encarga de actualizar los datos de la base de datos de empleado.
     public function getTBEmpleadoActualizar($empleado){
-        return $this->DataEmpleado->getTBEmpleadoActualizar($empleado);
+        return $this->DataEmpleado->modificar($empleado);
     }
     
     //se encarga de eliminar el empleado de la tabla.
     public function getTBEmpleadoEliminar($empleado) {
-        return $this->DataEmpleado->getTBEmpleadoEliminar($empleado);
+        return $this->DataEmpleado->eliminar($empleado);
     }
     
     //se encarga de realizar la consulta y retornar todos los empleado
-    public function getTBEmpleadoTodo($empleado) {
-        return $this->DataEmpleado->getTBEmpleadoTodo($empleado);
+    public function getTBEmpleadoTodo() {
+        return $this->DataEmpleado->get_empleado();
     }
     
     //se encarga de buscar los datos de empleado de la base de datos
     public function getTBEmpleadoBuscar($empleado) {
-        return $this->DataEmpleado->getTBEmpleadoBuscar($empleado);
+        return $this->DataEmpleado->obtener($empleado);
     }
     
 }
