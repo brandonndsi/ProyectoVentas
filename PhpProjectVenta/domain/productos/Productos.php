@@ -9,13 +9,11 @@ class Productos {
 
     private $productoid;
     private $productonombre;
-    private $precioProducto;
     private $productoprecio;
 
-    public function Productos($productoid, $productonombre, $precioProducto, $productoprecio) {
+    public function Productos($productoid, $productonombre, $productoprecio) {
         $this->productoid = $productoid;
         $this->productonombre = $productonombre;
-        $this->precioProducto = $precioProducto;
         $this->productoprecio = $productoprecio;
     }
 
@@ -26,11 +24,7 @@ class Productos {
     public function getProductonombre() {
         return $this->productonombre;
     }
-
-    public function getPrecioProducto() {
-        return $this->precioProducto;
-    }
-
+    
     public function getProductoprecio() {
         return $this->productoprecio;
     }
@@ -41,10 +35,6 @@ class Productos {
 
     public function setProductonombre($productonombre) {
         $this->productonombre = $productonombre;
-    }
-
-    public function setPrecioProducto($precioProducto) {
-        $this->precioProducto = $precioProducto;
     }
 
     public function setProductoprecio($productoprecio) {
