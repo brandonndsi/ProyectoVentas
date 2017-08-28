@@ -12,24 +12,24 @@
     if($accion=="nuevo"){
        
        if (isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
-            && isset($_POST['clientetipousuario']) && isset($_POST['clientetelefono']) && isset($_POST['idzona']) 
-             && isset($_POST['idfactura']) && isset($_POST['fechafactura'])) {
+            && isset($_POST['clienteid']) && isset($_POST['clientetelefono']) && isset($_POST['personaid']) 
+             && isset($_POST['direccionexacta']) && isset($_POST['idzona'])) {
           
         $nombreCliente =$_POST('clientenombre');
         $apellido1CLiente =$_POST('clienteapellido1');
         $apellido2Cliente = $_POST('clienteapellido2');
-        $tipoUsuarioCliente = $_POST('clientetipousuario');
+        $Clienteid = $_POST('clienteid');
         $telefonoCliente = $_POST('clientetelefono');
         $idZona = $_POST('idzona');
-        $idFactura = $_POST('idfactura');
-        $fechaFactura = $_POST('fechafactura');
+        $personaid = $_POST('personaid');
+        $direccionexacta = $_POST('direccionexacta');
 
-       if (strlen($nombreCliente) > 0 && strlen($apellido1Cliente) > 0 && strlen($apellido2Cliente) > 0 && 
-            strlen($tipoUsuarioPersona) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 
-             && strlen($idFactura) > 0 && strlen($fechaFactura) > 0 ) {
+       if (strlen($nombreCliente) > 0 && strlen($apellido1CLiente) > 0 && strlen($apellido2Cliente) > 0 && 
+            strlen($Clienteid) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 
+             && strlen($personaid) > 0 && strlen($direccionexacta) > 0 ) {
             if (!is_numeric($nombreCliente)) {
-                $cliente = new Cliente($idCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente, 
-                        $tipoUsuarioCliente, $telefonoCliente, $idZona, $idFactura, $fechaFactura);
+                $cliente = new Clientes($Clienteid, $personaid, $direccionexacta);
+                $persona=new Personas($telefonoCliente, $nombreCliente, $apellido1CLiente, $apellido2Cliente, $idZona);
             
             include '../clientebusiness/clienteBusiness.php';
 
@@ -51,24 +51,25 @@
          */
     }else if($accion=="actualizar"){
         
-        if(isset($_POST['clienteid']) && isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
-            && isset($_POST['clientetipousuario']) && isset($_POST['clientetelefono']) && isset($_POST['idzona']) && isset($_POST['idfactura'])&& isset($_POST['fechafactura']) ){
-            
-        $idCliente= $_POST('clienteid');
+      if (isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
+            && isset($_POST['clienteid']) && isset($_POST['clientetelefono']) && isset($_POST['personaid']) 
+             && isset($_POST['direccionexacta']) && isset($_POST['idzona'])) {
+          
         $nombreCliente =$_POST('clientenombre');
-        $apellido1Cliente =$_POST('clienteapellido1');
+        $apellido1CLiente =$_POST('clienteapellido1');
         $apellido2Cliente = $_POST('clienteapellido2');
-        $tipoUsuarioCliente = $_POST('clientetipousuario');
-        $telefonoCliente=$_POST('clientetelefono');
+        $Clienteid = $_POST('clienteid');
+        $telefonoCliente = $_POST('clientetelefono');
         $idZona = $_POST('idzona');
-        $idFactura=$_POST('idfactura');
-        $fechaFactura=$_POST('fechafactura');
-            
-        if (strlen($idCliente) > 0 &&strlen($nombreCliente) > 0 && strlen($apellido1Cliente) > 0 && strlen($apellido2Cliente) > 0 && 
-            strlen($tipoUsuarioCliente) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 && strlen($idFactura) > 0 && strlen($fechaFactura) > 0) {
-            if (!is_numeric($clientenombre)) {
-                $cliente = new Cliente($idCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente, 
-                        $tipoUsuarioCliente, $telefonoCliente, $idZona, $idFactura, $fechaFactura);
+        $personaid = $_POST('personaid');
+        $direccionexacta = $_POST('direccionexacta');
+
+       if (strlen($nombreCliente) > 0 && strlen($apellido1CLiente) > 0 && strlen($apellido2Cliente) > 0 && 
+            strlen($Clienteid) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 
+             && strlen($personaid) > 0 && strlen($direccionexacta) > 0 ) {
+            if (!is_numeric($nombreCliente)) {
+                $cliente = new Clientes($Clienteid, $personaid, $direccionexacta);
+                $persona=new Personas($telefonoCliente, $nombreCliente, $apellido1CLiente, $apellido2Cliente, $idZona);
                 
            include '../clientebusiness/clienteBusiness.php';
            
