@@ -25,13 +25,13 @@ class clienteBusiness {
     }
     
     //se encarga de actualizar los datos del cliente en la tabla.
-    public function getTBClienteActualizar($Cliente){
+    public function getTBClienteActualizar($cliente){
         return $this->DataPersona->getTBClienteActualizar($cliente);
     }
     
     //se encarga de eliminar el cliente que desea en la base de datos.
-    public function getTBClienteEliminar($idCliente) {
-        return $this->DataPersona->getTBClienteEliminar($idCliente);
+    public function getTBClienteEliminar($cliente) {
+        return $this->DataPersona->getTBClienteEliminar($cliente);
     }
     
     //se encarga de seleccionar todo los datos del cliente.

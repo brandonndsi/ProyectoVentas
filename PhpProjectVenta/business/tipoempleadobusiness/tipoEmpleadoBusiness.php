@@ -23,13 +23,13 @@ class tipoEmpleadoBusiness {
     }
     
     //se encarga de actualizar los datos de la tabla empleado.
-    public function getTBTipoEmpleadoActualizar($TipoEnpleado) {
+    public function getTBTipoEmpleadoActualizar($tipoEmpleado) {
         return $this->DataTipoEmpleado>getTBTipoEmpleadoActualizar($tipoEmpleado);
     }
     
     //se encarga de eliminar el tipo de empleado de la tabla.
-    public function getTBTipoEmpleadoEliminar($idTipoEmpleado) {
-        return $this->DataTipoEmpleado->getTBTipoEmpleadoEliminar($idTipoEmpleado);
+    public function getTBTipoEmpleadoEliminar($tipoEmpleado) {
+        return $this->DataTipoEmpleado->getTBTipoEmpleadoEliminar($tipoEmpleado);
     }
     
     //se encarga de seleccionar todos los empleado y retornar el resultado.

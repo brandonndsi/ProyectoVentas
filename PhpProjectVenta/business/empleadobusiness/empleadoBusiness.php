@@ -10,30 +10,37 @@ include '../data/empleadoData.php';
 
 class empleadoBusiness {
 
-    private $empleadoData;
+    private $DataEmpleado;
 
     public function empleadoBusiness() {
-        $this->empleadoData = new empleadoData();
-    }
-
-    public function insertTBEmpleado($empleado) {
-        return $this->empleadoData->insertTBEmpleado($empleado);
+        
+        require_once '../../data/dataempleado/DataEmpleado.php';
+        $this->DataEmpleado = new DataEmpleado();
     }
     
-    public function updateTBEmpleado($empleado){
-        return $this->empleadoData->updateTBEmpleado($empleado);
-    }
-
-    public function deleteTBEmpleado($idEmpleado) {
-        return $this->empleadoData->deleteTBEmpleado($idEmpleado);
-    }
-
-    public function getAllTBEmpleado() {
-        return $this->empleadoData->getAllTBEmpleado();
+    //se enecarga de la crear el nuevo empleado a la base de dattos
+    public function getTBEmpleadoNuevo($empleado) {
+        return $this->DataEmpleado->getTBEmpleadoNuevo($empleado);
     }
     
-    /*public function getEmpleadosInventary() {
-        return $this->empleadoData->getEmpleadosInventary();
-    }*/
+    //se encarga de actualizar los datos de la base de datos de empleado.
+    public function getTBEmpleadoActualizar($empleado){
+        return $this->DataEmpleado->getTBEmpleadoActualizar($empleado);
+    }
+    
+    //se encarga de eliminar el empleado de la tabla.
+    public function getTBEmpleadoEliminar($empleado) {
+        return $this->DataEmpleado->getTBEmpleadoEliminar($empleado);
+    }
+    
+    //se encarga de realizar la consulta y retornar todos los empleado
+    public function getTBEmpleadoTodo($empleado) {
+        return $this->DataEmpleado->getTBEmpleadoTodo($empleado);
+    }
+    
+    //se encarga de buscar los datos de empleado de la base de datos
+    public function getTBEmpleadoBuscar($empleado) {
+        return $this->DataEmpleado->getTBEmpleadoBuscar($empleado);
+    }
     
 }
