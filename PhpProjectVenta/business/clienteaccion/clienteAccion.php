@@ -6,106 +6,157 @@
  *
  * @author David Salas.
  */
-
-include './clienteBusiness.php';
-
-    if (isset($_POST['update'])) {
-
-     if (isset($_POST['idCliente']) && isset($_POST['nombreCliente']) && isset($_POST['apellido1Cliente']) && isset($_POST['apellido2Cliente'])
-            && isset($_POST['tipoUsuarioCliente']) && isset($_POST['telefonoCliente']) && isset($_POST['idZona']) && isset($_POST['idFactura'])&& isset($_POST['fechaFactura']) ) {
+    
+    $accion = $_POST['accion'];//busca la accion a realizar 
+ 
+    if($accion=="nuevo"){
+       
+       if (isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
+            && isset($_POST['clientetipousuario']) && isset($_POST['clientetelefono']) && isset($_POST['idzona']) 
+             && isset($_POST['idfactura']) && isset($_POST['fechafactura'])) {
           
-        $idCliente= $_POST('idCliente');
-        $nombreCliente =$_POST('nombreCliente');
-        $apellido1Cliente =$_POST('apellido1Cliente');
-        $apellido2Cliente = $_POST('apellido2Cliente');
-        $tipoUsuarioCliente = $_POST('tipoUsuarioCliente');
-        $telefonoCliente=$_POST('telefonoCliente');
-        $idZona = $_POST('idZona');
-        $idFactura=$_POST('idFactura');
-        $fechaFactura=$_POST('fechaFactura');
-            
-        if (strlen($idCliente) > 0 &&strlen($nombreCliente) > 0 && strlen($apellido1Cliente) > 0 && strlen($apellido2Cliente) > 0 && 
-            strlen($tipoUsuarioCliente) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 && strlen($idFactura) > 0 && strlen($fechaFactura) > 0) {
-            if (!is_numeric($nombreCliente)) {
-                $Cliente = new Cliente($idCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente, 
-                        $tipoUsuarioCliente, $telefonoCliente, $idZona, $idFactura, $fechaFactura);
-
-                $ClienteAccion = new clienteBusiness();
-
-                $result = $ClienteAccion->updateTBCliente($Cliente);
-                if ($result == 1) {
-                    header("location: ../view/clienteView.php?success=updated");
-                } else {
-                    //echo $idSickness." - ".$bullName;
-                    header("location: ../view/clienteView.php?error=dbError");
-                }
-            } else {
-                header("location: ../view/clienteView.php?error=numberFormat");
-            }
-        } else {
-            header("location: ../view/clienteView.php?error=emptyField");
-        }
-    } else {
-        
-        header("location: ../view/clienteView.php?error=error");
-    }
-} else if (isset($_POST['delete'])) {
-
-    if (isset($_POST['idCliente'])) {
-
-        $idCliente = $_POST['idCliente'];
-
-        $clienteBusiness = new clienteBusiness();
-        $result = $clienteBusiness->deleteTBCliente($idCliente);
-
-        if ($result == 1) {
-            header("location: ../view/clienteView.php?success=deleted");
-        } else {
-            header("location: ../view/clienteView.php?error=dbError");
-        }
-    } else {
-        header("location: ../view/clienteView.php?error=error");
-    }
-} else if (isset($_POST['Create'])) {
-
-     if (isset($_POST['nombreCliente']) && isset($_POST['apellido1Cliente']) && isset($_POST['apellido2Cliente'])
-            && isset($_POST['tipoUsuarioCliente']) && isset($_POST['telefonoCliente']) && isset($_POST['idZona']) 
-             && isset($_POST['idFactura']) && isset($_POST['fechaFactura'])) {
-          
-        $nombreCliente =$_POST('nombreCliente');
-        $apellido1CLiente =$_POST('apellido1Cliente');
-        $apellido2Cliente = $_POST('apellido2Cliente');
-        $tipoUsuarioCliente = $_POST('tipoUsuarioCliente');
-        $telefonoCliente = $_POST('telefonoCliente');
-        $idZona = $_POST('idZona');
-        $idFactura = $_POST('idFactura');
-        $fechaFactura = $_POST('fechaFactura');
+        $nombreCliente =$_POST('clientenombre');
+        $apellido1CLiente =$_POST('clienteapellido1');
+        $apellido2Cliente = $_POST('clienteapellido2');
+        $tipoUsuarioCliente = $_POST('clientetipousuario');
+        $telefonoCliente = $_POST('clientetelefono');
+        $idZona = $_POST('idzona');
+        $idFactura = $_POST('idfactura');
+        $fechaFactura = $_POST('fechafactura');
 
        if (strlen($nombreCliente) > 0 && strlen($apellido1Cliente) > 0 && strlen($apellido2Cliente) > 0 && 
             strlen($tipoUsuarioPersona) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 
              && strlen($idFactura) > 0 && strlen($fechaFactura) > 0 ) {
             if (!is_numeric($nombreCliente)) {
-                $Cliente = new Cliente($idCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente, 
+                $cliente = new Cliente($idCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente, 
                         $tipoUsuarioCliente, $telefonoCliente, $idZona, $idFactura, $fechaFactura);
+            
+            include '../clientebusiness/clienteBusiness.php';
 
-                $clienteBusiness = new clienteBusiness();
-                echo 'datos';
-                $result = $clienteBusiness->insertTBCliente($Cliente);
+            $ClienteBusiness=new clienteBusiness();
 
-                if ($result == 1) {
-                    header("location: ../view/clienteView.php?success=inserted");
-                } else {
-                    header("location: ../view/clienteView.php?error=dbError");
-                }
-            } else {
-                header("location: ../view/clienteView.php?error=numberFormat");
+             $result= $ClienteBusiness->getTBClienteNuevo($cliente);
+
+             echo json_encode($result);     }
+             
             }
-        } else {
-            header("location: ../view/clienteView.php?error=emptyField");
-        }
-    } else {
-        header("location: ../view/clienteView.php?error=error");
+             
+         }else  {
+             // retorna un error al tratar de ingresar los datos del nuevo cliente
+               $error="ErrorNuevo";
+               echo json_encode($error);
+             } 
+        /*
+         * Verifica si la accion es la e actualizar los datos del cliente
+         */
+    }else if($accion=="actualizar"){
+        
+        if(isset($_POST['clienteid']) && isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
+            && isset($_POST['clientetipousuario']) && isset($_POST['clientetelefono']) && isset($_POST['idzona']) && isset($_POST['idfactura'])&& isset($_POST['fechafactura']) ){
+            
+        $idCliente= $_POST('clienteid');
+        $nombreCliente =$_POST('clientenombre');
+        $apellido1Cliente =$_POST('clienteapellido1');
+        $apellido2Cliente = $_POST('clienteapellido2');
+        $tipoUsuarioCliente = $_POST('clientetipousuario');
+        $telefonoCliente=$_POST('clientetelefono');
+        $idZona = $_POST('idzona');
+        $idFactura=$_POST('idfactura');
+        $fechaFactura=$_POST('fechafactura');
+            
+        if (strlen($idCliente) > 0 &&strlen($nombreCliente) > 0 && strlen($apellido1Cliente) > 0 && strlen($apellido2Cliente) > 0 && 
+            strlen($tipoUsuarioCliente) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 && strlen($idFactura) > 0 && strlen($fechaFactura) > 0) {
+            if (!is_numeric($clientenombre)) {
+                $cliente = new Cliente($idCliente, $nombreCliente, $apellido1Cliente, $apellido2Cliente, 
+                        $tipoUsuarioCliente, $telefonoCliente, $idZona, $idFactura, $fechaFactura);
+                
+           include '../clientebusiness/clienteBusiness.php';
+           
+           $ClienteBusiness=new clienteBusiness();
+           
+            $result= $ClienteBusiness->getTBClienteActualizar($cliente);
+            
+            echo json_encode($result);}
+            
+            }
+            
+    }else       {
+        // presenta el error al actualizar los datos algun dato esta mal o esta basio.
+                    $error="ErrorActualizar";
+                   echo json_encode($error);
+                } 
+    /*
+     * La accion de eliminar provando si es esta accion la que desea realizar
+     */
+    }else if($accion=="eliminar"){
+        
+    if(isset($_POST['clientenombre'])){
+        
+            $cliente=$_POST['clientenombre'];
+           include '../clientebusiness/clienteBusiness.php';
+           
+           $ClienteBusiness=new clienteBusiness();
+           
+            $result= $ClienteBusiness->getTBClienteEliminar($cliente);
+            
+            echo json_encode($result);
+        
+    }else{
+        //esto es porsi a la hora de eliminar el dato es vacio
+         $error="ErrorEliminar";
+        echo json_encode($error);
+    }
+    
+    /*
+     *  Esta consulta lo que debe devolver es el datos del cliente.por nombre   
+      */
+    } else if($accion=="buscar"){
+        
+       if(isset($_POST['clientenombre'])){
+           $clientenombre=$_POST['clientenombre'];
+            
+           include '../clientebusiness/clienteBusiness.php';
+           
+           $ClienteBusiness=new clienteBusiness();
+           
+            $result= $ClienteBusiness->getTBClienteBuscar($clientenombre);
+            
+            echo json_encode($result); 
+    
+        
+    }else{
+        //lo que hace es retornar el error en un json el cual informa que algun
+        // dato de busqueda no esta bieno no se encontro nada
+         $error="ErrorBuscar";
+        echo json_encode($error);
+    }
+    
+    /*
+     *  Esta conslta lo que debe devolver es todos los datos de los clientes.   
+      */
+    }else  if($accion=="todo"){
+        
+      if(isset($_POST['dsd'])){
+            
+           include '../clientebusiness/clienteBusiness.php';
+           
+           $ClienteBusiness=new clienteBusiness();
+           
+            $result= $ClienteBusiness->getTBClienteTodo();
+            
+            echo json_encode($result);  
+            
+    }else       {
+        //esto lo que retorna es un json  que dice que hay un error al tratar de obtener todos lo datos
+                $error="ErrorTodo";
+                echo json_encode($error);
+                }
+    }else{
+        /*
+         * Esto es por si la accion a la que esta consultando es vacia o no conside con ninguna.
+         */
+       $error="ErrorAccion";
+        echo json_encode($error); 
         
     }
-}
-
+?>
