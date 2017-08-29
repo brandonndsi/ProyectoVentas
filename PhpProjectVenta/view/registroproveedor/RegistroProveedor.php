@@ -3,7 +3,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Registrar Cliente</title>
+    <title>Reg Proveedor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php
     include "../business/clienteBusiness.php";
@@ -15,10 +15,10 @@
     <form name="form" action="../business/clienteAccion.php" method="Post">
         <strong>
             <p>
-                Formulario para insertar el cliente a la base de datos.
+                Formulario para insertar el Proveedor a la base de datos.
             <p>  
         </strong>
-        <p> ID: <input type="text" name="id" size="45"/>
+        <p> ID: <input type="text" name="proveedorid" size="45"/>
         </p>         
         <p> Nombre: <input type="text" name="nombre" size="45" required/>
         </p>
@@ -32,9 +32,15 @@
         </p>
         <p> Direccion Exacta: <input type="text" name="zona" size="45" required/>
         </p>
+        <p> Tipo Materia Prima: <input type="text" name="tipomateriaprima" size="45" required/>
+        </p>
         <br>
-
-        <input name="create" type="submit" value="Enviar">
+        <input name="create" type="submit" value="Registrar">
+        <input name="create" type="submit" value="Modificar">
+        <input name="create" type="submit" value="Eliminar">
+        <input name="create" type="submit" value="Mostrar">
+        
+        <p> <a href="javascript:window.history.go(-1);">Regresar</a> </p>
         <?php
         ?>
     </form>

@@ -47,13 +47,22 @@
         </p>
         <p> Numero de cuenta Bancaria: <input type="text" name="cuentabancaria" size="45" required/>
         </p>
-        <p> Tipo de liciencia de conducir: <input type="text" name="licencia" size="45" required/>
-        </p>
         <p> Direccion Exacta: <input type="text" name="zona" size="45" required/>
         </p>
+        <p> Tipo de liciencia de conducir: <input type="text" name="licencia" size="45" required/>
+        </p>
+        <p> Vigencia Licencia: <input type="text" name="empleadolicenciavigencia" size="45" required/>
+        </p>
+        <p> vehiculo Id: <input type="text" name="vehiculoid" size="45" required/>
+        </p>
         <br>
-
-        <input name="create" type="submit" value="Enviar">
+        
+        <input name="create" type="submit" value="Registrar">
+        <input name="create" type="submit" value="Modificar">
+        <input name="create" type="submit" value="Eliminar">
+        <input name="create" type="submit" value="Mostrar">
+        
+        <p> <a href="javascript:window.history.go(-1);">Regresar</a> </p>
         <?php
         ?>
     </form>

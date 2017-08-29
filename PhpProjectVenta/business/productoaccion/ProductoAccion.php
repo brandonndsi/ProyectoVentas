@@ -117,7 +117,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
     }
     
     /*
-     *  Esta conslta lo que debe devolver es todos los datos de los clientes.   
+     *  Esta conuslta lo que debe devolver es todos los datos de los productos.   
       */
     }else  if($accion=="todo"){
         
