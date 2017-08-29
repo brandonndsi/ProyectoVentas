@@ -2,128 +2,100 @@
 
 class DataPersona {
 
+    private $conexion;
+
     function DataPersona() {
-        include_once '../dbconexion/DBConexcion.php';
+        include_once '../dbconexion/Conexcion.php';
+        $this->conexion = new Conexion();
     }
 
-    function insertar($persona) {
-        $conexcion = new DBConexion;
-        if ($conexcion->conectar() == true) {
+    //buscar una persona
+    function buscarPersona($personaid) {
 
-            $query = "INSERT INTO tbpersonas(telefonoPersona, nombrePersona, apellido1Persona,
-			 apellido2Persona, idZona) VALUES (
-                                '" . $persona->get_telefonoPersona() . "',
-				'" . $persona->get_nombrePersona() . "',
-				'" . $persona->get_apellido1Persona() . "',
-				'" . $persona->get_apellido2Persona() . "',
-				'" . $persona->get_idZona() . "')";
+        $array = array();
+        $this->conexion->crearConexion()->set_charset('utf8');
 
-            $result = mysql_query($query);
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+        $buscarpersona = $this->conexion->crearConexion()->query("CALL buscarpersona('$personaid')");
+
+        while ($resultado = $buscarpersona->fetch_assoc()) {
+            array_push($array, $resultado);
+        }
+        return $array;
+    }
+
+    //eliminar
+    function eliminarPersona($personaid) {
+
+        $this->conexion->crearConexion()->set_charset('utf8');
+
+        $eliminarpersona = $this->conexion->crearConexion()->query("CALL eliminarpersona('$personaid')");
+
+        $result = mysql_query($eliminarpersona);
+        if (!$result) {
+            return false;
+        } else {
+            return $result;
         }
     }
 
-    function eliminar($id) {
-        $conexcion = new DBConexion;
-        if ($conexcion->conectar() == true) {
+    //insertar
+    function insertarPersona($persona) {
 
-            $query = "DELETE FROM tbpersona WHERE telefonoPersona=" . $id;
-            $result = mysql_query($query);
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+        $this->conexion->crearConexion()->set_charset('utf8');
+
+        $insertarpersona = $this->conexion->crearConexion()->query("INSERT INTO tbpersonas(personaid, personanombre, personaapellido1,
+            personaapellido2, personatelefono, personacorreo, zonaid) VALUES (
+            '" . $persona->get_personaid() . "',
+            '" . $persona->get_personanombre() . "',
+            '" . $persona->get_personaapellido1() . "',
+            '" . $persona->get_personaapellido2() . "',
+            '" . $persona->get_personatelefono() . "',
+            '" . $persona->get_personacorreo() . "',    
+            '" . $persona->get_zonaid() . "')");
+
+        $result = mysql_query($insertarpersona);
+        if (!$result) {
+            return false;
+        } else {
+            return $result;
+        }        
+    }
+
+    //modificar
+    function modificarPersona($persona) {
+
+        $this->conexion->crearConexion()->set_charset('utf8');
+
+        $modificarpersona = $this->conexion->crearConexion()->query("UPDATE tbpersonas SET 
+		personaid='" . $persona->get_personaid() . "',  
+		personanombre='" . $persona->get_personanombre() . "',
+		personaapellido1='" . $persona->get_personaapellido1() . "',
+		personaapellido2='" . $persona->get_personaapellido2() . "',
+                personatelefono='" . $persona->get_personatelefono() . "',
+		personacorreo='" . $persona->get_personacorreo() . "',    
+                zonaid='" . $persona->get_zonaid() . "',    
+		WHERE personaid =" . $persona->get_personaid() . "");
+
+        $result = mysql_query($modificarpersona);
+        if (!$result) {
+            return false;
+        } else {
+            return $result;
         }
     }
 
-    //funcional
-    function obtener($id) {
-        $conexcion = new DBConexion;
-        $persona;
+    //mostrar las personas
+    function mostrarPersonas() {
 
-        if ($conexcion->conectar() == true) {
+        $array = array();
+        $this->conexion->crearConexion()->set_charset('utf8');
 
-            $query = mysql_query("SELECT * FROM tbpersonas p INNER JOIN tbzonas z ON p.zonaid= z.zonaid"
-                    . " WHERE personatelefono=$id") or die(mysql_error());
+        $mostrarpersonas = $this->conexion->crearConexion()->query("CALL mostrarpersonas");
 
-            $result = mysql_query($query);
-
-            if ($row = mysql_fetch_array($result)) {
-                //$persona = new persona($row[0], $row[1], $row[2], $row[3], $row[4]);
-                $arr=array();
-                $arr=$row;
-            $persona;
+            while ($resultado = $mostrarpersonas->fetch_assoc()) {
+            array_push($array, $resultado);
             }
-
-            if (!$persona) {
-                return false;
-            } else {
-                return $row;
-            }
-        }
-    }
-
-    function modificar($persona) {
-        $conexcion = new DBConexion;
-        if ($conexcion->conectar() == true) {
-
-            $query = "UPDATE tbpersona SET 
-		telefonoPersona='" . $persona->get_telefonoPersona() . "',  
-		nombrePersona='" . $persona->get_nombrePersona() . "',
-		apellido1Persona='" . $persona->get_apellido1Persona() . "',
-		apellido2Persona='" . $persona->get_apellido2Persona() . "',
-                idZona='" . $persona->get_idZona() . "',    
-		WHERE telefonoPersona =" . $persona->get_telefonoPersona() . "";
-            
-            $result = mysql_query($query);
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
-        }
-    }
-
-    //Este metodo es para que se vean los campos en la tabla
-    function get_personas() {
-        $conexcion = new DBConexion;
-        $lista = array();
-
-        if ($conexcion->conectar() == true) {
-            $query = mysql_query("SELECT * FROM tbpersona p INNER JOIN tbzona z ON p.idZona= z.idZona") or die(mysql_error());
-
-            $result = mysql_query($query);
-
-            while ($row = mysql_fetch_array($result)) {
-                $persona = new persona($row[0], $row[1], $row[2], $row[3], $row[4]);
-                array_push($lista, $persona);
-            }
-            if (!$lista) {
-                return false;
-            } else {
-                return $lista;
-            }
-        }
-    }
-    function selec($tipo){
-         $conexcion = new DBConexion;
-        $lista = array();
-        $i=1;
-        $query=mysql_query("CALL tipoempleadoseleccionar(".$tipo."')");
-        $row = mysql_fetch_array($query);
-            
-            array_push($lista, $row);
-            
-            return $lista;
+            return $array;
     }
 }
-$data=new DataPersona();
-$per=$data->selec('Administrador');
-print_r($per);
 
-?>

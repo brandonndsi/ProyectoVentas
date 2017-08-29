@@ -28,7 +28,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
 
-             $result= $MateriaPrimaBusiness->getTBMateriaPrimaNuevo($materiaprimas);
+             $result= $MateriaPrimaBusiness->insertarMateriaPrima($materiaprimas);
 
              echo json_encode($result);     }
              
@@ -63,7 +63,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
 
-             $result= $MateriaPrimaBusiness->getTBMateriaPrimaActualizar($materiaprimas);
+             $result= $MateriaPrimaBusiness->modificarMateriaPrima($materiaprimas);
             echo json_encode($result);}
             
             }
@@ -86,7 +86,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
            
-            $result= $MateriaPrimaBusiness->getTBMateriaPrimaEliminar($materias);
+            $result= $MateriaPrimaBusiness->eliminarMateriaPrima($materias);
             
             echo json_encode($result);
         
@@ -108,7 +108,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
            
-            $result= $MateriaPrimaBusiness->getTBMateriaPrimaBuscar($materias);
+            $result= $MateriaPrimaBusiness->buscarMateriaPrima($materias);
             
             echo json_encode($result); 
     
@@ -130,7 +130,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
            
-            $result= $MateriaPrimaBusiness->getTBMateriaPrimaTodo();
+            $result= $MateriaPrimaBusiness->mostrarMateriaPrima();
             
             echo json_encode($result);  
             

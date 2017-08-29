@@ -18,28 +18,28 @@ class MateriaPrimaBusiness {
     }
     
     //se encarga de la crear el nuevo materiaprima a la base de datos
-    public function getTBMateriaPrimaNuevo($materiaprima) {
-        return $this->DataMateriaPrima->insertar($materiaprima);
+    public function insertarMateriaPrima($materiaprima) {
+        return $this->DataMateriaPrima->insertarMateriaPrima($materiaprima);
     }
     
     //se encarga de actualizar los datos de la base de datos de materia prima.
-    public function getTBMateriaPrimaActualizar($materiaprima){
-        return $this->DataMateriaPrima->modificar($materiaprima);
+    public function modificarMateriaPrima($materiaprima){
+        return $this->DataMateriaPrima->modificarMateriaPrima($materiaprima);
     }
     
     //se encarga de eliminar la materia prima de la tabla.
-    public function getTBMateriaPrimaEliminar($materiaprima) {
-        return $this->DataMateriaPrima->eliminar($materiaprima);
+    public function eliminarMateriaPrima($materiaprimaid) {
+        return $this->DataMateriaPrima->eliminarMateriaPrima($materiaprimaid);
     }
     
     //se encarga de realizar la consulta y retornar todos la materia prima
-    public function getTBMateriaPrimaTodo() {
-        return $this->DataMateriaPrima>get_materiaprima();
+    public function mostrarMateriaPrima() {
+        return $this->DataMateriaPrima>mostrarMateriaPrima();
     }
     
     //se encarga de buscar los datos de materia prima de la base de datos
-    public function getTBMateriaPrimaBuscar($materiaprima) {
-        return $this->DataMateriaPrima->obtener($materiaprima);
+    public function buscarMateriaPrima($materiaprimaid) {
+        return $this->DataMateriaPrima->buscarMateriaPrima($materiaprimaid);
     }
     
 }

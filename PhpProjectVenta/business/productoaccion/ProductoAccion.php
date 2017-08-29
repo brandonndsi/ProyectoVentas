@@ -25,7 +25,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $productoBusiness=new ProductoBusiness();
 
-             $result= $productoBusiness->getTBProductoNuevo($producto);
+             $result= $productoBusiness->insertarProducto($producto);
 
              echo json_encode($result);     }
              
@@ -58,7 +58,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $productoBusiness=new ProductoBusiness();
 
-             $result= $productoBusiness->getTBProductoActualizar($producto);
+             $result= $productoBusiness->modificarProducto($producto);
             echo json_encode($result);}
             
             }
@@ -81,7 +81,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $ProductoBusiness=new ProductoBusiness();
            
-            $result= $ProductoBusiness->getTBProductoEliminar($producto);
+            $result= $ProductoBusiness->eliminarProducto($producto);
             
             echo json_encode($result);
         
@@ -104,7 +104,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $ProductoBusiness=new ProductoBusiness();
            
-            $result= $ProductoBusiness->getTBProductoBuscar($producto);
+            $result= $ProductoBusiness->buscarProducto($producto);
             
             echo json_encode($result); 
     
@@ -126,7 +126,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $ProductoBusiness=new ProductoBusiness();
            
-            $result= $ProductoBusiness->getTBProductoTodo();
+            $result= $ProductoBusiness->mostrarProductos();
             
             echo json_encode($result);  
             

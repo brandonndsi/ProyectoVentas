@@ -35,7 +35,7 @@
 
             $ClienteBusiness=new clienteBusiness();
 
-             $result= $ClienteBusiness->getTBClienteNuevo($cliente);
+             $result= $ClienteBusiness->insertarCliente($cliente);
 
              echo json_encode($result);     }
              
@@ -75,7 +75,7 @@
            
            $ClienteBusiness=new clienteBusiness();
            
-            $result= $ClienteBusiness->getTBClienteActualizar($cliente);
+            $result= $ClienteBusiness->modificarCliente($cliente);
             
             echo json_encode($result);}
             
@@ -98,7 +98,7 @@
            
            $ClienteBusiness=new clienteBusiness();
            
-            $result= $ClienteBusiness->getTBClienteEliminar($cliente);
+            $result= $ClienteBusiness->eliminarCliente($clienteid);
             
             echo json_encode($result);
         
@@ -120,7 +120,7 @@
            
            $ClienteBusiness=new clienteBusiness();
            
-            $result= $ClienteBusiness->getTBClienteBuscar($clientenombre);
+            $result= $ClienteBusiness->buscarCliente($clienteid);
             
             echo json_encode($result); 
     
@@ -142,7 +142,7 @@
            
            $ClienteBusiness=new clienteBusiness();
            
-            $result= $ClienteBusiness->getTBClienteTodo();
+            $result= $ClienteBusiness->mostrarClientes();
             
             echo json_encode($result);  
             

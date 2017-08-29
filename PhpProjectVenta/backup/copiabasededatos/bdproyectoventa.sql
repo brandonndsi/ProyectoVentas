@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-08-2017 a las 20:18:02
+-- Tiempo de generación: 29-08-2017 a las 03:09:56
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -30,7 +30,41 @@ SELECT * FROM tbempleados e
     INNER JOIN tbzonas z ON p.zonaid= z.zonaid
     INNER JOIN tbtipoempleados t ON e.tipoempleado= t.tipoempleado
     INNER JOIN tbempleadolicencias el ON e.empleadolicenciaid= 	 el.empleadolicenciaid
+    INNER JOIN tbvehiculos v ON el.vehiculoid= v.vehiculoid
+    WHERE empleadoid = empleadoid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarpersona` (IN `persona` VARCHAR(50))  NO SQL
+BEGIN
+
+SELECT * FROM tbpersonas p INNER JOIN tbzonas z ON p.zonaid= z.zonaid 
+		 WHERE personaid = personaid;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarempleado` (IN `empleado` VARCHAR(50))  NO SQL
+DELETE FROM tbempleados WHERE empleadoid=empleadoid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarpersona` (IN `persona` VARCHAR(50))  NO SQL
+BEGIN
+
+DELETE FROM tbpersonas WHERE personaid = personaid;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrarempleados` (IN `empleado` VARCHAR(50))  NO SQL
+SELECT * FROM tbempleados e
+    INNER JOIN tbpersonas p ON e.personaid= p.personaid
+    INNER JOIN tbzonas z ON p.zonaid= z.zonaid
+    INNER JOIN tbtipoempleados t ON e.tipoempleado= t.tipoempleado
+    INNER JOIN tbempleadolicencias el ON e.empleadolicenciaid= 	 el.empleadolicenciaid
     INNER JOIN tbvehiculos v ON el.vehiculoid= v.vehiculoid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrarpersonas` (IN `persona` VARCHAR(50))  NO SQL
+BEGIN
+
+SELECT * FROM tbpersonas p INNER JOIN tbzonas z ON p.zonaid= z.zonaid;
+            
+END$$
 
 DELIMITER ;
 

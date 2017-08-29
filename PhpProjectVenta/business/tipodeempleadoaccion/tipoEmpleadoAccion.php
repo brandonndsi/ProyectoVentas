@@ -108,7 +108,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
            
            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
            
-            $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoBuscar($empleadonombre);
+            $result= $tipoEmpleadoBusiness->buscartipoempleado($empleadonombre);
             
             echo json_encode($result); 
     

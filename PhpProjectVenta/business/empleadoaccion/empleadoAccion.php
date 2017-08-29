@@ -40,9 +40,9 @@
 
             $empleadoBusiness=new empleadoBusiness();
 
-             $result= $empleadoBusiness->getTBEmpleadoNuevo($empleado);
+             $result= $empleadoBusiness->buscarEmpleado($empleado);
 
-             echo json_encode($result);     }
+             echo json_encode($result);}
              
             }
              
@@ -84,7 +84,7 @@
            
            $empleadoBusiness=new empleadoBusiness();
            
-            $result= $empleadoBusiness->getTBEmpleadoActualizar($empleado);
+            $result= $empleadoBusiness->modificarEmpleado($empleado);
             
             echo json_encode($result);}
             
@@ -107,7 +107,7 @@
            
            $empleadoBusiness=new empleadoBusiness();
            
-            $result= $empleadoBusiness->getTBEmpleadoEliminar($empleado);
+            $result= $empleadoBusiness->eliminarEmpleado($empleado);
             
             echo json_encode($result);
         
@@ -129,7 +129,7 @@
            
            $empleadoBusiness=new empleadoBusiness();
            
-            $result= $empleadoBusiness->getTBEmpleadoBuscar($empleadonombre);
+            $result= $empleadoBusiness->buscarEmpleado($empleadonombre);
             
             echo json_encode($result); 
     
@@ -151,7 +151,7 @@
            
            $empleadoBusiness=new empleadoBusiness();
            
-            $result= $empleadoBusiness->getTBEmpleadoTodo();
+            $result= $empleadoBusiness->mostrarEmpleados();
             
             echo json_encode($result);  
             

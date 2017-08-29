@@ -18,28 +18,28 @@ class ProductoBusiness {
     }
     
     //se encarga de la crear el nuevo producto a la base de datos
-    public function getTBProductoNuevo($producto) {
-        return $this->DataProducto->insertar($producto);
+    public function insertarProducto($producto) {
+        return $this->DataProducto->insertarProducto($producto);
     }
     
     //se encarga de actualizar los datos de la base de datos de producto.
-    public function getTBProductoActualizar($producto){
-        return $this->DataProducto->modificar($producto);
+    public function modificarProducto($producto){
+        return $this->DataProducto->modificarProducto($producto);
     }
     
     //se encarga de eliminar el producto de la tabla.
-    public function getTBProductoEliminar($producto) {
-        return $this->DataProducto->eliminar($producto);
+    public function eliminarProducto($productoid) {
+        return $this->DataProducto->eliminarProducto($productoid);
     }
     
     //se encarga de realizar la consulta y retornar todos los producto
-    public function getTBProductoTodo() {
-        return $this->DataProducto->get_producto();
+    public function mostrarProductos() {
+        return $this->DataProducto->mostrarProductos();
     }
     
     //se encarga de buscar los datos del producto de la base de datos
-    public function getTBProductoBuscar($producto) {
-        return $this->DataProducto->obtener($producto);
+    public function buscarProducto($productoid) {
+        return $this->DataProducto->buscarProducto($productoid);
     }
     
 }
