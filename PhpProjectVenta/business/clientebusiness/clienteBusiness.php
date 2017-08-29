@@ -15,7 +15,7 @@ class clienteBusiness {
     public function clienteBusiness() {
         
         require_once '../../data/datapersona/DataPersona.php';
-        $this->DataPersona= new DataPersona();
+        $this->DataPersona= new DataCliente();
         
     }
     

@@ -34,7 +34,7 @@ class MateriaPrimaBusiness {
     
     //se encarga de realizar la consulta y retornar todos la materia prima
     public function mostrarMateriaPrima() {
-        return $this->DataMateriaPrima>mostrarMateriaPrima();
+        return $this->DataMateriaPrima->mostrarMateriaPrima();
     }
     
     //se encarga de buscar los datos de materia prima de la base de datos

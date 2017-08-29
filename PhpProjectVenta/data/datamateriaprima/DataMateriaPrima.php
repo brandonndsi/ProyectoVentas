@@ -79,7 +79,7 @@ class DataMateriaPrima {
     }
 
     //mostrar materias primas
-    function mostrarMateriaPrima() {
+    function mostrarMateriaPrima(){
         $array = array();
         $this->conexion->crearConexion()->set_charset('utf8');
 
