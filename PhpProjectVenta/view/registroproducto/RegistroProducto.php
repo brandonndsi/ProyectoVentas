@@ -5,18 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Reg Producto </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <?php
-    include "../business/clienteBusiness.php";
-    ?>
+    
 </head>
 
 <body >
-     <?php
-    include ("conexion.php");
-    ?>
-    
+         
     <p align="center">
-    <form name="form" action="../business/clienteAccion.php" method="Post">
+    <form name="form" action="business/productoaccion/ProductoAccion.php" method="Post">
         <strong>
             <p>
                Registrando Producto

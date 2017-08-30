@@ -6,7 +6,8 @@
     <title>Rapidos Expres </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php
-    include "../view/..";
+    //include ("registroproducto/RegistroProducto.php");
+    
     ?>
 </head>
 
@@ -22,14 +23,14 @@
                 Selecione la opcion deseada:
             <p>
         </strong>
-        <p><a href="ventaview/VentaView.php" onClick="window.open(this.href, 'width=450,height=300'); return false;">
+        <p><a  href="view/registroproducto/RegistroProducto.php" target="_parent">
            <input type="button" value="Realizar Venta"></a>
         </p>
-        <p> <a href="registroproducto/RegistroProducto.php" onClick="window.open(this.href, 'width=450,height=300'); return false;">
+        <p> <a  href="view/registroproducto/RegistroProducto.php" target="_parent">
                <input name="Gestionar Producto" type="button" value="Gestionar Producto" > </a><!--onclick="location.href=RegistrarProduto.php"-->
-            <a href="registrozona/RegistroZona.php" onClick="window.open(this.href, 'width=450,height=300'); return false;">
+            <a  href="view/registrozona/RegistroZona.php" target="_parent">
                <input name="Gestionar Zona" type="submit" value="Gestionar Zona"></a>
-            <a href="registrovehiculo/RegistroVehiculo.php" onClick="window.open(this.href, 'width=450,height=300'); return false;">
+            <a href="view/registrovehiculo/RegistroVehiculo.php" target="_parent">
                 <input name="Gestionar Vehiculo" type="submit" value="Gestionar Vehiculo"></a>
         </p>
         <p>
