@@ -23,29 +23,30 @@
                 Selecione la opcion deseada:
             <p>
         </strong>
-        <p><a  href="view/registroproducto/RegistroProducto.php" target="_parent">
+        <p><a  href="view/ventaview/VentaView.php" target="_parent">
            <input type="button" value="Realizar Venta"></a>
         </p>
         <p> <a  href="view/registroproducto/RegistroProducto.php" target="_parent">
                <input name="Gestionar Producto" type="button" value="Gestionar Producto" > </a><!--onclick="location.href=RegistrarProduto.php"-->
             <a  href="view/registrozona/RegistroZona.php" target="_parent">
-               <input name="Gestionar Zona" type="submit" value="Gestionar Zona"></a>
+               <input name="Gestionar Zona" type="button" value="Gestionar Zona"></a>
             <a href="view/registrovehiculo/RegistroVehiculo.php" target="_parent">
-                <input name="Gestionar Vehiculo" type="submit" value="Gestionar Vehiculo"></a>
+                <input name="Gestionar Vehiculo" type="button" value="Gestionar Vehiculo"></a>
         </p>
         <p>
-            <a href="registrocliente/RegistroCliente.php" onClick="window.open(this.href, 'width=450,height=300'); return false;">
-                <input name="Gestionar Cliente" type="submit" value="Gestionar Cliente"></a>
-            <a href="registroempleado/RegistroEmpleado.php" onClick="window.open(this.href, 'width=450,height=300'); return false;">
-            <input name="Gestionar Empleado" type="submit" value="Gestionar Empleado"></a>
-            <a href="registroproveedor/RegistroProveedor.php" onClick="window.open(this.href, 'width=450,height=300'); return false;">
-            <input name="Gestionar Proveedor" type="submit" value="Gestionar Proveedor"></a> 
+            <a href="view/registrocliente/RegistroCliente.php" target="_parent">
+                <input name="Gestionar Cliente" type="button" value="Gestionar Cliente"></a>
+            <a href="view/registroempleado/RegistroEmpleado.php" target="_parent">
+            <input name="Gestionar Empleado" type="button" value="Gestionar Empleado"></a>
+            <a href="view/registroproveedor/RegistroProveedor.php" target="_parent">
+            <input name="Gestionar Proveedor" type="button" value="Gestionar Proveedor"></a> 
         </p>
 
         <br>
         <p> <a href="javascript:window.history.go(-1);">Regresar</a> </p>
 
     </form>
+
     <?php
     
     ?>
