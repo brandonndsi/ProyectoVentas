@@ -43,7 +43,7 @@
         </p>
 
         <br>
-        <p> <a href="javascript:window.history.go(-1);">Regresar</a> </p>
+        <p> <a href="index.php">Regresar</a> </p>
 
     </form>
 

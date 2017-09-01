@@ -16,11 +16,11 @@
                 Registrando Datos de Zona
             <p>  
         </strong>
-        <p> ID: <input type="text" name="ventaid" size="35"/>
+        <p> ID: <input type="text" name="ventaid" size="35" placeholder="Solo numeros"/>
         </p>         
-        <p> Nombre: <input type="text" name="nombre" size="35" required/>
+        <p> Nombre: <input type="text" name="nombre" size="35" required placeholder="Solo letras" />
         </p>
-        <p> Precio: <input type="text" name="precio" size="35" required/> 
+        <p> Precio: <input type="text" name="precio" size="35" required placeholder="Solo numeros"/> 
         </p>
        
         <input name="create" type="submit" value="Registrar">

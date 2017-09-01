@@ -9,21 +9,21 @@ class DataCliente {
         $this->conexion = new Conexion();
     }
 
-    //insertar
-    function insertarCliente($cliente) {
+    //insertar los datos
+                function insertarCliente($cliente) {
 
-        $this->conexion->crearConexion()->set_charset('utf8');
+                    $this->conexion->crearConexion()->set_charset('utf8');
 
-        $insertarcliente = $this->conexion->crearConexion()->query("INSERT INTO tbclientes(clienteid,
-            personaid, clientedireccionexacta) VALUES (
-                '" . $cliente->get_clienteid() . "',
-		'" . $cliente->get_personaid() . "',  
-		'" . $cliente->get_clientedireccionexacta() . "')");
+                    $insertarcliente = $this->conexion->crearConexion()->query("INSERT INTO tbclientes(clienteid,
+                        personaid, clientedireccionexacta) VALUES (
+                            '" . $cliente->get_clienteid() . "',
+            		'" . $cliente->get_personaid() . "',  
+            		'" . $cliente->get_clientedireccionexacta() . "')");
 
-        $result = mysql_query($insertarcliente);
-        if (!$result) {
-            return false;
-        } else {
+                    $result = mysql_query($insertarcliente);
+                    if (!$result) {
+                        return false;
+                    } else {
             return $result;
         }
     }

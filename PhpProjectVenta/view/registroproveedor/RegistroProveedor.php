@@ -5,9 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Reg Proveedor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <?php
-    include "../business/clienteBusiness.php";
-    ?>
 </head>
 
 <body >
@@ -41,8 +38,7 @@
         <input name="create" type="submit" value="Mostrar">
         
         <p> <a href="javascript:window.history.go(-1);">Regresar</a> </p>
-        <?php
-        ?>
+        
     </form>
 
     <footer>
