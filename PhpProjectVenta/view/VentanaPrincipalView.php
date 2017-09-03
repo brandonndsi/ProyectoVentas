@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Rapidos Expres </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../js/jquery/jquery-3.2.1.min.js"></script>
     <?php
     //include ("registroproducto/RegistroProducto.php");
     

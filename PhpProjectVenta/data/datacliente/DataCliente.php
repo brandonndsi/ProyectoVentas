@@ -5,7 +5,7 @@ class DataCliente {
     private $conexion;
 
     function DataCliente() {
-        include_once '../dbconexion/Conexcion.php';
+        include_once '../../data/dbconexion/Conexion.php';
         $this->conexion = new Conexion();
     }
 
@@ -81,12 +81,17 @@ class DataCliente {
         $array = array();
         $this->conexion->crearConexion()->set_charset('utf8');
 
-        $mostrarclientes = $this->conexion->crearConexion()->query("CALL mostrarclientes");
+        $mostrarclientes = $this->conexion->crearConexion()->query("CALL mostrarcliente()");
 
         while ($resultado = $mostrarclientes->fetch_assoc()) {
             array_push($array, $resultado);
         }
         return $array;
     }
-
+    
 }
+/*$datos=new DataCliente();
+$d=$datos->mostrarClientes();
+print_r($d);*/
+
+?>

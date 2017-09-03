@@ -90,7 +90,7 @@ class DataPersona {
         $array = array();
         $this->conexion->crearConexion()->set_charset('utf8');
 
-        $mostrarpersonas = $this->conexion->crearConexion()->query("CALL mostrarpersonas");
+        $mostrarpersonas = $this->conexion->crearConexion()->query("CALL mostrarpersonas()");
 
             while ($resultado = $mostrarpersonas->fetch_assoc()) {
             array_push($array, $resultado);
@@ -98,4 +98,7 @@ class DataPersona {
             return $array;
     }
 }
-
+$data=new DataPersona();
+$da= $data->mostrarPersonas();
+print_r($da);
+?>

@@ -143,8 +143,8 @@
            $ClienteBusiness=new clienteBusiness();
            
             $result= $ClienteBusiness->mostrarClientes();
-            
-            echo json_encode($result);  
+            print_r(result);
+            echo json_decode($error);  
             
     }else       {
         //esto lo que retorna es un json  que dice que hay un error al tratar de obtener todos lo datos
@@ -152,4 +152,5 @@
                 echo json_encode($error);
                 }
     
+
 ?>
