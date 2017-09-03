@@ -16,7 +16,8 @@
                 Procesando pedido...
             <p>  
         </strong>
-        
+        <p> ID Factura: <input type="text" name="facturaid" size="45"  placeholder="8888" />
+        </p>
         <p> <table width="50%" border="0" align="letf">
              <thead>
                 <tr>
@@ -39,10 +40,10 @@
                     
                 </tr>
                 <tr>
-                    <td><input type="text" name="codigo" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="cantidad" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="producto" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="codigo" size="10" class="centrado"/> </td>
+                    <td><output type="text" name="codigo" size="10" class="centrado"/> </td>
+                    <td><output type="text" name="cantidad" size="10" class="centrado"/> </td>
+                    <td><output type="text" name="producto" size="10" class="centrado"/> </td>
+                    <td><output type="text" name="codigo" size="10" class="centrado"/> </td>
                     <td> </td>                    
                 </tr> 
                            
@@ -50,19 +51,17 @@
         <p>&nbsp;</p>    
         <br>
         </p>
-        <p> Total Venta: <input type="text" name="ventatotal" size="45" required/>
+        <p> Total Venta: <output type="text" name="ventatotal" size="45" />
         </p>
-        <p> Cancela con: <input type="text" name="ventaparacon" size="45" required />
+        <p> Cancela con: <output type="text" name="ventaparacon" size="45"  />
         </p>
-        <p> Cambio: <input type="text" name="ventavuelo" size="45" required />
+        <p> Cambio: <output type="text" name="ventavuelo" size="45"  />
         </p>
-        <p> ID Factura: <input type="text" name="facturaid" size="45" required />
+        <p> Cliente: <output type="text" name="cliente" size="45" />
         </p>
-        <p> Cliente: <input type="text" name="cliente" size="45" required />
+        <p> Zona: <output type="text" name="zonoid" size="45"  />
         </p>
-        <p> Zona: <input type="text" name="zonoid" size="45" required />
-        </p>
-        <input name="create" type="submit" value="Procesar">
+        <input name="procesar" type="submit" value="Procesar">
         
         <p> <a href="javascript:window.history.go(-1);">Regresar</a> </p>
         <?php

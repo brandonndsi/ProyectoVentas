@@ -16,21 +16,21 @@
                 Formulario para insertar el cliente a la base de datos.
             <p>  
         </strong>
-        <p> ID: <input type="text" name="cliented" size="45"/>
+        <p> ID: <input type="text" name="cliented" size="45" placeholder="8888"/>
         </p>         
-        <p> Nombre: <input type="text" name="nombre" size="45" required/>
+        <p> Nombre: <input type="text" name="nombre" size="45" required placeholder="Pedro"/>
         </p>
-        <p> Primer Apellido: <input type="text" name="apellido1" size="45" required/>
+        <p> Primer Apellido: <input type="text" name="apellido1" size="45" required placeholder="Rojas"/>
         </p>
-        <p> Segundo Apellido: <input type="text" name="apellido2" size="45" />
+        <p> Segundo Apellido: <input type="text" name="apellido2" size="45" placeholder="Rojas"/>
         </p>
-        <p> Numero de Telefono: <input type="text" name="telefono" size="45" required />
+        <p> Numero de Telefono: <input type="text" name="telefono" size="45" required placeholder="Sin guiones ni espacios" />
         </p>
-        <p> Corrreo Electronico: <input type="text" name="correo" size="45" required />
+        <p> Corrreo Electronico: <input type="email" name="correo" size="45" required placeholder="PredrpRojas@express.com"/>
         </p>
-        <p> ID Direccion: <input type="text" name="zonaid" size="45" required/>
+        <p> ID Direccion: <input type="text" name="zonaid" size="45" required placeholder="autoincrementado"/>
         </p>
-        <p> Direccion Exacta: <input type="text" name="zonanombre" size="45" required/>
+        <p> Direccion Exacta: <input type="text" name="zonanombre" size="45" required placeholder="Distrito, barrio, mas señas"/>
         </p>
         <br>
         <input name="create" type="submit" value="Registrar">

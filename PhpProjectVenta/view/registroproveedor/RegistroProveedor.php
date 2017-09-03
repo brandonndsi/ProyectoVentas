@@ -15,21 +15,21 @@
                 Formulario para insertar el Proveedor a la base de datos.
             <p>  
         </strong>
-        <p> ID: <input type="text" name="proveedorid" size="45"/>
+        <p> ID: <input type="text" name="proveedorid" size="45" placeholder="8888"/>
         </p>         
-        <p> Nombre: <input type="text" name="personaNombre" size="45" required/>
+        <p> Nombre: <input type="text" name="personaNombre" size="45" required placeholder="Pedro"/>
         </p>
-        <p> Primer Apellido: <input type="text" name="personaApellido1" size="45" required/>
+        <p> Primer Apellido: <input type="text" name="personaApellido1" size="45" required placeholder="Rojas"/>
         </p>
-        <p> Segundo Apellido: <input type="text" name="personaApellido2" size="45" />
+        <p> Segundo Apellido: <input type="text" name="personaApellido2" size="45" placeholder="Rojas"/>
         </p>
-        <p> Numero de Telefono: <input type="text" name="personaTelefono" size="45" required />
+        <p> Numero de Telefono: <input type="text" name="personaTelefono" size="45" required placeholder="sin espacios ni guiones" />
         </p>
-        <p> Corrreo Electronico: <input type="text" name="correo" size="45" required />
+        <p> Corrreo Electronico: <input type="text" name="correo" size="45" required placeholder="PedroRojas@espress.com" />
         </p>
-        <p> Direccion Exacta: <input type="text" name="idzona" size="45" required/>
+        <p> Direccion Exacta: <input type="text" name="idzona" size="45" required placeholder="Distrito, barrio, mas señas"/>
         </p>
-        <p> Tipo Materia Prima: <input type="text" name="tipomateriaprima" size="45" required/>
+        <p> Tipo Materia Prima: <input type="text" name="tipomateriaprima" size="45" requiredplaceholder="Limpieza, Cocina, otro"/>
         </p>
         
         <br>

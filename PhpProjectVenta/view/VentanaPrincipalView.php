@@ -24,7 +24,7 @@
         </strong>
         <p><a  href="ventaview/VentaView.php" target="_parent">
                 <input name="RealizarVenta" type="button" value="Realizar Venta"></a>
-            <a  href="registromateriaprima/RegistroMatreiaPrima.php" target="_parent">
+            <a  href="registromateriaprima/RegistroMateriaPrima.php" target="_parent">
                 <input name="Registro Materia Prima" type="button" value="Registro Materia Prima"></a>
             <a href="tipoempleadoview/TipoEmpleadoView.php" target="_parent">
                 <input name="VerTipoEmpleado" type="button" value="Ver Tipo Empleado"></a> 

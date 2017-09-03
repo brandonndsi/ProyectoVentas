@@ -13,12 +13,15 @@
     <form name="form" action="../business/LoginAccion.php" method="Post">
         <strong>
             <p>
-               Iniciar Secion para continuar
+              ¡Bienvenido al sistema de express!
             <p>  
         </strong>
-        <p> ID: <input type="text" name="id" size="45" required/>
+        <p>
+              Por favor inicie Secion continuar..
+            <p>
+        <p> ID: <input type="text" name="email" size="45" required="Escriba su correo" placeholder="empleado@express.com"/>
         </p>         
-        <p> Contraseña: <input type="password" name="contrasena" size="45" required/>
+        <p> Contraseña: <input type="password" name="contrasena" size="45" required placeholder="password"/>
         </p>
         <br>
 

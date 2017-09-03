@@ -17,8 +17,9 @@
         </strong>
         <p> Codigo Producto: <input type="text" name="producto" size="20" required/> 
             Cantidad: <input type="text" name="producto" size="10" required/>
+            <input name="agregar" type="button" value="Agregar">
         </p>
-        <p><input name="create" type="submit" value="Agregar"></p>
+        
         <p> <table width="50%" border="0" align="letf">
              <thead>
                 <tr>
@@ -41,10 +42,10 @@
                     
                 </tr>
                 <tr>
-                    <td><input type="text" name="codigo" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="cantidad" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="producto" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="codigo" size="10" class="centrado"/> </td>
+                    <td><output type="text" name="codigo" size="10" class="centrado"/> </td>
+                    <td><output type="text" name="cantidad" size="10" class="centrado"/> </td>
+                    <td><output type="text" name="producto" size="10" class="centrado"/> </td>
+                    <td><output type="text" name="codigo" size="10" class="centrado"/> </td>
                     <td> </td>  
                      
                 </tr> 

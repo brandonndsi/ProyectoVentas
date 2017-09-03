@@ -18,13 +18,13 @@
         </strong>
         <p> ID: <input type="text" name="materiaprimaid" size="45"/>
         </p>
-        <p> Tipo Materia Prima: <input type="text" name="$tipomateriaprimacategoria" size="45" required/>
+        <p> Tipo Materia Prima: <input type="text" name="$tipomateriaprimacategoria" size="45" required placeholder="Cocina"/>
         </p>
-        <p> Nombre Materia Prima: <input type="text" name="materiaprimanombre" size="45" required/>
+        <p> Nombre Materia Prima: <input type="text" name="materiaprimanombre" size="45" required placeholder="Pan Hambuerguesa"/>
         </p>
-        <p> Precio: <input type="text" name="$materiaprimaprecio" size="45" required/>
+        <p> Precio: <input type="text" name="$materiaprimaprecio" size="45" required placeholder="15000"/>
         </p>
-        <p> Cantidad: <input type="text" name="apellido2" size="45" />
+        <p> Cantidad: <input type="text" name="apellido2" size="45" placeholder="En numeros"/>
         </p>
         <br>
         <input name="create" type="submit" value="Registrar">
@@ -40,5 +40,3 @@
     </footer>
 </body>
 </html>
-
-
