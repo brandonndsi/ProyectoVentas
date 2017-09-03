@@ -17,20 +17,21 @@
         </strong>
         <p> ID: <input type="text" name="proveedorid" size="45"/>
         </p>         
-        <p> Nombre: <input type="text" name="nombre" size="45" required/>
+        <p> Nombre: <input type="text" name="personaNombre" size="45" required/>
         </p>
-        <p> Primer Apellido: <input type="text" name="apellido1" size="45" required/>
+        <p> Primer Apellido: <input type="text" name="personaApellido1" size="45" required/>
         </p>
-        <p> Segundo Apellido: <input type="text" name="apellido2" size="45" />
+        <p> Segundo Apellido: <input type="text" name="personaApellido2" size="45" />
         </p>
-        <p> Numero de Telefono: <input type="text" name="telefono" size="45" required />
+        <p> Numero de Telefono: <input type="text" name="personaTelefono" size="45" required />
         </p>
         <p> Corrreo Electronico: <input type="text" name="correo" size="45" required />
         </p>
-        <p> Direccion Exacta: <input type="text" name="zona" size="45" required/>
+        <p> Direccion Exacta: <input type="text" name="idzona" size="45" required/>
         </p>
         <p> Tipo Materia Prima: <input type="text" name="tipomateriaprima" size="45" required/>
         </p>
+        
         <br>
         <input name="create" type="submit" value="Registrar">
         <input name="create" type="submit" value="Modificar">

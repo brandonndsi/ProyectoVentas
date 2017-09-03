@@ -40,9 +40,9 @@
                     
                 </tr>
                 <tr>
-                    <td><input type="text" name="codigo" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="producto" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="codigo" size="10" class="centrado"/> </td>
+                    <td><input type="text" name="productoid" size="10" class="centrado"/> </td>
+                    <td><input type="text" name="productonombre" size="10" class="centrado"/> </td>
+                    <td><input type="text" name="productoprecio" size="10" class="centrado"/> </td>
                     <th class="bot"> <input type="submit" name="del" id="del" value="Agregar"></th>
                 </tr> 
            

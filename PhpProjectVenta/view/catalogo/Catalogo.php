@@ -41,9 +41,6 @@
                     <td> </td>  
                 </tr>
                 <tr>
-                    <td><input type="text" name="codigo" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="producto" size="10" class="centrado"/> </td>
-                    <td><input type="text" name="codigo" size="10" class="centrado"/> </td>
                     
                 </tr> 
            

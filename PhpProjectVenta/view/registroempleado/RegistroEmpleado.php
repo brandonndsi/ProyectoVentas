@@ -17,36 +17,40 @@
 
         </strong>
 
-        <p> ID: <input type="text" name="id" size="45"/>
+        <p> ID: <input type="text" name="empleadoid" size="45"/>
         </p>         
-        <p> Nombre: <input type="text" name="nombre" size="45" required/>
+        <p> Nombre: <input type="text" name="personaNombre" size="45" required/>
         </p>
-        <p> Primer Apellido: <input type="text" name="apellido1" size="45" required/>
+        <p> Primer Apellido: <input type="text" name="personaApellido1" size="45" required/>
         </p>
-        <p> Segundo Apellido: <input type="text" name="apellido2" size="45" />
+        <p> Segundo Apellido: <input type="text" name="personaApellido2" size="45" />
         </p>
-        <p> Numero Cedula: <input type="text" name="cedula" size="45"/>
+        <p> Numero Cedula: <input type="text" name="empleadocedula" size="45"/>
         </p>
         <p> Tipo Empleado: <input type="text" name="tipoempleado" size="45" required/>
         </p>
-        <p> Contraseña de Sistema: <input type="text" name="contrasena" size="45" required/>
+        <p> Contraseña de Sistema: <input type="text" name="empleadocontrasenia" size="45" required/>
         </p>
-        <p> Edad: <input type="text" name="edad" size="45" required />
+        <p> Edad: <input type="text" name="empleadoedad" size="45" required />
         </p>
-        <p> Numero de Telefono: <input type="text" name="telefono" size="45" required />
+        <p> Numero de Telefono: <input type="text" name="personaTelefono" size="45" required />
         </p>
         <p> Corrreo Electronico: <input type="text" name="correo" size="45" required />
         </p>
         <p>Sexo: <input type="radio" name="sexo" value="hombre" checked="checked" /> Hombre
-        <input type="radio" name="sexo" value="mujer" /> Mujer
+        <input type="radio" name="empleadosexo" value="mujer" /> Mujer
         </p>
-        <p> Estado civil: <input type="text" name="estadocivil" size="45"/>
+        <p> Estado civil: <input type="text" name="empleadoestadocivil" size="45"/>
         </p>
-        <p> Numero de cuenta Bancaria: <input type="text" name="cuentabancaria" size="45" required/>
+        <p> Numero de cuenta Bancaria: <input type="text" name="empleadocuentabancaria" size="45" required/>
         </p>
-        <p> Direccion Exacta: <input type="text" name="zona" size="45" required/>
+        <p> ID Direccion: <input type="text" name="zonaid" size="45" required/>
         </p>
-        <p> Tipo de liciencia de conducir: <input type="text" name="licencia" size="45" required/>
+        <p> Direccion Exacta: <input type="text" name="zonanombre" size="45" required/>
+        </p>
+        <p> Precio Zona: <input type="text" name="zonaprecio" size="45" required/>
+        </p>
+        <p> Tipo de liciencia de conducir: <input type="text" name="empleadolicenciaid" size="45" required/>
         </p>
         <p> Vigencia Licencia: <input type="text" name="empleadolicenciavigencia" size="45" required/>
         </p>

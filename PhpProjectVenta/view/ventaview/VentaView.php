@@ -9,7 +9,7 @@
 
 <body >
     <p align="center">
-    <form name="form" action="../business/clienteAccion.php" method="Post">
+    <form name="form" action="../business/ventaAccion.php" method="Post">
         <strong>
             <p>
                 Tomando orden de Express..
@@ -45,14 +45,15 @@
                     <td><input type="text" name="cantidad" size="10" class="centrado"/> </td>
                     <td><input type="text" name="producto" size="10" class="centrado"/> </td>
                     <td><input type="text" name="codigo" size="10" class="centrado"/> </td>
-                    <td> </td>                    
+                    <td> </td>  
+                     
                 </tr> 
                            
         </table>
         <p>&nbsp;</p>    
         <br>
         </p>
-        <p><a href="facturaventa/FacturaVenta.php" onClick="window.open(this.href, 'width=450,height=300'); return false;">
+        <p><a href="facturaventa/FacturaVenta.php" target="_parent">
            <input type="button" value="Procesar Pedido"></a>
         </p>
         

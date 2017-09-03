@@ -12,7 +12,7 @@ class TipoEmpleados {
     private $tipoempleadodescripcion;
     private $tipoempleadohoraextra;
    
-    public function TIpoEmpleados($tipoEmpleado, $tipoempleadosalariobase, $tipoempleadodescripcion, $tipoempleadohoraextra) {
+    public function TipoEmpleados($tipoEmpleado, $tipoempleadosalariobase, $tipoempleadodescripcion, $tipoempleadohoraextra) {
         $this->tipoEmpleado = $tipoEmpleado;
         $this->tipoempleadosalariobase = $tipoempleadosalariobase;
         $this->tipoempleadodescripcion = $tipoempleadodescripcion;

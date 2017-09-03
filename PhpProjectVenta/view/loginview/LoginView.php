@@ -3,16 +3,14 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Pagina Principal del Rapidos Expres </title>
+    <title>Pagina de Login </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <?php
-    include "../business/clienteBusiness.php";
-    ?>
+    
 </head>
 
 <body >
     <p align="center">
-    <form name="form" action="../business/clienteAccion.php" method="Post">
+    <form name="form" action="../business/LoginAccion.php" method="Post">
         <strong>
             <p>
                Iniciar Secion para continuar
