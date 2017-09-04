@@ -112,3 +112,21 @@ SELECT * FROM tbproductos;
 
 END$$
 DELIMITER ;
+
+/*cliente retornado el ide de la persona*/
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `personaidsolo`(IN `id` VARCHAR(50))
+BEGIN
+SELECT personaid FROM tbpersonas WHERE personanombre=id;
+END$$
+DELIMITER ;
+
+/*modificaciones de lo de persona ingresar persona*/
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `personanueva`(IN `nombre` VARCHAR(50), IN `apellido1` VARCHAR(50), IN `apellido2` VARCHAR(50), IN `telefono` VARCHAR(50), IN `correo` VARCHAR(50), IN `zona` VARCHAR(50))
+    NO SQL
+BEGIN
+INSERT INTO `tbpersonas`(`personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`, `personacorreo`, `zonaid`) VALUES (nombre,apellido1,apellido2,telefono,correo,zona);
+END$$
+DELIMITER ;
+
