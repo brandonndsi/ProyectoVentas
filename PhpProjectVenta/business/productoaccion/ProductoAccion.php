@@ -27,12 +27,9 @@ include '../../domain/productos/Productos.php';
 
              $result= $productoBusiness->insertarProducto($producto);
              
-                 if ($result == 1) {
-                   return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
-                } else {
                 
-                 return   header("location: ../../view/registroproducto/RegistroProducto.php?error=dbError");
-                         }
+                   return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
+                
                   }
              
             }
