@@ -46,7 +46,6 @@ include '../../domain/productos/Productos.php';
          * Verifica si la accion es la e actualizar los datos del cliente
          */
     }else if(isset($_POST['actualizar'])){
-        
            if (isset($_POST['productoid']) && isset($_POST['productonombre']) 
            && isset($_POST['productoprecio'])) {
              
@@ -56,7 +55,7 @@ include '../../domain/productos/Productos.php';
         
         if (strlen($productoid) > 0 && strlen($productonombre) > 0 
                 && strlen($productoprecio) > 0) {
-            if (is_numeric($productoid)) {
+            if (!is_numeric($productoid)) {
                 
                 $producto = new Productos($productoid, $productonombre, $productoprecio);
                 
@@ -66,16 +65,12 @@ include '../../domain/productos/Productos.php';
 
              $result= $productoBusiness->modificarProducto($producto);
             
-              if ($result == 1) {
-                   return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
-                } else {
-                
-                 return   header("location: ../../view/registroproducto/RegistroProducto.php?error=dbError");
+                 return   header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
                          }
              
             }
             
-            }
+            
             
     }else       {
         // presenta el error al actualizar los datos algun dato esta mal o esta basio.
@@ -97,7 +92,7 @@ include '../../domain/productos/Productos.php';
            
             $result= $ProductoBusiness->eliminarProducto($producto);
             
-            echo json_encode($result);
+             return   header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
         
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio

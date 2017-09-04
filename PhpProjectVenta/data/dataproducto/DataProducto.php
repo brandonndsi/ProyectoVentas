@@ -33,7 +33,7 @@ class DataProducto {
 
         $this->conexion->crearConexion()->set_charset('utf8');
 
-        $eliminarmateriaprima = $this->conexion->crearConexion()->query("CALL eliminarproducto('$productoid')");
+        $eliminarmateriaprima = $this->conexion->crearConexion()->query("CALL productoeliminar('$productoid')");
 
         $result = mysql_query($eliminarmateriaprima);
         if (!$result) {
@@ -49,7 +49,7 @@ class DataProducto {
         $array = array();
         $this->conexion->crearConexion()->set_charset('utf8');
 
-        $buscarproducto = $this->conexion->crearConexion()->query("CALL buscarproducto('$productoid')");
+        $buscarproducto = $this->conexion->crearConexion()->query("CALL productobuscar('$productoid')");
 
         while ($resultado = $buscarproducto->fetch_assoc()) {
             array_push($array, $resultado);
@@ -81,7 +81,7 @@ class DataProducto {
         $array = array();
         $this->conexion->crearConexion()->set_charset('utf8');
 
-        $mostrarproductos = $this->conexion->crearConexion()->query("CALL mostrarproductos()");
+        $mostrarproductos = $this->conexion->crearConexion()->query("CALL productosmostrar()");
 
         while ($resultado = $mostrarproductos->fetch_assoc()) {
             array_push($array, $resultado);
@@ -91,7 +91,7 @@ class DataProducto {
 
 }
 /*$da=new DataProducto();
-$pro=new Productos('p45','fffff', '45555');
-$s=$da->modificarProducto($pro);
+//$pro=new Productos('P0','Rico', '45555');
+$s=$da->eliminarProducto('p23');
 print_r($s);*/
 ?>

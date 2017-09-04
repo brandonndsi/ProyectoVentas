@@ -61,7 +61,7 @@
             $allBusiness = $productoBusiness->mostrarProductos();
                 echo '<h2>Formulario de carga de datos actualizar y eliminar</h2>';
             foreach ($allBusiness as $current) {
-                echo '<form method="post" action="business/productoaccion/ProductoAccion.php" align="center" >';
+                echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >';
                 echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
                 echo '<tr>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
@@ -86,7 +86,7 @@
                 if(isset($productoid)){
                 $buscarBusiness=$productoBusiness->buscarProducto($productoid);
                 foreach ($buscarBusiness as $current) {
-                echo '<form method="post" action="business/productoaccion/ProductoAccion.php" align="center" >';
+                echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >';
                 echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
                 echo '<tr>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';

@@ -44,7 +44,7 @@ class ProductoBusiness {
     
 }
 /*$da=new productoBusiness();
-$pro=new Productos('p9','fffff', '45555');
-$s=$da->insertarProducto($pro);
+//$pro=new Productos('P0','fffff', '45555');
+$s=$da->eliminarProducto('P0');
 print_r($s);*/
 ?>
