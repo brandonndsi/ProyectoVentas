@@ -5,9 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$accion = $_POST['accion'];//busca la accion a realizar 
- 
-    if($accion=="nuevo"){
+//$accion = $_POST['accion'];//busca la accion a realizar 
+  include '../../domain/materiaprimas/MateriaPrimas.php';
+    if(isset($_POST["nuevo"])){
 
     if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimaid']) 
            && isset($_POST['materiaprimanombre']) && isset($_POST['tipomateriaprimaid'])) {
@@ -29,8 +29,13 @@ $accion = $_POST['accion'];//busca la accion a realizar
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
 
              $result= $MateriaPrimaBusiness->insertarMateriaPrima($materiaprimas);
-
-             return $result;     }
+            if ($result == 1) {
+                   return header("location: ../../view/registromateriaprima/RegistroMateriaPrima.php?success=updated");
+                } else {
+                
+                 return   header("location: ../../view/registromateriaprima/RegistroMateriaPrima.php?error=dbError");
+                         }
+            }
              
             }
              
@@ -42,7 +47,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
         /*
          * Verifica si la accion es la e actualizar los datos del cliente
          */
-    }else if($accion=="actualizar"){
+    }else if(isset($_POST["actualizar"])){
         
          if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimaid']) 
            && isset($_POST['materiaprimanombre']) && isset($_POST['tipomateriaprimaid'])) {
@@ -64,7 +69,10 @@ $accion = $_POST['accion'];//busca la accion a realizar
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
 
              $result= $MateriaPrimaBusiness->modificarMateriaPrima($materiaprimas);
-            return $result;}
+             
+            return header("location: ../../view/registromateriaprima/RegistroMateriaPrima.php?success=updated");
+            
+            }
             
             }
             
@@ -76,7 +84,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
     /*
      * La accion de eliminar provando si es esta accion la que desea realizar
      */
-    }else if($accion=="eliminar"){
+    }else if(isset($_POST["eliminar"])){
         
     if(isset($_POST['materiaprimanombre'])){
         
@@ -88,7 +96,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
            
             $result= $MateriaPrimaBusiness->eliminarMateriaPrima($materias);
             
-            return $result;
+            return header("location: ../../view/registromateriaprima/RegistroMateriaPrima.php?success=updated");
         
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio
@@ -99,7 +107,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
     /*
      *  Esta consulta lo que debe devolver es el datos del cliente.por nombre   
       */
-    } else if($accion=="buscar"){
+    } else if(isset($_POST["buscar"])){
         
        if(isset($_POST['materiaprimanombre'])){
            $materias=$_POST['materiaprimanombre'];
@@ -123,7 +131,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
     /*
      *  Esta conslta lo que debe devolver es todos los datos de los clientes.   
       */
-    }else  if($accion=="todo"){
+    }else  if(isset($_POST["todo"])){
         
             
              include '../materiaprimabusiness/MateriaPrimaBusiness.php';

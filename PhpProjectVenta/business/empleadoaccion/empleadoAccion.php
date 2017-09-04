@@ -7,9 +7,9 @@
  * @author David Salas.
  */
 
-    $accion = $_POST['accion'];//busca la accion a realizar 
- 
-    if($accion=="nuevo"){
+    //$accion = $_POST['accion'];//busca la accion a realizar 
+    include '../../domain/empleados/Empleados.php';
+    if(isset($_POST["nuevo"])){
 
     if (isset($_POST['empleadoid']) && isset($_POST['personaid']) && isset($_POST['tipoempleado']) && 
             isset($_POST['empleadocedula']) && isset($_POST['empleadocontrasena'])
@@ -41,20 +41,26 @@
             $empleadoBusiness=new empleadoBusiness();
 
              $result= $empleadoBusiness->insertarEmpleado($empleado);
-
-             return $result;}
+                if ($result == 1) {
+                   return header("location: ../../view/registroempleado/RegistroEmpleado.php?success=updated");
+                } else {
+                
+                 return   header("location: ../../view/registroempleado/RegistroEmpleado.php?error=dbError");
+                         }
+             
+            }
              
             }
              
          }else  {
              // retorna un error al tratar de ingresar los datos del nuevo cliente
                $error="ErrorNuevo";
-               return $result;
+               return $error;
              } 
         /*
          * Verifica si la accion es la e actualizar los datos del cliente
          */
-    }else if($accion=="actualizar"){
+    }else if(isset($_POST["actualizar"])){
         
         if (isset($_POST['empleadoid']) && isset($_POST['personaid']) && isset($_POST['tipoempleado']) && 
             isset($_POST['empleadocedula']) && isset($_POST['empleadocontrasena'])
@@ -86,7 +92,10 @@
            
             $result= $empleadoBusiness->modificarEmpleado($empleado);
             
-            return $result;}
+            return header("location: ../../view/registroempleado/RegistroEmpleado.php?success=updated");
+            
+            
+            }
             
             }
             
@@ -98,7 +107,7 @@
     /*
      * La accion de eliminar provando si es esta accion la que desea realizar
      */
-    }else if($accion=="eliminar"){
+    }else if(isset($_POST["eliminar"])){
         
     if(isset($_POST['clientenombre'])){
         
@@ -109,7 +118,7 @@
            
             $result= $empleadoBusiness->eliminarEmpleado($empleado);
             
-            return $result;
+            return header("location: ../../view/registroempleado/RegistroEmpleado.php?success=updated");
         
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio
@@ -120,7 +129,7 @@
     /*
      *  Esta consulta lo que debe devolver es el datos del cliente.por nombre   
       */
-    } else if($accion=="buscar"){
+    } else if(isset($_POST["buscar"])){
         
        if(isset($_POST['clientenombre'])){
            $empleadonombre=$_POST['clientenombre'];
@@ -144,7 +153,7 @@
     /*
      *  Esta conslta lo que debe devolver es todos los datos de los clientes.   
       */
-    }else  if($accion=="todo"){
+    }else  if(isset($_POST["todo"])){
         
             
            include '../empleadobusiness/empleadoBusiness.php';

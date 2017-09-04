@@ -5,9 +5,9 @@
  * que se haga cargo de los datos y el metodo a efectuar.
  * @author David Salas.
  */
-$accion = $_POST['accion'];//busca la accion a realizar 
- 
-    if($accion=="nuevo"){
+//$accion = $_POST['accion'];//busca la accion a realizar 
+include '../../view/tipoempleadoview/TipoEmpleadoView.php';
+    if(isset($_POST["nuevo"])){
 
     if (isset($_POST['tipoempleado']) && isset($_POST['tipoempleadodescripcion']) 
            && isset($_POST['tipoempleadosalariobase']) && isset($_POST['tipoempleadohoraextra'])) {
@@ -28,21 +28,29 @@ $accion = $_POST['accion'];//busca la accion a realizar
 
             $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
 
-             $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoNuevo($tipoEmpleador);
+             $result= $tipoEmpleadoBusiness->insertarTipoEmpleado($tipoEmpleador);
 
-             echo json_encode($result);     }
+             if ($result == 1) {
+                   return header("location: ../../view/tipoempleadoview/TipoEmpleadoView.php?success=updated");
+                } else {
+                
+                 return   header("location: ../../view/tipoempleadoview/TipoEmpleadoView.php?error=dbError");
+                         }
+                  }
+             
+            
              
             }
              
          }else  {
              // retorna un error al tratar de ingresar los datos del nuevo cliente
                $error="ErrorNuevo";
-               echo json_encode($error);
+               return $error;
              } 
         /*
          * Verifica si la accion es la e actualizar los datos del cliente
          */
-    }else if($accion=="actualizar"){
+    }else if(isset($_POST["actualizar"])){
         
         if (isset($_POST['tipoempleado']) && isset($_POST['tipoempleadodescripcion']) 
            && isset($_POST['tipoempleadosalariobase']) && isset($_POST['tipoempleadohoraextra'])) {
@@ -63,21 +71,23 @@ $accion = $_POST['accion'];//busca la accion a realizar
            
            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
            
-            $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoActualizar($tipoEmpleador);
+            $result= $tipoEmpleadoBusiness->modificarTipoEmpleado($tipoEmpleador);
             
-            echo json_encode($result);}
+            return   header("location: ../../view/tipoempleadoview/TipoEmpleadoView.php?success=updated");
+            
+            }
             
             }
             
     }else       {
         // presenta el error al actualizar los datos algun dato esta mal o esta basio.
                     $error="ErrorActualizar";
-                   echo json_encode($error);
+                   return $error;
                 } 
     /*
      * La accion de eliminar provando si es esta accion la que desea realizar
      */
-    }else if($accion=="eliminar"){
+    }else if(isset($_POST["eliminar"])){
         
     if(isset($_POST['clientenombre'])){
         
@@ -86,20 +96,20 @@ $accion = $_POST['accion'];//busca la accion a realizar
            
            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
            
-            $result= $tipoEmpleadoBusiness->getTBtipoEmpleadoEliminar($empleado);
+            $result= $tipoEmpleadoBusiness->eliminarTipoEmpleado($empleado);
             
-            echo json_encode($result);
+            return   header("location: ../../view/tipoempleadoview/TipoEmpleadoView.php?success=updated");
         
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio
          $error="ErrorEliminar";
-        echo json_encode($error);
+        return $error;
     }
     
     /*
      *  Esta consulta lo que debe devolver es el datos del cliente.por nombre   
       */
-    } else if($accion=="buscar"){
+    } else if(isset($_POST["buscar"])){
         
        if(isset($_POST['tipoempleado'])){
            $empleadonombre=$_POST['tipoempleado'];
@@ -108,36 +118,36 @@ $accion = $_POST['accion'];//busca la accion a realizar
            
            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
            
-            $result= $tipoEmpleadoBusiness->buscartipoempleado($empleadonombre);
+            $result= $tipoEmpleadoBusiness->buscarTipoEmpleado($empleadonombre);
             
-            echo json_encode($result); 
+            return $result; 
     
         
     }else{
         //lo que hace es retornar el error en un json el cual informa que algun
         // dato de busqueda no esta bieno no se encontro nada
          $error="ErrorBuscar";
-        echo json_encode($error);
+        return $error;
     }
     
     /*
      *  Esta conslta lo que debe devolver es todos los datos de los clientes.   
       */
-    }else  if($accion=="todo"){
+    }else  if(isset($_POST["todo"])){
         
             
            include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
            
            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
            
-            $result= $tipoEmpleadoBusiness->getTBTipoEmpleadoTodo();
+            $result= $tipoEmpleadoBusiness->mostrarTipoEmpleado();
             
-            echo json_encode($result);  
+            return $result;  
             
     }else{
         //esto lo que retorna es un json  que dice que hay un error al tratar de obtener todos lo datos
                 $error="ErrorTodo";
-                echo json_encode($error);
+                return $error;
                 }
     
 ?>

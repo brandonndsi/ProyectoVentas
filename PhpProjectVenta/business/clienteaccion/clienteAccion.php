@@ -9,7 +9,7 @@
     
     //$accion = $_POST['accion'];//busca la accion a realizar 
     include '../../domain/personas/Personas.php';
-    if($accion=="nuevo"){
+    if(isset($_POST["nuevo"])){
        
        if (isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
                && isset($_POST['clientecorreo'])
@@ -54,7 +54,7 @@
         /*
          * Verifica si la accion es la e actualizar los datos del cliente
          */
-    }else if($accion=="actualizar"){
+    }else if(isset($_POST["actualizar"])){
         
       if (isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
             && isset($_POST['clientecorreo']) && isset($_POST['clientetelefono'])
@@ -94,7 +94,7 @@
     /*
      * La accion de eliminar provando si es esta accion la que desea realizar
      */
-    }else if($accion=="eliminar"){
+    }else if(isset($_POST["eliminar"])){
         
     if(isset($_POST['clientetelefono'])){
         
@@ -116,7 +116,7 @@
     /*
      *  Esta consulta lo que debe devolver es el datos del cliente.por nombre   
       */
-    } else if($accion=="buscar"){
+    } else if(isset($_POST["buscar"])){
         
        if(isset($_POST['clientetelefono'])){
            $clienteid=$_POST['clientetelefono'];
@@ -141,7 +141,7 @@
     /*
      *  Esta conslta lo que debe devolver es todos los datos de los clientes.   
       */
-    }else  if($accion=="todo"){
+    }else  if(isset($_POST["todo"])){
         
             
            include '../clientebusiness/clienteBusiness.php';

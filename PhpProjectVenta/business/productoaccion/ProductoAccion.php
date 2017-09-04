@@ -40,7 +40,7 @@ include '../../domain/productos/Productos.php';
          }else  {
              // retorna un error al tratar de ingresar los datos del nuevo cliente
                $error="ErrorNuevo";
-               echo json_encode($error);
+               return $error;
              } 
         /*
          * Verifica si la accion es la e actualizar los datos del cliente
@@ -75,7 +75,7 @@ include '../../domain/productos/Productos.php';
     }else       {
         // presenta el error al actualizar los datos algun dato esta mal o esta basio.
                     $error="ErrorActualizar";
-                   
+                   return $error;
                 } 
     /*
      * La accion de eliminar provando si es esta accion la que desea realizar
@@ -97,7 +97,7 @@ include '../../domain/productos/Productos.php';
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio
          $error="ErrorEliminar";
-        echo json_encode($error);
+        return $error;
     }
     
     /*
@@ -115,14 +115,14 @@ include '../../domain/productos/Productos.php';
            
             $result= $ProductoBusiness->buscarProducto($producto);
             
-            echo json_encode($result); 
+            return $result; 
     
         
     }else{
         //lo que hace es retornar el error en un json el cual informa que algun
         // dato de busqueda no esta bieno no se encontro nada
          $error="ErrorBuscar";
-        echo json_encode($error);
+        return $error;
     }
     
     /*
@@ -137,12 +137,12 @@ include '../../domain/productos/Productos.php';
            
             $result= $ProductoBusiness->mostrarProductos();
             
-            echo json_encode($result);  
+            return $result;  
             
     }else{
         //esto lo que retorna es un json  que dice que hay un error al tratar de obtener todos lo datos
                 $error="ErrorTodo";
-                echo json_encode($error);
+                return $error;
                 }
     
 ?>
