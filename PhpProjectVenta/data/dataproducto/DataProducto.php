@@ -11,87 +11,95 @@ class DataProducto {
     }
 
     //insertar
-    function insertarProducto($producto) {
+    public function insertarProducto($producto) {
 
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+            $insertarproducto = $this->conexion->crearConexion()->query("CALL productonuevo(
+                '" . $producto->getProductoid() . " ',
+		'" . $producto->getProductonombre() . "', 
+		'" . $producto->getProductoprecio() . "')");
 
-        $insertarproducto = $this->conexion->crearConexion()->query("CALL productonuevo(
-                '".$producto->getProductoid()." ',
-		'".$producto->getProductonombre()."', 
-		'".$producto->getProductoprecio()."')");
+            $result = mysql_query($insertarproducto);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
+        }
+    }
 
-       /* if (!$result) {
-            return false;
-        } else {
-            return $result;
-        }*/
-        return $insertarproducto;
+    //modificar
+    public function modificarProducto($producto) {
+
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+
+            $modificarproducto = $this->conexion->crearConexion()->query("CALL productoactualizar(
+                '" . $producto->getProductoid() . " ',
+		'" . $producto->getProductonombre() . "', 
+		'" . $producto->getProductoprecio() . "')");
+
+            $result = mysql_query($modificarproducto);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
+        }
     }
 
     //eliminar
-    function eliminarProducto($productoid) {
+    public function eliminarProducto($productoid) {
 
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-        $eliminarmateriaprima = $this->conexion->crearConexion()->query("CALL productoeliminar('$productoid')");
+            $eliminarmateriaprima = $this->conexion->crearConexion()->query("CALL productoeliminar('$productoid')");
 
-        $result = mysql_query($eliminarmateriaprima);
-        if (!$result) {
-            return false;
-        } else {
-            return $result;
+            $result = mysql_query($eliminarmateriaprima);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
     //buscar
-    function buscarProducto($productoid) {
+    public function buscarProducto($productoid) {
 
-        $array = array();
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-        $buscarproducto = $this->conexion->crearConexion()->query("CALL productobuscar('$productoid')");
+            $array = array();
 
-        while ($resultado = $buscarproducto->fetch_assoc()) {
-            array_push($array, $resultado);
+            $buscarproducto = $this->conexion->crearConexion()->query("CALL productobuscar('$productoid')");
+
+            $this->conexion->cerrarConexion();
+            while ($resultado = $buscarproducto->fetch_assoc()) {
+                array_push($array, $resultado);
+            }
+            if (!$array) {
+                return false;
+            } else {
+                return $array;
+            }
         }
-        return $array;
-    }
-
-    //modificar
-    function modificarProducto($producto) {
-
-        $this->conexion->crearConexion()->set_charset('utf8');
-
-        $modificarproducto = $this->conexion->crearConexion()->query("CALL productoactualizar(
-                '".$producto->getProductoid()." ',
-		'".$producto->getProductonombre()."', 
-		'".$producto->getProductoprecio()."')");
-
-        $result = mysql_query($modificarproducto);
-        return $result;
-        /*if (!$result) {
-            return false;
-        } else {
-            return $result;
-        }*/
     }
 
     //mostrar productos
     function mostrarProductos() {
-        $array = array();
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-        $mostrarproductos = $this->conexion->crearConexion()->query("CALL productosmostrar()");
+            $array = array();
 
-        while ($resultado = $mostrarproductos->fetch_assoc()) {
-            array_push($array, $resultado);
+            $mostrarproductos = $this->conexion->crearConexion()->query("CALL productosmostrar()");
+
+            $this->conexion->cerrarConexion();
+            while ($resultado = $mostrarproductos->fetch_assoc()) {
+                array_push($array, $resultado);
+            }
+            return $array;
         }
-        return $array;
     }
-
 }
-/*$da=new DataProducto();
-//$pro=new Productos('P0','Rico', '45555');
-$s=$da->eliminarProducto('p23');
-print_r($s);*/
-?>

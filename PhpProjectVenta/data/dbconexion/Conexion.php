@@ -23,5 +23,3 @@ class Conexion {
 	mysqli_close ($this->conexion);                        
     }
 }
-
-?>

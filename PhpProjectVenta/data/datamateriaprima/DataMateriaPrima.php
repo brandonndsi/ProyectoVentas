@@ -5,90 +5,106 @@ class DataMateriaPrima {
     private $conexion;
 
     function DataMateriaPrima() {
-        include_once '../dbconexion/Conexcion.php';
+        include_once '../../data/dbconexion/Conexcion.php';
+        include_once '../../domain/materiaprimas/MateriaPrimas.php';
         $this->conexion = new Conexion();
     }
 
     //insertar
-    function insertarMateriaPrima($materiaprima) {
+    public function insertarMateriaPrima($materiaprima) {
 
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-        $insertarmateriaprima = $this->conexion->crearConexion()->query("INSERT INTO tbmateriasprimas(materiaprimaid,
-            materiaprimanombre, materiaprimaprecio, tipomateriaprimaid) VALUES (
+            $insertarmateriaprima = $this->conexion->crearConexion()->query("INSERT INTO tbmateriasprimas(materiaprimaid,
+            materiaprimanombre, materiaprimaprecio, tipomateriaprimaid, materiaprimaestado) VALUES (
                 '" . $materiaprima->get_materiaprimaid() . "',
 		'" . $materiaprima->get_materiaprimanombre() . "',
 		'" . $materiaprima->get_materiaprimaprecio() . "',  
-		'" . $materiaprima->get_tipomateriaprimaid() . "')");
+                '" . $materiaprima->get_tipomateriaprimaid() . "',      
+		'" . $materiaprima->materiaprimaestado() . "')");
 
-        $result = mysql_query($insertarmateriaprima);
-        if (!$result) {
-            return false;
-        } else {
-            return $result;
+            $result = mysql_query($insertarmateriaprima);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
+        }
+    }
+
+    //modificar
+    public function modificarMateriaPrima($materiaprima) {
+
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+
+            $modificarempleado = $this->conexion->crearConexion()->query("UPDATE tbmateriasprimas SET 
+		materiaprimaid='" . $materiaprima->get_materiaprimaid() . "',
+		materiaprimanombre='" . $materiaprima->get_materiaprimanombre() . "',
+                materiaprimaprecio='" . $materiaprima->get_materiaprimaprecio() . "',   
+                tipomateriaprimaid='" . $materiaprima->get_tipomateriaprimaid() . "', 
+                materiaprimaestado='" . $materiaprima->get_materiaprimaestado() . "',    
+		WHERE materiaprimaid =" . $materiaprima->get_materiaprimaid() . "");
+
+            $result = mysql_query($modificarempleado);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
     //eliminar
-    function eliminarMateriaPrima($materiaprimaid) {
+    public function eliminarMateriaPrima($materiaprimaid) {
 
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-        $eliminarmateriaprima = $this->conexion->crearConexion()->query("CALL eliminarmateriaprima('$materiaprimaid')");
+            $eliminarmateriaprima = $this->conexion->crearConexion()->query("CALL eliminarmateriaprima('$materiaprimaid')");
 
-        $result = mysql_query($eliminarmateriaprima);
-        if (!$result) {
-            return false;
-        } else {
-            return $result;
+            $result = mysql_query($eliminarmateriaprima);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
     //buscar
-    function buscarMateriaPrima($materiaprimaid) {
+    public function buscarMateriaPrima($materiaprimaid) {
 
-        $array = array();
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-        $buscarmateriaprima = $this->conexion->crearConexion()->query("CALL buscarmateriaprima('$materiaprimaid')");
+            $array = array();
 
-        while ($resultado = $buscarmateriaprima->fetch_assoc()) {
-            array_push($array, $resultado);
-        }
-        return $array;
-    }
+            $buscarmateriaprima = $this->conexion->crearConexion()->query("CALL buscarmateriaprima('$materiaprimaid')");
 
-    //modificar
-    function modificarMateriaPrima($materiaprima) {
-
-        $this->conexion->crearConexion()->set_charset('utf8');
-
-        $modificarempleado = $this->conexion->crearConexion()->query("UPDATE tbmateriasprimas SET 
-		materiaprimaid='" . $materiaprima->get_materiaprimaid() . "',
-		materiaprimanombre='" . $materiaprima->get_materiaprimanombre() . "',
-                materiaprimaprecio='" . $materiaprima->get_materiaprimaprecio() . "',   
-                tipomateriaprimaid='" . $materiaprima->get_tipomateriaprimaid() . "',     
-		WHERE materiaprimaid =" . $materiaprima->get_materiaprimaid() . "");
-
-        $result = mysql_query($modificarempleado);
-        if (!$result) {
-            return false;
-        } else {
-            return $result;
+            $this->conexion->cerrarConexion();
+            while ($resultado = $buscarmateriaprima->fetch_assoc()) {
+                array_push($array, $resultado);
+            }
+            return $array;
         }
     }
 
     //mostrar materias primas
-    function mostrarMateriaPrima(){
-        $array = array();
-        $this->conexion->crearConexion()->set_charset('utf8');
+    public function mostrarMateriaPrima() {
 
-        $mostrarmateriasprimas = $this->conexion->crearConexion()->query("CALL mostrarmateriasprimas");
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-        while ($resultado = $mostrarmateriasprimas->fetch_assoc()) {
-            array_push($array, $resultado);
+            $array = array();
+
+            $mostrarmateriasprimas = $this->conexion->crearConexion()->query("CALL mostrarmateriasprimas");
+
+            $this->conexion->cerrarConexion();
+            while ($resultado = $mostrarmateriasprimas->fetch_assoc()) {
+                array_push($array, $resultado);
+            }
+            return $array;
         }
-        return $array;
     }
 
 }

@@ -13,85 +13,98 @@ class DataZona {
     //insertar
     function insertarZona($zona) {
 
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-        $insertarproducto = $this->conexion->crearConexion()->query("CALL productonuevo(
-                '".$zona->getProductoid()." ',
-		'".$zona->getProductonombre()."', 
-		'".$zona->getProductoprecio()."')");
+            $insertarzona = $this->conexion->crearConexion()->query("CALL insertarzona(
+                '" . $zona->getZonaid() . " ',
+		'" . $zona->getZonanombre() . "', 
+		'" . $zona->getZonaprecio() . "')");
 
-       /* if (!$result) {
-            return false;
-        } else {
-            return $result;
-        }*/
-        return $insertarproducto;
+            $result = mysql_query($insertarzona);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
+        }
     }
 
+    //modificar
+    function modificarZona($zona) {
+
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+
+            $modificarzona = $this->conexion->crearConexion()->query("CALL modificarzona(
+                '" . $zona->getZonaid() . " ',
+		'" . $zona->getZonanombre() . "', 
+		'" . $zona->getZonaprecio() . "')");
+
+            $result = mysql_query($modificarzona);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
+        }
+    }
+    
     //eliminar
     function eliminarZona($zonaid) {
 
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+            $eliminarzona = $this->conexion->crearConexion()->query("CALL eliminarzona('$zonaid')");
 
-        $eliminarmateriaprima = $this->conexion->crearConexion()->query("CALL productoeliminar('$zonaid')");
-
-        $result = mysql_query($eliminarmateriaprima);
-        if (!$result) {
-            return false;
-        } else {
-            return $result;
+            $result = mysql_query($eliminarzona);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
     //buscar
     function buscarZona($zonaid) {
 
-        $array = array();
-        $this->conexion->crearConexion()->set_charset('utf8');
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-        $buscarproducto = $this->conexion->crearConexion()->query("CALL productobuscar('$zonaid')");
+            $array = array();
 
-        while ($resultado = $buscarproducto->fetch_assoc()) {
-            array_push($array, $resultado);
+            $buscarzona = $this->conexion->crearConexion()->query("CALL buscarzona('$zonaid')");
+
+            $this->conexion->cerrarConexion();
+            while ($resultado = $buscarzona->fetch_assoc()) {
+                array_push($array, $resultado);
+            }
+            if (!$array) {
+                return false;
+            } else {
+                return $array;
+            }
         }
-        return $array;
     }
 
-    //modificar
-    function modificarZona($zona) {
-
-        $this->conexion->crearConexion()->set_charset('utf8');
-
-        $modificarproducto = $this->conexion->crearConexion()->query("CALL productoactualizar(
-                '".$zona->getProductoid()." ',
-		'".$zona->getProductonombre()."', 
-		'".$zona->getProductoprecio()."')");
-
-        $result = mysql_query($modificarproducto);
-        return $result;
-        /*if (!$result) {
-            return false;
-        } else {
-            return $result;
-        }*/
-    }
-
-    //mostrar productos
+    //mostrar zonas
     function mostrarZona() {
-        $array = array();
-        $this->conexion->crearConexion()->set_charset('utf8');
 
-        $mostrarproductos = $this->conexion->crearConexion()->query("CALL productosmostrar()");
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-        while ($resultado = $mostrarproductos->fetch_assoc()) {
-            array_push($array, $resultado);
+            $array = array();
+
+            $mostrarzonas = $this->conexion->crearConexion()->query("CALL mostrarzonas()");
+
+            $this->conexion->cerrarConexion();
+            while ($resultado = $mostrarzonas->fetch_assoc()) {
+                array_push($array, $resultado);
+            }
+            if (!$array) {
+                return false;
+            } else {
+                return $array;
+            }
         }
-        return $array;
     }
-
 }
-/*$da=new DataProducto();
-//$pro=new Productos('P0','Rico', '45555');
-$s=$da->eliminarProducto('p23');
-print_r($s);*/
-?>
