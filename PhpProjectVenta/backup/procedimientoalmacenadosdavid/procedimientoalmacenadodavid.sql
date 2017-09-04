@@ -71,7 +71,7 @@ WHERE e.clienteid=id;
 
 END$$
 DELIMITER ;
-/*fin de la busqueda por id de cliente*/
+/*actualizar el producto*/
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `productoactualizar`(IN `nuevoid` VARCHAR(50), IN `id` VARCHAR(50), IN `nombre` VARCHAR(50), IN `precio` VARCHAR(50))
@@ -82,7 +82,7 @@ UPDATE `tbproductos` SET `productoid`=nuevoid,`productonombre`=nombre,`productop
 END$$
 DELIMITER ;
 
-
+/*ingresa nuevo producto*/
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `productonuevo`(IN `id` VARCHAR(50), IN `nombre` VARCHAR(50), IN `precio` VARCHAR(50))
 BEGIN
@@ -91,7 +91,7 @@ INSERT INTO `tbproductos`(`productoid`, `productonombre`, `productoprecio`) VALU
 END$$
 DELIMITER ;
 
-
+/*buscar producto por id*/
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarproducto`(IN `id` VARCHAR(50))
     NO SQL
@@ -102,3 +102,12 @@ SELECT * FROM tbproductos WHERE productoid=id;
 END$$
 DELIMITER ;
 
+
+/*para mostrar todos los productos*/
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrarproductos`()
+BEGIN
+SELECT * FROM tbproductos;
+
+END$$
+DELIMITER ;
