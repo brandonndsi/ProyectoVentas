@@ -99,7 +99,7 @@
         }
     }
             ?>
-        <p> <a href="../../view/registroproducto/RegistroProducto.php">Regresar</a> </p>
+        <p> <a href="../../index.php">Regresar</a> </p>
        
            <tr>
                 <td></td>
