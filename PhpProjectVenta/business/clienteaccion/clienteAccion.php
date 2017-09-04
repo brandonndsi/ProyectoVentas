@@ -7,37 +7,42 @@
  * @author David Salas.
  */
     
-    $accion = $_POST['accion'];//busca la accion a realizar 
- 
+    //$accion = $_POST['accion'];//busca la accion a realizar 
+    include '../../domain/personas/Personas.php';
     if($accion=="nuevo"){
        
        if (isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
-            && isset($_POST['clienteid']) && isset($_POST['clientetelefono']) && isset($_POST['personaid']) 
-             && isset($_POST['direccionexacta']) && isset($_POST['idzona'])) {
+               && isset($_POST['clientecorreo'])
+            && isset($_POST['clientetelefono']) 
+             && isset($_POST['direccionexacta']) && isset($_POST['zonaid'])) {
           
-        $nombreCliente =$_POST('clientenombre');
-        $apellido1CLiente =$_POST('clienteapellido1');
-        $apellido2Cliente = $_POST('clienteapellido2');
-        $Clienteid = $_POST('clienteid');
-        $telefonoCliente = $_POST('clientetelefono');
-        $idZona = $_POST('idzona');
-        $personaid = $_POST('personaid');
+        $clientenombre =$_POST('clientenombre');
+        $clienteapellido1 =$_POST('clienteapellido1');
+        $clienteapellido2 = $_POST('clienteapellido2');
+        $clienteTelefono = $_POST('clientetelefono');
+        $zonaid = $_POST('zonaid');
+        $clientecorreo = $_POST('clientecorreo');
         $direccionexacta = $_POST('direccionexacta');
 
-       if (strlen($nombreCliente) > 0 && strlen($apellido1CLiente) > 0 && strlen($apellido2Cliente) > 0 && 
-            strlen($Clienteid) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 
-             && strlen($personaid) > 0 && strlen($direccionexacta) > 0 ) {
+       if (strlen($clientenombre) > 0 && strlen($clienteapellido1) > 0 && strlen($clienteapellido2) > 0 && 
+            strlen($clientecorreo) > 0 && strlen($clienteTelefono) > 0 
+            && strlen($zonaid) > 0 && strlen($direccionexacta) > 0 ) {
             if (!is_numeric($nombreCliente)) {
-                $cliente = new Clientes($Clienteid, $personaid, $direccionexacta);
-                $persona=new Personas($telefonoCliente, $nombreCliente, $apellido1CLiente, $apellido2Cliente, $idZona);
-            
+                
+                $cliente=new Personas($clienteTelefono, $clientenombre, $clienteapellido1, $clienteapellido2, $zonaid, $clientecorreo);
             include '../clientebusiness/clienteBusiness.php';
 
             $ClienteBusiness=new clienteBusiness();
 
              $result= $ClienteBusiness->insertarCliente($cliente);
 
-             return $result;     }
+             if ($result == 1) {
+                   return header("location: ../../view/registrocliente/RegistroCliente.php?success=updated");
+                } else {
+                
+                 return   header("location: ../../view/registrocliente/RegistroCliente.php?error=dbError");
+                         }
+            }
              
             }
              
@@ -52,32 +57,32 @@
     }else if($accion=="actualizar"){
         
       if (isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
-            && isset($_POST['clienteid']) && isset($_POST['clientetelefono']) && isset($_POST['personaid']) 
-             && isset($_POST['direccionexacta']) && isset($_POST['idzona'])) {
+            && isset($_POST['clientecorreo']) && isset($_POST['clientetelefono'])
+             && isset($_POST['direccionexacta']) && isset($_POST['zonaid'])) {
           
-        $nombreCliente =$_POST('clientenombre');
-        $apellido1CLiente =$_POST('clienteapellido1');
-        $apellido2Cliente = $_POST('clienteapellido2');
-        $Clienteid = $_POST('clienteid');
-        $telefonoCliente = $_POST('clientetelefono');
-        $idZona = $_POST('idzona');
-        $personaid = $_POST('personaid');
+        $clienteNombre =$_POST('clientenombre');
+        $clienteApellido1 =$_POST('clienteapellido1');
+        $clienteApellido2 = $_POST('clienteapellido2');
+        $clienteCorreo = $_POST('clientecorreo');
+        $clienteTelefono = $_POST('clientetelefono');
+        $zonaId= $_POST('zonaid');
         $direccionexacta = $_POST('direccionexacta');
 
-       if (strlen($nombreCliente) > 0 && strlen($apellido1CLiente) > 0 && strlen($apellido2Cliente) > 0 && 
-            strlen($Clienteid) > 0 && strlen($telefonoCliente) > 0 && strlen($idZona) > 0 
-             && strlen($personaid) > 0 && strlen($direccionexacta) > 0 ) {
-            if (!is_numeric($nombreCliente)) {
-                $cliente = new Clientes($Clienteid, $personaid, $direccionexacta);
-                $persona=new Personas($telefonoCliente, $nombreCliente, $apellido1CLiente, $apellido2Cliente, $idZona);
-                
+       if (strlen($clienteNombre) > 0 && strlen($clienteApellido1) > 0 && strlen($clienteApellido2) > 0 && 
+            strlen($clienteCorreo) > 0 && strlen($clienteTelefono) > 0 && strlen($zonaId) > 0 
+            && strlen($direccionexacta) > 0 ) {
+            if (!is_numeric($clienteNombre)) {
+          
+                $cliente=new Personas($clienteTelefono, $clienteNombre, $clienteApellido1, $clienteApellido2, $zonaId, $clienteCorreo);
            include '../clientebusiness/clienteBusiness.php';
            
            $ClienteBusiness=new clienteBusiness();
            
             $result= $ClienteBusiness->modificarCliente($cliente);
             
-            return $result;}
+            return   header("location: ../../view/registrocliente/RegistroCliente.php?success=updated");
+            
+            }
             
             }
             
@@ -91,16 +96,16 @@
      */
     }else if($accion=="eliminar"){
         
-    if(isset($_POST['clientenombre'])){
+    if(isset($_POST['clientetelefono'])){
         
-            $cliente=$_POST['clientenombre'];
+            $clienteid=$_POST['clientetelefono'];
            include '../clientebusiness/clienteBusiness.php';
            
            $ClienteBusiness=new clienteBusiness();
            
             $result= $ClienteBusiness->eliminarCliente($clienteid);
             
-            return $result;
+            return   header("location: ../../view/registrocliente/RegistroCliente.php?success=updated");
         
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio
@@ -113,8 +118,8 @@
       */
     } else if($accion=="buscar"){
         
-       if(isset($_POST['clientenombre'])){
-           $clientenombre=$_POST['clientenombre'];
+       if(isset($_POST['clientetelefono'])){
+           $clienteid=$_POST['clientetelefono'];
             
            include '../clientebusiness/clienteBusiness.php';
            

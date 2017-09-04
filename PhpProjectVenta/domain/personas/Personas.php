@@ -12,10 +12,12 @@ class Personas extends Zonas {
     private $personaApellido2;
     private $correo;
     private $idZona;
+   
     
 
         public function Personas($personaTelefono, $personaNombre, $personaApellido1, $personaApellido2, $idZona, $correo) {
         $this->personaTelefono = $personaTelefono;
+        
         $this->personaNombre = $personaNombre;
         $this->personaApellido1 = $personaApellido1;
         $this->personaApellido2 = $personaApellido2;
@@ -23,6 +25,7 @@ class Personas extends Zonas {
         $this->correo = $correo;
     }
     
+
     public function getPersonaTelefono() {
         return $this->personaTelefono;
     }
