@@ -37,14 +37,14 @@
 
              $result= $ClienteBusiness->insertarCliente($cliente);
 
-             echo json_encode($result);     }
+             return $result;     }
              
             }
              
          }else  {
              // retorna un error al tratar de ingresar los datos del nuevo cliente
                $error="ErrorNuevo";
-               echo json_encode($error);
+               return $error;
              } 
         /*
          * Verifica si la accion es la e actualizar los datos del cliente
@@ -77,14 +77,14 @@
            
             $result= $ClienteBusiness->modificarCliente($cliente);
             
-            echo json_encode($result);}
+            return $result;}
             
             }
             
     }else       {
         // presenta el error al actualizar los datos algun dato esta mal o esta basio.
                     $error="ErrorActualizar";
-                   echo json_encode($error);
+                   return $error;
                 } 
     /*
      * La accion de eliminar provando si es esta accion la que desea realizar
@@ -100,12 +100,12 @@
            
             $result= $ClienteBusiness->eliminarCliente($clienteid);
             
-            echo json_encode($result);
+            return $result;
         
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio
          $error="ErrorEliminar";
-        echo json_encode($error);
+        return $error;
     }
     
     /*
@@ -122,14 +122,15 @@
            
             $result= $ClienteBusiness->buscarCliente($clienteid);
             
-            echo json_encode($result); 
+            return $result; 
     
         
     }else{
         //lo que hace es retornar el error en un json el cual informa que algun
         // dato de busqueda no esta bieno no se encontro nada
-         $error="ErrorBuscar";
-        echo json_encode($error);
+        $error="ErrorBuscar";
+        return $error;
+       // echo json_encode($error);
     }
     
     /*
@@ -143,13 +144,14 @@
            $ClienteBusiness=new clienteBusiness();
            
             $result= $ClienteBusiness->mostrarClientes();
-            print_r(result);
-            echo json_decode($error);  
+           
+            return $result;  
             
     }else       {
         //esto lo que retorna es un json  que dice que hay un error al tratar de obtener todos lo datos
                 $error="ErrorTodo";
-                echo json_encode($error);
+                return $error;
+               // echo json_encode($error);
                 }
     
 

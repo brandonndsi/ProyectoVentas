@@ -11,7 +11,7 @@ class Zonas {
     private $zonaprecio;
 
 
-    function Zona($zonaid, $zonanombre, $zonaprecio) {
+    public function Zonas($zonaid, $zonanombre, $zonaprecio) {
         $this->super();
         $this->zonaid = $zonaid;
         $this->zonanombre = $zonanombre;

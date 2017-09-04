@@ -40,16 +40,16 @@
 
             $empleadoBusiness=new empleadoBusiness();
 
-             $result= $empleadoBusiness->buscarEmpleado($empleado);
+             $result= $empleadoBusiness->insertarEmpleado($empleado);
 
-             echo json_encode($result);}
+             return $result;}
              
             }
              
          }else  {
              // retorna un error al tratar de ingresar los datos del nuevo cliente
                $error="ErrorNuevo";
-               echo json_encode($error);
+               return $result;
              } 
         /*
          * Verifica si la accion es la e actualizar los datos del cliente
@@ -86,14 +86,14 @@
            
             $result= $empleadoBusiness->modificarEmpleado($empleado);
             
-            echo json_encode($result);}
+            return $result;}
             
             }
             
     }else       {
         // presenta el error al actualizar los datos algun dato esta mal o esta basio.
                     $error="ErrorActualizar";
-                   echo json_encode($error);
+                   return $error;
                 } 
     /*
      * La accion de eliminar provando si es esta accion la que desea realizar
@@ -109,12 +109,12 @@
            
             $result= $empleadoBusiness->eliminarEmpleado($empleado);
             
-            echo json_encode($result);
+            return $result;
         
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio
          $error="ErrorEliminar";
-        echo json_encode($error);
+        return $error;
     }
     
     /*
@@ -131,14 +131,14 @@
            
             $result= $empleadoBusiness->buscarEmpleado($empleadonombre);
             
-            echo json_encode($result); 
+            return $result; 
     
         
     }else{
         //lo que hace es retornar el error en un json el cual informa que algun
         // dato de busqueda no esta bieno no se encontro nada
          $error="ErrorBuscar";
-        echo json_encode($error);
+        return $error;
     }
     
     /*
@@ -153,12 +153,12 @@
            
             $result= $empleadoBusiness->mostrarEmpleados();
             
-            echo json_encode($result);  
+            return $result;  
             
     }else{
         //esto lo que retorna es un json  que dice que hay un error al tratar de obtener todos lo datos
                 $error="ErrorTodo";
-                echo json_encode($error);
+                return $error;
                 }
     
 ?>
