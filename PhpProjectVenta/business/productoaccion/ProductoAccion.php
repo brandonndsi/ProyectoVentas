@@ -4,30 +4,36 @@
  Autor david  salas lorente  Tools | Templates
  * and open the template in the editor.
  */
-$accion = $_POST['accion'];//busca la accion a realizar 
- 
-    if($accion=="nuevo"){
+//$accion = $_POST['accion'];//busca la accion a realizar 
+include '../../domain/productos/Productos.php';
+    if(isset($_POST['nuevo'])){
 
     if (isset($_POST['productoid']) && isset($_POST['productonombre']) 
            && isset($_POST['productoprecio'])) {
-             
+       
         $productoid = $_POST['productoid'];
         $productonombre = $_POST['productonombre'];
         $productoprecio = $_POST['productoprecio'];
         
         if (strlen($productoid) > 0 && strlen($productonombre) > 0 
                 && strlen($productoprecio) > 0) {
-            if (is_numeric($productoid)) {
-                
+            if (!is_numeric($productoid)) {
+            
                 $producto = new Productos($productoid, $productonombre, $productoprecio);
-                
+                 
                 include '../productobusiness/ProductoBusiness.php';
 
             $productoBusiness=new ProductoBusiness();
 
              $result= $productoBusiness->insertarProducto($producto);
-
-             echo json_encode($result);     }
+             
+                 if ($result == 1) {
+                   return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
+                } else {
+                
+                 return   header("location: ../../view/registroproducto/RegistroProducto.php?error=dbError");
+                         }
+                  }
              
             }
              
@@ -39,7 +45,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
         /*
          * Verifica si la accion es la e actualizar los datos del cliente
          */
-    }else if($accion=="actualizar"){
+    }else if(isset($_POST['actualizar'])){
         
            if (isset($_POST['productoid']) && isset($_POST['productonombre']) 
            && isset($_POST['productoprecio'])) {
@@ -59,19 +65,27 @@ $accion = $_POST['accion'];//busca la accion a realizar
             $productoBusiness=new ProductoBusiness();
 
              $result= $productoBusiness->modificarProducto($producto);
-            echo json_encode($result);}
+            
+              if ($result == 1) {
+                   return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
+                } else {
+                
+                 return   header("location: ../../view/registroproducto/RegistroProducto.php?error=dbError");
+                         }
+             
+            }
             
             }
             
     }else       {
         // presenta el error al actualizar los datos algun dato esta mal o esta basio.
                     $error="ErrorActualizar";
-                   echo json_encode($error);
+                   
                 } 
     /*
      * La accion de eliminar provando si es esta accion la que desea realizar
      */
-    }else if($accion=="eliminar"){
+    }else if(isset($_POST['eliminar'])){
         
     if(isset($_POST['productoid'])){
         
@@ -94,7 +108,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
     /*
      *  Esta consulta lo que debe devolver es el datos del cliente.por nombre   
       */
-    } else if($accion=="buscar"){
+    } else if(isset($_POST['buscar'])){
         
        if(isset($_POST['productoid'])){
            
@@ -119,7 +133,7 @@ $accion = $_POST['accion'];//busca la accion a realizar
     /*
      *  Esta conuslta lo que debe devolver es todos los datos de los productos.   
       */
-    }else  if($accion=="todo"){
+    }else  if(isset($_POST['todo'])){
         
             
              include '../productobusiness/ProductoBusiness.php';

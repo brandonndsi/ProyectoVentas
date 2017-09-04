@@ -43,5 +43,8 @@ class ProductoBusiness {
     }
     
 }
-
+/*$da=new productoBusiness();
+$pro=new Productos('p9','fffff', '45555');
+$s=$da->insertarProducto($pro);
+print_r($s);*/
 ?>

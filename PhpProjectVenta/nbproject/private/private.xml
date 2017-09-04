@@ -3,11 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/js/jsCLiente.js</file>
-            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/business/clienteaccion/clienteAccion.php</file>
-            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/view/registrocliente/RegistroCliente.php</file>
-            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/view/VentanaPrincipalView.php</file>
-            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/business/clientebusiness/clienteBusiness.php</file>
+            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/view/registroproducto/RegistroProducto.php</file>
         </group>
     </open-files>
 </project-private>

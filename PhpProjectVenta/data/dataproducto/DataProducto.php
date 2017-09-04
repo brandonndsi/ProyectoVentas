@@ -5,7 +5,8 @@ class DataProducto {
     private $conexion;
 
     function DataProducto() {
-        include_once '../dbconexion/Conexcion.php';
+        include_once '../../data/dbconexion/Conexion.php';
+        include_once '../../domain/productos/Productos.php';
         $this->conexion = new Conexion();
     }
 
@@ -14,18 +15,17 @@ class DataProducto {
 
         $this->conexion->crearConexion()->set_charset('utf8');
 
-        $insertarproducto = $this->conexion->crearConexion()->query("INSERT INTO tbproductos(productoid,
-            productonombre, materiaprimaprecio) VALUES (
-                '" . $producto->get_productoid() . "',
-		'" . $producto->get_productonombre() . "', 
-		'" . $producto->get_productoprecio() . "')");
+        $insertarproducto = $this->conexion->crearConexion()->query("CALL productonuevo(
+                '".$producto->getProductoid()." ',
+		'".$producto->getProductonombre()."', 
+		'".$producto->getProductoprecio()."')");
 
-        $result = mysql_query($insertarproducto);
-        if (!$result) {
+       /* if (!$result) {
             return false;
         } else {
             return $result;
-        }
+        }*/
+        return $insertarproducto;
     }
 
     //eliminar
@@ -62,18 +62,18 @@ class DataProducto {
 
         $this->conexion->crearConexion()->set_charset('utf8');
 
-        $modificarproducto = $this->conexion->crearConexion()->query("UPDATE tbproductos SET 
-		productoid='" . $producto->get_productoid() . "',
-		productonombre='" . $producto->get_productonombre() . "',
-                productoprecio='" . $producto->get_productoprecio() . "',       
-		WHERE productoid =" . $producto->get_productoid() . "");
+        $modificarproducto = $this->conexion->crearConexion()->query("CALL productoactualizar(
+                '".$producto->getProductoid()." ',
+		'".$producto->getProductonombre()."', 
+		'".$producto->getProductoprecio()."')");
 
         $result = mysql_query($modificarproducto);
-        if (!$result) {
+        return $result;
+        /*if (!$result) {
             return false;
         } else {
             return $result;
-        }
+        }*/
     }
 
     //mostrar productos
@@ -81,7 +81,7 @@ class DataProducto {
         $array = array();
         $this->conexion->crearConexion()->set_charset('utf8');
 
-        $mostrarproductos = $this->conexion->crearConexion()->query("CALL mostrarproductos");
+        $mostrarproductos = $this->conexion->crearConexion()->query("CALL mostrarproductos()");
 
         while ($resultado = $mostrarproductos->fetch_assoc()) {
             array_push($array, $resultado);
@@ -90,3 +90,8 @@ class DataProducto {
     }
 
 }
+/*$da=new DataProducto();
+$pro=new Productos('p45','fffff', '45555');
+$s=$da->modificarProducto($pro);
+print_r($s);*/
+?>
