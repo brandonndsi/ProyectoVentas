@@ -5,8 +5,8 @@ class DataEmpleado {
     private $conexion;
 
     function DataEmpleado() {
-        include_once '../../data/dbconexion/Conexcion.php';
-        include_once '../../domain/empleados/Empleados.php';
+        include_once '../../data/dbconexion/Conexion.php';
+       // include '../../domain/empleados/Empleados.php';
         $this->conexion = new Conexion();
     }
 
@@ -109,13 +109,15 @@ class DataEmpleado {
 
             $array = array();
 
-            $mostrarempleados = $this->conexion->crearConexion()->query("CALL mostrarempleados");
+            $mostrarempleados = $this->conexion->crearConexion()->query("CALL mostrarempleados()");
 
-            $this->conexion->cerrarConexion();
+            
             while ($resultado = $mostrarempleados->fetch_assoc()) {
                 array_push($array, $resultado);
             }
+            $this->conexion->cerrarConexion();
             return $array;
+            
         }
     }
 

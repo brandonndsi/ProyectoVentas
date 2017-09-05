@@ -45,7 +45,7 @@
                     <td><input type="text" name="productoid" size="10" class="centrado" placeholder="P+numero"/> </td>
                     <td><input type="text" name="productonombre" size="10" class="centrado" placeholder="Solo letras"/> </td>
                     <td><input type="text" name="productoprecio" size="10" class="centrado" placeholder="Solo numeros"/> </td>
-                    <th class="bot"> <td><input type="submit" value="agregar" name="agregar" id="nuevo"/></th>
+                    <th class="bot"> <td><input type="submit" value="agregar" name="nuevo" id="nuevo"/></th>
                 </tr> 
            
         </table>
