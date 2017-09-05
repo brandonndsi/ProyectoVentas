@@ -5,8 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Reg Producto </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script src="../../css/producto.css"></script>
-
+    
 <?php
   include '../../business/productobusiness/ProductoBusiness.php';
   ?>
@@ -45,7 +44,7 @@
                     <td><input type="text" name="productoid" size="10" class="centrado" placeholder="P+numero"/> </td>
                     <td><input type="text" name="productonombre" size="10" class="centrado" placeholder="Solo letras"/> </td>
                     <td><input type="text" name="productoprecio" size="10" class="centrado" placeholder="Solo numeros"/> </td>
-                    <th class="bot"> <td><input type="submit" value="agregar" name="nuevo" id="nuevo"/></th>
+                    <th class="bot"> <td><input type="submit" value="agregar" name="agregar" id="nuevo"/></th>
                 </tr> 
            
         </table>
@@ -61,7 +60,6 @@
             foreach ($allBusiness as $current) {
                 echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >';
                 echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
-                echo '<tr>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
                 echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
@@ -70,7 +68,7 @@
                 echo '</form>';
 
             }
-                echo '<h2>Buscar Producto por Codigo</h2>';
+                echo '<h2>Buscar Producto </h2>';
                 echo '<form method="post" action="RegistroProducto.php" align="center" >';
                 echo '<input type="text" name="productoid" id="productoid" placeholder="P+numero"/>';
                 echo '<tr>';

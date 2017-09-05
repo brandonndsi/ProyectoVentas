@@ -6,12 +6,12 @@
     <title>Registrar Cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php
-    include '../../business/clientebusiness/clienteBusiness.php';
+    include '../../business/clientebusiness/ClienteBusiness.php';
     ?>
 </head>
 <body >
     <p align="center">
-    <form name="form" action="../business/clienteAccion.php" method="Post" align="center">
+    <form name="form" action="../business/clienteaccion/clienteAccion.php" method="Post" align="center">
         <strong>
             <p>
                 Formulario para insertar el cliente a la base de datos.
@@ -37,11 +37,11 @@
     </form>
 
     <?php
-    $clienteBusiness = new ClienteBusiness();
-    $allBusiness = $clienteBusiness->mostrarclientes();
+    $clienteBusiness = new clienteBusiness();
+    $allBusiness = $clienteBusiness->mostrarClientes();
     echo '<h2 align="center">Lista de Clientes</h2>';
     foreach ($allBusiness as $current) {
-        echo '<form  action="../../business/clienteaccion/ClienteAccion.php" method="Post" align="center" >';
+        echo '<form  action="../../business/clienteaccion/clienteAccion.php" method="Post" align="center" >';
         echo '<input type="text" name="clienteid" id="clienteid" value="' . $current['clienteid'] . '"/>';
         echo '<input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '"/>';
         echo '<input type="text" name="personaapellido1" id="personaApellido1" value="' . $current['personaapellido1'] . '"/>';

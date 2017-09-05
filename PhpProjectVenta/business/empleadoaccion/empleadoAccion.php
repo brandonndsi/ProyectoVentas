@@ -12,7 +12,7 @@
     if(isset($_POST["nuevo"])){
 
     if (isset($_POST['empleadoid']) && isset($_POST['personaid']) && isset($_POST['tipoempleado']) && 
-            isset($_POST['empleadocedula']) && isset($_POST['empleadocontrasena'])
+            isset($_POST['empleadocedula']) && isset($_POST['empleadocontrasenia'])
             && isset($_POST['empleadoedad']) && isset($_POST['empleadosexo']) && isset($_POST['empleadoestadocivil'])
              && isset($_POST['empleadocuentabancaria']) && isset($_POST['empleadolicenciaid'])) {
              

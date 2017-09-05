@@ -6,7 +6,7 @@
     <title>Registrar Empleado</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php
-    include '../../business/empleadobusiness/empleadoBusiness.php';
+    include '../../business/empleadobusiness/EmpleadoBusiness.php';
     ?>
 </head>
 

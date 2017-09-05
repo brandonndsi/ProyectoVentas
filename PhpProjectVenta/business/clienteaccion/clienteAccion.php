@@ -11,25 +11,25 @@
     include '../../domain/personas/Personas.php';
     if(isset($_POST["nuevo"])){
        
-       if (isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
-               && isset($_POST['clientecorreo'])
-            && isset($_POST['clientetelefono']) 
-             && isset($_POST['direccionexacta']) && isset($_POST['zonaid'])) {
+       if (isset($_POST['clienteid']) && isset($_POST['perosnanombre']) && isset($_POST['personapellido1']) 
+           && isset($_POST['personapellido2']) && isset($_POST['personacorreo'])
+            && isset($_POST['personatelefono']) && isset($_POST['zonaid'])) {
           
-        $clientenombre =$_POST('clientenombre');
-        $clienteapellido1 =$_POST('clienteapellido1');
-        $clienteapellido2 = $_POST('clienteapellido2');
-        $clienteTelefono = $_POST('clientetelefono');
+        
+        $clienteid = $_POST('clienteid');
+        $personanombre =$_POST('personanombre');
+        $personaapellido1 =$_POST('personaapellido1');
+        $personaapellido2 = $_POST('personaapellido2');
+        $personatelefono = $_POST('personatelefono');
         $zonaid = $_POST('zonaid');
-        $clientecorreo = $_POST('clientecorreo');
-        $direccionexacta = $_POST('direccionexacta');
+        $personacorreo = $_POST('personacorreo');
 
-       if (strlen($clientenombre) > 0 && strlen($clienteapellido1) > 0 && strlen($clienteapellido2) > 0 && 
-            strlen($clientecorreo) > 0 && strlen($clienteTelefono) > 0 
-            && strlen($zonaid) > 0 && strlen($direccionexacta) > 0 ) {
-            if (!is_numeric($nombreCliente)) {
+       if (strlen($clienteid) > 0 && strlen($personanombre) > 0 && strlen($personaapellido1) > 0 && 
+            strlen($personaapellido2) > 0 && strlen($personatelefono) > 0 
+            && strlen($zonaid) > 0 && strlen($personacorreo) > 0 ) {
+            if (!is_numeric($personanombre)) {
                 
-                $cliente=new Personas($clienteTelefono, $clientenombre, $clienteapellido1, $clienteapellido2, $zonaid, $clientecorreo);
+                $cliente=new Personas($clienteid, $personanombre, $personaapellido1, $personaapellido2, $personatelefono, $zonaid, $personacorreo);
             include '../clientebusiness/clienteBusiness.php';
 
             $ClienteBusiness=new clienteBusiness();
@@ -56,24 +56,25 @@
          */
     }else if(isset($_POST["actualizar"])){
         
-      if (isset($_POST['clientenombre']) && isset($_POST['clienteapellido1']) && isset($_POST['clienteapellido2'])
-            && isset($_POST['clientecorreo']) && isset($_POST['clientetelefono'])
-             && isset($_POST['direccionexacta']) && isset($_POST['zonaid'])) {
+      if (strlen($clienteid) > 0 && strlen($personanombre) > 0 && strlen($personaapellido1) > 0 && 
+            strlen($personaapellido2) > 0 && strlen($personatelefono) > 0 
+            && strlen($zonaid) > 0 && strlen($personacorreo) > 0 ) {
           
-        $clienteNombre =$_POST('clientenombre');
-        $clienteApellido1 =$_POST('clienteapellido1');
-        $clienteApellido2 = $_POST('clienteapellido2');
-        $clienteCorreo = $_POST('clientecorreo');
-        $clienteTelefono = $_POST('clientetelefono');
-        $zonaId= $_POST('zonaid');
-        $direccionexacta = $_POST('direccionexacta');
+          
+       $clienteid = $_POST('clienteid');
+        $personanombre =$_POST('personanombre');
+        $personaapellido1 =$_POST('personaapellido1');
+        $personaapellido2 = $_POST('personaapellido2');
+        $personatelefono = $_POST('personatelefono');
+        $zonaid = $_POST('zonaid');
+        $personacorreo = $_POST('personacorreo');
 
-       if (strlen($clienteNombre) > 0 && strlen($clienteApellido1) > 0 && strlen($clienteApellido2) > 0 && 
-            strlen($clienteCorreo) > 0 && strlen($clienteTelefono) > 0 && strlen($zonaId) > 0 
-            && strlen($direccionexacta) > 0 ) {
-            if (!is_numeric($clienteNombre)) {
+       if (strlen($clienteid) > 0 && strlen($personanombre) > 0 && strlen($personaapellido1) > 0 && 
+            strlen($personaapellido2) > 0 && strlen($personatelefono) > 0 
+            && strlen($zonaid) > 0 && strlen($personacorreo) > 0 ) {
+            if (!is_numeric($personanombre)) {
           
-                $cliente=new Personas($clienteTelefono, $clienteNombre, $clienteApellido1, $clienteApellido2, $zonaId, $clienteCorreo);
+                $cliente=new Personas($clienteid, $personanombre, $personaapellido1, $personaapellido2, $personatelefono, $zonaid, $personacorreo);
            include '../clientebusiness/clienteBusiness.php';
            
            $ClienteBusiness=new clienteBusiness();
@@ -96,9 +97,9 @@
      */
     }else if(isset($_POST["eliminar"])){
         
-    if(isset($_POST['clientetelefono'])){
+    if(isset($_POST['personatelefono'])){
         
-            $clienteid=$_POST['clientetelefono'];
+            $clienteid=$_POST['personatelefono'];
            include '../clientebusiness/clienteBusiness.php';
            
            $ClienteBusiness=new clienteBusiness();
@@ -118,8 +119,8 @@
       */
     } else if(isset($_POST["buscar"])){
         
-       if(isset($_POST['clientetelefono'])){
-           $clienteid=$_POST['clientetelefono'];
+       if(isset($_POST['personatelefono'])){
+           $clienteid=$_POST['personatelefono'];
             
            include '../clientebusiness/clienteBusiness.php';
            

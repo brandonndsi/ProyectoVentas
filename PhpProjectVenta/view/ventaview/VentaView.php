@@ -23,7 +23,7 @@
     
     <?php
     
-    $ventaBusiness = new VetnaBusiness();
+    $ventaBusiness = new VentaBusiness();
     $allBusiness = $ventaBusiness->mostrarProductos();
     echo '<h2>Lista de Productos</h2>';
     foreach ($allBusiness as $current) {
