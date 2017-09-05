@@ -13,7 +13,7 @@ class DataProducto {
     //insertar
     public function insertarProducto($producto) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
             $insertarproducto = $this->conexion->crearConexion()->query("CALL productonuevo(
                 '" . $producto->getProductoid() . " ',
 		'" . $producto->getProductonombre() . "', 
@@ -32,7 +32,7 @@ class DataProducto {
     //modificar
     public function modificarProducto($producto) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
 
             $modificarproducto = $this->conexion->crearConexion()->query("CALL productoactualizar(
                 '" . $producto->getProductoid() . " ',
@@ -52,11 +52,11 @@ class DataProducto {
     //eliminar
     public function eliminarProducto($productoid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
 
-            $eliminarmateriaprima = $this->conexion->crearConexion()->query("CALL productoeliminar('$productoid')");
+            $eliminarproducto = $this->conexion->crearConexion()->query("CALL productoeliminar('$productoid')");
 
-            $result = mysql_query($eliminarmateriaprima);
+            $result = mysql_query($eliminarproducto);
             $this->conexion->cerrarConexion();
             if (!$result) {
                 return false;
@@ -69,7 +69,7 @@ class DataProducto {
     //buscar
     public function buscarProducto($productoid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
 
             $array = array();
 
@@ -89,7 +89,7 @@ class DataProducto {
 
     //mostrar productos
     function mostrarProductos() {
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
 
             $array = array();
 

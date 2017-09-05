@@ -44,9 +44,7 @@
             <a href="view/registroproveedor/RegistroProveedor.php" target="_parent">
                 <input name="Gestionar Proveedor" type="button" value="Gestionar Proveedor"></a> 
         </p>
-        <p>
-            
-        </p>
+        
 
         <br>
         <p> <a href="index.php">Regresar</a> </p>

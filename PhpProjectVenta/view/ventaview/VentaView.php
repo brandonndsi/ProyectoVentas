@@ -19,50 +19,68 @@
             Cantidad: <input type="text" name="producto" size="10" required/>
             <input name="agregar" type="button" value="Agregar">
         </p>
-        
-        <p> <table width="50%" border="0" align="letf">
-             <thead>
-                <tr>
-                    <th class="primerfila" >Codigo</th>
-                    <th class="primerfila" >Cantidad</th>
-                    <th class="primerfila" >Producto</th>
-                    <th class="primerfila" >Precio</th>
-                    <th class="sin" >&nbsp;</th>
-                    <th class="sin" >&nbsp;</th>
-                    <th class="sin" >&nbsp;</th>                
-                </tr>
-            </thead>           
-                <tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    
-                    
-                    
-                </tr>
-                <tr>
-                    <td><output type="text" name="codigo" size="10" class="centrado"/> </td>
-                    <td><output type="text" name="cantidad" size="10" class="centrado"/> </td>
-                    <td><output type="text" name="producto" size="10" class="centrado"/> </td>
-                    <td><output type="text" name="codigo" size="10" class="centrado"/> </td>
-                    <td> </td>  
-                     
-                </tr> 
-                           
-        </table>
-        <p>&nbsp;</p>    
-        <br>
-        </p>
-        <p><a href="facturaventa/FacturaVenta.php" target="_parent">
-           <input type="button" value="Procesar Pedido"></a>
-        </p>
-        
-        <p> <a href="javascript:window.history.go(-1);">Regresar</a> </p>
     </form>
+    
+    <?php
+    
+    $ventaBusiness = new VetnaBusiness();
+    $allBusiness = $ventaBusiness->mostrarProductos();
+    echo '<h2>Lista de Productos</h2>';
+    foreach ($allBusiness as $current) {
+        echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >';
+        echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
+        echo '<tr>';
+        echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
+        echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
+        echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
+        echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
+        echo '</tr>';
+        echo '</form>';
+    }
 
-    <footer>
-    </footer>
+    if ($_POST) {
+        $productoid = $_POST['productoid'];
+        if (isset($productoid)) {
+            $buscarBusiness = $productoBusiness->buscarProducto($productoid);
+            foreach ($buscarBusiness as $current) {
+                echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >';
+                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
+                echo '<tr>';
+                echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
+                echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
+                echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
+                echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
+                echo '</tr>';
+                echo '</form>';
+            }
+        }
+    }
+    ?>
+    <p> <a href="../../index.php">Regresar</a> </p>
+
+<tr>
+    <td></td>
+    <td>
+        <?php
+        if (isset($_GET['error'])) {
+            if ($_GET['error'] == "emptyField") {
+                echo '<p style="color: red">Campo(s) vacio(s)</p>';
+            } else if ($_GET['error'] == "numberFormat") {
+                echo '<p style="color: red">Error, formato de numero</p>';
+            } else if ($_GET['error'] == "dbError") {
+                echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
+            }
+        } else if (isset($_GET['success'])) {
+            echo '<p style="color: green">Transacción realizada</p>';
+        }
+        ?>
+    </td>
+</tr>
+</table>
+
+<footer>
+</footer>
+
 </body>
 </html>
 

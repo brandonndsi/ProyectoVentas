@@ -5,7 +5,7 @@ class DataPersona {
     private $conexion;
 
     function DataPersona() {
-        include_once '../../data/dbconexion/Conexcion.php';
+        include_once '../../data/dbconexion/Conexion.php';
         include_once '../../domain/personas/Personas.php';
         $this->conexion = new Conexion();
     }
