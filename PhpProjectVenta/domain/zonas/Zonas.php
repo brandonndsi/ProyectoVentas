@@ -12,7 +12,7 @@ class Zonas {
 
 
     public function Zonas($zonaid, $zonanombre, $zonaprecio) {
-        $this->super();
+       
         $this->zonaid = $zonaid;
         $this->zonanombre = $zonanombre;
         $this->zonaprecio = $zonaprecio;
