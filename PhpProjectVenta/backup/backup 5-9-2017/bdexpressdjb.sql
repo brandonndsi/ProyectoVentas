@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 05-09-2017 a las 02:34:42
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 5.6.31
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 06-09-2017 a las 02:20:35
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,113 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bdproyectoventa`
+-- Base de datos: `bdexpressdjb`
 --
-
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarempleado` (IN `empleadoid` VARCHAR(20))  NO SQL
-SELECT * FROM tbempleados e
-    INNER JOIN tbpersonas p ON e.personaid= p.personaid
-    INNER JOIN tbzonas z ON p.zonaid= z.zonaid
-    INNER JOIN tbtipoempleados t ON e.tipoempleado= t.tipoempleado
-    INNER JOIN tbempleadolicencias el ON e.empleadolicenciaid= 	 el.empleadolicenciaid
-    INNER JOIN tbvehiculos v ON el.vehiculoid= v.vehiculoid
-    WHERE empleadoid = empleadoid$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarpersona` (IN `persona` VARCHAR(50))  NO SQL
-BEGIN
-
-SELECT * FROM tbpersonas p INNER JOIN tbzonas z ON p.zonaid= z.zonaid 
-		 WHERE personaid = personaid;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `clientebuscarporid` (IN `id` VARCHAR(50))  BEGIN
-
-SELECT e.clienteid,p.personanombre,
-p.personaapellido1,p.personaapellido2,p.personatelefono,
-p.personacorreo,f.facturaid,f.facturafecha,z.zonaprecio,z.zonanombre,e.clientedireccionexacta 
-FROM tbclientes e
-INNER JOIN tbpersonas p ON e.personaid= p.personaid
-INNER JOIN tbzonas z ON p.zonaid= z.zonaid
-INNER JOIN tbfacturas f ON p.personaid= f.personaid
-WHERE e.clienteid=id;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarempleado` (IN `empleado` VARCHAR(50))  NO SQL
-DELETE FROM tbempleados WHERE empleadoid=empleadoid$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarpersona` (IN `persona` VARCHAR(50))  NO SQL
-BEGIN
-
-DELETE FROM tbpersonas WHERE personaid = personaid;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrarcliente` ()  BEGIN
-SELECT * FROM `tbclientes`;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrarempleados` (IN `empleado` VARCHAR(50))  NO SQL
-SELECT * FROM tbempleados e
-    INNER JOIN tbpersonas p ON e.personaid= p.personaid
-    INNER JOIN tbzonas z ON p.zonaid= z.zonaid
-    INNER JOIN tbtipoempleados t ON e.tipoempleado= t.tipoempleado
-    INNER JOIN tbempleadolicencias el ON e.empleadolicenciaid= 	 el.empleadolicenciaid
-    INNER JOIN tbvehiculos v ON el.vehiculoid= v.vehiculoid$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrarpersonas` (IN `persona` VARCHAR(50))  NO SQL
-BEGIN
-
-SELECT * FROM tbpersonas p INNER JOIN tbzonas z ON p.zonaid= z.zonaid;
-            
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `personaidsolo` (IN `id` VARCHAR(50))  BEGIN
-SELECT personaid FROM tbpersonas WHERE personanombre=id;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `personaidzonasolo` (IN `id` VARCHAR(50))  BEGIN
-SELECT personazonaid FROM tbpersonas WHERE personanombre=id;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `personanueva` (IN `nombre` VARCHAR(50), IN `apellido1` VARCHAR(50), IN `apellido2` VARCHAR(50), IN `telefono` VARCHAR(50), IN `correo` VARCHAR(50), IN `zona` VARCHAR(50))  NO SQL
-BEGIN
-INSERT INTO `tbpersonas`(`personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`, `personacorreo`, `zonaid`) VALUES (nombre,apellido1,apellido2,telefono,correo,zona);
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `productoactualizar` (IN `id` VARCHAR(50), IN `nombre` VARCHAR(50), IN `precio` VARCHAR(50))  NO SQL
-BEGIN
-UPDATE `tbproductos` SET `productonombre`=nombre,`productoprecio`=precio WHERE productoid=id;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `productobuscar` (IN `id` VARCHAR(50))  NO SQL
-BEGIN
-
-SELECT * FROM tbproductos WHERE productoid=id;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `productoeliminar` (IN `id` VARCHAR(50))  BEGIN
-DELETE  FROM tbproductos where productoid=id;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `productonuevo` (IN `id` VARCHAR(50), IN `nombre` VARCHAR(50), IN `precio` VARCHAR(50))  BEGIN
-INSERT INTO `tbproductos`(`productoid`, `productonombre`, `productoprecio`) VALUES (id,nombre,precio);
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `productosmostrar` ()  BEGIN
-SELECT * FROM tbproductos;
-
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -136,16 +29,19 @@ DELIMITER ;
 CREATE TABLE `tbclientes` (
   `clienteid` varchar(20) NOT NULL,
   `personaid` varchar(20) NOT NULL,
-  `clientedireccionexacta` varchar(200) NOT NULL
+  `clientedireccionexacta` varchar(200) NOT NULL,
+  `clientedescuento` double NOT NULL,
+  `clienteacumulado` int(11) NOT NULL,
+  `clienteestado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbclientes`
 --
 
-INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`) VALUES
-('1', '4', 'Monte verde departamento lily, la victoria, rio frio\r\n'),
-('2', '5', 'barrio san marcos frente a la universidad nacional\r\n');
+INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) VALUES
+('1', '4', 'Monte verde departamento lily, la victoria, rio frio\r\n', 0.03, 50, 1),
+('2', '5', 'barrio san marcos frente a la universidad nacional\r\n', 0.05, 70, 1);
 
 -- --------------------------------------------------------
 
@@ -207,17 +103,18 @@ CREATE TABLE `tbempleados` (
   `empleadosexo` varchar(10) NOT NULL,
   `empleadoestadocivil` varchar(20) NOT NULL,
   `empleadocuentabancaria` int(11) NOT NULL,
-  `empleadolicenciaid` varchar(20) NOT NULL
+  `empleadolicenciaid` varchar(20) NOT NULL,
+  `empleadoestado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Volcado de datos para la tabla `tbempleados`
 --
 
-INSERT INTO `tbempleados` (`empleadoid`, `personaid`, `tipoempleado`, `empleadocedula`, `empleadocontrasenia`, `empleadoedad`, `empleadosexo`, `empleadoestadocivil`, `empleadocuentabancaria`, `empleadolicenciaid`) VALUES
-('1', '1', 'Administrador', '207210905', '2904017b', 23, 'Masculino', 'Soltero', 1244251234, 'L2'),
-('2', '2', 'Motorisado', '609870234', '12345', 23, 'Masculino', 'Union Libre', 1265748392, 'L1'),
-('3', '3', 'Cajero', '304560948', '123', 22, 'Masculino', 'Casado', 1241454634, 'L3');
+INSERT INTO `tbempleados` (`empleadoid`, `personaid`, `tipoempleado`, `empleadocedula`, `empleadocontrasenia`, `empleadoedad`, `empleadosexo`, `empleadoestadocivil`, `empleadocuentabancaria`, `empleadolicenciaid`, `empleadoestado`) VALUES
+('1', '1', 'Administrador', '207210905', '2904017b', 23, 'Masculino', 'Soltero', 1244251234, 'L2', 1),
+('2', '2', 'Motorisado', '609870234', '12345', 23, 'Masculino', 'Union Libre', 1265748392, 'L1', 1),
+('3', '3', 'Cajero', '304560948', '123', 22, 'Masculino', 'Casado', 1241454634, 'L3', 1);
 
 -- --------------------------------------------------------
 
@@ -226,21 +123,24 @@ INSERT INTO `tbempleados` (`empleadoid`, `personaid`, `tipoempleado`, `empleadoc
 --
 
 CREATE TABLE `tbfacturas` (
-  `facturaid` varchar(20) NOT NULL,
-  `personaid` varchar(20) NOT NULL,
-  `facturafecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `facturaid` varchar(50) NOT NULL,
+  `empleadoid` varchar(50) NOT NULL,
+  `clienteid` varchar(50) NOT NULL,
+  `ventafecha` date NOT NULL,
+  `ventabruta` double NOT NULL,
+  `ventaneta` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbfacturas`
 --
 
-INSERT INTO `tbfacturas` (`facturaid`, `personaid`, `facturafecha`) VALUES
-('1', '4', '2017-08-01'),
-('2', '5', '2017-08-04'),
-('3', '5', '2017-08-04'),
-('4', '6', '2017-08-09'),
-('6', '5', '2017-08-11');
+INSERT INTO `tbfacturas` (`facturaid`, `empleadoid`, `clienteid`, `ventafecha`, `ventabruta`, `ventaneta`) VALUES
+('199F', 'E1', 'C2', '2017-09-10', 6100, 5795),
+('200F', 'E1', 'C1', '2017-09-08', 6500, 6305),
+('207F', 'E3', 'C2', '2017-09-08', 3500, 3325),
+('27F', 'E3', 'C1', '2017-09-15', 5500, 5335),
+('78F', 'E3', 'C2', '2017-09-20', 6000, 5700);
 
 -- --------------------------------------------------------
 
@@ -312,10 +212,10 @@ CREATE TABLE `tbproductos` (
 --
 
 INSERT INTO `tbproductos` (`productoid`, `productonombre`, `productoprecio`) VALUES
-('p0 ', 'carne dura y ceca', 7820),
-('p2 ', 'piezas de pollo', 34566),
-('P3', '4Piezas', 2500),
-('p34 ', 'da', 3455);
+('P1', '2Piezas\n', 2500),
+('P2', '4Piezas', 4500),
+('P3', 'HamburquesaJunior', 1700),
+('P4', 'Combo3', 4000);
 
 -- --------------------------------------------------------
 
@@ -387,27 +287,22 @@ INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculoplaca`, `vehiculomarca`, `vehi
 --
 
 CREATE TABLE `tbventas` (
-  `ventaid` varchar(20) NOT NULL,
-  `empleadoid` varchar(20) NOT NULL,
-  `productoid` varchar(11) NOT NULL,
-  `ventacantidadproducto` int(11) NOT NULL,
-  `ventatotal` double NOT NULL,
-  `ventapagacon` double NOT NULL,
-  `ventavuelto` double NOT NULL,
-  `facturaid` varchar(20) NOT NULL,
-  `zonaid` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `ventaid` varchar(50) NOT NULL,
+  `facturaid` varchar(50) NOT NULL,
+  `productoid` varchar(50) NOT NULL,
+  `facturacantidadproducto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbventas`
 --
 
-INSERT INTO `tbventas` (`ventaid`, `empleadoid`, `productoid`, `ventacantidadproducto`, `ventatotal`, `ventapagacon`, `ventavuelto`, `facturaid`, `zonaid`) VALUES
-('209', '3', '4', 1, 5500, 5500, 0, '4', '4'),
-('300', '2', '3', 3, 6100, 7000, 900, '3', '3'),
-('404', '2', '2', 1, 6500, 10000, 35000, '1', '1'),
-('507', '3', '1', 1, 3500, 4000, 500, '2', '2'),
-('602', '3', '1', 2, 6000, 6000, 0, '5', '2');
+INSERT INTO `tbventas` (`ventaid`, `facturaid`, `productoid`, `facturacantidadproducto`) VALUES
+('1', '200F', 'P2', 1),
+('2', '207F', 'P1', 1),
+('3', '199F', 'P3', 3),
+('4', '27F', 'P4', 1),
+('5', '78F', 'P1', 2);
 
 -- --------------------------------------------------------
 
@@ -469,7 +364,8 @@ ALTER TABLE `tbempleados`
 --
 ALTER TABLE `tbfacturas`
   ADD PRIMARY KEY (`facturaid`),
-  ADD KEY `personaid` (`personaid`);
+  ADD KEY `empleadoid` (`empleadoid`),
+  ADD KEY `clienteid` (`clienteid`);
 
 --
 -- Indices de la tabla `tbmateriasprimas`
@@ -514,17 +410,14 @@ ALTER TABLE `tbvehiculos`
 --
 ALTER TABLE `tbventas`
   ADD PRIMARY KEY (`ventaid`),
-  ADD KEY `idEmpleado` (`empleadoid`),
-  ADD KEY `idProducto` (`productoid`),
-  ADD KEY `idZona` (`zonaid`),
-  ADD KEY `idFactura` (`facturaid`);
+  ADD KEY `facturaid` (`facturaid`),
+  ADD KEY `productoid` (`productoid`);
 
 --
 -- Indices de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
   ADD PRIMARY KEY (`zonaid`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

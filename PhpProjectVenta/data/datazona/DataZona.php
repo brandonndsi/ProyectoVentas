@@ -13,63 +13,48 @@ class DataZona {
     //insertar
     function insertarZona($zona) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $insertarzona = $this->conexion->crearConexion()->query("CALL insertarzona(
                 '" . $zona->getZonaid() . " ',
 		'" . $zona->getZonanombre() . "', 
 		'" . $zona->getZonaprecio() . "')");
 
-            $result = mysql_query($insertarzona);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $insertarzona;
         }
     }
 
     //modificar
     function modificarZona($zona) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $modificarzona = $this->conexion->crearConexion()->query("CALL modificarzona(
                 '" . $zona->getZonaid() . " ',
 		'" . $zona->getZonanombre() . "', 
 		'" . $zona->getZonaprecio() . "')");
 
-            $result = mysql_query($modificarzona);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $modificarzona;
         }
     }
     
     //eliminar
     function eliminarZona($zonaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
             $eliminarzona = $this->conexion->crearConexion()->query("CALL eliminarzona('$zonaid')");
 
-            $result = mysql_query($eliminarzona);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $eliminarzona;
         }
     }
 
     //buscar
     function buscarZona($zonaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
@@ -90,7 +75,7 @@ class DataZona {
     //mostrar zonas
     function mostrarZona() {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 

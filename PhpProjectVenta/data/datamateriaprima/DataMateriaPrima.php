@@ -13,7 +13,7 @@ class DataMateriaPrima {
     //insertar
     public function insertarMateriaPrima($materiaprima) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $insertarmateriaprima = $this->conexion->crearConexion()->query("INSERT INTO tbmateriasprimas(materiaprimaid,
             materiaprimanombre, materiaprimaprecio, tipomateriaprimaid, materiaprimaestado) VALUES (
@@ -23,20 +23,15 @@ class DataMateriaPrima {
                 '" . $materiaprima->get_tipomateriaprimaid() . "',      
 		'" . $materiaprima->materiaprimaestado() . "')");
 
-            $result = mysql_query($insertarmateriaprima);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $insertarmateriaprima;
         }
     }
 
     //modificar
     public function modificarMateriaPrima($materiaprima) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $modificarempleado = $this->conexion->crearConexion()->query("UPDATE tbmateriasprimas SET 
 		materiaprimaid='" . $materiaprima->get_materiaprimaid() . "',
@@ -46,37 +41,27 @@ class DataMateriaPrima {
                 materiaprimaestado='" . $materiaprima->get_materiaprimaestado() . "',    
 		WHERE materiaprimaid =" . $materiaprima->get_materiaprimaid() . "");
 
-            $result = mysql_query($modificarempleado);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $modificarempleado;
         }
     }
 
     //eliminar
     public function eliminarMateriaPrima($materiaprimaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $eliminarmateriaprima = $this->conexion->crearConexion()->query("CALL eliminarmateriaprima('$materiaprimaid')");
 
-            $result = mysql_query($eliminarmateriaprima);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $eliminarmateriaprima;
         }
     }
 
     //buscar
     public function buscarMateriaPrima($materiaprimaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
@@ -93,7 +78,7 @@ class DataMateriaPrima {
     //mostrar materias primas
     public function mostrarMateriaPrima() {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 

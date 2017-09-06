@@ -6,7 +6,7 @@ class DataEmpleado {
 
     function DataEmpleado() {
         include_once '../../data/dbconexion/Conexion.php';
-       // include '../../domain/empleados/Empleados.php';
+        include '../../domain/empleados/Empleados.php';
         $this->conexion = new Conexion();
     }
 
@@ -30,20 +30,15 @@ class DataEmpleado {
                 '" . $empleado->get_empleadolicenciaid() . "',    
 		'" . $empleado->get_empleadoestado() . "')");
 
-            $result = mysql_query($insertarempleado);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $insertarempleado;
         }
     }
 
     //modificar
     public function modificarEmpleado($empleado) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $modificarempleado = $this->conexion->crearConexion()->query("UPDATE tbempleados SET 
 		empleadoid='" . $empleado->get_empleadoid() . "',
@@ -59,36 +54,26 @@ class DataEmpleado {
 		empleadoestado='" . $empleado->get_empleadoestado() . "',
 		WHERE empleadoid =" . $empleado->get_empleadoid() . "");
 
-            $result = mysql_query($modificarempleado);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $modificarempleado;
         }
     }
 
     //eliminar
     public function eliminarEmpleado($empleadoid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
             $eliminarempleado = $this->conexion->crearConexion()->query("CALL eliminarempleado('$empleadoid')");
 
-            $result = mysql_query($eliminarempleado);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $eliminarempleado;
         }
     }
 
     //buscar
     public function buscarEmpleado($empleadoid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
@@ -105,7 +90,7 @@ class DataEmpleado {
     //mostrar empleados
     public function mostrarEmpleados() {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 

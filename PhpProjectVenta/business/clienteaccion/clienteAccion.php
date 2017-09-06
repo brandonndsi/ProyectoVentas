@@ -97,14 +97,15 @@
      */
     }else if(isset($_POST["eliminar"])){
         
-    if(isset($_POST['personatelefono'])){
+    if(isset($_POST['clienteid'])){
         
-            $clienteid=$_POST['personatelefono'];
+            $clienteid=$_POST['clienteid'];
            include '../clientebusiness/clienteBusiness.php';
            
            $ClienteBusiness=new clienteBusiness();
            
             $result= $ClienteBusiness->eliminarCliente($clienteid);
+         
             
             return   header("location: ../../view/registrocliente/RegistroCliente.php?success=updated");
         

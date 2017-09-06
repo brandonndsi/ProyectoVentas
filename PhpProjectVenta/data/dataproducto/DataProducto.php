@@ -12,9 +12,9 @@ class DataProducto {
 
     //insertar
     public function insertarProducto($producto) {
-
-        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
-            $insertarproducto = $this->conexion->crearConexion()->query("CALL productonuevo(
+        
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+            $insertarproducto = $this->conexion->crearConexion()->query("INSERT INTO `tbproductos`(`productoid`, `productonombre`, `productoprecio`) VALUES (
                 '" . $producto->getProductoid() . " ',
 		'" . $producto->getProductonombre() . "', 
 		'" . $producto->getProductoprecio() . "')");
@@ -32,12 +32,9 @@ class DataProducto {
     //modificar
     public function modificarProducto($producto) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $modificarproducto = $this->conexion->crearConexion()->query("CALL productoactualizar(
-                '" . $producto->getProductoid() . " ',
-		'" . $producto->getProductonombre() . "', 
-		'" . $producto->getProductoprecio() . "')");
+            $modificarproducto = $this->conexion->crearConexion()->query("UPDATE `tbproductos` SET `productonombre`='".$producto->getProductonombre() ."',`productoprecio`='".$producto->getProductoprecio()."' WHERE productoid='".$producto->getProductoid()."';");
 
             $result = mysql_query($modificarproducto);
             $this->conexion->cerrarConexion();
@@ -52,9 +49,10 @@ class DataProducto {
     //eliminar
     public function eliminarProducto($productoid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarproducto = $this->conexion->crearConexion()->query("CALL productoeliminar('$productoid')");
+            $eliminarproducto = $this->conexion->crearConexion()->query("DELETE  FROM tbproductos 
+                where productoid='".$productoid."';");
 
             $result = mysql_query($eliminarproducto);
             $this->conexion->cerrarConexion();
@@ -69,11 +67,11 @@ class DataProducto {
     //buscar
     public function buscarProducto($productoid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
-
-            $buscarproducto = $this->conexion->crearConexion()->query("CALL productobuscar('$productoid')");
+            $buscarproducto = $this->conexion->crearConexion()->query("SELECT * FROM tbproductos
+             WHERE productoid='".$productoid."';");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarproducto->fetch_assoc()) {
@@ -89,11 +87,11 @@ class DataProducto {
 
     //mostrar productos
     function mostrarProductos() {
-        if ($this->conexion->crearConexion()->set_charset('utf8')==true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
-            $mostrarproductos = $this->conexion->crearConexion()->query("CALL productosmostrar()");
+            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT * FROM tbproductos;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarproductos->fetch_assoc()) {

@@ -46,7 +46,7 @@ class clienteBusiness {
   
 }
 /*$data=new clienteBusiness();
-  $d=$data->mostrarClientes();
+  $d=$data->eliminarCliente(1);
   print_r($d); */
 
 ?>

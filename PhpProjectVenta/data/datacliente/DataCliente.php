@@ -13,68 +13,58 @@ class DataCliente {
     //insertar
     public function insertarCliente($cliente) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $insertarcliente = $this->conexion->crearConexion()->query("INSERT INTO tbclientes(clienteid,
-            personaid, clientedireccionexacta, clienteestado) VALUES (
+            personaid, clientedireccionexacta,clientedescuento, clienteacumulado, clienteestado) VALUES (
                 '" . $cliente->get_clienteid() . "',
-		'" . $cliente->get_personaid() . "',
-                '" . $cliente->get_clientedireccionexacta() . "',    
+		'" . $cliente->get_personaid() . "',    
+                '" . $cliente->get_clientedireccionexacta() . "',
+                '" . $cliente->get_clientedescuento() . "',     
+                '" . $cliente->get_clienteacumulado() . "',    
 		'" . $cliente->get_clienteestado() . "')");
 
-            $result = mysql_query($insertarcliente);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $insertarcliente;
+            
         }
     }
 
     //modificar
     public function modificarCliente($cliente) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $modificarcliente = $this->conexion->crearConexion()->query("UPDATE tbclientes SET 
 		clienteid='" . $cliente->get_clienteid() . "',
 		personaid='" . $cliente->get_personaid() . "',
-                clientedireccionexacta='" . $cliente->get_clientedireccionexacta() . "', 
+                clientedireccionexacta='" . $cliente->get_clientedireccionexacta() . "',  
+                clientedescuento='" . $cliente->get_clientedescuento() . "',
+                clienteacumulado='" . $cliente->get_clienteacumulado() . "', 
                 clienteestado='" . $cliente->get_clienteestado() . "',    
 		WHERE clienteid =" . $cliente->get_clienteid() . "");
 
-            $result = mysql_query($modificarcliente);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $modificarcliente;
         }
     }
 
     //eliminar
     public function eliminarCliente($clienteid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $eliminarcliente = $this->conexion->crearConexion()->query("CALL eliminarcliente('$clienteid')");
 
-            $result = mysql_query($eliminarcliente);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $eliminarcliente;
         }
     }
 
     //buscar
     public function buscarCliente($clienteid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
@@ -90,7 +80,7 @@ class DataCliente {
 
     //mostrar clientes
     public function mostrarClientes() {
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 

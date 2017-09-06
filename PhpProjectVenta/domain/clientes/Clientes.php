@@ -4,6 +4,8 @@
  *
  * @author Juan
  */
+  include '../../domain/personas/Personas.php';
+
 class Clientes extends Personas{
     
     private $clienteId;
@@ -11,7 +13,7 @@ class Clientes extends Personas{
     private $clienteDireccionExacta;
 
     
-    function Clientes($clienteId, $personaId, $clientedireccionexacta) {
+    public function Clientes($clienteId, $personaId, $clientedireccionexacta) {
         $this->clienteId = $clienteId;
         $this->personaId = $personaId;
         $this->clienteDireccionExacta = $clienteDireccionExacta;

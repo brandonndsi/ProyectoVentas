@@ -13,7 +13,7 @@ class DataPersona {
     //insertar
     public function insertarPersona($persona) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $insertarpersona = "INSERT INTO tbpersonas(personaid, personanombre, personaapellido1,
             personaapellido2, personatelefono, personacorreo, zonaid, personaestado) VALUES (
@@ -26,20 +26,15 @@ class DataPersona {
             '" . $persona->get_zonaid() . "',     
             '" . $persona->get_personaestado() . "')";
 
-            $result = mysql_query($insertarpersona);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $insertarpersona;
         }
     }
 
     //modificar
     public function modificarPersona($persona) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $modificarpersona = "UPDATE tbpersonas SET 
 		personaid='" . $persona->get_personaid() . "',  
@@ -52,37 +47,27 @@ class DataPersona {
                 personaestado='" . $persona->get_personaestado() . "',     
 		WHERE personaid =" . $persona->get_personaid() . "";
 
-            $result = mysql_query($modificarpersona);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $modificarpersona;
         }
     }
 
     //eliminar
     Public function eliminarPersona($personaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $eliminarpersona = "CALL eliminarpersona('$personaid')";
 
-            $result = mysql_query($eliminarpersona);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            return $eliminarpersona;
         }
     }
 
     //buscar una persona
     Public function buscarPersona($personaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
@@ -99,7 +84,7 @@ class DataPersona {
     //mostrar las personas
     public function mostrarPersonas() {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
