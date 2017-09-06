@@ -16,18 +16,22 @@ class DataPersona {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $insertarpersona = "INSERT INTO tbpersonas(personaid, personanombre, personaapellido1,
-            personaapellido2, personatelefono, personacorreo, zonaid, personaestado) VALUES (
+            personaapellido2, personatelefono, personacorreo, zonaid) VALUES (
             '" . $persona->get_personaid() . "',
             '" . $persona->get_personanombre() . "',
             '" . $persona->get_personaapellido1() . "',
             '" . $persona->get_personaapellido2() . "',
             '" . $persona->get_personatelefono() . "',
-            '" . $persona->get_personacorreo() . "',  
-            '" . $persona->get_zonaid() . "',     
-            '" . $persona->get_personaestado() . "')";
+            '" . $persona->get_personacorreo() . "',     
+            '" . $persona->get_zonaid() . "')";
 
+            $result = mysql_query($insertarpersona);
             $this->conexion->cerrarConexion();
-            return $insertarpersona;
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
@@ -43,12 +47,16 @@ class DataPersona {
 		personaapellido2='" . $persona->get_personaapellido2() . "',
                 personatelefono='" . $persona->get_personatelefono() . "',
 		personacorreo='" . $persona->get_personacorreo() . "',    
-                zonaid='" . $persona->get_zonaid() . "',  
-                personaestado='" . $persona->get_personaestado() . "',     
+                zonaid='" . $persona->get_zonaid() . "',      
 		WHERE personaid =" . $persona->get_personaid() . "";
 
+            $result = mysql_query($modificarpersona);
             $this->conexion->cerrarConexion();
-            return $modificarpersona;
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
@@ -57,10 +65,16 @@ class DataPersona {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarpersona = "CALL eliminarpersona('$personaid')";
+            $eliminarpersona = $this->conexion->crearConexion()->query("DELETE  FROM tbpersonas 
+                where personaid='".$personaid."';");
 
+            $result = mysql_query($eliminarpersona);
             $this->conexion->cerrarConexion();
-            return $eliminarpersona;
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
@@ -71,13 +85,21 @@ class DataPersona {
 
             $array = array();
 
-            $buscarpersona = $this->conexion->crearConexion()->query("CALL buscarpersona('$personaid')");
+            $buscarpersona = $this->conexion->crearConexion()->query("SELECT personaid,personanombre,
+            personaapellido1,personaapellido2,personatelefono,
+            personacorreo,zonaid
+            FROM tbpersonas 
+            WHERE personaid ='".$personaid."';"); 
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarpersona->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            return $array;
+            if (!$array) {
+                return false;
+            } else {
+                return $array;
+            }
         }
     }
 
@@ -88,13 +110,20 @@ class DataPersona {
 
             $array = array();
 
-            $mostrarpersonas = $this->conexion->crearConexion()->query("CALL mostrarpersonas()");
+            $buscarpersona = $this->conexion->crearConexion()->query("SELECT personaid,personanombre,
+            personaapellido1,personaapellido2,personatelefono,
+            personacorreo,zonaid
+            FROM tbpersonas "); 
 
             $this->conexion->cerrarConexion();
-            while ($resultado = $mostrarpersonas->fetch_assoc()) {
+            while ($resultado = $buscarpersona->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            return $array;
+            if (!$array) {
+                return false;
+            } else {
+                return $array;
+            }
         }
     }
 
