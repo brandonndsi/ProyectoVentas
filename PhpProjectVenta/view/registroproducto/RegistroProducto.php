@@ -114,9 +114,11 @@
                         } else if ($_GET['error'] == "dbError") {
                             echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
                         }
-                    } else if (isset($_GET['success'])) {
+                        } else if (isset($_GET['success'])) {
                         echo '<p style="color: green">Transacción realizada</p>';
-                    }
+                        }else if (isset($_GET['ErrorNumero'])){
+                          echo '<center><p style="color: red">El precio debe ser solo numeros enteros.</p></center>';  
+                        }
                     ?>
                 </td>
             </tr>

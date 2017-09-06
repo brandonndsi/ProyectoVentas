@@ -59,7 +59,7 @@ class DataCliente {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $eliminarcliente = $this->conexion->crearConexion()->query("CALL eliminarcliente('$clienteid')");
+            $eliminarcliente = $this->conexion->crearConexion()->query("UPDATE `tbclientes` SET`clienteestado`=0 WHERE clienteid='".$clienteid."';");
 
             $result = mysql_query($eliminarcliente);
             $this->conexion->cerrarConexion();
@@ -78,7 +78,17 @@ class DataCliente {
 
             $array = array();
 
-            $buscarcliente = $this->conexion->crearConexion()->query("CALL buscarcliente('$clienteid')");
+            $buscarcliente = $this->conexion->crearConexion()->query("SELECT e.clienteid,p.personanombre,
+                p.personaapellido1,p.personaapellido2
+                ,p.personatelefono,
+                p.personacorreo,e.clientedescuento,
+                e.clienteacumulado,z.zonaprecio
+                ,z.zonanombre,
+                e.clientedireccionexacta 
+                FROM tbclientes e
+                INNER JOIN tbpersonas p ON e.personaid= p.personaid
+                INNER JOIN tbzonas z ON p.zonaid= z.zonaid
+                WHERE p.personanombre='".$clienteid."' AND e.clienteestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarcliente->fetch_assoc()) {
@@ -94,7 +104,14 @@ class DataCliente {
 
             $array = array();
 
-            $mostrarclientes = $this->conexion->crearConexion()->query("CALL mostrarcliente()");
+            $mostrarclientes = $this->conexion->crearConexion()->query("SELECT e.clienteid,p.personanombre,
+                p.personaapellido1,p.personaapellido2,p.personatelefono,
+                p.personacorreo,e.clientedescuento,e.clienteacumulado,z.zonaprecio
+                ,z.zonanombre,e.clientedireccionexacta 
+                FROM tbclientes e
+                INNER JOIN tbpersonas p ON e.personaid= p.personaid
+                INNER JOIN tbzonas z ON p.zonaid= z.zonaid
+                WHERE e.personaid=p.personaid AND e.clienteestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarclientes->fetch_assoc()) {
@@ -105,3 +122,8 @@ class DataCliente {
     }
 
 }
+/*
+$dat=new DataCliente();
+$d=$dat->eliminarCliente(1);
+print_r($d);*/
+?>

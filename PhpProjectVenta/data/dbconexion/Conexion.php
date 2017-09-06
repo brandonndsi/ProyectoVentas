@@ -12,7 +12,7 @@ class Conexion {
         $this->server = "localhost";
         $this->user = "root";
         $this->password = "";
-        $this->dbname = "bdproyectoventa";
+        $this->dbname = "dbexpressdjb";
     }
     
     function crearConexion(){

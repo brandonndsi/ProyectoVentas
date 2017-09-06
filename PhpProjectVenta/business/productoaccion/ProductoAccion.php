@@ -17,7 +17,7 @@ include '../../domain/productos/Productos.php';
         
         if (strlen($productoid) > 0 && strlen($productonombre) > 0 
                 && strlen($productoprecio) > 0) {
-            if (!is_numeric($productoid)) {
+            if (is_numeric($productoprecio)) {
             
                 $producto = new Productos($productoid, $productonombre, $productoprecio);
                  
@@ -31,6 +31,7 @@ include '../../domain/productos/Productos.php';
                    return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
                 
                   }
+                  return  header("location: ../../view/registroproducto/RegistroProducto.php?ErrorNumero=updated");
              
             }
              

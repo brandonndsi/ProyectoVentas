@@ -6,13 +6,13 @@
     <title>Registrar Empleado</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php
-    include '../../business/empleadobusiness/EmpleadoBusiness.php';
+    include '../../business/empleadobusiness/empleadoBusiness.php';
     ?>
 </head>
 
 <body >
     <p align="center">
-    <form name="form" action="../business/clienteAccion.php" method="Post">
+    <form name="form" action="../business/empleadoaccion/empleadoAccion.php" method="Post">
         <strong>
             <h2>
                 Formulario nuevo Empleado.

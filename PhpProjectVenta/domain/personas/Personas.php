@@ -4,6 +4,8 @@
  *
  * @author Juancho
  */
+ include '../../domain/zonas/Zonas.php';
+ 
 class Personas extends Zonas {
 
     private $personaTelefono;
@@ -15,7 +17,7 @@ class Personas extends Zonas {
    
     
 
-        public function Personas($personaTelefono, $personaNombre, $personaApellido1, $personaApellido2, $idZona, $correo) {
+    public function Personas($personaTelefono, $personaNombre, $personaApellido1, $personaApellido2, $idZona, $correo) {
         $this->personaTelefono = $personaTelefono;
         
         $this->personaNombre = $personaNombre;
@@ -74,4 +76,5 @@ class Personas extends Zonas {
     }
 
 }
+
 ?>
