@@ -12,7 +12,6 @@ class Clientes extends Personas{
     private $personaId;
     private $clienteDireccionExacta;
 
-    
     public function Clientes($clienteId, $personaId, $clientedireccionexacta) {
         $this->clienteId = $clienteId;
         $this->personaId = $personaId;

@@ -18,8 +18,8 @@ class Personas extends Zonas {
     
 
     public function Personas($personaTelefono, $personaNombre, $personaApellido1, $personaApellido2, $idZona, $correo) {
-        $this->personaTelefono = $personaTelefono;
         
+        $this->personaTelefono = $personaTelefono;
         $this->personaNombre = $personaNombre;
         $this->personaApellido1 = $personaApellido1;
         $this->personaApellido2 = $personaApellido2;

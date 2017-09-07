@@ -2,7 +2,7 @@
 
 class DataCliente {
 
-    private $conexion;
+        private $conexion;
 
     function DataCliente() {
         include_once '../../data/dbconexion/Conexion.php';
@@ -12,30 +12,42 @@ class DataCliente {
 
     //insertar
     public function insertarCliente($cliente) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+            $personanuevo= $this->conexion->crearConexion()->query("INSERT INTO `tbpersonas`(
+                `personaid`, `personanombre`,`personaapellido1`, `personaapellido2`, 
+                `personatelefono`, `personacorreo`, `zonaid`) VALUES (
+                '".$cliente->getPersonaNombre()."',
+                '".$cliente->getPersonaApellido1()."',
+                '".$cliente->getPersonaApellido2()."',
+                '".$cliente->getPersonaTelefono()."',
+                '".$cliente->getCorreo()."',
+                '".$cliente->getIdZona()."');");
 
-            $insertarcliente = $this->conexion->crearConexion()->query("INSERT INTO tbclientes(clienteid,
-            personaid, clientedireccionexacta, clienteestado) VALUES (
-                '" . $cliente->get_clienteid() . "',
-		'" . $cliente->get_personaid() . "',
-                '" . $cliente->get_clientedireccionexacta() . "',    
-		'" . $cliente->get_clienteestado() . "')");
+            $recuperandoIdPersona=$this->conexion->crearConexion()->query("SELECT `personaid`FROM `tbpersonas` WHERE personanombre='".getPersonaNombre()."';");
+            
+            $clientes->setPersonaId($recuperandoIdPersona);
 
-            $result = mysql_query($insertarcliente);
+            $clientenuevo=$this->conexion->crearConexion()->query("INSERT INTO `tbclientes`(`personaid`, 
+            `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) 
+            VALUES ($personaid,
+            '".$cliente->getPersonaId()."',
+            '".$cliente->getClienteDireccionExacta()."',
+            '".$Cliente->getClienteDescuento()."',
+            '".$cliente->getClienteAcumulado()."',
+            '".$cliente->getClienteEstado()."');");
+print_r($cliente);
+            
+            //$this->conexion->cerrarConexion();
+        return $clientenuevo;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
         }
     }
 
     //modificar
     public function modificarCliente($cliente) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $modificarcliente = $this->conexion->crearConexion()->query("UPDATE tbclientes SET 
 		clienteid='" . $cliente->get_clienteid() . "',
@@ -57,7 +69,7 @@ class DataCliente {
     //eliminar
     public function eliminarCliente($clienteid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $eliminarcliente = $this->conexion->crearConexion()->query("UPDATE `tbclientes` SET`clienteestado`=0 WHERE clienteid='".$clienteid."';");
 
@@ -74,7 +86,7 @@ class DataCliente {
     //buscar
     public function buscarCliente($clienteid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
@@ -88,7 +100,9 @@ class DataCliente {
                 FROM tbclientes e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 INNER JOIN tbzonas z ON p.zonaid= z.zonaid
-                WHERE p.personanombre='".$clienteid."' AND e.clienteestado=1;");
+                WHERE p.personanombre='".$clienteid."' AND e.clienteestado=1 OR 
+                e.clienteid='".$clienteid."' AND e.clienteestado=1 OR
+                 p.personatelefono='".$clienteid."' AND e.clienteestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarcliente->fetch_assoc()) {
@@ -100,7 +114,7 @@ class DataCliente {
 
     //mostrar clientes
     public function mostrarClientes() {
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
@@ -124,6 +138,6 @@ class DataCliente {
 }
 /*
 $dat=new DataCliente();
-$d=$dat->eliminarCliente(1);
+$d=$dat->buscarcliente(1);
 print_r($d);*/
 ?>
