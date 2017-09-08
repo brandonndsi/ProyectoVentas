@@ -6,15 +6,15 @@
     <title>Reg Producto </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="../../css/producto.css"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/producto.css">
 
 <?php
   include '../../business/productobusiness/ProductoBusiness.php';
   ?>
     
 </head>
-<table aling="center"> 
 <body align="center">
-         
+       <div class="nue"> 
     <p align="center">
     <form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >
         <strong>
@@ -56,6 +56,8 @@
         
         
     </form>
+    </div>
+    <div class="mostrar">
 
     <?php
             $productoBusiness = new ProductoBusiness();
@@ -73,6 +75,7 @@
                 echo '</form>';
 
             }
+
                 echo '<h2>Buscar un solo Producto</h2>';
                 echo '<form method="post" action="RegistroProducto.php" align="center" >';
                 echo '<input type="text" name="productoid" id="productoid" placeholder="P+numero"/>';
@@ -100,6 +103,7 @@
         }
     }
             ?>
+            </div>
         <p> <a href="../../index.php">Regresar</a> </p>
        
            <tr>

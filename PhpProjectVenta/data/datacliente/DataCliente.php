@@ -118,10 +118,13 @@ print_r($cliente);
 
             $array = array();
 
-            $mostrarclientes = $this->conexion->crearConexion()->query("SELECT e.clienteid,p.personanombre,
-                p.personaapellido1,p.personaapellido2,p.personatelefono,
-                p.personacorreo,e.clientedescuento,e.clienteacumulado,z.zonaprecio
-                ,z.zonanombre,e.clientedireccionexacta 
+            $mostrarclientes = $this->conexion->crearConexion()->query("SELECT 
+                p.personanombre,
+                p.personaapellido1,
+                p.personaapellido2,
+                p.personatelefono,
+                p.personacorreo,e.clientedescuento,
+                e.clientedireccionexacta 
                 FROM tbclientes e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 INNER JOIN tbzonas z ON p.zonaid= z.zonaid

@@ -6,14 +6,13 @@
     <title>Registrar Cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="text/javascript" src="../../js/Cliente.js"></script>
-    <style href="../../css/cliente.css">
-</style>
+    <link rel="stylesheet" type="text/css" href="../../css/cliente.css">
     <?php
     include '../../business/clientebusiness/clienteBusiness.php';
     ?>
 </head>
-<body >
-    <p align="center">
+<body>
+<div class="contenedor">
     <form name="form" action="../../business/clienteaccion/clienteAccion.php" method="Post" align="center">
         <strong>
             <p>
@@ -43,29 +42,29 @@
     foreach ($allBusiness as $current) {
         
 
-        echo '<form  action="../../business/clienteaccion/clienteAccion.php" method="Post" align="center" >';
+        echo '<form  action="../../business/clienteaccion/clienteAccion.php" method="Post" align="center" id="mostrar">';
         echo'<table>';
-        echo '<tr><td><strong>ID</strong></td><td><strong>Nombre</strong></td><td><strong>Apellido1</strong></td>
-        <td><strong>Apellido2</strong></td><td><strong>Telefono</strong></td><td><strong>Correo</strong></td>
-        <td><strong>Descuento</strong></td><td><strong>Acumulado</strong></td><td><strong>Zona Precio</strong></td><td><strong>Zona Nombre</strong></td><td><strong>Direccion</strong></td></tr>';
+        echo '<thead>';
         echo '<tr>';
-        echo '<td><input type="text" name="clienteid" id="clienteid" value="' . $current['clienteid'] . '"/></td>';
-        echo '<td><input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '"/></td>';
-        echo '<td><input type="text" name="personaapellido1" id="personaApellido1" value="' . $current['personaapellido1'] . '"/></td>';
-        echo '<td><input type="text" name="personaapellido2" id="personaApellido2" value="' . $current['personaapellido2'] . '"/></td>';
-        echo '<td><input type="text" name="personatelefono" id="personatelefono" value="' . $current['personatelefono'] . '"/></td>';
-        echo '<td><input type="text" name="personacorreo" id="personacorreo" value="' . $current['personacorreo'] . '"/></td>';
-        echo '<td><input type="text" name="clientedescuento" id="clientedescuento" value="' . $current['clientedescuento'] . '"/></td>';
-        echo '<td><input type="text" name="clienteacumulado" id="clienteacumulado" value="' . $current['clienteacumulado'] . '"/></td>';
-        echo '<td><input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/></td>';
-        echo '<td><input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '"/></td>';
-        echo '<td><input type="text" name="clientedireccionexacta" id="clientedireccionexacta" value="' . $current['clientedireccionexacta'] . '"/></td>';
-        echo '<br>';
-        echo '<br>';
-        echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
-        echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
+        echo '<th>Nombre</th><th>Apellido1</th>
+        <th>Apellido2</th><th>Telefono</th><th>Correo</th>
+        <th>Descuento</th><th>Direccion</th><th>Accion</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tr>';
+        echo '<th ><input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '"/></th>';
+        echo '<th><input type="text" name="personaapellido1" id="personaApellido1" value="' . $current['personaapellido1'] . '"/></th>';
+        echo '<th><input type="text" name="personaapellido2" id="personaApellido2" value="' . $current['personaapellido2'] . '"/></th>';
+        echo '<th><input type="text" name="personatelefono" id="personatelefono" value="' . $current['personatelefono'] . '"/></th>';
+        echo '<th><input type="text" name="personacorreo" id="personacorreo" value="' . $current['personacorreo'] . '"/></th>';
+        echo '<th><input type="text" name="clientedescuento" id="clientedescuento" value="' . $current['clientedescuento'] . '"/></th>';
+        echo '<th><input type="text" name="clientedireccionexacta" id="clientedireccionexacta" value="' . $current['clientedireccionexacta'] . '"/></th>';
+        
+        echo '<th><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></th><br>';
+        echo '<th><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></th>';
         echo '</tr>';
         echo '</table>';
+
         echo '</form>';
     }
     echo '<h2 align="center">Buscar cliente</h2>';
@@ -126,5 +125,6 @@
 
 <footer>
 </footer>
+</div>
 </body>
 </html>
