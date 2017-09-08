@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/cliente.css">
     <?php
     include '../../business/clientebusiness/clienteBusiness.php';
+    /*include '../../business/clienteaccion/clienteAccion.php';*/
     ?>
 </head>
 <body>
@@ -78,17 +79,18 @@
         if (isset($personatelefono)) {
             $buscarBusiness = $clienteBusiness->buscarcliente($personatelefono);
             foreach ($buscarBusiness as $current) {
-                echo '<form  action="../../business/clienteaccion/ClienteAccion.php" method="Post" align="center" >';
-        echo '<p> ID: <input type="text" name="clienteid" id="clienteid" value="' . $current['clienteid'] . '"/></p>';
+        
+        echo '<form  action="../../business/clienteaccion/clienteAccion.php" method="Post" align="center" >';
+        echo '<p> ID: <input type="text" name="clienteid" id="clienteid" value="' . $current['clienteid'] . '"  readonly /></p>';
         echo '<p> Nombre: <input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '"/></p>';
         echo '<p> Apellido1: <input type="text" name="personaapellido1" id="personaApellido1" value="' . $current['personaapellido1'] . '"/></p>';
         echo '<p> Apellido2: <input type="text" name="personaapellido2" id="personaApellido2" value="' . $current['personaapellido2'] . '"/></p>';
         echo '<p> Telefono: <input type="text" name="personatelefono" id="personatelefono" value="' . $current['personatelefono'] . '"/></p>';
         echo '<p> Correo: <input type="text" name="personacorreo" id="personacorreo" value="' . $current['personacorreo'] . '"/></p>';
-        echo '<p> Descuento: <input type="text" name="clientedescuento" id="clientedescuento" value="' . $current['clientedescuento'] . '"/></p>';
+       /* echo '<p> Descuento: <input type="text" name="clientedescuento" id="clientedescuento" value="' . $current['clientedescuento'] . '"/></p>';
         echo '<p> Acumula: <input type="text" name="clienteacumulado" id="clienteacumulado" value="' . $current['clienteacumulado'] . '"/></p>';
-        echo '<p> Zona Precio: <input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/></p>';
-        echo '<p> Zona Nombre: <input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '"/></p>';
+        echo '<p> Zona Precio: <input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/></p>';*/
+        echo '<p> Zona Nombre: <input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"/></p>';
         echo '<p> Direccion: <input type="text" name="clientedireccionexacta" id="clientedireccionexacta" value="' . $current['clientedireccionexacta'] . '"/></p>';
         echo '<br>';
         echo '<br>';

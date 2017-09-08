@@ -69,10 +69,11 @@
     }else if(isset($_POST["actualizar"])){
         
      if (isset($_POST['personanombre']) && isset($_POST['personaapellido1']) && 
-        isset($_POST['personaapellido2']) && isset($_POST['personatelefono']) && 
-        isset($_POST['personacorreo']) && isset($_POST['clientedescuento']) && 
-        isset($_POST['clienteacumulado']) && isset($_POST['zonaid']) && 
-        isset($_POST['clienteestado']) && isset($_POST['clientedireccionexacta'])) {
+        isset($_POST['personaapellido2']) && isset($_POST['personatelefono']) &&
+        isset($_POST['clienteid']) &&
+        isset($_POST['personacorreo']) /*&& isset($_POST['clientedescuento']) && 
+        isset($_POST['clienteacumulado']) */&& isset($_POST['zonaid'])/* && 
+        isset($_POST['clienteestado']) */&& isset($_POST['clientedireccionexacta'])) {
           
         
         $personanombre =$_POST['personanombre'];
@@ -80,27 +81,34 @@
         $personaapellido2 = $_POST['personaapellido2'];
         $personatelefono = $_POST['personatelefono'];
         $personacorreo = $_POST['personacorreo'];
-        $clientedescuento = $_POST['clientedescuento'];
-        $clienteacumulado=$_POST['clienteacumulado'];
+        $clienteid =$_POST['clienteid'];
+        /*$clientedescuento = $_POST['clientedescuento'];
+        $clienteacumulado=$_POST['clienteacumulado'];*/
         $zonaid=$_POST['zonaid'];
-        $clienteestado=$_POST['clienteestado'];
+        /*$clienteestado=$_POST['clienteestado'];*/
         $clientedireccionexacta=$_POST['clientedireccionexacta'];
 
        if (strlen($personanombre) > 0 && strlen($personaapellido1) > 0 && 
             strlen($personaapellido2) > 0 && strlen($personatelefono) > 0 
-            && strlen($personacorreo) > 0 && strlen($clientedescuento) > 0
-            && strlen($clienteacumulado) > 0 && strlen($zonaid) > 0 
-            && strlen($clienteestado) > 0  && strlen($clientedireccionexacta) > 0) {
+            && strlen($clienteid) >0
+            && strlen($personacorreo) > 0 /*&& strlen($clientedescuento) > 0
+            && strlen($clienteacumulado) > 0 */&& strlen($zonaid) > 0 
+            /*&& strlen($clienteestado) > 0  */&& strlen($clientedireccionexacta) > 0) {
             if (!is_numeric($personanombre)) {
                 
-                $cliente=new Clientes("","", $clientedireccionexacta);
+                $cliente=new Clientes($clienteid,"", $clientedireccionexacta);
+                
+                $cliente->setPersonaNombre($personanombre);
+                $cliente->setPersonaApellido1($personaapellido1);
+                $cliente->setPersonaApellido2($personaapellido2);
+                $cliente->setPersonaTelefono($personatelefono);
+                $cliente->setIdZona($zonaid);
+                $cliente->setCorreo($personacorreo);
+                
+                
+            include '../../business/clientebusiness/clienteBusiness.php';
 
-                $this->cliente->Personas($personatelefono, $personanombre, 
-                  $personaapellido1, $personaapellido2, $zonaid, $personacorreo);
-
-           include '../clientebusiness/clienteBusiness.php';
-           
-           $ClienteBusiness=new clienteBusiness();
+            $ClienteBusiness=new clienteBusiness();
            
             $result= $ClienteBusiness->modificarCliente($cliente);
             
@@ -123,7 +131,7 @@
     if(isset($_POST['clienteid'])){
         
             $clienteid=$_POST['clienteid'];
-           include '../clientebusiness/clienteBusiness.php';
+           include '../../business/clientebusiness/clienteBusiness.php';
            
            $ClienteBusiness=new clienteBusiness();
            
