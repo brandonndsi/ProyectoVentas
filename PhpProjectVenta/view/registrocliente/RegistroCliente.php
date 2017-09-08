@@ -12,7 +12,7 @@
     ?>
 </head>
 <body>
-<div class="contenedor">
+
     <form name="form" action="../../business/clienteaccion/clienteAccion.php" method="Post" align="center">
         <strong>
             <p>
@@ -24,23 +24,21 @@
         <p> Apellido2: <input type="text" name="personaapellido2" id="personaApellido2" placeholder="solo letras"/></p>
         <p> Telefono: <input type="text" name="personatelefono" id="personatelefono" placeholder="solo numeros"/></p>
         <p> Correo: <input type="text" name="personacorreo" id="personacorreo" placeholder="solo correo @"></p>
-        <p> Descuento: <input type="text" name="clientedescuento" id="clientedescuento" placeholder="solo numeros"/></p>
-        <p> Acumula: <input type="text" name="clienteacumulado" id="clienteacumulado" placeholder="solo numeros"/></p>
+       <!-- <p> Descuento: <input type="text" name="clientedescuento" id="clientedescuento" placeholder="solo numeros"/></p>
+        <p> Acumula: <input type="text" name="clienteacumulado" id="clienteacumulado" placeholder="solo numeros"/></p> -->
         <p> zona ID: <input type="text" name="zonaid" id="zonaid" placeholder="solo numeros"/></p>
-        <p> Estado: <input type="text" name="clienteestado" id="clienteestado" placeholder="solo 1 o 0"/></p>
+        <!--<p> Estado: <input type="text" name="clienteestado" id="clienteestado" placeholder="solo 1 o 0"/></p> -->
         <p> Direccion: <input type="text" name="clientedireccionexacta" id="clientedireccionexacta" placeholder="solo letras"/></p>
 
         <br>
         <input name="nuevo" type="submit" onclick="validarEnvia()" value="Registrar">
 
     </form>
-
+    <div class="contenedor">
     <?php
     $clienteBusiness = new clienteBusiness();
     $allBusiness = $clienteBusiness->mostrarClientes();
     echo '<h2 align="center">Lista de Clientes</h2>';
-    foreach ($allBusiness as $current) {
-        
 
         echo '<form  action="../../business/clienteaccion/clienteAccion.php" method="Post" align="center" id="mostrar">';
         echo'<table>';
@@ -48,25 +46,24 @@
         echo '<tr>';
         echo '<th>Nombre</th><th>Apellido1</th>
         <th>Apellido2</th><th>Telefono</th><th>Correo</th>
-        <th>Descuento</th><th>Direccion</th><th>Accion</th>';
+        <th>Descuento</th><th>Direccion</th>';
+            foreach ($allBusiness as $current) {
         echo '</tr>';
         echo '</thead>';
         echo '<tr>';
-        echo '<th ><input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '"/></th>';
-        echo '<th><input type="text" name="personaapellido1" id="personaApellido1" value="' . $current['personaapellido1'] . '"/></th>';
-        echo '<th><input type="text" name="personaapellido2" id="personaApellido2" value="' . $current['personaapellido2'] . '"/></th>';
-        echo '<th><input type="text" name="personatelefono" id="personatelefono" value="' . $current['personatelefono'] . '"/></th>';
-        echo '<th><input type="text" name="personacorreo" id="personacorreo" value="' . $current['personacorreo'] . '"/></th>';
-        echo '<th><input type="text" name="clientedescuento" id="clientedescuento" value="' . $current['clientedescuento'] . '"/></th>';
-        echo '<th><input type="text" name="clientedireccionexacta" id="clientedireccionexacta" value="' . $current['clientedireccionexacta'] . '"/></th>';
-        
-        echo '<th><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></th><br>';
-        echo '<th><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></th>';
+        echo '<th >' . $current['personanombre'] . '</th>';
+        echo '<th>' . $current['personaapellido1'] . '</th>';
+        echo '<th>' . $current['personaapellido2'] . '</th>';
+        echo '<th>' . $current['personatelefono'] . '</th>';
+        echo '<th>' . $current['personacorreo'] . '</th>';
+        echo '<th>' . $current['clientedescuento'] . '</th>';
+        echo '<th>' . $current['clientedireccionexacta'] . '</th>';
         echo '</tr>';
+    }
         echo '</table>';
 
         echo '</form>';
-    }
+    
     echo '<h2 align="center">Buscar cliente</h2>';
     echo '<form method="post" action="RegistroCliente.php" align="center" >';
     echo '<input type="text" name="personatelefono" id="personatelefono" placeholder="ID/Nombre/Telefono"/>';
@@ -103,6 +100,7 @@
         }
     }
     ?>
+    </div>
     <p align="center"> <a href="../../index.php">Regresar</a> </p>
 
 <tr>
@@ -123,8 +121,6 @@
     </td>
 </tr>
 
-<footer>
-</footer>
-</div>
+
 </body>
 </html>

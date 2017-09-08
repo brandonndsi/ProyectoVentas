@@ -13,9 +13,9 @@ class DataCliente {
     //insertar
     public function insertarCliente($cliente) {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
-
-            $personanuevo= $this->conexion->crearConexion()->query("INSERT INTO `tbpersonas`(
-                `personaid`, `personanombre`,`personaapellido1`, `personaapellido2`, 
+            /*Para ingresar nueva persona en la base de datos.*/
+           $personanuevo= $this->conexion->crearConexion()->query("INSERT INTO `tbpersonas`(
+                `personanombre`,`personaapellido1`, `personaapellido2`, 
                 `personatelefono`, `personacorreo`, `zonaid`) VALUES (
                 '".$cliente->getPersonaNombre()."',
                 '".$cliente->getPersonaApellido1()."',
@@ -24,23 +24,33 @@ class DataCliente {
                 '".$cliente->getCorreo()."',
                 '".$cliente->getIdZona()."');");
 
-            $recuperandoIdPersona=$this->conexion->crearConexion()->query("SELECT `personaid`FROM `tbpersonas` WHERE personanombre='".getPersonaNombre()."';");
-            
-            $clientes->setPersonaId($recuperandoIdPersona);
+           /*para recupera el id del cliente.*/
+            $recuperandoIdPersona=$this->conexion->crearConexion()->query("SELECT `personaid`FROM `tbpersonas` WHERE 
+                personanombre='".$cliente->getPersonaNombre()."';");
 
-            $clientenuevo=$this->conexion->crearConexion()->query("INSERT INTO `tbclientes`(`personaid`, 
+            /*transformando los datos del id objeto a un string*/
+            $con;
+            while ($resultado = $recuperandoIdPersona->fetch_assoc()){
+                $con=$resultado['personaid'];     
+            }
+            /*verificamos si es un string ya formulado*/
+            if(is_string($con)){
+                $cliente->setPersonaId($con);
+            }
+            /*Creamos el nuevo cliente a la base de datos*/
+            $recuperandoIdcliente=$this->conexion->crearConexion()->query("INSERT INTO `tbclientes`(`personaid`, 
             `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) 
-            VALUES ($personaid,
+            VALUES (
             '".$cliente->getPersonaId()."',
             '".$cliente->getClienteDireccionExacta()."',
-            '".$Cliente->getClienteDescuento()."',
+            '".$cliente->getClienteDescuento()."',
             '".$cliente->getClienteAcumulado()."',
-            '".$cliente->getClienteEstado()."');");
-print_r($cliente);
-            
-            //$this->conexion->cerrarConexion();
-        return $clientenuevo;
-            $this->conexion->cerrarConexion();
+            '1');");
+
+        $this->conexion->cerrarConexion();
+
+        return $recuperandoIdcliente;
+         
         }
     }
 
@@ -139,8 +149,15 @@ print_r($cliente);
     }
 
 }
-/*
-$dat=new DataCliente();
-$d=$dat->buscarcliente(1);
+
+/*$dat=new DataCliente();
+$cliente=new Clientes(null,null,"david");
+$cliente->setPersonaNombre("davidddd");
+                $cliente->setPersonaApellido1("cdd");
+                $cliente->setPersonaApellido2("sad");
+                $cliente->setPersonaTelefono("2312");
+                $cliente->setIdZona("45");
+                $cliente->setCorreo("ddd@gmial.com");
+$d=$dat->insertarCliente($cliente);
 print_r($d);*/
 ?>

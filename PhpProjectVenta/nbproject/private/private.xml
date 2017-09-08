@@ -4,7 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/business/clienteaccion/clienteAccion.php</file>
-            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/view/registrocliente/RegistroCliente.php</file>
+            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/domain/personas/Personas.php</file>
+            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/domain/clientes/Clientes.php</file>
+            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/business/clientebusiness/clienteBusiness.php</file>
+            <file>file:/opt/lampp/htdocs/ProyectoVentas/PhpProjectVenta/data/datacliente/DataCliente.php</file>
         </group>
     </open-files>
 </project-private>
