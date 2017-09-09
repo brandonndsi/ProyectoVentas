@@ -1,4 +1,4 @@
-       body{
+  body{
         
         font-family: Arial;
         margin: auto;
@@ -18,7 +18,7 @@
        }
        th, td {
        	border: solid 4px black;
-       	padding: 10;
+       	padding:2;
        }
        thead{
        	background-color: #246355;

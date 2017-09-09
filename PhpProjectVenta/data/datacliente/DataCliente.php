@@ -162,14 +162,5 @@ class DataCliente {
 
 }
 
-/*$dat=new DataCliente();
-$cliente=new Clientes(null,null,"david");
-$cliente->setPersonaNombre("davidddd");
-                $cliente->setPersonaApellido1("cdd");
-                $cliente->setPersonaApellido2("sad");
-                $cliente->setPersonaTelefono("2312");
-                $cliente->setIdZona("45");
-                $cliente->setCorreo("ddd@gmial.com");
-$d=$dat->insertarCliente($cliente);
-print_r($d);*/
+
 ?>

@@ -14,7 +14,7 @@
     
 </head>
 <body align="center">
-       <div class="nue"> 
+       <div class="nuevo"> 
     <p align="center">
     <form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >
         <strong>
