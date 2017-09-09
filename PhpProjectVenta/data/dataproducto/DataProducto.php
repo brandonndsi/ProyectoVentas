@@ -34,7 +34,11 @@ VALUES ('".$producto->getProductoCodigo()."','" . $producto->getProductonombre()
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $modificarproducto = $this->conexion->crearConexion()->query("UPDATE `tbproductos` SET `productonombre`='".$producto->getProductonombre() ."',`productoprecio`='".$producto->getProductoprecio()."' WHERE productoid='".$producto->getProductoid()."';");
+            $modificarproducto = $this->conexion->crearConexion()->query("UPDATE `tbproductos` 
+                SET `productocodigo`='".$producto->getProductoCodigo()."',
+                `productonombre`='".$producto->getProductonombre()."',
+                `productoprecio`='".$producto->getProductoprecio()."'
+                    WHERE productoid='".$producto->getProductoid()."'");
 
             $result = mysql_query($modificarproducto);
             $this->conexion->cerrarConexion();

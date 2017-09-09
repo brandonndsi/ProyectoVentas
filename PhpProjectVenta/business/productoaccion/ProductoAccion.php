@@ -44,18 +44,19 @@ include '../../domain/productos/Productos.php';
          * Verifica si la accion es la e actualizar los datos del cliente
          */
     }else if(isset($_POST['actualizar'])){
-           if (isset($_POST['productoid']) && isset($_POST['productonombre']) 
-           && isset($_POST['productoprecio'])) {
+           if (isset($_POST['productocodigo']) && isset($_POST['productonombre']) 
+           && isset($_POST['productoprecio']) && isset($_POST['productoid'])) {
              
         $productoid = $_POST['productoid'];
+        $productocodigo = $_POST['productocodigo'];
         $productonombre = $_POST['productonombre'];
         $productoprecio = $_POST['productoprecio'];
         
-        if (strlen($productoid) > 0 && strlen($productonombre) > 0 
+        if (strlen($productoid) > 0 && strlen($productocodigo) > 0 && strlen($productonombre) > 0 
                 && strlen($productoprecio) > 0) {
-            if (!is_numeric($productoid)) {
+            if (is_numeric($productoid)) {
                 
-                $producto = new Productos($productoid, $productonombre, $productoprecio);
+                $producto = new Productos($productoid,$productocodigo, $productonombre, $productoprecio);
                 
                 include '../productobusiness/ProductoBusiness.php';
 

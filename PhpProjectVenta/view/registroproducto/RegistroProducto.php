@@ -46,9 +46,9 @@ $productoBusiness = new ProductoBusiness();
                     
                 </tr>
                 <tr>
-                    <td><input type="text" name="productoid" size="10" class="centrado" placeholder="P+numero"/> </td>
-                    <td><input type="text" name="productonombre" size="10" class="centrado" placeholder="Solo letras"/> </td>
-                    <td><input type="text" name="productoprecio" size="10" class="centrado" placeholder="Solo numeros"/> </td>
+                    <td><input type="text" name="productocodigo" size="10" class="productocodigo" placeholder="P+numero"/> </td>
+                    <td><input type="text" name="productonombre" size="10" class="productonombre" placeholder="Solo letras"/> </td>
+                    <td><input type="text" name="productoprecio" size="10" class="productoprecio" placeholder="Solo numeros"/> </td>
                     <td><SELECT NAME="ingredientes">
                     <?php
                     
@@ -78,7 +78,7 @@ $productoBusiness = new ProductoBusiness();
                 echo '<tr>';
                 echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center"  >';
                 echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
-                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productocodigo'] . '"/>';
+                echo '<input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
                 echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
