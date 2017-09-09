@@ -90,7 +90,7 @@
        /* echo '<p> Descuento: <input type="text" name="clientedescuento" id="clientedescuento" value="' . $current['clientedescuento'] . '"/></p>';
         echo '<p> Acumula: <input type="text" name="clienteacumulado" id="clienteacumulado" value="' . $current['clienteacumulado'] . '"/></p>';
         echo '<p> Zona Precio: <input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/></p>';*/
-        echo '<p> Zona Nombre: <input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"/></p>';
+        echo '<p> Zona ID: <input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"/></p>';
         echo '<p> Direccion: <input type="text" name="clientedireccionexacta" id="clientedireccionexacta" value="' . $current['clientedireccionexacta'] . '"/></p>';
         echo '<br>';
         echo '<br>';
