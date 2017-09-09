@@ -8,18 +8,18 @@
 include '../../domain/productos/Productos.php';
     if(isset($_POST['nuevo'])){
 
-    if (isset($_POST['productoid']) && isset($_POST['productonombre']) 
+    if (isset($_POST['productocodigo']) && isset($_POST['productonombre']) 
            && isset($_POST['productoprecio'])) {
        
-        $productoid = $_POST['productoid'];
+        $productocodigo = $_POST['productocodigo'];
         $productonombre = $_POST['productonombre'];
         $productoprecio = $_POST['productoprecio'];
         
-        if (strlen($productoid) > 0 && strlen($productonombre) > 0 
+        if (strlen($productocodigo) > 0 && strlen($productonombre) > 0 
                 && strlen($productoprecio) > 0) {
             if (is_numeric($productoprecio)) {
             
-                $producto = new Productos($productoid, $productonombre, $productoprecio);
+                $producto = new Productos(null,$productocodigo, $productonombre, $productoprecio);
                  
                 include '../productobusiness/ProductoBusiness.php';
 
@@ -134,6 +134,17 @@ include '../../domain/productos/Productos.php';
             $ProductoBusiness=new ProductoBusiness();
            
             $result= $ProductoBusiness->mostrarProductos();
+            
+            return $result;  
+            
+    }elseif(isset($_POST['materia'])){
+        
+            
+             include '../productobusiness/ProductoBusiness.php';
+
+            $ProductoBusiness=new ProductoBusiness();
+           
+            $result= $ProductoBusiness->mostrarMaterial();
             
             return $result;  
             

@@ -14,6 +14,9 @@
     
 </head>
 <body align="center">
+<?php
+$productoBusiness = new ProductoBusiness();
+?>
        <div class="nuevo"> 
     <p align="center">
     <form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >
@@ -28,11 +31,9 @@
                     <th class="primerfila" >Codigo</th>
                     <th class="primerfila" >Producto</th>
                     <th class="primerfila" >Precio</th>
-                    <th class="sin" >&nbsp;</th>
-                    <th class="sin" >&nbsp;</th>
-                    <th class="sin" >&nbsp;</th>                    
-                    <th class="sin" >&nbsp;</th>
-                    <th class="sin" >&nbsp;</th>                
+                    <th class="primerafila" >Ingredientes</th>
+                    <th class="primerafila" >Accion</th>
+                                   
                 </tr>
             </thead>           
                 <tr>
@@ -48,6 +49,16 @@
                     <td><input type="text" name="productoid" size="10" class="centrado" placeholder="P+numero"/> </td>
                     <td><input type="text" name="productonombre" size="10" class="centrado" placeholder="Solo letras"/> </td>
                     <td><input type="text" name="productoprecio" size="10" class="centrado" placeholder="Solo numeros"/> </td>
+                    <td><SELECT NAME="ingredientes">
+                    <?php
+                    
+                     $allBusiness = $productoBusiness->mostrarMaterial();
+                    foreach ($allBusiness as $current) {
+                    echo '<option>'.$current['materiaprimanombre'].'</option>';
+                    }
+                    ?>
+                    </SELECT>
+                    </td>
                     <th class="bot"> <td><input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></th>
                 </tr> 
            
@@ -58,15 +69,16 @@
     </form>
     </div>
     <div class="mostrar">
-
+        
     <?php
-            $productoBusiness = new ProductoBusiness();
+            //$productoBusiness = new ProductoBusiness();
             $allBusiness = $productoBusiness->mostrarProductos();
                 echo '<h2>Formulario de carga de datos actualizar y eliminar</h2>';
             foreach ($allBusiness as $current) {
-                echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >';
-                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
                 echo '<tr>';
+                echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center"  >';
+                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
+                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productocodigo'] . '"/>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
                 echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
@@ -91,8 +103,9 @@
                 $buscarBusiness=$productoBusiness->buscarProducto($productoid);
                 foreach ($buscarBusiness as $current) {
                 echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >';
-                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
                 echo '<tr>';
+                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
+                echo '<input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
                 echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
@@ -104,6 +117,7 @@
     }
             ?>
             </div>
+            
         <p> <a href="../../index.php">Regresar</a> </p>
        
            <tr>
