@@ -53,7 +53,9 @@ $productoBusiness = new ProductoBusiness();
                     <?php
                     
                      $allBusiness = $productoBusiness->mostrarMaterial();
+                     
                     foreach ($allBusiness as $current) {
+                        
                     echo '<option>'.$current['materiaprimanombre'].'</option>';
                     }
                     ?>
@@ -67,6 +69,7 @@ $productoBusiness = new ProductoBusiness();
         
         
     </form>
+    
     </div>
     <div class="mostrar">
         
@@ -77,7 +80,7 @@ $productoBusiness = new ProductoBusiness();
             foreach ($allBusiness as $current) {
                 echo '<tr>';
                 echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center"  >';
-                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
+                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '" readonly />';
                 echo '<input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
                 echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
@@ -90,7 +93,7 @@ $productoBusiness = new ProductoBusiness();
 
                 echo '<h2>Buscar un solo Producto</h2>';
                 echo '<form method="post" action="RegistroProducto.php" align="center" >';
-                echo '<input type="text" name="productoid" id="productoid" placeholder="P+numero"/>';
+                echo '<input type="text" name="productoid" id="productoid" placeholder="    id/codigo/precio" />';
                 echo '<tr>';
 
                 echo '<td><input type="submit" value="Enviar" name="buscar" id="buscar"/></td>';
@@ -104,7 +107,7 @@ $productoBusiness = new ProductoBusiness();
                 foreach ($buscarBusiness as $current) {
                 echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >';
                 echo '<tr>';
-                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '"/>';
+                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '" readonly />';
                 echo '<input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
                 echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
