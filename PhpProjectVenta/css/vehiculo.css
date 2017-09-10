@@ -1,7 +1,8 @@
 body{
-        
+        background-image: url('../css/imagen/fondo.jpg');
         font-family: Arial;
-        margin: auto;
+        margin: 0;
+
       
        }
        #contenedor{

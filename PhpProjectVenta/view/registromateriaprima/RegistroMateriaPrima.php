@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Registrar Materia Prima</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/materiaprima.css">
     <?php
   include '../../business/materiaprimabusiness/MateriaPrimaBusiness.php';
 
