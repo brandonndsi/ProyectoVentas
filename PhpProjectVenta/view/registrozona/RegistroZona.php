@@ -53,7 +53,7 @@ $zonaBusiness = new zonaBusiness();
     foreach ($allBusiness as $current) {
 
         echo '<form  action="../../business/zonaaccion/zonaAction.php" method="Post" align="center" >';
-        echo '<input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"/>';
+        echo '<input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"  readonly />';
         echo '<input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '"/>';
         echo '<input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/>';
         echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
@@ -62,13 +62,22 @@ $zonaBusiness = new zonaBusiness();
         echo '</form>';
     }
 
+                echo '<h2>Buscar un solo Zona</h2>';
+                echo '<form method="post" action="RegistroZona.php" align="center" >';
+                echo '<input type="text" name="zonaid" id="zonaid" placeholder="    id  " />';
+                echo '<tr>';
+
+                echo '<td><input type="submit" value="Enviar" name="buscar" id="buscar"/></td>';
+                echo '</tr>';
+                echo '</form>';
+
     if ($_POST) {
         $zonaid = $_POST['zonaid'];
         if (isset($zonaid)) {
             $buscarBusiness = $zonaBusiness->buscarZona($zonaid);
             foreach ($buscarBusiness as $current) {
                 echo '<form  action="../../business/zonaaccion/zonaAction.php" method="Post" align="center" >';
-                echo '<input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"/>';
+                echo '<input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"  readonly />';
                 echo '<input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '"/>';
                 echo '<input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
