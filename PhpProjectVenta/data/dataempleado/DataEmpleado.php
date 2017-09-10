@@ -6,7 +6,7 @@ class DataEmpleado {
 
     function DataEmpleado() {
         include_once '../../data/dbconexion/Conexion.php';
-        include '../../domain/empleados/Empleados.php';
+        include_once '../../domain/empleados/Empleados.php';
         $this->conexion = new Conexion();
     }
 
@@ -27,18 +27,23 @@ class DataEmpleado {
 		'" . $empleado->get_empleadosexo() . "',
 		'" . $empleado->get_empleadoestadocivil() . "',
                 '" . $empleado->get_empleadocuentabancaria() . "',
-                '" . $empleado->get_empleadolicenciaid() . "',    
-		'" . $empleado->get_empleadoestado() . "')");
+                '" . $empleado->get_empleadolicenciaid() . "', 
+                '1');");
 
+            $result = mysql_query($insertarempleado);
             $this->conexion->cerrarConexion();
-            return $insertarempleado;
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
     //modificar
     public function modificarEmpleado($empleado) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
             $modificarempleado = $this->conexion->crearConexion()->query("UPDATE tbempleados SET 
 		empleadoid='" . $empleado->get_empleadoid() . "',
@@ -51,33 +56,48 @@ class DataEmpleado {
 		empleadoestadocivil='" . $empleado->get_empleadoestadocivil() . "',
 		empleadocuentabancaria='" . $empleado->get_empleadocuentabancaria() . "',
                 empleadolicenciaid='" . $empleado->get_empleadolicenciaid() . "',    
-		empleadoestado='" . $empleado->get_empleadoestado() . "',
-		WHERE empleadoid =" . $empleado->get_empleadoid() . "");
+		WHERE empleadoid =" . $empleado->get_empleadoid() . "',
+                AND empleadoestado=1;");
 
+            $result = mysql_query($modificarempleado);
             $this->conexion->cerrarConexion();
-            return $modificarempleado;
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
     //eliminar
     public function eliminarEmpleado($empleadoid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
-            $eliminarempleado = $this->conexion->crearConexion()->query("CALL eliminarempleado('$empleadoid')");
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+            $eliminarempleado = $this->conexion->crearConexion()->query("UPDATE `tbempleados` "
+                  . "SET `empleadoestado`= 0 WHERE empleadoid='" . $empleadoid . "';");
 
+            $result = mysql_query($eliminarempleado);
             $this->conexion->cerrarConexion();
-            return $eliminarempleado;
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
     //buscar
     public function buscarEmpleado($empleadoid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
             $array = array();
 
-            $buscarempleado = $this->conexion->crearConexion()->query("CALL buscarempleado('$empleadoid')");
+            $buscarempleado = $this->conexion->crearConexion()->query("SELECT 'empleadoid',
+            'personaid', 'tipoempleado', 'empleadocedula', 'empleadocontrasenia',
+            'empleadoedad', 'empleadosexo','empleadoestadocivil','empleadocuentabancaria', 'empleadolicenciaid',
+            FROM `tbempleados` WHERE empleadoid='" . $empleadoid . "' AND empleadoestado='1';");
+            
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarempleado->fetch_assoc()) {
@@ -90,11 +110,15 @@ class DataEmpleado {
     //mostrar empleados
     public function mostrarEmpleados() {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
             $array = array();
 
-            $mostrarempleados = $this->conexion->crearConexion()->query("CALL mostrarempleados()");
+            $mostrarempleados = $this->conexion->crearConexion()->query("SELECT 'empleadoid',
+            'personaid', 'tipoempleado', 'empleadocedula', 'empleadocontrasenia', 'empleadoedad', 
+            'empleadosexo','empleadoestadocivil','empleadocuentabancaria', 'empleadolicenciaid',
+            FROM `tbempleados` WHERE empleadoestado='1';");
+            
 
             
             while ($resultado = $mostrarempleados->fetch_assoc()) {

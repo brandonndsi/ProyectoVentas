@@ -15,11 +15,12 @@ class DataZona {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $insertarzona = $this->conexion->crearConexion()->query("INSERT INTO `tbzonas`
-                (`zonaid`, `zonanombre`, `zonaprecio`) VALUES (
+            $insertarzona = $this->conexion->crearConexion()->query("INSERT INTO `tbzonas`(
+              `zonaid`, `zonanombre`, `zonaprecio` , `zonaestado`) VALUES (
                 '" . $zona->getZonaid() . " ',
 		'" . $zona->getZonanombre() . "', 
-		'" . $zona->getZonaprecio() . "')");
+		'" . $zona->getZonaprecio() . "',
+                '1'");       
 
             $result = mysql_query($insertarzona);
             $this->conexion->cerrarConexion();
@@ -37,9 +38,10 @@ class DataZona {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $modificarzona = $this->conexion->crearConexion()->query("UPDATE `tbzonas` "
-            . "SET `zonanombre`='".$zona->getZonanombre() ."',"
-            . "`zonaprecio`='".$zona->getZonaprecio()."'"
-            . " WHERE zonaid='".$zona->getZonaid()."';");
+                    . "SET `zonanombre`='" . $zona->getZonanombre() . "',"
+                    . "`zonaprecio`='" . $zona->getZonaprecio() . "'"
+                    . " WHERE zonaid='" . $zona->getZonaid() . "'
+                        AND zonaestado=1");
 
             $result = mysql_query($modificarzona);
             $this->conexion->cerrarConexion();
@@ -50,22 +52,16 @@ class DataZona {
             }
         }
     }
-    
+
     //eliminar
     function eliminarZona($zonaid) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
-            
-            $eliminarzona = $this->conexion->crearConexion()->query("DELETE  FROM tbzonas 
-                where zonaid='".$zonaid."';");
 
-            $result = mysql_query($eliminarzona);
-            $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+            $eliminarzona = $this->conexion->crearConexion()->query("UPDATE `tbzonas` "
+            . "SET `zonaestado`= 0 WHERE zonaid='" . $zonaid . "';");
+
+             return $eliminarzona;
         }
     }
 
@@ -76,8 +72,9 @@ class DataZona {
 
             $array = array();
 
-            $buscarzona = $this->conexion->crearConexion()->query("SELECT * FROM tbzonas
-             WHERE zonaid='".$zonaid."';");
+            $buscarzona = $this->conexion->crearConexion()->query("SELECT zonanombre, zonaprecio FROM tbzonas
+            WHERE zonaid='" . $zonaid . "' AND zonaestado='1';");
+            
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarzona->fetch_assoc()) {
@@ -98,17 +95,16 @@ class DataZona {
 
             $array = array();
 
-            $buscarzona = $this->conexion->crearConexion()->query("SELECT * FROM tbzonas");
+            $mostrarzonas = $this->conexion->crearConexion()->query("SELECT `zonaid`, 
+             .`zonanombre`, `zonaprecio` FROM `tbzonas` WHERE zonaestado=1;");
+            
 
             $this->conexion->cerrarConexion();
-            while ($resultado = $buscarzona->fetch_assoc()) {
+            while ($resultado = $mostrarzonas->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            if (!$array) {
-                return false;
-            } else {
-                return $array;
-            }
+            return $array;
         }
     }
+
 }

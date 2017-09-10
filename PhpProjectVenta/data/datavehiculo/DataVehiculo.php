@@ -14,14 +14,18 @@ class DataVehiculo {
     public function insertarVehiculo($vehiculo) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
-            $insertarvehiculo = $this->conexion->crearConexion()->query("CALL insertarvehiculo(
-                '" . $vehiculo->getVehiculoid() . " ',
-		'" . $vehiculo->getVehiculoplaca() . "', 
-                '" . $vehiculo->getVehiculomarca() . "',     
-		'" . $vehiculo->getVehiculomodelo() . "')");
+            $insertarproducto = $this->conexion->crearConexion()->query("INSERT INTO `tbvehiculos`(
+            `vehiculomodelo`, `vehiculoplaca`,
+             `vehiculomarca`, `vehiculoestado`) VALUES 
+            ('" . $vehiculo->getVehiculomodelo() . "',
+            '" . $vehiculo->getVehiculoplaca() . "',
+            '" . $vehiculo->getVehiculomarca() . "',
+            '1'");
+
 
             $this->conexion->cerrarConexion();
-            return $insertarvehiculo;
+
+            return $insertarproducto;
         }
     }
 
@@ -30,14 +34,20 @@ class DataVehiculo {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $modificarvehiculo = $this->conexion->crearConexion()->query("CALL modificarvehiculo(
-                '" . $vehiculo->getVehiculoid() . " ',
-		'" . $vehiculo->getVehiculoplaca() . "', 
-                '" . $vehiculo->getVehiculomarca() . "',     
-		'" . $vehiculo->getVehiculomodelo() . "')");
+            $modificarproducto = $this->conexion->crearConexion()->query("UPDATE `tbvehiculos` SET 
+            `vehiculomodelo`='" . $vehiculo->getVehiculomodelo() . "',
+            `vehiculoplaca`='" . $vehiculo->getVehiculoplaca() . "',
+            `vehiculomarca`='" . $vehiculo->getVehiculomarca() . "'
+             WHERE vehiculoid='" . $vehiculo->getVehiculoid() . "' 
+             AND vehiculoestado=1;");
 
+            $result = mysql_query($modificarproducto);
             $this->conexion->cerrarConexion();
-            return $modificarvehiculo;
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
@@ -46,10 +56,17 @@ class DataVehiculo {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarvehiculo = $this->conexion->crearConexion()->query("CALL eliminarvehiculo('$vehiculoid')");
+            $eliminarvehiculo = $this->conexion->crearConexion()->query("UPDATE `tbvehiculos` "
+                  . "SET `vehiculoestado`= 0 WHERE vehiculoid='" . $vehiculoid . "';");
 
+
+            $result = mysql_query($eliminarvehiculo);
             $this->conexion->cerrarConexion();
-            return $eliminarvehiculo;
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 
@@ -59,24 +76,27 @@ class DataVehiculo {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
-
-            $buscarvehiculo = $this->conexion->crearConexion()->query("CALL buscarvehiculo('$vehiculoid')");
+            $buscarproducto = $this->conexion->crearConexion()->query("SELECT `vehiculoid`, 
+                    `vehiculomodelo`, `vehiculoplaca`, `vehiculomarca` 
+                    FROM `tbvehiculos` WHERE vehiculoid='" . $vehiculoid . "' AND vehiculoestado='1';");
 
             $this->conexion->cerrarConexion();
-            while ($resultado = $buscarvehiculo->fetch_assoc()) {
+            while ($resultado = $buscarproducto->fetch_assoc()) {
                 array_push($array, $resultado);
             }
+
             return $array;
         }
     }
 
-    //mostrar Vehiculo
-    function mostrarVehiculos() {
+    //mostrar productos
+    function mostrarVehiculo() {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
-            $mostrarproductos = $this->conexion->crearConexion()->query("CALL mostrarproductos()");
+            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT `vehiculoid`, `vehiculomodelo`, "
+                               . "`vehiculoplaca`, `vehiculomarca` FROM `tbvehiculos` WHERE vehiculoestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarproductos->fetch_assoc()) {
@@ -85,4 +105,5 @@ class DataVehiculo {
             return $array;
         }
     }
+
 }

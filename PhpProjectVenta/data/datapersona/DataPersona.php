@@ -13,17 +13,18 @@ class DataPersona {
     //insertar
     public function insertarPersona($persona) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $insertarpersona = "INSERT INTO tbpersonas(personaid, personanombre, personaapellido1,
-            personaapellido2, personatelefono, personacorreo, zonaid) VALUES (
+            $insertarpersona =  $this->conexion->crearConexion()->query("INSERT INTO tbpersonas(personaid, personanombre, personaapellido1,
+            personaapellido2, personatelefono, personacorreo, zonaid, personaestado) VALUES (
             '" . $persona->get_personaid() . "',
             '" . $persona->get_personanombre() . "',
             '" . $persona->get_personaapellido1() . "',
             '" . $persona->get_personaapellido2() . "',
             '" . $persona->get_personatelefono() . "',
-            '" . $persona->get_personacorreo() . "',     
-            '" . $persona->get_zonaid() . "')";
+            '" . $persona->get_personacorreo() . "',  
+            '" . $persona->get_zonaid() . "',     
+            '1'");
 
             $result = mysql_query($insertarpersona);
             $this->conexion->cerrarConexion();
@@ -38,17 +39,20 @@ class DataPersona {
     //modificar
     public function modificarPersona($persona) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $modificarpersona = "UPDATE tbpersonas SET 
+            $modificarpersona = $this->conexion->crearConexion()->query("UPDATE tbpersonas SET 
 		personaid='" . $persona->get_personaid() . "',  
 		personanombre='" . $persona->get_personanombre() . "',
 		personaapellido1='" . $persona->get_personaapellido1() . "',
 		personaapellido2='" . $persona->get_personaapellido2() . "',
                 personatelefono='" . $persona->get_personatelefono() . "',
 		personacorreo='" . $persona->get_personacorreo() . "',    
-                zonaid='" . $persona->get_zonaid() . "',      
-		WHERE personaid =" . $persona->get_personaid() . "";
+                zonaid='" . $persona->get_zonaid() . "',  
+                WHERE personaid =" . $persona->get_personaid() . "'
+                AND personaestado=1;");
+            
+            
 
             $result = mysql_query($modificarpersona);
             $this->conexion->cerrarConexion();
@@ -65,8 +69,9 @@ class DataPersona {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarpersona = $this->conexion->crearConexion()->query("DELETE  FROM tbpersonas 
-                where personaid='".$personaid."';");
+            $eliminarpersona = $this->conexion->crearConexion()->query("UPDATE `tbpersonas` "
+                  . "SET `personaestado`= 0 WHERE personaid='" . $personaid . "';");
+            
 
             $result = mysql_query($eliminarpersona);
             $this->conexion->cerrarConexion();
@@ -81,49 +86,40 @@ class DataPersona {
     //buscar una persona
     Public function buscarPersona($personaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
             $array = array();
 
             $buscarpersona = $this->conexion->crearConexion()->query("SELECT personaid,personanombre,
-            personaapellido1,personaapellido2,personatelefono,
-            personacorreo,zonaid
-            FROM tbpersonas 
-            WHERE personaid ='".$personaid."';"); 
+            personaapellido1,personaapellido2,personatelefono,personacorreo,zonaid
+            FROM tbpersonas WHERE personaid ='".$personaid."' AND personaestado='1'");
 
             $this->conexion->cerrarConexion();
+            
             while ($resultado = $buscarpersona->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            if (!$array) {
-                return false;
-            } else {
-                return $array;
-            }
+            return $array;
         }
     }
 
     //mostrar las personas
     public function mostrarPersonas() {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8')) {
+        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
             $array = array();
 
-            $buscarpersona = $this->conexion->crearConexion()->query("SELECT personaid,personanombre,
-            personaapellido1,personaapellido2,personatelefono,
-            personacorreo,zonaid
-            FROM tbpersonas "); 
+            $mostrarpersonas = $this->conexion->crearConexion()->query("SELECT personaid,personanombre,
+            personaapellido1,personaapellido2,personatelefono,personacorreo,zonaid
+            FROM tbpersonas WHERE personaestado='1'");
 
             $this->conexion->cerrarConexion();
-            while ($resultado = $buscarpersona->fetch_assoc()) {
+            
+            while ($resultado = $mostrarpersonas->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            if (!$array) {
-                return false;
-            } else {
-                return $array;
-            }
+            return $array;
         }
     }
 
