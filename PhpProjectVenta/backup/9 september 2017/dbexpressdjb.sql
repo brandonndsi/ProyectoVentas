@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-09-2017 a las 14:06:25
+-- Tiempo de generación: 10-09-2017 a las 21:36:21
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -165,7 +165,6 @@ CREATE TABLE `tbmateriasprimas` (
 --
 
 INSERT INTO `tbmateriasprimas` (`materiaprimaid`, `materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`) VALUES
-(1, 'M1', 'tomate', '250', '10', '1'),
 (2, 'L1', 'Desinfectante', '800', '15', '2'),
 (3, 'M2', 'Lechuga', '500', '25', '1'),
 (4, 'M4', 'Pan', '600', '35', '1');

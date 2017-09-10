@@ -6,66 +6,102 @@
     <title>Registrar Materia Prima</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php
-    include '../../business/materiaPrimabusiness/MateriaPrimaBusiness.php';
-    ?>
+  include '../../business/materiaprimabusiness/MateriaPrimaBusiness.php';
+
+  ?>
+    
 </head>
-
-<body >
+<body align="center">
+<?php
+$materiaprimabusiness = new MateriaPrimaBusiness();
+?>
+       <div class="nuevo"> 
     <p align="center">
-    <form name="form" action="../business/materiaprimaaccion/MateriaPrimaAccion.php" method="Post">
+    <form  action="../../business/materiaprimaaccion/MateriaPrimaAccion.php" method="Post" align="center" >
         <strong>
-            <p>
-                Formulario para insertar nueva Materia Prima a la base de datos.
-            <p>  
+            <h2>
+               Nuevo producto.
+            </h2>  
         </strong>
-        <p> ID: <input type="text" name="materiaprimaid" size="45"/>
-        </p>
-        <p> Tipo Materia Prima: <input type="text" name="tipomateriaprimacategoria" size="45" required placeholder="Cocina"/>
-        </p>
-        <p> Nombre Materia Prima: <input type="text" name="materiaprimanombre" size="45" required placeholder="Pan Hambuerguesa"/>
-        </p>
-        <p> Precio: <input type="text" name="materiaprimaprecio" size="45" required placeholder="15000"/>
-        </p>
-        <p> Cantidad: <input type="text" name="materiaprimacantidad" size="45" placeholder="En numeros"/>
-        </p>
-        <br>
-        <input name="create" type="submit" value="Registrar">
-
+        <p> <table width="50%" border="0" align="center">
+             <thead>
+                <tr>
+                    <th class="primerfila" >Codigo</th>
+                    <th class="primerfila" >Nombre</th>
+                    <th class="primerfila" >Precio</th>
+                    <th class="primerafila" >Cantidad</th>
+                    <th class="primerafila" >Tipo</th>
+                                   
+                </tr>
+            </thead>           
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    
+                    <!--<th class="bot"> <input type="button" name="del" id="del" value="Eliminar"></th> 
+                    <th class="bot"> <input type="button"  name="up" id="up" value="Modificar"></th> -->
+                    
+                </tr>
+                <tr>
+                    <td><input type="text" name="materiaprimacodigo" size="10" class="materiaprimacodigo" placeholder="P+numero"/> </td>
+                    <td><input type="text" name="materiaprimanombre" size="10" class="materiaprimanombre" placeholder="Solo letras"/> </td>
+                    <td><input type="text" name="materiaprimaprecio" size="10" class="materiaprimaprecio" placeholder="Solo numeros"/> </td>
+                    <td><input type="text" name="materiaprimacantidad" size="10" class="materiaprimacantidad" placeholder="Solo numeros"/> </td>
+                    <td><input type="text" name="tipomateriaprimaid" size="10" class="tipomateriaprimaid" placeholder="Solo numeros"/> </td>
+                    <th class="bot"> <td><input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></th>
+                </tr> 
+           
+        </table>
+        <p>&nbsp;</p> 
+        
+        
     </form>
+    
+    </div>
 
     <?php
     $MateriaPrimaBusiness = new MateriaPrimaBusiness();
     $allBusiness = $MateriaPrimaBusiness->mostrarMateriaPrima();
-    echo '<h2>Lista de AMteria Primas</h2>';
+    echo '<h2>Lista de Materia Primas</h2>';
     foreach ($allBusiness as $current) {
+       
         echo '<form  action="../../business/materiaprimaaccion/MateriaPrimaAccion.php" method="Post" align="center" >';
-        echo '<input type="text" name="matriaprimaid" id="matriaprimaid" value="' . $current['matriaprimaid'] . '"/>';
-        echo '<input type="text" name="tipomateriaprimacategoria" id="tipomateriaprimacategoria" value="' . $current['tipomateriaprimacategoria'] . '"/>';
+        echo '<input type="text" name="materiaprimaid" id="materiaprimaid" value="' . $current['materiaprimaid'] . '"  readonly />';
+        echo '<input type="text" name="materiaprimacodigo" id="materiaprimacodigo" value="' . $current['materiaprimacodigo'] . '"/>';
         echo '<input type="text" name="materiaprimanombre" id="materiaprimanombre" value="' . $current['materiaprimanombre'] . '"/>';
         echo '<input type="text" name="materiaprimaprecio" id="materiaprimaprecio" value="' . $current['materiaprimaprecio'] . '"/>';
         echo '<input type="text" name="materiaprimacantidad" id="materiaprimacantidad" value="' . $current['materiaprimacantidad'] . '"/>';
-
+        echo '<input type="text" name="tipomateriaprimaid" id="tipomateriaprimaid" value="' . $current['tipomateriaprimaid'] . '"/>';
         echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
         echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
         echo '</tr>';
         echo '</form>';
     }
+                echo '<h2>Buscar un  materia prima</h2>';
+                echo '<form method="post" action="RegistroMateriaPrima.php" align="center" >';
+                echo '<input type="text" name="materiaprimaid" id="materiaprimaid" placeholder="    id  " />';
+                echo '<tr>';
 
-    if ($_POST) {
-        $matriaprimaid = $_POST['matriaprimaid'];
-        if (isset($matriaprimaid)) {
-            $buscarBusiness = $MateriaPrimaBusiness->buscarMatriaPrima($matriaprimaid);
-            foreach ($buscarBusiness as $current) {
-                echo '<form  action="../../business/materiaprimaaccion/MateriaPrimaAccion.php" method="Post" align="center" >';
-                echo '<input type="text" name="matriaprimaid" id="matriaprimaid" value="' . $current['matriaprimaid'] . '"/>';
-                echo '<input type="text" name="tipomateriaprimacategoria" id="tipomateriaprimacategoria" value="' . $current['tipomateriaprimacategoria'] . '"/>';
-                echo '<input type="text" name="materiaprimanombre" id="materiaprimanombre" value="' . $current['materiaprimanombre'] . '"/>';
-                echo '<input type="text" name="materiaprimaprecio" id="materiaprimaprecio" value="' . $current['materiaprimaprecio'] . '"/>';
-                echo '<input type="text" name="materiaprimacantidad" id="materiaprimacantidad" value="' . $current['materiaprimacantidad'] . '"/>';
-                echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
-                echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
+                echo '<td><input type="submit" value="Enviar" name="buscar" id="buscar"/></td>';
                 echo '</tr>';
                 echo '</form>';
+    if ($_POST) {
+        $materiaprimaid = $_POST['materiaprimaid'];
+        if (isset($materiaprimaid)) {
+            $buscarBusiness = $MateriaPrimaBusiness->buscarMateriaPrima($materiaprimaid);
+            foreach ($buscarBusiness as $current) {
+        echo '<form  action="../../business/materiaprimaaccion/MateriaPrimaAccion.php" method="Post" align="center" >';
+        echo '<input type="text" name="materiaprimaid" id="materiaprimaid" value="' . $current['materiaprimaid'] . '"  readonly />';
+        echo '<input type="text" name="materiaprimacodigo" id="materiaprimacodigo" value="' . $current['materiaprimacodigo'] . '"/>';
+        echo '<input type="text" name="materiaprimanombre" id="materiaprimanombre" value="' . $current['materiaprimanombre'] . '"/>';
+        echo '<input type="text" name="materiaprimaprecio" id="materiaprimaprecio" value="' . $current['materiaprimaprecio'] . '"/>';
+        echo '<input type="text" name="materiaprimacantidad" id="materiaprimacantidad" value="' . $current['materiaprimacantidad'] . '"/>';
+        echo '<input type="text" name="tipomateriaprimaid" id="tipomateriaprimaid" value="' . $current['tipomateriaprimaid'] . '"/>';
+        echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
+        echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
+        echo '</tr>';
+        echo '</form>';
             }
         }
     }
