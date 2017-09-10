@@ -67,12 +67,12 @@ $materiaprimabusiness = new MateriaPrimaBusiness();
     foreach ($allBusiness as $current) {
        
         echo '<form  action="../../business/materiaprimaaccion/MateriaPrimaAccion.php" method="Post" align="center" >';
-        echo '<input type="text" name="materiaprimaid" id="materiaprimaid" value="' . $current['materiaprimaid'] . '"  readonly />';
-        echo '<input type="text" name="materiaprimacodigo" id="materiaprimacodigo" value="' . $current['materiaprimacodigo'] . '"/>';
+        echo '<input type="text" name="materiaprimaid" id="materiaprimaid" size="4" value="' . $current['materiaprimaid'] . '"  readonly />';
+        echo '<input type="text" name="materiaprimacodigo" id="materiaprimacodigo" size="4" value="' . $current['materiaprimacodigo'] . '"/>';
         echo '<input type="text" name="materiaprimanombre" id="materiaprimanombre" value="' . $current['materiaprimanombre'] . '"/>';
-        echo '<input type="text" name="materiaprimaprecio" id="materiaprimaprecio" value="' . $current['materiaprimaprecio'] . '"/>';
-        echo '<input type="text" name="materiaprimacantidad" id="materiaprimacantidad" value="' . $current['materiaprimacantidad'] . '"/>';
-        echo '<input type="text" name="tipomateriaprimaid" id="tipomateriaprimaid" value="' . $current['tipomateriaprimaid'] . '"/>';
+        echo '<input type="text" name="materiaprimaprecio" id="materiaprimaprecio" size="4" value="' . $current['materiaprimaprecio'] . '"/>';
+        echo '<input type="text" name="materiaprimacantidad" id="materiaprimacantidad" size="4" value="' . $current['materiaprimacantidad'] . '"/>';
+        echo '<input type="text" name="tipomateriaprimaid" id="tipomateriaprimaid" size="4" value="' . $current['tipomateriaprimaid'] . '"/>';
         echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
         echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
         echo '</tr>';

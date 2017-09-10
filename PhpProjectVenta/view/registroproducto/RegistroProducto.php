@@ -80,10 +80,10 @@ $productoBusiness = new ProductoBusiness();
             foreach ($allBusiness as $current) {
                 echo '<tr>';
                 echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center"  >';
-                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '" readonly />';
-                echo '<input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/>';
+                echo '<input type="text" name="productoid" id="productoid" size="4" value="' . $current['productoid'] . '" readonly />';
+                echo '<input type="text" name="productocodigo" id="productocodigo"  size="4" value="' . $current['productocodigo'] . '"/>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
-                echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
+                echo '<input type="text" name="productoprecio" id="productoprecio" size="4"  value="' . $current['productoprecio'] . '"/>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
                 echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
                 echo '</tr>';
@@ -107,10 +107,10 @@ $productoBusiness = new ProductoBusiness();
                 foreach ($buscarBusiness as $current) {
                 echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post" align="center" >';
                 echo '<tr>';
-                echo '<input type="text" name="productoid" id="productoid" value="' . $current['productoid'] . '" readonly />';
-                echo '<input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/>';
+                echo '<input type="text" name="productoid" id="productoid" size="4"  value="' . $current['productoid'] . '" readonly />';
+                echo '<input type="text" name="productocodigo" id="productocodigo"  size="4" value="' . $current['productocodigo'] . '"/>';
                 echo '<input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/>';
-                echo '<input type="text" name="productoprecio" id="productoprecio" value="' . $current['productoprecio'] . '"/>';
+                echo '<input type="text" name="productoprecio" id="productoprecio" size="4"  value="' . $current['productoprecio'] . '"/>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
                 echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
                 echo '</tr>';

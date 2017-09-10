@@ -53,9 +53,9 @@ $zonaBusiness = new zonaBusiness();
     foreach ($allBusiness as $current) {
 
         echo '<form  action="../../business/zonaaccion/zonaAction.php" method="Post" align="center" >';
-        echo '<input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"  readonly />';
+        echo '<input type="text" name="zonaid" id="zonaid"  size="4" value="' . $current['zonaid'] . '"  readonly />';
         echo '<input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '"/>';
-        echo '<input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/>';
+        echo '<input type="text" name="zonaprecio" id="zonaprecio" size="4"  value="' . $current['zonaprecio'] . '"/>';
         echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
         echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
         echo '</tr>';
@@ -77,9 +77,9 @@ $zonaBusiness = new zonaBusiness();
             $buscarBusiness = $zonaBusiness->buscarZona($zonaid);
             foreach ($buscarBusiness as $current) {
                 echo '<form  action="../../business/zonaaccion/zonaAction.php" method="Post" align="center" >';
-                echo '<input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"  readonly />';
+                echo '<input type="text" name="zonaid" id="zonaid" size="4" value="' . $current['zonaid'] . '"  readonly />';
                 echo '<input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '"/>';
-                echo '<input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/>';
+                echo '<input type="text" name="zonaprecio" id="zonaprecio" size="4" value="' . $current['zonaprecio'] . '"/>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
                 echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
                 echo '</tr>';
