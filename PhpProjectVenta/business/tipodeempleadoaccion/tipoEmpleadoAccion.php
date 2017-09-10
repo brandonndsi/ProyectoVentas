@@ -6,7 +6,7 @@
  * @author David Salas.
  */
 //$accion = $_POST['accion'];//busca la accion a realizar 
-include '../../view/tipoempleadoview/TipoEmpleadoView.php';
+include '../../domain/tipoempleados/TipoEmpleados.php';
     if(isset($_POST["nuevo"])){
 
     if (isset($_POST['tipoempleado']) && isset($_POST['tipoempleadodescripcion']) 
@@ -89,9 +89,9 @@ include '../../view/tipoempleadoview/TipoEmpleadoView.php';
      */
     }else if(isset($_POST["eliminar"])){
         
-    if(isset($_POST['clientenombre'])){
+    if(isset($_POST['tipoempleado'])){
         
-            $empleado=$_POST['clientenombre'];
+            $empleado=$_POST['tipoempleado'];
            include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
            
            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();
