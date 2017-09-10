@@ -6,13 +6,13 @@
     <title>Express djb </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="css/principal.css">
+    <link rel="stylesheet" type="text/css" href="css/imagen/icomoon/style.css">
     
 </head>
 
 <body>
-
 <ul>
-  <li><a class="active" href="#home">Principal</a></li>
+  <li><a class="active" href="#">Principal</a></li>
   <li><a href="view/ventaview/VentaView.php" target="_parent">Realizar venta</a></li>
   <li><a href="view/registromateriaprima/RegistroMateriaPrima.php" target="_parent">Materia Prima</a></li>
   <li><a href="view/tipoempleadoview/TipoEmpleadoView.php" target="_parent">Tipo Empleado</a></li>
@@ -23,5 +23,7 @@
   <li><a href="view/registroempleado/RegistroEmpleado.php" target="_parent">Empleado</a></li>
   <li><a href="view/registroproveedor/RegistroProveedor.php" target="_parent">Proveedor</a></li>
 </ul>
+
+
 </body>
 </html>

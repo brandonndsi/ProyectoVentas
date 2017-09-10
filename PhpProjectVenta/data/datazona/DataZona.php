@@ -15,10 +15,7 @@ class DataZona {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $insertarzona = $this->conexion->crearConexion()->query("CALL insertarzona(
-                '" . $zona->getZonaid() . " ',
-		'" . $zona->getZonanombre() . "', 
-		'" . $zona->getZonaprecio() . "')");
+            $insertarzona = $this->conexion->crearConexion()->query("INSERT INTO `tbzonas`(`zonanombre`, `zonaprecio`, `zonaestado`) VALUES ('".$zona->getZonanombre()."','".$zona->getZonaprecio()."','1');");
 
             $result = mysql_query($insertarzona);
             $this->conexion->cerrarConexion();
@@ -35,10 +32,10 @@ class DataZona {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $modificarzona = $this->conexion->crearConexion()->query("CALL modificarzona(
-                '" . $zona->getZonaid() . " ',
-		'" . $zona->getZonanombre() . "', 
-		'" . $zona->getZonaprecio() . "')");
+            $modificarzona = $this->conexion->crearConexion()->query("UPDATE `tbzonas` 
+            SET `zonanombre`='".$zona->getZonanombre()."',
+            `zonaprecio`='".$zona->getZonaprecio()."' 
+            WHERE zonaid='".$zona->getZonaid()."' AND zonaestado=1;");
 
             $result = mysql_query($modificarzona);
             $this->conexion->cerrarConexion();
@@ -54,7 +51,7 @@ class DataZona {
     function eliminarZona($zonaid) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
-            $eliminarzona = $this->conexion->crearConexion()->query("CALL eliminarzona('$zonaid')");
+            $eliminarzona = $this->conexion->crearConexion()->query("UPDATE `tbzonas` SET `zonaestado`=0 WHERE zonaid='".$zonaid."';");
 
             $result = mysql_query($eliminarzona);
             $this->conexion->cerrarConexion();
@@ -73,7 +70,10 @@ class DataZona {
 
             $array = array();
 
-            $buscarzona = $this->conexion->crearConexion()->query("CALL buscarzona('$zonaid')");
+            $buscarzona = $this->conexion->crearConexion()->query("SELECT  `zonaid`,`zonanombre`, 
+            `zonaprecio` 
+            FROM `tbzonas` WHERE
+             zonaid='".$zonaid."' AND zonaestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarzona->fetch_assoc()) {
@@ -94,7 +94,10 @@ class DataZona {
 
             $array = array();
 
-            $mostrarzonas = $this->conexion->crearConexion()->query("CALL mostrarzonas()");
+            $mostrarzonas = $this->conexion->crearConexion()->query("SELECT  `zonaid`,`zonanombre`, 
+            `zonaprecio` 
+            FROM `tbzonas` WHERE
+            zonaestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarzonas->fetch_assoc()) {

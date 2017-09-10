@@ -13,51 +13,46 @@
 
 </head>
 
-<body >
+ <body align="center">
+<?php
+$zonaBusiness = new zonaBusiness();
+?>
+       <div class="nuevo"> 
     <p align="center">
-        <?php
-
-        function revisar() {
-            if (formulario . zonaid == "") {
-                alert('Debes escribir el ID zona');
-                return false;
-            }
-            if (formulario . zonanomre == "") {
-                alert('Debes ecribir el nombre de la zona');
-                return false;
-            }
-            if (formulario . zonaprecio == "") {
-                alert('Debes escribir el precio de la zona');
-                return false;
-            }
-        }
-        ?>
-
-    <form name="form" action="../../business/zonaaccion/zonaAction.php" method="Post" onsubmit="return revisar()">
+    <form  action="../../business/zonaaccion/zonaAction.php" method="Post" align="center" >
         <strong>
-            <p>
-                Registrando Datos de Zona
-            <p>  
+            <h2 align="center">
+               Nuevo producto.
+            </h2>  
         </strong>
-
-        <p> ID: <input type="text" name="zonaid" size="35" placeholder="Solo numeros"/>
-        </p>         
-        <p> Nombre: <input type="text" name="zonanombre" size="35" required placeholder="Solo letras" />
-        </p>
-        <p> Precio: <input type="text" name="zonaprecio" size="35" required placeholder="Solo numeros"/> 
-        </p>
-
-        <input name="nuevo" type="submit" value="Registrar" id="nuevo">
-
-        <p> <a href="javascript:window.history.go(-1);">Regresar</a> </p>
-
+        <p> <table width="50%" border="0" align="center">
+             <thead>
+                <tr>
+                    <th class="primerfila" >Nombre</th>
+                    <th class="primerfila" >Precio</th>
+                                   
+                </tr>
+            </thead>           
+                
+                <tr>
+                    <td><input type="text" name="zonanombre" size="10" class="zonanombre" placeholder="Solo letras"/> </td>
+                    <td><input type="text" name="zonaprecio" size="10" class="zonaprecio" placeholder="Solo numeros"/> </td>
+                    <th class="bot"> <td><input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></th>
+                </tr> 
+           
+        </table>
+        <p>&nbsp;</p> 
+        
+        
     </form>
+    
+    </div>
     <?php
-    $zonaBusiness = new zonaBusiness();
     $allBusiness = $zonaBusiness->mostrarZona();
     echo '<h2>Lista de Zonas</h2>';
     foreach ($allBusiness as $current) {
-        echo '<form  action="../../business/zonaaccion/ZonaAccion.php" method="Post" align="center" >';
+
+        echo '<form  action="../../business/zonaaccion/zonaAction.php" method="Post" align="center" >';
         echo '<input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"/>';
         echo '<input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '"/>';
         echo '<input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/>';
@@ -72,7 +67,7 @@
         if (isset($zonaid)) {
             $buscarBusiness = $zonaBusiness->buscarZona($zonaid);
             foreach ($buscarBusiness as $current) {
-                echo '<form  action="../../business/zonaccion/ZonaAccion.php" method="Post" align="center" >';
+                echo '<form  action="../../business/zonaaccion/zonaAction.php" method="Post" align="center" >';
                 echo '<input type="text" name="zonaid" id="zonaid" value="' . $current['zonaid'] . '"/>';
                 echo '<input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '"/>';
                 echo '<input type="text" name="zonaprecio" id="zonaprecio" value="' . $current['zonaprecio'] . '"/>';

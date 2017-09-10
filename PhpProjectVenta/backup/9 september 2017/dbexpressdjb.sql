@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-09-2017 a las 00:24:57
+-- Tiempo de generación: 10-09-2017 a las 14:06:25
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -44,7 +44,7 @@ CREATE TABLE `tbclientes` (
 INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) VALUES
 (1, '4', '300 metros oeste de rio frio', 0.03, 50, 1),
 (2, '5', 'barrio san marcos frente a la universidad nacional\r\n', 0.05, 70, 1),
-(5, '16', '15 oeste de la una', 0, 0, 1);
+(3, '17', 'cenenterio', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -197,7 +197,8 @@ INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `per
 (4, 'Elisabeth', 'Rodriguez', 'Castro', 12345436, 'elirodri@gmail.com', '2'),
 (5, 'Oscar', 'Mejias', 'Morera', 88940376, 'oscmeji@hotmail.com', '2'),
 (15, 'da', 'e', 'e', 1111, 'wee@gmail.com', '3'),
-(16, 'David rico', 'zalazar', 'lorente', 8888, 'yoansalas76@gmail.com', 'z1');
+(16, 'David rico', 'zalazar', 'lorente', 8888, 'yoansalas76@gmail.com', 'z1'),
+(17, 'pedro', 'salas', 'picado', 58968, 'ddsd@gmail.com', '1');
 
 -- --------------------------------------------------------
 
@@ -221,7 +222,9 @@ INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `pr
 (3, 'M3', 'papas fritas', '120', '1'),
 (4, 'M4', 'Pizza grande', '2500', '1'),
 (6, 'M7', '2 piesas y un refresco', '2000', '1'),
-(7, 'm56', 'fff', '8969', '1');
+(7, 'm56', 'fff', '8969', '1'),
+(8, 'gfg', 'fdv', '558', '1'),
+(9, 'pp', 'cd', '343', '1');
 
 -- --------------------------------------------------------
 
@@ -325,20 +328,26 @@ INSERT INTO `tbventas` (`ventaid`, `facturaid`, `productoid`, `facturacantidadpr
 --
 
 CREATE TABLE `tbzonas` (
-  `zonaid` int(20) NOT NULL,
-  `zonanombre` varchar(20) NOT NULL,
-  `zonaprecio` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `zonaid` int(11) NOT NULL,
+  `zonanombre` varchar(50) NOT NULL,
+  `zonaprecio` varchar(50) NOT NULL,
+  `zonaestado` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbzonas`
 --
 
-INSERT INTO `tbzonas` (`zonaid`, `zonanombre`, `zonaprecio`) VALUES
-(1, 'PuertoViejo', 2000),
-(2, 'Horquetas', 1000),
-(3, 'Finca6', 1000),
-(4, 'Finca11', 500);
+INSERT INTO `tbzonas` (`zonaid`, `zonanombre`, `zonaprecio`, `zonaestado`) VALUES
+(1, 'rio cuarto', '3500', '1'),
+(2, 'Rio Frio', '1500', '1'),
+(3, 'Finca 6', '2000', '1'),
+(4, 'Finca 11', '3000', '1'),
+(5, 'Finca 2', '1000', '1'),
+(6, 'La Virgen', '3500', '1'),
+(7, 'UNA', '100', '1'),
+(8, 'san jose', '155', '1'),
+(9, 'tres pino', '2', '1');
 
 --
 -- Índices para tablas volcadas
@@ -432,8 +441,7 @@ ALTER TABLE `tbventas`
 -- Indices de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  ADD PRIMARY KEY (`zonaid`),
-  ADD KEY `zonaid` (`zonaid`);
+  ADD PRIMARY KEY (`zonaid`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -443,7 +451,7 @@ ALTER TABLE `tbzonas`
 -- AUTO_INCREMENT de la tabla `tbclientes`
 --
 ALTER TABLE `tbclientes`
-  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tbmateriasprimas`
 --
@@ -453,12 +461,12 @@ ALTER TABLE `tbmateriasprimas`
 -- AUTO_INCREMENT de la tabla `tbpersonas`
 --
 ALTER TABLE `tbpersonas`
-  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `tbproductos`
 --
 ALTER TABLE `tbproductos`
-  MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
@@ -473,7 +481,7 @@ ALTER TABLE `tbvehiculos`
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `zonaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

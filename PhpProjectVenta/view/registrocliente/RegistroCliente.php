@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="text/javascript" src="../../js/Cliente.js"></script>
     <link rel="stylesheet" type="text/css" href="../../css/cliente.css">
+    <link rel="stylesheet" type="text/css" href="../../css/imagen/style.css">
     <?php
     include '../../business/clientebusiness/clienteBusiness.php';
     /*include '../../business/clienteaccion/clienteAccion.php';*/

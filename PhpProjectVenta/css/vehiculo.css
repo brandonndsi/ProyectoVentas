@@ -1,35 +1,35 @@
-  body{
+body{
         
         font-family: Arial;
         margin: auto;
       
        }
        #contenedor{
-       	margin: 150px auto;
-       	width: 600px;
+            margin: 150px auto;
+            width: 600px;
        }
        /*cambiando las dimenciones de la tabla*/
        table{
-       	background-color: white;
-       	text-align: center;
-       	border-collapse: collapse;
-       	margin: auto;
+            background-color: white;
+            text-align: center;
+            border-collapse: collapse;
+            margin: auto;
        /*width: 100%;*/
        }
        th, td {
-       	border: solid 4px black;
-       	padding:2;
+            /*border: solid 4px black;*/
+            padding:0;
        }
        thead{
-       	background-color: #246355;
-       	border-bottom: solid 5px #0F362D;
-       	color: white;
+            background-color: #246355;
+            border-bottom: solid 5px #0F362D;
+            color: white;
        }
        tr:nth-child(even){
-       	background-color: #ddd;
+            background-color: #ddd;
 
        }
        tr:hover td{
-       	background-color:  #369681;
-       	color: red;
+            background-color:  #369681;
+            color: red;
        }

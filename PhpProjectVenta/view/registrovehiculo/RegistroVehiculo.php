@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Registrar Vehiculo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script type="text/javascript" src="../../js/Cliente.js"></script>
     <link rel="stylesheet" type="text/css" href="../../css/vehiculo.css">
     <?php
     include '../../business/vehiculobusiness/vehiculoBusiness.php';
