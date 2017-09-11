@@ -15,13 +15,15 @@ class DataMateriaPrima {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $insertarmateriaprima = $this->conexion->crearConexion()->query("INSERT INTO `tbmateriasprimas`(`materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`) 
-                VALUES 
-                ('".$materiaprima->getMateriaprimacodigo()."',
-                '".$materiaprima->getMateriaprimanombre()."',
-                '".$materiaprima->getMateriaprimaprecio()."',
-                '".$materiaprima->getMateriaprimacantidad()."',
-                '".$materiaprima->getMateriaprimatipoid()."');");
+            $insertarmateriaprima = $this->conexion->crearConexion()->query("INSERT INTO `tbmateriasprimas`(`materiaprimacodigo`, 
+            `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`, 'materiaprimaestado')
+            VALUES(
+            '".$materiaprima->getMateriaprimacodigo()."',
+            '".$materiaprima->getMateriaprimanombre()."',
+            '".$materiaprima->getMateriaprimaprecio()."',
+            '".$materiaprima->getMateriaprimacantidad()."',
+            '".$materiaprima->getMateriaprimatipoid()."'"
+            . "'1');");
 
             $result = mysql_query($insertarmateriaprima);
             $this->conexion->cerrarConexion();
@@ -44,7 +46,8 @@ class DataMateriaPrima {
                 `materiaprimaprecio`='".$materiaprima->getMateriaprimaprecio()."',
                 `materiaprimacantidad`='".$materiaprima->getMateriaprimacantidad()."',
                 `tipomateriaprimaid`='".$materiaprima->getMateriaprimatipoid()."' 
-                WHERE materiaprimaid='".$materiaprima->getMateriaprimaid()."';");
+                WHERE materiaprimaid='".$materiaprima->getMateriaprimaid()."'"
+                . "AND materiaprimaestado =1;");
 
             $result = mysql_query($modificarempleado);
             $this->conexion->cerrarConexion();
@@ -61,7 +64,8 @@ class DataMateriaPrima {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $eliminarmateriaprima = $this->conexion->crearConexion()->query("DELETE FROM `tbmateriasprimas` WHERE materiaprimaid='".$materiaprimaid."';");
+            $eliminarmateriaprima = $this->conexion->crearConexion()->query("UPDATE `tbmateriasprimas` "
+            . "SET 'materiaprimaestadp'=0 WHERE materiaprimaid='".$materiaprimaid."';");
 
             $result = mysql_query($eliminarmateriaprima);
             $this->conexion->cerrarConexion();
@@ -80,7 +84,10 @@ class DataMateriaPrima {
 
             $array = array();
 
-            $buscarmateriaprima = $this->conexion->crearConexion()->query("SELECT `materiaprimaid`, `materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid` FROM `tbmateriasprimas` WHERE materiaprimacantidad>=10 AND materiaprimaid='".$materiaprimaid."';");
+            $buscarmateriaprima = $this->conexion->crearConexion()->query("SELECT `materiaprimaid`, `materiaprimacodigo`, "
+            . "`materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid` "
+            . "FROM `tbmateriasprimas` WHERE materiaprimacantidad>=10 AND materiaprimaid='".$materiaprimaid.", "
+            . "materiaprimaestado = 1';");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarmateriaprima->fetch_assoc()) {
@@ -97,7 +104,9 @@ class DataMateriaPrima {
 
             $array = array();
 
-            $mostrarmateriasprimas = $this->conexion->crearConexion()->query("SELECT `materiaprimaid`, `materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid` FROM `tbmateriasprimas` WHERE materiaprimacantidad>=10;");
+            $mostrarmateriasprimas = $this->conexion->crearConexion()->query("SELECT `materiaprimaid`, `materiaprimacodigo`,"
+            . " `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`"
+            . " FROM `tbmateriasprimas` WHERE materiaprimaid='".$materiaprimaid.", materiaprimaestado = 1';");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarmateriasprimas->fetch_assoc()) {

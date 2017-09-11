@@ -13,10 +13,10 @@ class DataPersona {
     //insertar
     public function insertarPersona($persona) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $insertarpersona = "INSERT INTO tbpersonas(personaid, personanombre, personaapellido1,
-            personaapellido2, personatelefono, personacorreo, zonaid, personaestado) VALUES (
+            $insertarpersona = $this->conexion->crearConexion()->query("INSERT INTO tbpersonas(personaid,personanombre, 
+            personaapellido1,personaapellido2, personatelefono, personacorreo, zonaid, personaestado) VALUES (
             '" . $persona->get_personaid() . "',
             '" . $persona->get_personanombre() . "',
             '" . $persona->get_personaapellido1() . "',
@@ -24,7 +24,7 @@ class DataPersona {
             '" . $persona->get_personatelefono() . "',
             '" . $persona->get_personacorreo() . "',  
             '" . $persona->get_zonaid() . "',     
-            '" . $persona->get_personaestado() . "')";
+            '1');");
 
             $result = mysql_query($insertarpersona);
             $this->conexion->cerrarConexion();
@@ -41,7 +41,7 @@ class DataPersona {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $modificarpersona = "UPDATE tbpersonas SET 
+            $modificarpersona = $this->conexion->crearConexion()->query("UPDATE tbpersonas SET 
 		personaid='" . $persona->get_personaid() . "',  
 		personanombre='" . $persona->get_personanombre() . "',
 		personaapellido1='" . $persona->get_personaapellido1() . "',
@@ -50,7 +50,8 @@ class DataPersona {
 		personacorreo='" . $persona->get_personacorreo() . "',    
                 zonaid='" . $persona->get_zonaid() . "',  
                 personaestado='" . $persona->get_personaestado() . "',     
-		WHERE personaid =" . $persona->get_personaid() . "";
+		WHERE personaid =" . $persona->get_personaid() . "'
+                AND empleadoestado=1;");
 
             $result = mysql_query($modificarpersona);
             $this->conexion->cerrarConexion();
@@ -67,7 +68,8 @@ class DataPersona {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $eliminarpersona = "CALL eliminarpersona('$personaid')";
+            $eliminarpersona = $this->conexion->crearConexion()->query("UPDATE `tbpersonas` SET `personaestado`= 0 
+                                                                          WHERE personaid='" . $personaid . "';");
 
             $result = mysql_query($eliminarpersona);
             $this->conexion->cerrarConexion();
@@ -86,7 +88,9 @@ class DataPersona {
 
             $array = array();
 
-            $buscarpersona = $this->conexion->crearConexion()->query("CALL buscarpersona('$personaid')");
+            $buscarpersona = $this->conexion->crearConexion()->query("SELECT  personaid,personanombre, 
+            personaapellido1,personaapellido2, personatelefono, personacorreo, zonaid FROM `tbpersonas` WHERE
+             personaid='".$personaid."' AND clienteestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarpersona->fetch_assoc()) {
@@ -103,7 +107,9 @@ class DataPersona {
 
             $array = array();
 
-            $mostrarpersonas = $this->conexion->crearConexion()->query("CALL mostrarpersonas()");
+            $mostrarpersonas = $this->conexion->crearConexion()->query("SELECT  personaid,personanombre, 
+            personaapellido1,personaapellido2, personatelefono, personacorreo, zonaid FROM `tbpersonas` 
+            WHERE clienteestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarpersonas->fetch_assoc()) {

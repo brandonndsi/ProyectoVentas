@@ -15,7 +15,7 @@ class DataProveedor {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
             $insertarproveedor = $this->conexion->crearConexion()->query("INSERT INTO `tbproveedores`(`proveedorid`, 
-             `personanombre`, `personaapellido1`, `personaapellido2`,`personatelefono`, `personacorreo`, `zonacodigo`, 
+             `personanombre`, `personaapellido1`, `personaapellido2`,`personatelefono`, `personacorreo`, `zonanombre`, 
             `materiaprimanombre`, `tipomateriaprimacategoria`,`materiaprimacantidad`, `materiaprimaprecio`, 
             `provedorestado`) VALUES 
             ('" . $proveedor->getProveedorId() . "',
@@ -24,7 +24,7 @@ class DataProveedor {
              '" . $proveedor->getPersonaApellido2() . "',
              '" . $proveedor->getPesonaTelefono() . "',  
              '" . $proveedor->getPesonaCorreo() . "',
-             '" . $proveedor->getZonaCodigo() . "',
+             '" . $proveedor->getZonaNombre() . "',
              '" . $proveedor->getMateriaprimanombre() . "',
              '" . $proveedor->getTipomateriaprimacategoria() . "',
              '" . $proveedor->getMateriaprimacantidad() . "',
@@ -50,7 +50,7 @@ class DataProveedor {
              `personaapellido2`='". $proveedor->getPersonaApellido2() . "',
              `personatelefono`='". $proveedor->getPesonaTelefono() . "',  
              `personacorreo`='". $proveedor->getPesonaCorreo() . "',
-             `zonacodigo`='" . $proveedor->getZonaCodigo() . "',
+             `zonanombre`='" . $proveedor->getZonaNombre() . "',
              `materiaprimanombre`='". $proveedor->getMateriaprimanombre() . "',
              `tipomateriaprimacategoria`='". $proveedor->getTipomateriaprimacategoria() . "',
              `materiaprimacantidad`='". $proveedor->getMateriaprimacantidad() . "',
@@ -94,7 +94,7 @@ class DataProveedor {
 
             $array = array();
             $buscarProveedor = $this->conexion->crearConexion()->query("SELECT `proveedorid`, 
-            `personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`,`personacorreo`, `zonacodigo`,
+            `personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`,`personacorreo`, `zonaNombre`,
             `materiaprimanombre`, `tipomateriaprimacategoria`, `materiaprimacantidad`,`materiaprimaprecio`
             FROM `tbproveedores` WHERE proveedorid='" . $proveedorid . "' AND proveedorestado='1';");
  
@@ -115,7 +115,7 @@ function mostrarProveedor() {
             $array = array();
 
             $mostrarproveedor = $this->conexion->crearConexion()->query("SELECT `proveedorid`, 
-            `personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`,`personacorreo`, `zonacodigo`,
+            `personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`,`personacorreo`, `zonaNombre`,
             `materiaprimanombre`, `tipomateriaprimacategoria`, `materiaprimacantidad`,`materiaprimaprecio`
             FROM `tbproveedores` WHERE proveedorestado='1';");
             

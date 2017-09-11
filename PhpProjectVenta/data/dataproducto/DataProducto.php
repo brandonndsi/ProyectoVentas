@@ -15,11 +15,14 @@ class DataProducto {
         
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
             $insertarproducto = $this->conexion->crearConexion()->query("INSERT INTO `tbproductos`(
-            `productocodigo`, `productonombre`, `productoprecio`, `productoestado`) 
-VALUES ('".$producto->getProductoCodigo()."','" . $producto->getProductonombre() . "',
-'" . $producto->getProductoprecio() . "','1' );");
+            `productocodigo`, `productonombre`, `productoprecio`, `productoestado`)  VALUES (
+            '".$producto->getProductoCodigo()."',
+            '" . $producto->getProductonombre() . "',
+            '" . $producto->getProductoprecio() . "',
+            '1' );");
 
             $result = mysql_query($insertarproducto);
+            
             $this->conexion->cerrarConexion();
             if (!$result) {
                 return false;

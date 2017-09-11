@@ -14,8 +14,9 @@ class DataTipoEmpleado {
     public function insertarTipo($tipo) {
         
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
-            $insertartipo = $this->conexion->crearConexion()->query("INSERT INTO `tbtipoempleados`(`tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`)
-                VALUES ('".$tipo->getTipoEmpleado()."',
+            $insertartipo = $this->conexion->crearConexion()->query("INSERT INTO `tbtipoempleados`(`tipoempleado`, 
+             `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`)VALUES (
+                '".$tipo->getTipoEmpleado()."',
                 '".$tipo->getTipoempleadosalariobase()."',
                 '".$tipo->getTipoempleadodescripcion()."',
                 '".$tipo->getTipoempleadohoraextra()."');");
@@ -52,12 +53,12 @@ class DataTipoEmpleado {
         
     }
     //eliminar
-    public function eliminarTipo($tipoempleado) {
+    public function eliminarTipo($tipoempleadoid) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminartipo = $this->conexion->crearConexion()->query("DELETE FROM `tbtipoempleados` 
-                WHERE tipoempleado='".$tipoempleado."';");
+            $eliminartipo = $this->conexion->crearConexion()->query("UPDATE `tbtipoempleados` set 'tipoempleadoestado'=0
+                WHERE tipoempleadoid='".$tipoempleadoid."';");
             
 
             $result = mysql_query($eliminartipo);
@@ -77,7 +78,7 @@ class DataTipoEmpleado {
 
             $array = array();
             $buscarproducto = $this->conexion->crearConexion()->query("SELECT `tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra` FROM
-             `tbtipoempleados` WHERE tipoempleado='".$tipoempleado."';");
+             `tbtipoempleados` WHERE tipoempleado='".$tipoempleado." AND 'tipoempleadoestado = 1;" );
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarproducto->fetch_assoc()) {
@@ -97,7 +98,8 @@ class DataTipoEmpleado {
 
             $array = array();
 
-            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT * FROM `tbtipoempleados` ;");
+            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT `tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra` FROM
+             `tbtipoempleados` WHERE 'tipoempleadoestado = 1;" );
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarproductos->fetch_assoc()) {
