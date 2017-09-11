@@ -16,6 +16,7 @@ class Zonas {
         $this->zonaid = $zonaid;
         $this->zonanombre = $zonanombre;
         $this->zonaprecio = $zonaprecio;
+        
     }
     public function getZonaid() {
         return $this->zonaid;

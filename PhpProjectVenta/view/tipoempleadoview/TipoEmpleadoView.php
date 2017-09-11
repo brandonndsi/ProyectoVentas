@@ -5,57 +5,90 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Tipo Empleado</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <?php
-    include '../../business/tipoempleadobusiness/tipoEmpleadobusiness.php';
-    ?>
+    <link rel="stylesheet" type="text/css" href="../../css/tipoEmpleado.css">
+   <?php
+  include '../../business/tipoempleadobusiness/tipoEmpleadoBusiness.php';
+  ?>
+    
 </head>
-
-<body >
+<body align="center">
+<?php
+$tipoEmpleadoBusiness = new tipoEmpleadoBusiness();
+?>
+       <div class="nuevo"> 
     <p align="center">
-    <form name="form" action="business/tipoempleadoaccion/tipoEmpleadoAction.php" method="Post">
+    <form  action="../../business/tipodeempleadoaccion/tipoEmpleadoAccion.php" method="Post" align="center" >
         <strong>
-            <p>
-                Datos de cada puesto.
-            <p>  
+            <h2>
+               Nuevo Tipo Empleado.
+            </h2>  
         </strong>
-        <p> Tipo de Empleado: <input type="text" name="tipoEmpleado" size="35" required placeholder="Solo letras"/>
-        </p>         
-        <p> Salario Base: <input type="text" name="tipoempleadosalariobase" size="35" required placeholder="Solo letras" />
-        </p>
-        <p> Descripcion de puesto: <input type="text" name="tipoempleadodescripcion" size="35" required placeholder="Solo numeros"/> 
-        </p>
-        <p> Tipo de hora extra: <input type="text" name="tipoempleadohoraextra" size="35" required placeholder="Solo numeros"/> 
-        </p>
-
-        <input name="create" type="submit" value="Registrar">
-
+        <p> <table width="50%" border="0" align="center">
+             <thead>
+                <tr>
+                    <th class="primerfila" >Tipo</th>
+                    <th class="primerfila" >Salario Base</th>
+                    <th class="primerfila" >Descripcion</th>
+                    <th class="primerafila" >Hora Extra</th>
+                                   
+                </tr>
+            </thead>           
+                <tr>
+                    <td><input type="text" name="tipoempleado" size="10" class="tipoempleado" placeholder="P+numero"/> </td>
+                    <td><input type="text" name="tipoempleadosalariobase" size="10" class="tipoempleadosalariobase" placeholder="Solo letras"/> </td>
+                    <td><input type="text" name="tipoempleadodescripcion" size="10" class="tipoempleadodescripcion" placeholder="Solo numeros"/>
+                      <td><input type="text" name="tipoempleadohoraextra" size="10" class="tipoempleadohoraextra" placeholder="Solo numeros"/>
+                     </td>
+                    <th class="bot"> <td><input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></th>
+                </tr> 
+           
+        </table>
+        <p>&nbsp;</p> 
+        
+        
     </form>
-    <?php
-    $tipoEmpleadoBusiness = new tipoEmpleadoBusiness();
-    $allBusiness = $tipoEmpleadoBusiness->mostrarTipoEmpleado();
-    echo '<h2>Lista Tipos de Empleados</h2>';
-    foreach ($allBusiness as $current) {
-        echo '<form  action="../../business/tipoempleadoaccion/tipoEmpleadoAccion.php" method="Post" align="center" >';
-        echo '<input type="text" name="tipoEmpleado" id="tipoEmpleado" value="' . $current['tipoEmpleado'] . '"/>';
-        echo '<input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase" value="' . $current['tipoempleadosalariobase'] . '"/>';
-        echo '<input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion" value="' . $current['tipoempleadodescripcion'] . '"/>';
-        echo '<input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra" value="' . $current['tipoempleadohoraextra'] . '"/>';
-        echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
-        echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
-        echo '</tr>';
-        echo '</form>';
-    }
+    
+    </div>
 
-    if ($_POST) {
-        $tipoEmpleado = $_POST['tipoEmpleado'];
-        if (isset($tipoEmpleado)) {
-            $buscarBusiness = $tipoEmpleadoBusiness->buscarTipoEmpleado(tipoEmpleado);
-            foreach ($buscarBusiness as $current) {
-                echo '<form  action="../../business/tipoempleadoaccion/tipoEmpleadoAccion.php" method="Post" align="center" >';
-                echo '<input type="text" name="tipoEmpleado" id="tipoEmpleado" value="' . $current['tipoEmpleado'] . '"/>';
-                echo '<input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase" value="' . $current['tipoempleadosalariobase'] . '"/>';
-                echo '<input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion" value="' . $current['tipoempleadodescripcion'] . '"/>';
-                echo '<input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra" value="' . $current['tipoempleadohoraextra'] . '"/>';
+    <div class="mostrar">
+        
+    <?php
+            //$productoBusiness = new ProductoBusiness();
+            $allBusiness = $tipoEmpleadoBusiness->mostrarTipoEmpleado();
+                echo '<h2>Formulario de carga de datos actualizar y eliminar</h2>';
+            foreach ($allBusiness as $current) {
+                echo '<tr>';
+                echo '<form  action="../../business/tipodeempleadoaccion/tipoEmpleadoAccion.php" method="Post" align="center"  >';
+                echo '<input type="text" name="tipoempleado" id="tipoempleado" value="' . $current['tipoempleado'] . '" readonly />';
+                echo '<input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase" size="4" value="' . $current['tipoempleadosalariobase'] . '"/>';
+                echo '<input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion" size="15"  value="' . $current['tipoempleadodescripcion'] . '"/>';
+                echo '<input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra" size="4" value="' . $current['tipoempleadohoraextra'] . '"/>';
+                echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
+                echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
+                echo '</tr>';
+                echo '</form>';
+
+            }
+
+                echo '<h2>Buscar el tipo de Empleado</h2>';
+                echo '<form method="post" action="TipoEmpleadoView.php" align="center" >';
+                echo '<input type="text" name="tipoempleado" id="tipoempleado" placeholder="    id/codigo/precio" />';
+                echo '<tr>';
+
+                echo '<td><input type="submit" value="Enviar" name="buscar" id="buscar"/></td>';
+                echo '</tr>';
+                echo '</form>';
+
+                if($_POST){
+                $tipoempleado=$_POST['tipoempleado'];
+                if(isset($tipoempleado)){
+                $buscarBusiness=$tipoEmpleadoBusiness->buscarTipoEmpleado($tipoempleado);
+                foreach ($buscarBusiness as $current) {
+                echo '<form  action="../../business/tipodeempleadoaccion/tipoEmpleadoAccion.php" method="Post" align="center"  >';
+                echo '<input type="text" name="tipoempleado" id="tipoempleado" value="' . $current['tipoempleado'] . '" readonly />';
+                echo '<input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase" size="4" value="' . $current['tipoempleadosalariobase'] . '"/>';
+                echo '<input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion" size="15" value="' . $current['tipoempleadodescripcion'] . '"/>';
+                echo '<input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra"  size="4" value="' . $current['tipoempleadohoraextra'] . '"/>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
                 echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
                 echo '</tr>';
@@ -63,10 +96,13 @@
             }
         }
     }
-    ?>
-    <p> <a href="../../index.php">Regresar</a> </p>
-    
-    <tr>
+            ?>
+            </div>
+            
+        <p> <a href="../../index.php">Regresar</a> </p>
+       
+           <tr>
+                <td></td>
                 <td>
                     <?php
                     if (isset($_GET['error'])) {
@@ -77,16 +113,19 @@
                         } else if ($_GET['error'] == "dbError") {
                             echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
                         }
-                    } else if (isset($_GET['success'])) {
+                        } else if (isset($_GET['success'])) {
                         echo '<p style="color: green">Transacción realizada</p>';
-                    }
+                        }else if (isset($_GET['ErrorNumero'])){
+                          echo '<center><p style="color: red">El precio debe ser solo numeros enteros.</p></center>';  
+                        }
                     ?>
                 </td>
             </tr>
-
+       </table>
     <footer>
     </footer>
 </body>
+
 </html>
 
 

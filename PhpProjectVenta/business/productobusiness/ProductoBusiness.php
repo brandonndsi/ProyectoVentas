@@ -41,7 +41,10 @@ class ProductoBusiness {
     public function buscarProducto($productoid) {
         return $this->DataProducto->buscarProducto($productoid);
     }
-    
+    //se encarga de mostrar la materia prima
+    public function mostrarMaterial(){
+        return $this->DataProducto->mostrarMaterial();
+    }
 }
 /*$da=new productoBusiness();
 //$pro=new Productos('P0','fffff', '45555');

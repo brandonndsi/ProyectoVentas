@@ -5,79 +5,51 @@
  * @author Juancho
  * 
  */
-class Proveedores {
 
-    private $proveedorId;
-    private $tipoMateriaPrima;
-    private $proveedornombre;
+include '../../domain/personas/Personas.php';
+class Proveedores extends Personas{
+
+    private $proveedorid;
+    private $MateriaPrimaid;
+    private $proveedordireccion;
     private $personaid;
-    private $materiaprimaid;
-    private $proveedorcantidadproducto;
-    private $proveedortotalproducto;
     
-    function Proveedores($proveedorId, $tipoMateriaPrima, $proveedornombre, $personaid, $materiaprimaid, $proveedorcantidadproducto, $proveedortotalproducto) {
-        $this->proveedorId = $proveedorId;
-        $this->tipoMateriaPrima = $tipoMateriaPrima;
-        $this->proveedornombre = $proveedornombre;
+    
+    public function Proveedores($Proveedorid,$personaid,$Proveedordireccion,$Materiaprimaid) {
+        $this->proveedorid = $Proveedorid;
         $this->personaid = $personaid;
-        $this->materiaprimaid = $materiaprimaid;
-        $this->proveedorcantidadproducto = $proveedorcantidadproducto;
-        $this->proveedortotalproducto = $proveedortotalproducto;
+        $this->proveedordireccion = $Proveedordireccion;
+        $this->MateriaPrimaid = $Materiaprimaid;
     }
     
-    function getProveedorId() {
-        return $this->proveedorId;
+    public function getProveedorId() {
+        return $this->proveedorid;
     }
 
-    function getTipoMateriaPrima() {
-        return $this->tipoMateriaPrima;
-    }
-
-    function getProveedornombre() {
-        return $this->proveedornombre;
-    }
-
-    function getPersonaid() {
+    public function getPersonaId(){
         return $this->personaid;
     }
 
-    function getMateriaprimaid() {
-        return $this->materiaprimaid;
+    public function getProveedorDireccion() {
+        return $this->proveedordireccion;
     }
 
-    function getProveedorcantidadproducto() {
-        return $this->proveedorcantidadproducto;
+    public function getMateriaPrimaid(){
+        return $this->MateriaPrimaid;
     }
 
-    function getProveedortotalproducto() {
-        return $this->proveedortotalproducto;
+    public function setProveedorId($proveedorid) {
+        $this->proveedorid = $proveedorid;
+    }
+    public function setPersonaId($personaid){
+        $this->personaid =$personaid;
+    }
+    public function setProveedorDireccion($proveedordireccion) {
+        $this->proveedordireccion = $proveedordireccion;
     }
 
-    function setProveedorId($proveedorId) {
-        $this->proveedorId = $proveedorId;
+    public function setMateriaPrimaid($materiaprimaid) {
+        $this->MateriaPrimaid = $materiaprimaid;
     }
 
-    function setTipoMateriaPrima($tipoMateriaPrima) {
-        $this->tipoMateriaPrima = $tipoMateriaPrima;
-    }
-
-    function setProveedornombre($proveedornombre) {
-        $this->proveedornombre = $proveedornombre;
-    }
-
-    function setPersonaid($personaid) {
-        $this->personaid = $personaid;
-    }
-
-    function setMateriaprimaid($materiaprimaid) {
-        $this->materiaprimaid = $materiaprimaid;
-    }
-
-    function setProveedorcantidadproducto($proveedorcantidadproducto) {
-        $this->proveedorcantidadproducto = $proveedorcantidadproducto;
-    }
-
-    function setProveedortotalproducto($proveedortotalproducto) {
-        $this->proveedortotalproducto = $proveedortotalproducto;
-    }
 }

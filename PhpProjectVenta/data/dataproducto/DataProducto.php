@@ -16,11 +16,10 @@ class DataProducto {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
             $insertarproducto = $this->conexion->crearConexion()->query("INSERT INTO `tbproductos`(
             `productocodigo`, `productonombre`, `productoprecio`, `productoestado`) 
-           VALUES ('".$producto->getProductoCodigo()."','" . $producto->getProductonombre() . "',
-           '" . $producto->getProductoprecio() . "','1' );");
+VALUES ('".$producto->getProductoCodigo()."','" . $producto->getProductonombre() . "',
+'" . $producto->getProductoprecio() . "','1' );");
 
             $result = mysql_query($insertarproducto);
-            
             $this->conexion->cerrarConexion();
             if (!$result) {
                 return false;
@@ -39,11 +38,9 @@ class DataProducto {
                 SET `productocodigo`='".$producto->getProductoCodigo()."',
                 `productonombre`='".$producto->getProductonombre()."',
                 `productoprecio`='".$producto->getProductoprecio()."'
-                 WHERE productoid='".$producto->getProductoid()."'
-                 AND productoestado=1;");
+                    WHERE productoid='".$producto->getProductoid()."'");
 
             $result = mysql_query($modificarproducto);
-            
             $this->conexion->cerrarConexion();
             if (!$result) {
                 return false;
@@ -58,8 +55,9 @@ class DataProducto {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarproducto = $this->conexion->crearConexion()->query("UPDATE `tbproductos`"
-                  . "SET `productoestado`= 0 WHERE productoid='" . $productoid . "';");
+            $eliminarproducto = $this->conexion->crearConexion()->query("DELETE  FROM tbproductos 
+                where productoid='".$productoid."';");
+
             $result = mysql_query($eliminarproducto);
             $this->conexion->cerrarConexion();
             if (!$result) {
@@ -76,10 +74,8 @@ class DataProducto {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
-            $buscarproducto = $this->conexion->crearConexion()->query("SELECT `productoid`,`productocodigo`, 
-            `productonombre`, `productoprecio` FROM `tbproductos` WHERE productoid='".$productoid."' "
-            . "AND productoestado=1 OR productocodigo='".$productoid."' AND productoestado=1 "
-            . "OR productoprecio='".$productoid."' AND productoestado=1;");
+            $buscarproducto = $this->conexion->crearConexion()->query("SELECT `productoid`,`productocodigo`, `productonombre`, `productoprecio` FROM `tbproductos` WHERE
+productoid='".$productoid."' AND productoestado=1 OR productocodigo='".$productoid."' AND productoestado=1 OR productoprecio='".$productoid."' AND productoestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarproducto->fetch_assoc()) {

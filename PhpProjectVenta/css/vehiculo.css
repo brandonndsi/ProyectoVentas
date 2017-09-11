@@ -1,0 +1,36 @@
+body{
+        background-image: url('../css/imagen/fondo.jpg');
+        font-family: Arial;
+        margin: 0;
+
+      
+       }
+       #contenedor{
+            margin: 150px auto;
+            width: 600px;
+       }
+       /*cambiando las dimenciones de la tabla*/
+       table{
+            background-color: white;
+            text-align: center;
+            border-collapse: collapse;
+            margin: auto;
+       /*width: 100%;*/
+       }
+       th, td {
+            /*border: solid 4px black;*/
+            padding:0;
+       }
+       thead{
+            background-color: #246355;
+            border-bottom: solid 5px #0F362D;
+            color: white;
+       }
+       tr:nth-child(even){
+            background-color: #ddd;
+
+       }
+       tr:hover td{
+            background-color:  #369681;
+            color: red;
+       }

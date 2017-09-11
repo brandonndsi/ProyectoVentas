@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2017 a las 06:31:14
+-- Tiempo de generación: 11-09-2017 a las 00:34:30
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -228,10 +228,11 @@ CREATE TABLE `tbproductos` (
 --
 
 INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `productoprecio`, `productoestado`) VALUES
-(3, 'M3', 'papas fritas', '120', '1'),
-(4, 'M4', 'Pizza grande', '2500', '1'),
+(3, 'M3', 'papas fritas', '120', '0'),
+(4, 'M4', 'Pizza grande', '2500', '0'),
 (6, 'M7', '2 piesas y un refresco', '2000', '1'),
-(8, '8', 'hola', '12321', '1');
+(8, '8', 'hola', '12321', '1'),
+(9, 'P7', 'pizza', '7600', '1');
 
 -- --------------------------------------------------------
 
@@ -467,7 +468,7 @@ ALTER TABLE `tbpersonas`
 -- AUTO_INCREMENT de la tabla `tbproductos`
 --
 ALTER TABLE `tbproductos`
-  MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --

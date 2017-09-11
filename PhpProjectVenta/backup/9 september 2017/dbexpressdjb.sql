@@ -2,10 +2,10 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2017 a las 06:31:14
+-- Servidor: localhost
+-- Tiempo de generación: 11-09-2017 a las 05:26:08
 -- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 7.1.7
+-- Versión de PHP: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bdexpressdjb`
+-- Base de datos: `dbexpressdjb`
 --
 
 -- --------------------------------------------------------
@@ -44,7 +44,7 @@ CREATE TABLE `tbclientes` (
 INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) VALUES
 (1, '4', '300 metros oeste de rio frio', 0.03, 50, 1),
 (2, '5', 'barrio san marcos frente a la universidad nacional\r\n', 0.05, 70, 1),
-(5, '16', '15 oeste de la una', 0, 0, 1);
+(3, '17', 'cenenterio', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -63,16 +63,10 @@ CREATE TABLE `tbcontrolproductos` (
 
 INSERT INTO `tbcontrolproductos` (`productoid`, `materiaprimaid`) VALUES
 ('P1', 'MP1'),
-('P1', 'MP1'),
-('P2', 'MP1'),
 ('P2', 'MP1'),
 ('P3', 'MP34'),
-('P3', 'MP34'),
-('P3', 'PM7'),
 ('P3', 'PM7'),
 ('P4', 'MP1'),
-('P4', 'MP1'),
-('P4', 'MP4'),
 ('P4', 'MP4');
 
 -- --------------------------------------------------------
@@ -84,18 +78,17 @@ INSERT INTO `tbcontrolproductos` (`productoid`, `materiaprimaid`) VALUES
 CREATE TABLE `tbempleadolicencias` (
   `empleadolicenciaid` varchar(20) NOT NULL,
   `empleadolicenciavigencia` year(4) NOT NULL,
-  `vehiculoid` varchar(20) NOT NULL,
-  `empleadolicenciasestado` tinyint(1) NOT NULL
+  `vehiculoid` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbempleadolicencias`
 --
 
-INSERT INTO `tbempleadolicencias` (`empleadolicenciaid`, `empleadolicenciavigencia`, `vehiculoid`, `empleadolicenciasestado`) VALUES
-('L1', 2019, '1', 1),
-('L2', 2021, '2', 1),
-('L3', 2025, '3', 1);
+INSERT INTO `tbempleadolicencias` (`empleadolicenciaid`, `empleadolicenciavigencia`, `vehiculoid`) VALUES
+('L1', 2019, '1'),
+('L2', 2021, '2'),
+('L3', 2025, '3');
 
 -- --------------------------------------------------------
 
@@ -138,20 +131,19 @@ CREATE TABLE `tbfacturas` (
   `clienteid` varchar(50) NOT NULL,
   `ventafecha` date NOT NULL,
   `ventabruta` double NOT NULL,
-  `ventaneta` double NOT NULL,
-  `facturaestado` tinyint(4) NOT NULL
+  `ventaneta` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbfacturas`
 --
 
-INSERT INTO `tbfacturas` (`facturaid`, `empleadoid`, `clienteid`, `ventafecha`, `ventabruta`, `ventaneta`, `facturaestado`) VALUES
-('199F', 'E1', 'C2', '2017-09-10', 6100, 5795, 1),
-('200F', 'E1', 'C1', '2017-09-08', 6500, 6305, 1),
-('207F', 'E3', 'C2', '2017-09-08', 3500, 3325, 1),
-('27F', 'E3', 'C1', '2017-09-15', 5500, 5335, 1),
-('78F', 'E3', 'C2', '2017-09-20', 6000, 5700, 1);
+INSERT INTO `tbfacturas` (`facturaid`, `empleadoid`, `clienteid`, `ventafecha`, `ventabruta`, `ventaneta`) VALUES
+('199F', 'E1', 'C2', '2017-09-10', 6100, 5795),
+('200F', 'E1', 'C1', '2017-09-08', 6500, 6305),
+('207F', 'E3', 'C2', '2017-09-08', 3500, 3325),
+('27F', 'E3', 'C1', '2017-09-15', 5500, 5335),
+('78F', 'E3', 'C2', '2017-09-20', 6000, 5700);
 
 -- --------------------------------------------------------
 
@@ -165,19 +157,17 @@ CREATE TABLE `tbmateriasprimas` (
   `materiaprimanombre` varchar(50) NOT NULL,
   `materiaprimaprecio` varchar(50) NOT NULL,
   `materiaprimacantidad` varchar(50) NOT NULL,
-  `tipomateriaprimaid` varchar(50) NOT NULL,
-  `materiaprimaidestado` tinyint(1) NOT NULL
+  `tipomateriaprimaid` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbmateriasprimas`
 --
 
-INSERT INTO `tbmateriasprimas` (`materiaprimaid`, `materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`, `materiaprimaidestado`) VALUES
-(1, 'M1', 'tomate', '250', '10', '1', 1),
-(2, 'L1', 'Desinfectante', '800', '15', '2', 1),
-(3, 'M2', 'Lechuga', '500', '25', '1', 1),
-(4, 'M4', 'Pan', '600', '35', '1', 1);
+INSERT INTO `tbmateriasprimas` (`materiaprimaid`, `materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`) VALUES
+(2, 'L1', 'Desinfectante', '800', '15', '2'),
+(3, 'M2', 'Lechuga', '500', '25', '1'),
+(4, 'M4', 'Pan', '600', '35', '1');
 
 -- --------------------------------------------------------
 
@@ -190,24 +180,27 @@ CREATE TABLE `tbpersonas` (
   `personanombre` varchar(20) NOT NULL,
   `personaapellido1` varchar(20) NOT NULL,
   `personaapellido2` varchar(20) NOT NULL,
-  `personatelefono` int(11) NOT NULL,
+  `personatelefono` varchar(50) NOT NULL,
   `personacorreo` varchar(50) NOT NULL,
-  `zonaid` varchar(20) NOT NULL,
-  `personaestado` tinyint(1) NOT NULL
+  `zonaid` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbpersonas`
 --
 
-INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`, `personacorreo`, `zonaid`, `personaestado`) VALUES
-(1, 'Brandon', 'Rodriguez', 'Mendez', 62091232, 'brandon-ndsi@hotmail.com', '1', 1),
-(2, 'Juan', 'Chavarria', 'Arroyo', 14358765, 'juaracha@gmail.com', '2', 1),
-(3, 'David', 'Salas', 'Salas', 73950274, 'salasgates@hotmail.com', '3', 1),
-(4, 'Elisabeth', 'Rodriguez', 'Castro', 12345436, 'elirodri@gmail.com', '2', 1),
-(5, 'Oscar', 'Mejias', 'Morera', 88940376, 'oscmeji@hotmail.com', '2', 1),
-(15, 'da', 'e', 'e', 1111, 'wee@gmail.com', '3', 1),
-(16, 'David rico', 'zalazar', 'lorente', 8888, 'yoansalas76@gmail.com', 'z1', 1);
+INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`, `personacorreo`, `zonaid`) VALUES
+(1, 'Brandon', 'Rodriguez', 'Mendez', '62091232', 'brandon-ndsi@hotmail.com', '1'),
+(2, 'Juan', 'Chavarria', 'Arroyo', '14358765', 'juaracha@gmail.com', '2'),
+(3, 'David', 'Salas', 'Salas', '73950274', 'salasgates@hotmail.com', '3'),
+(4, 'Elisabeth', 'Rodriguez', 'Castro', '12345436', 'elirodri@gmail.com', '2'),
+(5, 'Oscar', 'Mejias', 'Morera', '88940376', 'oscmeji@hotmail.com', '2'),
+(16, 'David rico', 'zalazar', 'lorente', '8888', 'yoansalas76@gmail.com', 'z1'),
+(17, 'pedro', 'salas', 'picado', '58968', 'ddsd@gmail.com', '1'),
+(18, 'ww', 'ww', 'ww', '22', 'ww', ''),
+(19, 'W', 'W', 'W', '0', 'W', ''),
+(20, 'dd', 'd', 'd', '32', 'ssd', ''),
+(21, 'yenii', 'salas', 'lorente', '1', 'dsd', '');
 
 -- --------------------------------------------------------
 
@@ -231,7 +224,34 @@ INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `pr
 (3, 'M3', 'papas fritas', '120', '1'),
 (4, 'M4', 'Pizza grande', '2500', '1'),
 (6, 'M7', '2 piesas y un refresco', '2000', '1'),
-(8, '8', 'hola', '12321', '1');
+(7, 'm56', 'fff', '8969', '1'),
+(8, 'gfg', 'fdv', '558', '1'),
+(9, 'pp', 'cd', '343', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbproveedor`
+--
+
+CREATE TABLE `tbproveedor` (
+  `proveedorid` int(11) NOT NULL,
+  `personaid` varchar(50) NOT NULL,
+  `proveedordireccion` varchar(50) NOT NULL,
+  `proveedorestado` varchar(5) NOT NULL,
+  `materiaprimaid` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbproveedor`
+--
+
+INSERT INTO `tbproveedor` (`proveedorid`, `personaid`, `proveedordireccion`, `proveedorestado`, `materiaprimaid`) VALUES
+(1, '1', 'rio frio', '1', '1'),
+(2, '2', 'san jose', '1', '1'),
+(3, '19', 'W', '1', ''),
+(4, '20', '2', '1', ''),
+(5, '21', '45', '1', '');
 
 -- --------------------------------------------------------
 
@@ -243,18 +263,17 @@ CREATE TABLE `tbtipoempleados` (
   `tipoempleado` varchar(20) NOT NULL,
   `tipoempleadosalariobase` double NOT NULL,
   `tipoempleadodescripcion` text NOT NULL,
-  `tipoempleadohoraextra` double NOT NULL,
-  `tipoempleadoestado` tinyint(1) NOT NULL
+  `tipoempleadohoraextra` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Volcado de datos para la tabla `tbtipoempleados`
 --
 
-INSERT INTO `tbtipoempleados` (`tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`, `tipoempleadoestado`) VALUES
-('Administrador', 600000, 'Puede agregar,modificar,buscar y eliminar:(zonas,productos,cajeros,persona,precios,combos, etc...', 2000, 1),
-('Cajero', 350000, 'Puede realizar una venta y registrar personas.', 2000, 1),
-('Motorisado', 250000, 'viaja a la direccion de los clientes y reparte el pedido.\r\n', 2000, 1);
+INSERT INTO `tbtipoempleados` (`tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`) VALUES
+('Administrador', 600000, 'Puede agregar,modificar,buscar y eliminar:(zonas,productos,cajeros,persona,precios,combos, etc...', 2000),
+('Motorisado', 250000, 'viaja a la direccion de los clientes y reparte el pedido.\r\n', 2000),
+('Sirviente', 350000, 'solo sirve', 3);
 
 -- --------------------------------------------------------
 
@@ -264,19 +283,18 @@ INSERT INTO `tbtipoempleados` (`tipoempleado`, `tipoempleadosalariobase`, `tipoe
 
 CREATE TABLE `tbtipomateriasprimas` (
   `tipomateriaprimaid` int(20) NOT NULL,
-  `tipomateriaprimacategoria` varchar(20) NOT NULL,
-  `tipomateriasprimasestado` tinyint(1) NOT NULL
+  `tipomateriaprimacategoria` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbtipomateriasprimas`
 --
 
-INSERT INTO `tbtipomateriasprimas` (`tipomateriaprimaid`, `tipomateriaprimacategoria`, `tipomateriasprimasestado`) VALUES
-(1, 'Alimento', 1),
-(2, 'Limpieza', 1),
-(3, 'Residuo', 1),
-(4, 'Plastico', 1);
+INSERT INTO `tbtipomateriasprimas` (`tipomateriaprimaid`, `tipomateriaprimacategoria`) VALUES
+(1, 'Alimento'),
+(2, 'Limpieza'),
+(3, 'Residuo'),
+(4, 'Plastico');
 
 -- --------------------------------------------------------
 
@@ -297,9 +315,14 @@ CREATE TABLE `tbvehiculos` (
 --
 
 INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculomodelo`, `vehiculoplaca`, `vehiculomarca`, `vehiculoestado`) VALUES
-(1, '2016', '2568955', 'TOYOTA', '1'),
-(10, 'ybr-150', '1282', 'YAMAHA', '1'),
-(11, 'cs125', '9321', 'Honda', '1');
+(1, '2014', '4785855', 'Honda', '1'),
+(2, '2000', '578696', 'Subaru', '1'),
+(3, '2016', '2568955', 'TOYOTA', '1'),
+(4, '1990', '6978588', 'Tesla', '1'),
+(5, '2017', 'da2566', 'BMV', '1'),
+(6, '20', '3342332', 'Subaru impresa', '1'),
+(7, '2018', '2018', 'lamborgini', '0'),
+(8, '1992', '23', 'subaru', '1');
 
 -- --------------------------------------------------------
 
@@ -311,20 +334,19 @@ CREATE TABLE `tbventas` (
   `ventaid` varchar(50) NOT NULL,
   `facturaid` varchar(50) NOT NULL,
   `productoid` varchar(50) NOT NULL,
-  `facturacantidadproducto` int(11) NOT NULL,
-  `ventaestado` tinyint(1) NOT NULL
+  `facturacantidadproducto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbventas`
 --
 
-INSERT INTO `tbventas` (`ventaid`, `facturaid`, `productoid`, `facturacantidadproducto`, `ventaestado`) VALUES
-('1', '200F', 'P2', 1, 1),
-('2', '207F', 'P1', 1, 1),
-('3', '199F', 'P3', 3, 1),
-('4', '27F', 'P4', 1, 1),
-('5', '78F', 'P1', 2, 1);
+INSERT INTO `tbventas` (`ventaid`, `facturaid`, `productoid`, `facturacantidadproducto`) VALUES
+('1', '200F', 'P2', 1),
+('2', '207F', 'P1', 1),
+('3', '199F', 'P3', 3),
+('4', '27F', 'P4', 1),
+('5', '78F', 'P1', 2);
 
 -- --------------------------------------------------------
 
@@ -333,21 +355,26 @@ INSERT INTO `tbventas` (`ventaid`, `facturaid`, `productoid`, `facturacantidadpr
 --
 
 CREATE TABLE `tbzonas` (
-  `zonaid` int(20) NOT NULL,
-  `zonanombre` varchar(20) NOT NULL,
-  `zonaprecio` double NOT NULL,
-  `zonaestado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `zonaid` int(11) NOT NULL,
+  `zonanombre` varchar(50) NOT NULL,
+  `zonaprecio` varchar(50) NOT NULL,
+  `zonaestado` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbzonas`
 --
 
 INSERT INTO `tbzonas` (`zonaid`, `zonanombre`, `zonaprecio`, `zonaestado`) VALUES
-(1, 'PuertoViejo', 2000, 1),
-(2, 'Horquetas', 1000, 1),
-(3, 'Finca6', 1000, 1),
-(4, 'Finca11', 500, 1);
+(1, 'rio cuarto', '3500', '1'),
+(2, 'Rio Frio', '1500', '1'),
+(3, 'Finca 6', '2000', '1'),
+(4, 'Finca 11', '3000', '1'),
+(5, 'Finca 2', '1000', '1'),
+(6, 'La Virgen', '3500', '1'),
+(7, 'UNA', '100', '1'),
+(8, 'san jose', '155', '1'),
+(9, 'tres pino', '2', '1');
 
 --
 -- Índices para tablas volcadas
@@ -411,6 +438,12 @@ ALTER TABLE `tbproductos`
   ADD PRIMARY KEY (`productoid`);
 
 --
+-- Indices de la tabla `tbproveedor`
+--
+ALTER TABLE `tbproveedor`
+  ADD PRIMARY KEY (`proveedorid`);
+
+--
 -- Indices de la tabla `tbtipoempleados`
 --
 ALTER TABLE `tbtipoempleados`
@@ -441,8 +474,7 @@ ALTER TABLE `tbventas`
 -- Indices de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  ADD PRIMARY KEY (`zonaid`),
-  ADD KEY `zonaid` (`zonaid`);
+  ADD PRIMARY KEY (`zonaid`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -452,7 +484,7 @@ ALTER TABLE `tbzonas`
 -- AUTO_INCREMENT de la tabla `tbclientes`
 --
 ALTER TABLE `tbclientes`
-  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tbmateriasprimas`
 --
@@ -462,12 +494,17 @@ ALTER TABLE `tbmateriasprimas`
 -- AUTO_INCREMENT de la tabla `tbpersonas`
 --
 ALTER TABLE `tbpersonas`
-  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `tbproductos`
 --
 ALTER TABLE `tbproductos`
-  MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `tbproveedor`
+--
+ALTER TABLE `tbproveedor`
+  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
@@ -477,12 +514,12 @@ ALTER TABLE `tbtipomateriasprimas`
 -- AUTO_INCREMENT de la tabla `tbvehiculos`
 --
 ALTER TABLE `tbvehiculos`
-  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `zonaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

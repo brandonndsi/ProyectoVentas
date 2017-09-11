@@ -8,16 +8,15 @@
 include '../../domain/zonas/Zonas.php';
 if (isset($_POST['nuevo'])) {
 
-    if (isset($_POST['zonaid']) && isset($_POST['zonanombre']) && isset($_POST['zonaprecio'])) {
+    if (isset($_POST['zonanombre']) && isset($_POST['zonaprecio'])) {
 
-        $zonaid = $_POST['zonaid'];
         $zonanombre = $_POST['zonanombre'];
         $zonaprecio = $_POST['zonaprecio'];
 
-        if (strlen($zonaid) > 0 && strlen($zonanombre) > 0 && strlen($zonaprecio) > 0) {
-            if (!is_numeric($zonaid)) {
+        if (strlen($zonanombre) > 0 && strlen($zonaprecio) > 0) {
+            if (is_numeric($zonaprecio)) {
 
-                $zona = new Zonas($zonaid, $zonanombre, $zonaprecio);
+                $zona = new Zonas(null, $zonanombre, $zonaprecio);
 
                 include '../zonabusiness/zonaBusiness.php';
 
@@ -45,7 +44,7 @@ if (isset($_POST['nuevo'])) {
         $zonaprecio = $_POST['zonaprecio'];
 
         if (strlen($zonaid) > 0 && strlen($zonanombre) > 0 && strlen($zonaprecio) > 0) {
-            if (!is_numeric($zonaid)) {
+            if (is_numeric($zonaid)) {
 
                 $zona = new Zonas($zonaid, $zonanombre, $zonaprecio);
 

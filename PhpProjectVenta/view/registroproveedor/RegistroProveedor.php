@@ -6,77 +6,82 @@
     <title>Reg Proveedor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php
-    include '../../business/proveedorbusiness/proveedorBusiness.php';
-    ?>
+  include '../../business/proveedorbusiness/ProveedorBusiness.php';
+  ?>
+    
 </head>
-
-<body >
-    <p align="center">
-    <form name="form" action=".../../business/proveedoraccion/proveedorAccion.php" method="Post">
+<body align="center">
+<?php
+$ProveedorBusiness = new ProveedorBusiness();
+?>
+       <div class="nuevo">
+        <form name="form" action="../../business/proveedoraccion/ProveedorAccion.php" method="Post" align="center">
         <strong>
             <p>
-                Formulario para insertar el Proveedor a la base de datos.
+                Formulario para insertar Proveedor
             <p>  
-        </strong>
-        <p> ID: <input type="text" name="proveedorid" size="45" placeholder="8888"/>
-        </p>         
-        <p> Nombre: <input type="text" name="personanombre" size="45" required placeholder="Pedro"/>
-        </p>
-        <p> Primer Apellido: <input type="text" name="personaapellido1" size="45" required placeholder="Rojas"/>
-        </p>
-        <p> Segundo Apellido: <input type="text" name="personaapellido2" size="45" placeholder="Rojas"/>
-        </p>
-        <p> Numero de Telefono: <input type="text" name="personatelefono" size="45" required placeholder="sin espacios ni guiones" />
-        </p>
-        <p> Corrreo Electronico: <input type="text" name="personacorreo" size="45" required placeholder="PedroRojas@espress.com" />
-        </p>
-        <p> Direccion Exacta: <input type="text" name="idzona" size="45" required placeholder="Distrito, barrio, mas señas"/>
-        </p>
-        <p> Tipo Materia Prima: <input type="text" name="tipomateriaprima" size="45" requiredplaceholder="Limpieza, Cocina, otro"/>
-        </p>
+        </strong>  
+        <p> Nombre: <input type="text" name="personanombre" id="personanombre" placeholder="solo letras"/></p>
+        <p> Apellido1: <input type="text" name="personaapellido1" id="personaApellido1" placeholder="solo letras"/></p>
+        <p> Apellido2: <input type="text" name="personaapellido2" id="personaApellido2" placeholder="solo letras"/></p>
+        <p> Telefono: <input type="text" name="personatelefono" id="personatelefono" placeholder="solo numeros"/></p>
+        <p> Correo: <input type="text" name="personacorreo" id="personacorreo" placeholder="solo correo @"></p>
+       <!-- <p> Descuento: <input type="text" name="clientedescuento" id="clientedescuento" placeholder="solo numeros"/></p>
+        <p> Acumula: <input type="text" name="clienteacumulado" id="clienteacumulado" placeholder="solo numeros"/></p> -->
+        <p> zona ID: <input type="text" name="zonaid" id="zonaid" placeholder="solo numeros"/></p>
+        <!--<p> Estado: <input type="text" name="clienteestado" id="clienteestado" placeholder="solo 1 o 0"/></p> -->
+        <p> Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion" placeholder="solo letras"/></p>
 
         <br>
-        <input name="create" type="submit" value="Registrar">
+        <input name="nuevo" type="submit" id="nuevo" value="Registrar">
 
     </form>
+    </div>
     <?php
-    $proveedorBusiness = new proveedorBusiness();
-    $allBusiness = $proveedorBusiness->mostrarProveedor();
+    $allBusiness = $ProveedorBusiness->mostrarProveedor();
     echo '<h2>Lista de Proveedores</h2>';
     foreach ($allBusiness as $current) {
-        echo '<form  action="../../business/proveedoraccion/proveedorAccion.php" method="Post" align="center" >';
-        echo '<input type="text" name="proveedorid" id="proveedorid" value="' . $current['proveedorid'] . '"/>';
-        echo '<input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '"/>';
-        echo '<input type="text" name="personaapellido1" id="personaapellido1" value="' . $current['personaapellido1'] . '"/>';
-        echo '<input type="text" name="personaapellido2" id="personaapellido2" value="' . $current['personaapellido2'] . '"/>';
-        echo '<input type="text" name="personatelefono" id="personatelefono" value="' . $current['personatelefono'] . '"/>';
-        echo '<input type="text" name="personacorreo" id="personacorreo" value="' . $current['personacorreo'] . '"/>';
-        echo '<input type="text" name="idzona" id="idzona" value="' . $current['idzona'] . '"/>';
-        echo '<input type="text" name="tipomateriaprima" id="tipomateriaprima" value="' . $current['tipomateriaprima'] . '"/>';
+        echo '<form  action="../../business/proveedoraccion/ProveedorAccion.php" method="Post" align="center" >';
+        echo '<input type="text" name="proveedorid" id="proveedorid" size="5" value="' . $current['proveedorid'] . '" readonly />';
+        echo '<input type="text" name="personanombre" id="personanombre" size="5" value="' . $current['personanombre'] . '"/>';
+        echo '<input type="text" name="personaapellido1" id="personaapellido1" size="5" value="' . $current['personaapellido1'] . '"/>';
+        echo '<input type="text" name="personaapellido2" id="personaapellido2" size="5" value="' . $current['personaapellido2'] . '"/>';
+        echo '<input type="text" name="personatelefono" id="personatelefono" size="3"  value="' . $current['personatelefono'] . '"/>';
+        echo '<input type="text" name="personacorreo" id="personacorreo"  size="5" value="' . $current['personacorreo'] . '"/>';
+        echo '<input type="text" name="proveedordireccion" id="proveedordireccion" value="' . $current['proveedordireccion'] . '"/>';
+        echo '<input type="text" name="materiaprimaid" id="materiaprimaid" size="3"  value="' . $current['materiaprimaid'] . '"/>';
         echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
         echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
         echo '</tr>';
         echo '</form>';
     }
+                echo '<h2>Buscar un Proveedor</h2>';
+                echo '<form method="post" action="RegistroProveedor.php" align="center" >';
+                echo '<input type="text" name="proveedorid" id="proveedorid" placeholder="    id/codigo/precio" />';
+                echo '<tr>';
+
+                echo '<td><input type="submit" value="Enviar" name="buscar" id="buscar"/></td>';
+                echo '</tr>';
+                echo '</form>';
 
     if ($_POST) {
         $proveedorid = $_POST['proveedorid'];
         if (isset($proveedorid)) {
-            $buscarBusiness = $proveedorBusiness->buscarProveedor($proveedorid);
+            $buscarBusiness = $ProveedorBusiness->buscarProveedor($proveedorid);
             foreach ($buscarBusiness as $current) {
-                echo '<form  action="../../business/zonaaccion/ZonaAccion.php" method="Post" align="center" >';
-                echo '<input type="text" name="proveedorid" id="proveedorid" value="' . $current['proveedorid'] . '"/>';
-                echo '<input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '"/>';
-                echo '<input type="text" name="personaapellido1" id="personaapellido1" value="' . $current['personaapellido1'] . '"/>';
-                echo '<input type="text" name="personaapellido2" id="personaapellido2" value="' . $current['personaapellido2'] . '"/>';
-                echo '<input type="text" name="personatelefono" id="personatelefono" value="' . $current['personatelefono'] . '"/>';
-                echo '<input type="text" name="personacorreo" id="personacorreo" value="' . $current['personacorreo'] . '"/>';
-                echo '<input type="text" name="idzona" id="idzona" value="' . $current['idzona'] . '"/>';
-                echo '<input type="text" name="tipomateriaprima" id="tipomateriaprima" value="' . $current['tipomateriaprima'] . '"/>';
-                echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
-                echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
-                echo '</tr>';
-                echo '</form>';
+        echo '<form  action="../../business/proveedoraccion/ProveedorAccion.php" method="Post" align="center" >';
+        echo '<input type="text" name="proveedorid" id="proveedorid" size="5" value="' . $current['proveedorid'] . '" readonly />';
+        echo '<input type="text" name="personanombre" id="personanombre" size="5" value="' . $current['personanombre'] . '"/>';
+        echo '<input type="text" name="personaapellido1" id="personaapellido1" size="5" value="' . $current['personaapellido1'] . '"/>';
+        echo '<input type="text" name="personaapellido2" id="personaapellido2" size="5" value="' . $current['personaapellido2'] . '"/>';
+        echo '<input type="text" name="personatelefono" id="personatelefono" size="3"  value="' . $current['personatelefono'] . '"/>';
+        echo '<input type="text" name="personacorreo" id="personacorreo"  size="5" value="' . $current['personacorreo'] . '"/>';
+        echo '<input type="text" name="proveedordireccion" id="proveedordireccion" value="' . $current['proveedordireccion'] . '"/>';
+        echo '<input type="text" name="materiaprimaid" id="materiaprimaid" size="3"  value="' . $current['materiaprimaid'] . '"/>';
+        echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
+        echo '<td><input type="submit" value="Eliminar" name="eliminar" id="eliminar"/></td>';
+        echo '</tr>';
+        echo '</form>';
             }
         }
     }
