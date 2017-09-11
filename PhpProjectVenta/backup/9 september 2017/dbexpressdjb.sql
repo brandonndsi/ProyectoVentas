@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-09-2017 a las 21:36:21
+-- Tiempo de generación: 11-09-2017 a las 05:26:08
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -180,7 +180,7 @@ CREATE TABLE `tbpersonas` (
   `personanombre` varchar(20) NOT NULL,
   `personaapellido1` varchar(20) NOT NULL,
   `personaapellido2` varchar(20) NOT NULL,
-  `personatelefono` int(11) NOT NULL,
+  `personatelefono` varchar(50) NOT NULL,
   `personacorreo` varchar(50) NOT NULL,
   `zonaid` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -190,14 +190,17 @@ CREATE TABLE `tbpersonas` (
 --
 
 INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`, `personacorreo`, `zonaid`) VALUES
-(1, 'Brandon', 'Rodriguez', 'Mendez', 62091232, 'brandon-ndsi@hotmail.com', '1'),
-(2, 'Juan', 'Chavarria', 'Arroyo', 14358765, 'juaracha@gmail.com', '2'),
-(3, 'David', 'Salas', 'Salas', 73950274, 'salasgates@hotmail.com', '3'),
-(4, 'Elisabeth', 'Rodriguez', 'Castro', 12345436, 'elirodri@gmail.com', '2'),
-(5, 'Oscar', 'Mejias', 'Morera', 88940376, 'oscmeji@hotmail.com', '2'),
-(15, 'da', 'e', 'e', 1111, 'wee@gmail.com', '3'),
-(16, 'David rico', 'zalazar', 'lorente', 8888, 'yoansalas76@gmail.com', 'z1'),
-(17, 'pedro', 'salas', 'picado', 58968, 'ddsd@gmail.com', '1');
+(1, 'Brandon', 'Rodriguez', 'Mendez', '62091232', 'brandon-ndsi@hotmail.com', '1'),
+(2, 'Juan', 'Chavarria', 'Arroyo', '14358765', 'juaracha@gmail.com', '2'),
+(3, 'David', 'Salas', 'Salas', '73950274', 'salasgates@hotmail.com', '3'),
+(4, 'Elisabeth', 'Rodriguez', 'Castro', '12345436', 'elirodri@gmail.com', '2'),
+(5, 'Oscar', 'Mejias', 'Morera', '88940376', 'oscmeji@hotmail.com', '2'),
+(16, 'David rico', 'zalazar', 'lorente', '8888', 'yoansalas76@gmail.com', 'z1'),
+(17, 'pedro', 'salas', 'picado', '58968', 'ddsd@gmail.com', '1'),
+(18, 'ww', 'ww', 'ww', '22', 'ww', ''),
+(19, 'W', 'W', 'W', '0', 'W', ''),
+(20, 'dd', 'd', 'd', '32', 'ssd', ''),
+(21, 'yenii', 'salas', 'lorente', '1', 'dsd', '');
 
 -- --------------------------------------------------------
 
@@ -228,6 +231,31 @@ INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `pr
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbproveedor`
+--
+
+CREATE TABLE `tbproveedor` (
+  `proveedorid` int(11) NOT NULL,
+  `personaid` varchar(50) NOT NULL,
+  `proveedordireccion` varchar(50) NOT NULL,
+  `proveedorestado` varchar(5) NOT NULL,
+  `materiaprimaid` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbproveedor`
+--
+
+INSERT INTO `tbproveedor` (`proveedorid`, `personaid`, `proveedordireccion`, `proveedorestado`, `materiaprimaid`) VALUES
+(1, '1', 'rio frio', '1', '1'),
+(2, '2', 'san jose', '1', '1'),
+(3, '19', 'W', '1', ''),
+(4, '20', '2', '1', ''),
+(5, '21', '45', '1', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbtipoempleados`
 --
 
@@ -244,8 +272,8 @@ CREATE TABLE `tbtipoempleados` (
 
 INSERT INTO `tbtipoempleados` (`tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`) VALUES
 ('Administrador', 600000, 'Puede agregar,modificar,buscar y eliminar:(zonas,productos,cajeros,persona,precios,combos, etc...', 2000),
-('Cajero', 350000, 'Puede realizar una venta y registrar personas.', 2000),
-('Motorisado', 250000, 'viaja a la direccion de los clientes y reparte el pedido.\r\n', 2000);
+('Motorisado', 250000, 'viaja a la direccion de los clientes y reparte el pedido.\r\n', 2000),
+('Sirviente', 350000, 'solo sirve', 3);
 
 -- --------------------------------------------------------
 
@@ -410,6 +438,12 @@ ALTER TABLE `tbproductos`
   ADD PRIMARY KEY (`productoid`);
 
 --
+-- Indices de la tabla `tbproveedor`
+--
+ALTER TABLE `tbproveedor`
+  ADD PRIMARY KEY (`proveedorid`);
+
+--
 -- Indices de la tabla `tbtipoempleados`
 --
 ALTER TABLE `tbtipoempleados`
@@ -460,12 +494,17 @@ ALTER TABLE `tbmateriasprimas`
 -- AUTO_INCREMENT de la tabla `tbpersonas`
 --
 ALTER TABLE `tbpersonas`
-  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `tbproductos`
 --
 ALTER TABLE `tbproductos`
   MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `tbproveedor`
+--
+ALTER TABLE `tbproveedor`
+  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
