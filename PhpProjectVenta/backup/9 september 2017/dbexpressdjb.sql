@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-09-2017 a las 05:26:08
+-- Tiempo de generación: 11-09-2017 a las 19:08:36
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -165,9 +165,9 @@ CREATE TABLE `tbmateriasprimas` (
 --
 
 INSERT INTO `tbmateriasprimas` (`materiaprimaid`, `materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`) VALUES
-(2, 'L1', 'Desinfectante', '800', '15', '2'),
-(3, 'M2', 'Lechuga', '500', '25', '1'),
-(4, 'M4', 'Pan', '600', '35', '1');
+(2, 'L1', 'Desinfectante', '80000', '15', '2'),
+(4, 'M4', 'Pan', '600', '35', '1'),
+(5, '2', 'da', '2', '14', '1');
 
 -- --------------------------------------------------------
 
@@ -200,7 +200,8 @@ INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `per
 (18, 'ww', 'ww', 'ww', '22', 'ww', ''),
 (19, 'W', 'W', 'W', '0', 'W', ''),
 (20, 'dd', 'd', 'd', '32', 'ssd', ''),
-(21, 'yenii', 'salas', 'lorente', '1', 'dsd', '');
+(21, 'yenii', 'salas', 'lorente', '1', 'dsd', ''),
+(22, 'arnoldo', 'mendes', 'aleman', '27611013', 'aleman@gmial.com', '');
 
 -- --------------------------------------------------------
 
@@ -247,11 +248,12 @@ CREATE TABLE `tbproveedor` (
 --
 
 INSERT INTO `tbproveedor` (`proveedorid`, `personaid`, `proveedordireccion`, `proveedorestado`, `materiaprimaid`) VALUES
-(1, '1', 'rio frio', '1', '1'),
-(2, '2', 'san jose', '1', '1'),
-(3, '19', 'W', '1', ''),
-(4, '20', '2', '1', ''),
-(5, '21', '45', '1', '');
+(1, '3', 'rio frio', '1', '1'),
+(2, '5', 'san jose', '1', '1'),
+(3, '19', 'W', '1', '1'),
+(4, '20', '2', '1', '1'),
+(5, '21', '45', '1', '1'),
+(6, '22', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -489,12 +491,12 @@ ALTER TABLE `tbclientes`
 -- AUTO_INCREMENT de la tabla `tbmateriasprimas`
 --
 ALTER TABLE `tbmateriasprimas`
-  MODIFY `materiaprimaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `materiaprimaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `tbpersonas`
 --
 ALTER TABLE `tbpersonas`
-  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `tbproductos`
 --
@@ -504,7 +506,7 @@ ALTER TABLE `tbproductos`
 -- AUTO_INCREMENT de la tabla `tbproveedor`
 --
 ALTER TABLE `tbproveedor`
-  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
