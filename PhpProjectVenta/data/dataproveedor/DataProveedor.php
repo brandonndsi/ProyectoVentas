@@ -51,8 +51,32 @@ class DataProveedor {
     public function modificarProveedor($proveedor) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
+            //modificando lo que es el proveedor.
+        $actualizandoProveedor=$this->conexion->crearConexion()->query("UPDATE `tbproveedor` SET `proveedordireccion`='".$proveedor->getProveedorDireccion()."' ,
+            `materiaprimaid`='".$proveedor->getMateriaPrimaid()."' 
+            WHERE proveedorid='".$proveedor->getProveedorId()."';");
+        //recuperando lo que es el id de la persona en proveedor.
+        $Personaid=$this->conexion->crearConexion()->query("SELECT  `personaid` FROM `tbproveedor` WHERE proveedorid='".$proveedor->getProveedorId()."';");
 
-        //return echo 'hola';
+        $con;
+            while ($resultado = $Personaid->fetch_assoc()){
+                $con=$resultado['personaid'];     
+            }
+            /*verificamos si es un string ya formulado*/
+    
+                $proveedor->setPersonaId($con);
+                //modificando el tb persona
+            $personanuevo= $this->conexion->crearConexion()->query("UPDATE `tbpersonas` SET 
+            `personanombre`='".$proveedor->getPersonaNombre()."',
+            `personaapellido1`='".$proveedor->getPersonaApellido1()."',
+            `personaapellido2`='".$proveedor->getPersonaApellido2()."',
+            `personatelefono`='".$proveedor->getPersonaTelefono()."',
+            `personacorreo`='".$proveedor->getCorreo()."'
+            WHERE personaid='".$proveedor->getPersonaId()."';");
+
+        $this->conexion->cerrarConexion();
+
+            return $actualizandoProveedor;
          
         }
     }
@@ -86,7 +110,6 @@ class DataProveedor {
                 e.materiaprimaid 
                 FROM tbproveedor e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
-                INNER JOIN tbzonas z ON p.zonaid= z.zonaid
                 WHERE e.proveedorid='".$proveedorid."' AND e.proveedorestado=1;");
 
             $this->conexion->cerrarConexion();
@@ -114,7 +137,6 @@ class DataProveedor {
                 e.materiaprimaid 
                 FROM tbproveedor e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
-                INNER JOIN tbzonas z ON p.zonaid= z.zonaid
                 WHERE e.personaid=p.personaid AND e.proveedorestado=1;");
 
             $this->conexion->cerrarConexion();

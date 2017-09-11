@@ -36,15 +36,7 @@ $productoBusiness = new ProductoBusiness();
                                    
                 </tr>
             </thead>           
-                <tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    
-                    <!--<th class="bot"> <input type="button" name="del" id="del" value="Eliminar"></th> 
-                    <th class="bot"> <input type="button"  name="up" id="up" value="Modificar"></th> -->
-                    
-                </tr>
+                
                 <tr>
                     <td><input type="text" name="productocodigo" size="10" class="productocodigo" placeholder="P+numero"/> </td>
                     <td><input type="text" name="productonombre" size="10" class="productonombre" placeholder="Solo letras"/> </td>

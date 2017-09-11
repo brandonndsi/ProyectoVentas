@@ -109,7 +109,7 @@ class DataEmpleado {
 
             $array = array();
 
-            $mostrarempleados = $this->conexion->crearConexion()->query("CALL mostrarempleados()");
+            $mostrarempleados = $this->conexion->crearConexion()->query("SELECT * FROM `tbempleados`;");
 
             
             while ($resultado = $mostrarempleados->fetch_assoc()) {

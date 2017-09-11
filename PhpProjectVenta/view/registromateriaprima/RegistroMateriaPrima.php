@@ -14,7 +14,7 @@
 </head>
 <body align="center">
 <?php
-$materiaprimabusiness = new MateriaPrimaBusiness();
+$MateriaPrimaBusiness = new MateriaPrimaBusiness();
 ?>
        <div class="nuevo"> 
     <p align="center">
@@ -50,7 +50,7 @@ $materiaprimabusiness = new MateriaPrimaBusiness();
                     <td><input type="text" name="materiaprimaprecio" size="10" class="materiaprimaprecio" placeholder="Solo numeros"/> </td>
                     <td><input type="text" name="materiaprimacantidad" size="10" class="materiaprimacantidad" placeholder="Solo numeros"/> </td>
                     <td><input type="text" name="tipomateriaprimaid" size="10" class="tipomateriaprimaid" placeholder="Solo numeros"/> </td>
-                    <th class="bot"> <td><input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></th>
+                    <th> <td><input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></th>
                 </tr> 
            
         </table>
