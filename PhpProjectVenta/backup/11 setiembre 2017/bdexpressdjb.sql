@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2017 a las 00:34:30
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 7.1.7
+-- Tiempo de generación: 12-09-2017 a las 02:52:10
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -42,9 +40,11 @@ CREATE TABLE `tbclientes` (
 --
 
 INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) VALUES
-(1, '4', '300 metros oeste de rio frio', 0.03, 50, 1),
-(2, '5', 'barrio san marcos frente a la universidad nacional\r\n', 0.05, 70, 1),
-(5, '16', '15 oeste de la una', 0, 0, 1);
+(7, '5', 'horquetas norte', 0, 0, 1),
+(10, '18', 'la victoria', 0, 0, 1),
+(12, '19', 'lallalala', 0, 0, 1),
+(13, '20', 'ajhgdashdgasj', 0, 0, 1),
+(14, '21', 'hahaha', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -83,6 +83,7 @@ INSERT INTO `tbcontrolproductos` (`productoid`, `materiaprimaid`) VALUES
 
 CREATE TABLE `tbempleadolicencias` (
   `empleadolicenciaid` varchar(20) NOT NULL,
+  `empleadotipolicencia` varchar(20) NOT NULL,
   `empleadolicenciavigencia` year(4) NOT NULL,
   `vehiculoid` varchar(20) NOT NULL,
   `empleadolicenciasestado` tinyint(1) NOT NULL
@@ -92,10 +93,10 @@ CREATE TABLE `tbempleadolicencias` (
 -- Volcado de datos para la tabla `tbempleadolicencias`
 --
 
-INSERT INTO `tbempleadolicencias` (`empleadolicenciaid`, `empleadolicenciavigencia`, `vehiculoid`, `empleadolicenciasestado`) VALUES
-('L1', 2019, '1', 1),
-('L2', 2021, '2', 1),
-('L3', 2025, '3', 1);
+INSERT INTO `tbempleadolicencias` (`empleadolicenciaid`, `empleadotipolicencia`, `empleadolicenciavigencia`, `vehiculoid`, `empleadolicenciasestado`) VALUES
+('L1', 'B1', 2019, '1', 1),
+('L2', 'B1', 2021, '2', 1),
+('L3', 'B1', 2025, '3', 1);
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,8 @@ INSERT INTO `tbmateriasprimas` (`materiaprimaid`, `materiaprimacodigo`, `materia
 (1, 'M1', 'tomate', '250', '10', '1', 1),
 (2, 'L1', 'Desinfectante', '800', '15', '2', 1),
 (3, 'M2', 'Lechuga', '500', '25', '1', 1),
-(4, 'M4', 'Pan', '600', '35', '1', 1);
+(4, 'M4', 'Pan', '600', '35', '1', 1),
+(5, 'aksdg', 'dfb', '13', '123', '1', 0);
 
 -- --------------------------------------------------------
 
@@ -206,8 +208,10 @@ INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `per
 (3, 'David', 'Salas', 'Salas', 73950274, 'salasgates@hotmail.com', '3', 1),
 (4, 'Elisabeth', 'Rodriguez', 'Castro', 12345436, 'elirodri@gmail.com', '2', 1),
 (5, 'Oscar', 'Mejias', 'Morera', 88940376, 'oscmeji@hotmail.com', '2', 1),
-(15, 'da', 'e', 'e', 1111, 'wee@gmail.com', '3', 1),
-(16, 'David rico', 'zalazar', 'lorente', 8888, 'yoansalas76@gmail.com', 'z1', 1);
+(6, 'hola', 'aaa', 'bbb', 2222, 'aaa@hotmail.com', '1', 1),
+(19, 'aa', 'dfa', 'dsf', 23423, 'asdma@kjsdf.com', '2', 1),
+(20, 'ma', 'dskjf', 'sdkjf', 236423, 'sdkjfsdjk@hotmai.com', '2', 1),
+(21, 'kjajdhkajf', 'slkfjsldkf', 'flkgjsfl', 34534634, 'askjdhas@hot.com', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -228,11 +232,33 @@ CREATE TABLE `tbproductos` (
 --
 
 INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `productoprecio`, `productoestado`) VALUES
-(3, 'M3', 'papas fritas', '120', '0'),
-(4, 'M4', 'Pizza grande', '2500', '0'),
+(3, 'M3', 'papas fritas', '120', '1'),
+(4, 'M4', 'Pizza grande', '2500', '1'),
 (6, 'M7', '2 piesas y un refresco', '2000', '1'),
 (8, '8', 'hola', '12321', '1'),
 (9, 'P7', 'pizza', '7600', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbproveedores`
+--
+
+CREATE TABLE `tbproveedores` (
+  `proveedorid` int(11) NOT NULL,
+  `personaid` int(11) NOT NULL,
+  `materiaprimaid` int(11) NOT NULL,
+  `proveedorcantidadproducto` int(11) NOT NULL,
+  `proveedortotalproducto` double NOT NULL,
+  `proveedorestado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbproveedores`
+--
+
+INSERT INTO `tbproveedores` (`proveedorid`, `personaid`, `materiaprimaid`, `proveedorcantidadproducto`, `proveedortotalproducto`, `proveedorestado`) VALUES
+(1, 6, 2, 50, 25000, 1);
 
 -- --------------------------------------------------------
 
@@ -254,7 +280,6 @@ CREATE TABLE `tbtipoempleados` (
 
 INSERT INTO `tbtipoempleados` (`tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`, `tipoempleadoestado`) VALUES
 ('Administrador', 600000, 'Puede agregar,modificar,buscar y eliminar:(zonas,productos,cajeros,persona,precios,combos, etc...', 2000, 1),
-('Cajero', 350000, 'Puede realizar una venta y registrar personas.', 2000, 1),
 ('Motorisado', 250000, 'viaja a la direccion de los clientes y reparte el pedido.\r\n', 2000, 1);
 
 -- --------------------------------------------------------
@@ -287,9 +312,9 @@ INSERT INTO `tbtipomateriasprimas` (`tipomateriaprimaid`, `tipomateriaprimacateg
 
 CREATE TABLE `tbvehiculos` (
   `vehiculoid` int(11) NOT NULL,
-  `vehiculomodelo` varchar(50) NOT NULL,
-  `vehiculoplaca` varchar(50) NOT NULL,
   `vehiculomarca` varchar(50) NOT NULL,
+  `vehiculoplaca` varchar(50) NOT NULL,
+  `vehiculomodelo` varchar(50) NOT NULL,
   `vehiculoestado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -297,10 +322,10 @@ CREATE TABLE `tbvehiculos` (
 -- Volcado de datos para la tabla `tbvehiculos`
 --
 
-INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculomodelo`, `vehiculoplaca`, `vehiculomarca`, `vehiculoestado`) VALUES
-(1, '2016', '2568955', 'TOYOTA', '1'),
-(10, 'ybr-150', '1282', 'YAMAHA', '1'),
-(11, 'cs125', '9321', 'Honda', '1');
+INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculomarca`, `vehiculoplaca`, `vehiculomodelo`, `vehiculoestado`) VALUES
+(1, 'YAMAHA', '1282', 'ybr-150', '1'),
+(2, 'TOYOTA', '2568955', '2016', '1'),
+(3, 'Honda', '9321', 'cs125', '1');
 
 -- --------------------------------------------------------
 
@@ -412,6 +437,14 @@ ALTER TABLE `tbproductos`
   ADD PRIMARY KEY (`productoid`);
 
 --
+-- Indices de la tabla `tbproveedores`
+--
+ALTER TABLE `tbproveedores`
+  ADD PRIMARY KEY (`proveedorid`),
+  ADD KEY `personaid` (`personaid`),
+  ADD KEY `materiaprimaid` (`materiaprimaid`);
+
+--
 -- Indices de la tabla `tbtipoempleados`
 --
 ALTER TABLE `tbtipoempleados`
@@ -453,22 +486,27 @@ ALTER TABLE `tbzonas`
 -- AUTO_INCREMENT de la tabla `tbclientes`
 --
 ALTER TABLE `tbclientes`
-  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `tbmateriasprimas`
 --
 ALTER TABLE `tbmateriasprimas`
-  MODIFY `materiaprimaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `materiaprimaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `tbpersonas`
 --
 ALTER TABLE `tbpersonas`
-  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `tbproductos`
 --
 ALTER TABLE `tbproductos`
   MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `tbproveedores`
+--
+ALTER TABLE `tbproveedores`
+  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
@@ -483,8 +521,7 @@ ALTER TABLE `tbvehiculos`
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
-
+  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

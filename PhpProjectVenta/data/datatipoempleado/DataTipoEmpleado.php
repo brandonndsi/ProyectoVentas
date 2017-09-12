@@ -2,7 +2,7 @@
 
 class DataTipoEmpleado {
 
-     private $conexion;
+    private $conexion;
 
     function DataTipoEmpleado() {
         include_once '../../data/dbconexion/Conexion.php';
@@ -12,14 +12,13 @@ class DataTipoEmpleado {
 
     //insertar
     public function insertarTipo($tipo) {
-        
+
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
-            $insertartipo = $this->conexion->crearConexion()->query("INSERT INTO `tbtipoempleados`(`tipoempleado`, 
-             `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`)VALUES (
-                '".$tipo->getTipoEmpleado()."',
-                '".$tipo->getTipoempleadosalariobase()."',
-                '".$tipo->getTipoempleadodescripcion()."',
-                '".$tipo->getTipoempleadohoraextra()."');");
+            $insertartipo = $this->conexion->crearConexion()->query("INSERT INTO `tbtipoempleados`(`tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`)
+                VALUES ('" . $tipo->getTipoEmpleado() . "',
+                '" . $tipo->getTipoempleadosalariobase() . "',
+                '" . $tipo->getTipoempleadodescripcion() . "',
+                '" . $tipo->getTipoempleadohoraextra() . "');");
 
             $result = mysql_query($insertartipo);
             $this->conexion->cerrarConexion();
@@ -36,11 +35,11 @@ class DataTipoEmpleado {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $modificartipo= $this->conexion->crearConexion()->query("UPDATE `tbtipoempleados` SET 
-            `tipoempleadosalariobase`='".$tipo->getTipoempleadosalariobase()."',
-            `tipoempleadodescripcion`='".$tipo->getTipoempleadodescripcion()."',
-            `tipoempleadohoraextra`='".$tipo->getTipoempleadohoraextra()."'
-            WHERE tipoempleado='".$tipo->getTipoEmpleado()."';");
+            $modificartipo = $this->conexion->crearConexion()->query("UPDATE `tbtipoempleados` SET 
+            `tipoempleadosalariobase`='" . $tipo->getTipoempleadosalariobase() . "',
+            `tipoempleadodescripcion`='" . $tipo->getTipoempleadodescripcion() . "',
+            `tipoempleadohoraextra`='" . $tipo->getTipoempleadohoraextra() . "'
+            WHERE tipoempleado='" . $tipo->getTipoEmpleado() . "';");
 
             $result = mysql_query($modificartipo);
             $this->conexion->cerrarConexion();
@@ -49,17 +48,17 @@ class DataTipoEmpleado {
             } else {
                 return $result;
             }
-            }
-        
+        }
     }
+
     //eliminar
-    public function eliminarTipo($tipoempleadoid) {
+    public function eliminarTipo($tipoempleado) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminartipo = $this->conexion->crearConexion()->query("UPDATE `tbtipoempleados` set 'tipoempleadoestado'=0
-                WHERE tipoempleadoid='".$tipoempleadoid."';");
-            
+            $eliminartipo = $this->conexion->crearConexion()->query("UPDATE `tbtipoempleados` SET `tipoempleadoestado`=0 "
+            . "WHERE tipoempleado='".$tipoempleado."';");
+
 
             $result = mysql_query($eliminartipo);
             $this->conexion->cerrarConexion();
@@ -77,18 +76,15 @@ class DataTipoEmpleado {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
-            $buscarproducto = $this->conexion->crearConexion()->query("SELECT `tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra` FROM
-             `tbtipoempleados` WHERE tipoempleado='".$tipoempleado." AND 'tipoempleadoestado = 1;" );
+
+            $buscarempleado = $this->conexion->crearConexion()->query("SELECT `tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra` FROM
+             `tbtipoempleados` WHERE tipoempleado='" . $tipoempleado . "';");
 
             $this->conexion->cerrarConexion();
-            while ($resultado = $buscarproducto->fetch_assoc()) {
+            while ($resultado = $buscarempleado->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            if (!$array) {
-                return false;
-            } else {
-                return $array;
-            }
+            return $array;
         }
     }
 
@@ -98,11 +94,10 @@ class DataTipoEmpleado {
 
             $array = array();
 
-            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT `tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra` FROM
-             `tbtipoempleados` WHERE 'tipoempleadoestado = 1;" );
+            $mostrarempleados = $this->conexion->crearConexion()->query("SELECT * FROM `tbtipoempleados` ;");
 
             $this->conexion->cerrarConexion();
-            while ($resultado = $mostrarproductos->fetch_assoc()) {
+            while ($resultado = $mostrarempleados->fetch_assoc()) {
                 array_push($array, $resultado);
             }
             return $array;

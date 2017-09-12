@@ -15,8 +15,7 @@ class DataZona {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
 
-            $insertarzona = $this->conexion->crearConexion()->query("INSERT INTO `tbzonas`(`zonanombre`, `zonaprecio`, "
-                    . "`zonaestado`) VALUES ('".$zona->getZonanombre()."','".$zona->getZonaprecio()."','1');");
+            $insertarzona = $this->conexion->crearConexion()->query("INSERT INTO `tbzonas`(`zonanombre`, `zonaprecio`, `zonaestado`) VALUES ('".$zona->getZonanombre()."','".$zona->getZonaprecio()."','1');");
 
             $result = mysql_query($insertarzona);
             $this->conexion->cerrarConexion();
@@ -52,8 +51,7 @@ class DataZona {
     function eliminarZona($zonaid) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
-            $eliminarzona = $this->conexion->crearConexion()->query("UPDATE `tbzonas` SET `zonaestado`=0 "
-                    . "WHERE zonaid='".$zonaid."';");
+            $eliminarzona = $this->conexion->crearConexion()->query("UPDATE `tbzonas` SET `zonaestado`=0 WHERE zonaid='".$zonaid."';");
 
             $result = mysql_query($eliminarzona);
             $this->conexion->cerrarConexion();

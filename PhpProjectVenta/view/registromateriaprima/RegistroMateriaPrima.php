@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Registrar Materia Prima</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="../../css/materiaprima.css">
+    <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
     <?php
     include '../../business/materiaprimabusiness/MateriaPrimaBusiness.php';
     ?>
@@ -20,7 +20,7 @@
         <form  action="../../business/materiaprimaaccion/MateriaPrimaAccion.php" method="Post" align="center" >
             <strong>
                 <h2>
-                    Nuevo producto.
+                    Nueva Materia Prima.
                 </h2>  
             </strong>
             <p> <table width="50%" border="0" align="center">

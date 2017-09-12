@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Venta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
 </head>
 
 <body >
@@ -20,9 +21,8 @@
             <input name="agregar" type="button" value="Agregar">
         </p>
     </form>
-    
+
     <?php
-    
     $ventaBusiness = new VentaBusiness();
     $allBusiness = $ventaBusiness->mostrarProductos();
     echo '<h2>Lista de Productos</h2>';
