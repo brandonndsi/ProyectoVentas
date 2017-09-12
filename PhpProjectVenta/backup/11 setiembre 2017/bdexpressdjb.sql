@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2017 a las 02:52:10
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Servidor: localhost
+-- Tiempo de generación: 12-09-2017 a las 12:48:21
+-- Versión del servidor: 10.1.25-MariaDB
+-- Versión de PHP: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -241,24 +243,28 @@ INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `pr
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbproveedores`
+-- Estructura de tabla para la tabla `tbproveedor`
 --
 
-CREATE TABLE `tbproveedores` (
+CREATE TABLE `tbproveedor` (
   `proveedorid` int(11) NOT NULL,
-  `personaid` int(11) NOT NULL,
-  `materiaprimaid` int(11) NOT NULL,
-  `proveedorcantidadproducto` int(11) NOT NULL,
-  `proveedortotalproducto` double NOT NULL,
-  `proveedorestado` tinyint(1) NOT NULL
+  `personaid` varchar(50) NOT NULL,
+  `proveedordireccion` varchar(50) NOT NULL,
+  `proveedorestado` varchar(5) NOT NULL,
+  `materiaprimaid` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbproveedores`
+-- Volcado de datos para la tabla `tbproveedor`
 --
 
-INSERT INTO `tbproveedores` (`proveedorid`, `personaid`, `materiaprimaid`, `proveedorcantidadproducto`, `proveedortotalproducto`, `proveedorestado`) VALUES
-(1, 6, 2, 50, 25000, 1);
+INSERT INTO `tbproveedor` (`proveedorid`, `personaid`, `proveedordireccion`, `proveedorestado`, `materiaprimaid`) VALUES
+(1, '3', 'rio frio', '1', '1'),
+(2, '5', 'san jose', '1', '1'),
+(3, '19', 'rio frio 150 de la una', '1', '1'),
+(4, '20', 'frente a la UNA', '1', '1'),
+(5, '21', 'a la par de la UNA', '1', '1'),
+(6, '22', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -437,12 +443,10 @@ ALTER TABLE `tbproductos`
   ADD PRIMARY KEY (`productoid`);
 
 --
--- Indices de la tabla `tbproveedores`
+-- Indices de la tabla `tbproveedor`
 --
-ALTER TABLE `tbproveedores`
-  ADD PRIMARY KEY (`proveedorid`),
-  ADD KEY `personaid` (`personaid`),
-  ADD KEY `materiaprimaid` (`materiaprimaid`);
+ALTER TABLE `tbproveedor`
+  ADD PRIMARY KEY (`proveedorid`);
 
 --
 -- Indices de la tabla `tbtipoempleados`
@@ -503,10 +507,10 @@ ALTER TABLE `tbpersonas`
 ALTER TABLE `tbproductos`
   MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT de la tabla `tbproveedores`
+-- AUTO_INCREMENT de la tabla `tbproveedor`
 --
-ALTER TABLE `tbproveedores`
-  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `tbproveedor`
+  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
@@ -521,7 +525,8 @@ ALTER TABLE `tbvehiculos`
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

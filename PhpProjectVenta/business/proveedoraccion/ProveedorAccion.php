@@ -13,9 +13,8 @@
        
        if (isset($_POST['personanombre']) && isset($_POST['personaapellido1']) && 
         isset($_POST['personaapellido2']) && isset($_POST['personatelefono']) && 
-        isset($_POST['personacorreo']) /*&& isset($_POST['clientedescuento']) && 
-        isset($_POST['clienteacumulado']) */&& isset($_POST['zonaid'])/* && 
-        isset($_POST['clienteestado']) */&& isset($_POST['proveedordireccion'])) {
+        isset($_POST['personacorreo']) && isset($_POST['zonaid'])
+        && isset($_POST['proveedordireccion'])) {
           
         
         $personanombre =$_POST['personanombre'];
@@ -23,17 +22,13 @@
         $personaapellido2 = $_POST['personaapellido2'];
         $personatelefono = $_POST['personatelefono'];
         $personacorreo = $_POST['personacorreo'];
-       /* $clientedescuento = $_POST['clientedescuento'];
-        $clienteacumulado=$_POST['clienteacumulado'];*/
         $zonaid=$_POST['zonaid'];
-        /*$clienteestado=$_POST['clienteestado'];*/
         $proveedordireccion=$_POST['proveedordireccion'];
 
        if (strlen($personanombre) > 0 && strlen($personaapellido1) > 0 && 
             strlen($personaapellido2) > 0 && strlen($personatelefono) > 0 
-            && strlen($personacorreo) > 0 /*&& strlen($clientedescuento) > 0
-            && strlen($clienteacumulado) > 0 */&& strlen($zonaid) > 0 
-            /*&& strlen($clienteestado) > 0  */&& strlen($proveedordireccion) > 0) {
+            && strlen($personacorreo) > 0 && strlen($zonaid) > 0 
+            && strlen($proveedordireccion) > 0) {
             if (!is_numeric($personanombre)) {
                 
                $proveedor = new Proveedores(null,$proveedordireccion,$zonaid);
@@ -42,7 +37,6 @@
                 $proveedor->setPersonaApellido1($personaapellido1);
                 $proveedor->setPersonaApellido2($personaapellido2);
                 $proveedor->setPersonaTelefono($personatelefono);
-                /*$proveedor->setIdZona($zonaid);*/
                 $proveedor->setCorreo($personacorreo);
                 
                 
@@ -70,10 +64,8 @@
         
      if (isset($_POST['personanombre']) && isset($_POST['personaapellido1']) && 
         isset($_POST['personaapellido2']) && isset($_POST['personatelefono']) &&
-        isset($_POST['proveedorid']) &&
-        isset($_POST['personacorreo']) /*&& isset($_POST['clientedescuento']) && 
-        isset($_POST['clienteacumulado']) */&& isset($_POST['zonaid'])/* && 
-        isset($_POST['clienteestado']) */&& isset($_POST['proveedordireccion'])) {
+        isset($_POST['proveedorid']) && isset($_POST['personacorreo']) 
+        && isset($_POST['zonaid']) && isset($_POST['proveedordireccion'])) {
           
         
         $personanombre =$_POST['personanombre'];
@@ -82,27 +74,21 @@
         $personatelefono = $_POST['personatelefono'];
         $personacorreo = $_POST['personacorreo'];
         $clienteid =$_POST['proveedorid'];
-        /*$clientedescuento = $_POST['clientedescuento'];
-        $clienteacumulado=$_POST['clienteacumulado'];*/
         $zonaid=$_POST['zonaid'];
-        /*$clienteestado=$_POST['clienteestado'];*/
-        $clientedireccionexacta=$_POST['proveedordireccion'];
+        $proveedordireccion=$_POST['proveedordireccion'];
 
        if (strlen($personanombre) > 0 && strlen($personaapellido1) > 0 && 
             strlen($personaapellido2) > 0 && strlen($personatelefono) > 0 
-            && strlen($clienteid) >0
-            && strlen($personacorreo) > 0 /*&& strlen($clientedescuento) > 0
-            && strlen($clienteacumulado) > 0 */&& strlen($zonaid) > 0 
-            /*&& strlen($clienteestado) > 0  */&& strlen($clientedireccionexacta) > 0) {
+            && strlen($clienteid) >0 && strlen($personacorreo) > 0 
+            && strlen($zonaid) > 0 && strlen($proveedordireccion) > 0) {
             if (!is_numeric($personanombre)) {
                 
-               $proveedor=new Proveedores($clienteid,null,$clientedireccionexacta,$zonaid);
+               $proveedor=new Proveedores($clienteid,null,$proveedordireccion,$zonaid);
                 
                 $proveedor->setPersonaNombre($personanombre);
                 $proveedor->setPersonaApellido1($personaapellido1);
                 $proveedor->setPersonaApellido2($personaapellido2);
                 $proveedor->setPersonaTelefono($personatelefono);
-               /* $proveedor->setIdZona($zonaid);*/
                 $proveedor->setCorreo($personacorreo);
                 
                 

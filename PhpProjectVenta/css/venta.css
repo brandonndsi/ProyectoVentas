@@ -1,0 +1,13 @@
+body{
+	margin: auto;
+	/*padding: 0;*/
+	/*background-color: red;*/
+}
+.buscarproducto{
+	background-color: red;
+	margin: auto;
+	padding:10%;
+}
+form{
+	align-content: center;
+}
