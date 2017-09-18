@@ -6,120 +6,98 @@
     <title>Registrar Cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="../../css/estilo.css">
-    <link rel="stylesheet" type="text/css" href="../../css/imagen/style.css">
     <?php
     include '../../business/empleadobusiness/empleadoBusiness.php';
     ?>
 </head>
 <body>
     <div class="nuevo"> 
-        <p align="center">
+        <p>
 
-        <form  action="../../business/empleadoaccion/empleadoAccion.php" method="Post" align="center" >
+        <form  action="../../business/empleadoaccion/empleadoAccion.php" method="Post">
             <strong>
-                <h2 align="center">
+                <h2>
                     Formulario para insertar a los empleados.
                 </h2>  
             </strong>
-            <p> <table width="50%" border="0" align="center">
+            <p> <table border="1">
                 <thead>
                     <tr>
-                        <th class="primerfila" >Nombre</th>
-                        <th class="primerfila" >Apellido1</th>
-                        <th class="primerfila" >Apellido2</th>
-                        <th class="primerfila" >Cedula</th>
-                        <th class="primerfila" >Telefono</th>
-                        <th class="primerfila" >Correo</th>
-                        <th class="primerfila" >Contrasena</th>
-                        <th class="primerfila" >Tipo</th>
-                        <th class="primerfila" >Edad</th>
-                        <th class="primerfila" >Sexo</th>
-                        <th class="primerfila" >Esta Civil</th>
-                        <th class="primerfila" >Cuenta Bancaria</th>
-                        <th class="primerfila" >Zona ID</th>
-                        <th class="primerfila" >Tipo de Licencia</th>
-                        <th class="primerfila" >Vigencia</th>
-                        <th class="primerfila" >Marca de Vehiculo</th>
-                        <th class="primerfila" >Placa de Vehiculo</th>                        
+                        <th>Nombre</th>
+                        <th>Apellido1</th>
+                        <th>Apellido2</th>
+                        <th>Cedula</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Contrasena</th>
+                        <th>Tipo</th>
+                        <th>Edad</th>
+                        <th>Sexo</th>
+                        <th>Esta Civil</th>
+                        <th>Cuenta Bancaria</th>
+                        <th>Zona ID</th>
+                        <th>Tipo de Licencia</th>
+                        <th>Vigencia</th>
+                        <th>Marca de Vehiculo</th>
+                        <th>Placa de Vehiculo</th>                        
                         <th class="primerfila" >Modelo de Vehiculo</th>
 
                     </tr>
                 </thead>           
 
                 <tr>
-                    <td><input type="text" name="personanombre" size="10" class="personanombre" placeholder="Solo letras"/> </td>
-                    <td><input type="text" name="personaapellido1" size="10" class="personaapellido1" placeholder="Solo letras"/> </td>
-                    <td><input type="text" name="personaapellido2" size="10" class="personaapellido2" placeholder="Solo letras"/> </td>
-                    <td><input type="text" name="empleadocedula" size="10" class="empleadocedula" placeholder="Solo numeros"/> </td>
-                    <td><input type="text" name="personatelefono" size="10" class="personatelefono" placeholder="Solo numeros"/> </td>
-                    <td><input type="text" name="personacorreo" size="10" class="personacorreo" placeholder="Solo @ correo"/> </td>
-                    <td><input type="text" name="empleadocontrasenia" size="10" class="empleadocontrasenia" placeholder="Letras y numeros"/> </td>
-                    <td><input type="text" name="tipoempleado" size="10" class="tipoempleado" placeholder="Solo letras"/> </td>
-                    <td><input type="text" name="empleadoedad" size="10" class="empleadoedad" placeholder="Solo numeros"/> </td>
-                    <td><input type="text" name="empleadosexo" size="10" class="empleadosexo" placeholder="Solo letras"/> </td>
-                    <td><input type="text" name="empleadoestadocivil" size="10" class="empleadoestadocivil" placeholder="Solo letras"/> </td>
-                    <td><input type="text" name="empleadocuentabancaria" size="10" class="empleadocuentabancaria" placeholder="Solo numeros"/> </td>
-                    <td><input type="text" name="zonaid" size="10" class="zonaid" placeholder="Solo numeros"/> </td>
-                    <td><input type="text" name="empleadotipolicencia" size="10" class="empleadotipolicencia" placeholder="A1,B2,etc"/> </td>
-                    <td><input type="text" name="empleadolicenciavigencia" size="10" class="empleadolicenciavigencia" placeholder="Fecha"/> </td>
-                    <td><input type="text" name="vehiculomarca" size="10" class="vehiculomarca" placeholder="Toyota, Fredom"/> </td>
-                    <td><input type="text" name="vehiculoplaca" size="10" class="vehiculoplaca" placeholder="Solo numeros"/> </td>
-                    <td><input type="text" name="vehiculomodelo" size="10" class="vehiculomodelo" placeholder="Fecha"/> </td>
-                    <th class="bot"> <td><input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></th>
+                    <th><input type="text" name="personanombre" size="10" class="personanombre" placeholder="Solo letras"/> </th>
+                    <th><input type="text" name="personaapellido1" size="10" class="personaapellido1" placeholder="Solo letras"/> </th>
+                    <th><input type="text" name="personaapellido2" size="10" class="personaapellido2" placeholder="Solo letras"/> </th>
+                    <th><input type="text" name="empleadocedula" size="10" class="empleadocedula" placeholder="Solo numeros"/> </th>
+                    <th><input type="text" name="personatelefono" size="10" class="personatelefono" placeholder="Solo numeros"/> </th>
+                    <th><input type="text" name="personacorreo" size="10" class="personacorreo" placeholder="Solo @ correo"/> </th>
+                    <th><input type="text" name="empleadocontrasenia" size="10" class="empleadocontrasenia" placeholder="Letras y numeros"/> </th>
+                    <th><input type="text" name="tipoempleado" size="10" class="tipoempleado" placeholder="Solo letras"/> </th>
+                    <th><input type="text" name="empleadoedad" size="10" class="empleadoedad" placeholder="Solo numeros"/> </th>
+                    <th><input type="text" name="empleadosexo" size="10" class="empleadosexo" placeholder="Solo letras"/> </th>
+                    <th><input type="text" name="empleadoestadocivil" size="10" class="empleadoestadocivil" placeholder="Solo letras"/> </th>
+                    <th><input type="text" name="empleadocuentabancaria" size="10" class="empleadocuentabancaria" placeholder="Solo numeros"/> </th>
+                    <th><input type="text" name="zonaid" size="10" class="zonaid" placeholder="Solo numeros"/> </th>
+                    <th><input type="text" name="empleadotipolicencia" size="10" class="empleadotipolicencia" placeholder="A1,B2,etc"/> </th>
+                    <th><input type="text" name="empleadolicenciavigencia" size="10" class="empleadolicenciavigencia" placeholder="Fecha"/> </th>
+                    <th><input type="text" name="vehiculomarca" size="10" class="vehiculomarca" placeholder="Toyota, Fredom"/> </th>
+                    <th><input type="text" name="vehiculoplaca" size="10" class="vehiculoplaca" placeholder="Solo numeros"/> </th>
+                    <th><input type="text" name="vehiculomodelo" size="10" class="vehiculomodelo" placeholder="Fecha"/> </th>
+                    <th class="bot"><input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></th>
                 </tr> 
 
             </table>
-            <p>&nbsp;</p> 
         </form>
     </div>
     <?php
     $empleadoBusiness = new empleadoBusiness();
     $allBusiness = $empleadoBusiness->mostrarEmpleados();
-    echo '<h2 align="center">Lista de Empleados</h2>';
+    echo '<h2>Lista de Empleados</h2>';
 
-    echo '<form  action="../../business/empleadoaccion/empleadoAccion.php" method="Post" align="center" id="mostrar">';
+    echo '<form  action="../../business/empleadoaccion/empleadoAccion.php" method="Post" id="mostrar">';
     echo'<table>';
     echo '<thead>';
     echo '<tr>';
-    echo '<th>ID</th><th>Nombre</th><th>Apellido1</th>
-        <th>Apellido2</th><th>Cedula</th><th>Telefono</th>
-        <th>Correo</th><th>Contraseña</th>
-        <th>Tipo</th><th>Edad</th>
-        <th>Sexo</th><th>Estado Civil</th>
-        <th>Cuenta Bancaria</th><th>ID Direccion</th>
-        <th>Tipo de Licencia</th><th>empleadolicenciavigencia</th><th>Marca del Vehiculo</th>
-        <th>Placa del Vehiculo</th><th>Modelo del Vehiculo</th>';
+    echo '<th></th><th>Cedula</th><th>Nombre</th><th>Apellido1</th>
+        <th>Apellido2</th>';
     foreach ($allBusiness as $current) {
         echo '</tr>';
         echo '</thead>';
         echo '<tr>';
-        echo '<th>' . $current['personaid'] . '</th>';
-        echo '<th>' . $current['personanombre'] . '</th>';
-        echo '<th>' . $current['personaapellido1'] . '</th>';
-        echo '<th>' . $current['personaapellido2'] . '</th>';
-        echo '<th>' . $current['empleadocedula'] . '</th>';
-        echo '<th>' . $current['personatelefono'] . '</th>';
-        echo '<th>' . $current['personacorreo'] . '</th>';
-        echo '<th>' . $current['empleadocontrasenia'] . '</th>';
-        echo '<th>' . $current['tipoempleado'] . '</th>';
-        echo '<th>' . $current['empleadoedad'] . '</th>';
-        echo '<th>' . $current['empleadosexo'] . '</th>';
-        echo '<th>' . $current['empleadoestadocivil'] . '</th>';
-        echo '<th>' . $current['empleadocuentabancaria'] . '</th>';
-        echo '<th>' . $current['zonanombre'] . '</th>';
-        echo '<th>' . $current['empleadotipolicencia'] . '</th>';
-        echo '<th>' . $current['empleadolicenciavigencia'] . '</th>';
-        echo '<th>' . $current['vehiculomarca'] . '</th>';
-        echo '<th>' . $current['vehiculoplaca'] . '</th>';
-        echo '<th>' . $current['vehiculomodelo'] . '</th>';
+        echo '<th><input type="hidden" value="'. $current['personaid'].'" name="personaid" id="personaid"></th>';
+        echo '<th><input type="text" value="' . $current['empleadocedula'] . '" name="empleadocedula" id="empleadocedula"</th>';
+        echo '<th><input type="text" value="' . $current['personanombre'] . '" name="personanombre" id="personanombre"</th>';
+        echo '<th><input type="text" value="' . $current['personaapellido1'] . '" name="personaapellido1" id="personaapellido1"</th>';
+        echo '<th><input type="text" value="' . $current['personaapellido2'] . '" name="personaapellido2" id="personaapellido2"</th>';
+        
         echo '</tr>';
     }
     echo '</table>';
 
     echo '</form>';
 
-    echo '<h2 align="center">Buscar Empleado</h2>';
+    echo '<h2>Buscar Empleado</h2>';
     echo '<form method="post" action="RegistroEmpleado.php" align="center" >';
     echo '<input type="text" name="empleadoid" id="empleadoid" placeholder="ID/Nombre"/>';
     echo '<tr>';
@@ -134,7 +112,7 @@
             $buscarBusiness = $empleadoBusiness->buscarEmpleado($empleadoid);
             foreach ($buscarBusiness as $current) {
 
-                echo '<form  action="../../business/empleadoaccion/empleadoAccion.php" method="Post" align="center" >';
+                echo '<form  action="../../business/empleadoaccion/empleadoAccion.php" method="Post">';
                 echo '<p> ID: <input type="text" name="personaid" id="personaid" value="' . $current['personaid'] . '"  readonly /></p>';
                 echo '<p> Nombre: <input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '"/></p>';
                 echo '<p> Apellido1: <input type="text" name="personaapellido1" id="personaApellido1" value="' . $current['personaapellido1'] . '"/></p>';
@@ -165,7 +143,7 @@
     }
     ?>
 </div>
-<p align="center"> <a href="../../index.php">Regresar</a> </p>
+<p> <a href="../../index.php">Regresar</a> </p>
 
 <tr>
     <td>

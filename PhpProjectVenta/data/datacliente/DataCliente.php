@@ -16,13 +16,13 @@ class DataCliente {
             /*Para ingresar nueva persona en la base de datos.*/
            $personanuevo= $this->conexion->crearConexion()->query("INSERT INTO `tbpersonas`(
                 `personanombre`,`personaapellido1`, `personaapellido2`, 
-                `personatelefono`, `personacorreo`, `zonaid`) VALUES (
+                `personatelefono`, `personacorreo`, `zonaid`, `personaestado`) VALUES (
                 '".$cliente->getPersonaNombre()."',
                 '".$cliente->getPersonaApellido1()."',
                 '".$cliente->getPersonaApellido2()."',
                 '".$cliente->getPersonaTelefono()."',
                 '".$cliente->getCorreo()."',
-                '".$cliente->getIdZona()."');");
+                '".$cliente->getIdZona()."','1');");
 
            /*para recupera el id del cliente.*/
             $recuperandoIdPersona=$this->conexion->crearConexion()->query("SELECT `personaid`FROM `tbpersonas` WHERE 
@@ -44,8 +44,7 @@ class DataCliente {
             '".$cliente->getPersonaId()."',
             '".$cliente->getClienteDireccionExacta()."',
             '".$cliente->getClienteDescuento()."',
-            '".$cliente->getClienteAcumulado()."',
-            '1');");
+            '".$cliente->getClienteAcumulado()."','1');");
 
         $this->conexion->cerrarConexion();
 
@@ -78,7 +77,6 @@ class DataCliente {
                 $cliente->setPersonaId($con);
             }
             
-
             /*Para ingresar nueva persona en la base de datos.*/
            $personanuevo= $this->conexion->crearConexion()->query("UPDATE `tbpersonas` SET 
             `personanombre`='".$cliente->getPersonaNombre()."',
@@ -124,7 +122,7 @@ class DataCliente {
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 WHERE p.personanombre='".$clienteid."' AND e.clienteestado=1 OR 
                 e.clienteid='".$clienteid."' AND e.clienteestado=1 OR
-                 p.personatelefono='".$clienteid."' AND e.clienteestado=1;");
+                p.personatelefono='".$clienteid."' AND e.clienteestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarcliente->fetch_assoc()) {
@@ -140,13 +138,7 @@ class DataCliente {
 
             $array = array();
 
-            $mostrarclientes = $this->conexion->crearConexion()->query("SELECT 
-                p.personanombre,
-                p.personaapellido1,
-                p.personaapellido2,
-                p.personatelefono,
-                p.personacorreo,e.clientedescuento,
-                e.clientedireccionexacta 
+            $mostrarclientes = $this->conexion->crearConexion()->query("SELECT *
                 FROM tbclientes e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 INNER JOIN tbzonas z ON p.zonaid= z.zonaid

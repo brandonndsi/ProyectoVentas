@@ -36,7 +36,7 @@ class DataZona {
             SET `zonanombre`='".$zona->getZonanombre()."',
             `zonaprecio`='".$zona->getZonaprecio()."' 
             WHERE zonaid='".$zona->getZonaid()."' AND zonaestado=1;");
-
+/*getZonaid()*/
             $result = mysql_query($modificarzona);
             $this->conexion->cerrarConexion();
             if (!$result) {

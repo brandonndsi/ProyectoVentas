@@ -1,6 +1,6 @@
-/**
- * Se encarga de hacer las actuaizaciones de producto de la view..
- *
- * @author David Salas.
- */
+function ver(){
+	if(document.getElementById("ver")){
+		document.getElementById("productocodigo").value();
+	}
+}
 

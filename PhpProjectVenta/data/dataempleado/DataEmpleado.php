@@ -15,20 +15,20 @@ class DataEmpleado {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $insertarempleado = $this->conexion->crearConexion()->query("INSERT INTO tbempleados(empleadoid ,
+            $insertarempleado = $this->conexion->crearConexion()->query("INSERT INTO tbempleados(empleadoid	,
             personaid, tipoempleado, empleadocedula, empleadocontrasenia,
             empleadoedad, empleadosexo,empleadoestadocivil,empleadocuentabancaria, empleadolicenciaid, empleadoestado) VALUES (
                 '" . $empleado->get_empleadoid() . "',
-        '" . $empleado->get_personaid() . "',
-        '" . $empleado->get_tipoempleado() . "',
-        '" . $empleado->get_empleadocedula() . "',
-        '" . $empleado->get_empleadocontrasenia() . "',
-        '" . $empleado->get_empleadoedad() . "',
-        '" . $empleado->get_empleadosexo() . "',
-        '" . $empleado->get_empleadoestadocivil() . "',
+		'" . $empleado->get_personaid() . "',
+		'" . $empleado->get_tipoempleado() . "',
+		'" . $empleado->get_empleadocedula() . "',
+		'" . $empleado->get_empleadocontrasenia() . "',
+		'" . $empleado->get_empleadoedad() . "',
+		'" . $empleado->get_empleadosexo() . "',
+		'" . $empleado->get_empleadoestadocivil() . "',
                 '" . $empleado->get_empleadocuentabancaria() . "',
                 '" . $empleado->get_empleadolicenciaid() . "',    
-        '" . $empleado->get_empleadoestado() . "')");
+		'" . $empleado->get_empleadoestado() . "')");
 
             $result = mysql_query($insertarempleado);
             $this->conexion->cerrarConexion();
@@ -47,18 +47,18 @@ class DataEmpleado {
 
             /*actualiza el nuevo empleado a la base de datos*/
             $recuperandoIdempleado=$this->conexion->crearConexion()->query("UPDATE tbempleados SET 
-        empleadoid='" . $empleado->get_empleadoid() . "',
-        personaid='" . $empleado->get_personaid() . "',
+		empleadoid='" . $empleado->get_empleadoid() . "',
+		personaid='" . $empleado->get_personaid() . "',
                 tipoempleado='" . $empleado->get_tipoempleado() . "',    
                 empleadocedula='" . $empleado->get_empleadocedula() . "',
                 empleadocontrasenia='" . $empleado->get_empleadocontrasenia() . "',    
                 empleadoedad='" . $empleado->get_empleadoedad() . "',
-        empleadosexo='" . $empleado->get_empleadosexo() . "',
-        empleadoestadocivil='" . $empleado->get_empleadoestadocivil() . "',
-        empleadocuentabancaria='" . $empleado->get_empleadocuentabancaria() . "',
+		empleadosexo='" . $empleado->get_empleadosexo() . "',
+		empleadoestadocivil='" . $empleado->get_empleadoestadocivil() . "',
+		empleadocuentabancaria='" . $empleado->get_empleadocuentabancaria() . "',
                 empleadolicenciaid='" . $empleado->get_empleadolicenciaid() . "',    
-        empleadoestado='" . $empleado->get_empleadoestado() . "',
-        WHERE empleadoid =" . $empleado->get_empleadoid() . "");
+		empleadoestado='" . $empleado->get_empleadoestado() . "',
+		WHERE empleadoid =" . $empleado->get_empleadoid() . "");
 
             /*para recupera el id del empleado.*/
             $recuperandoIdPersona=$this->conexion->crearConexion()->query("SELECT `personaid`

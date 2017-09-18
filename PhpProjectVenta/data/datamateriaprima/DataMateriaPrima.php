@@ -23,10 +23,13 @@ class DataMateriaPrima {
                 '".$materiaprima->getMateriaprimacantidad()."',
                 '".$materiaprima->getMateriaprimatipoid()."');");
 
-            
-          
-                return  $insertarmateriaprima;
-            
+            $result = mysql_query($insertarmateriaprima);
+            $this->conexion->cerrarConexion();
+            if (!$result) {
+                return false;
+            } else {
+                return $result;
+            }
         }
     }
 

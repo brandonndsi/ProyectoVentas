@@ -2,10 +2,10 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 12-09-2017 a las 13:14:20
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-09-2017 a las 16:07:18
 -- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 5.6.31
+-- Versión de PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,9 +44,10 @@ CREATE TABLE `tbclientes` (
 INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) VALUES
 (7, '5', 'horquetas norte', 0, 0, 1),
 (10, '18', 'la victoria', 0, 0, 1),
-(12, '19', 'lallalala', 0, 0, 1),
-(13, '20', 'ajhgdashdgasj', 0, 0, 1),
-(14, '21', 'hahaha', 0, 0, 1);
+(12, '19', 'cerquita de aqui', 0, 0, 1),
+(13, '20', 'por alla', 0, 0, 1),
+(14, '21', 'cerca de mi casa', 0, 0, 1),
+(15, '22', 'alla no mas', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -211,9 +212,10 @@ INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `per
 (4, 'Elisabeth', 'Rodriguez', 'Castro', 12345436, 'elirodri@gmail.com', '2', 1),
 (5, 'Oscar', 'Mejias', 'Morera', 88940376, 'oscmeji@hotmail.com', '2', 1),
 (6, 'hola', 'aaa', 'bbb', 2222, 'aaa@hotmail.com', '1', 1),
-(19, 'aa', 'dfa', 'dsf', 23423, 'asdma@kjsdf.com', '2', 1),
-(20, 'ma', 'dskjf', 'sdkjf', 236423, 'sdkjfsdjk@hotmai.com', '2', 1),
-(21, 'kjajdhkajf', 'slkfjsldkf', 'flkgjsfl', 34534634, 'askjdhas@hot.com', '1', 1);
+(19, 'alba', 'rios', 'carnaval', 23423, 'asdma@mail.com', '2', 1),
+(20, 'Ruben', 'chaves', 'sdkjf', 236423, 'rubrxk@hotmai.com', '2', 1),
+(21, 'keneth', 'flores', 'rivera', 34534634, 'askjdhas@hot.com', '1', 1),
+(22, 'juan', 'roas', 'fernds', 2133342, 'jarofe@mail.com', 'Z1', 1);
 
 -- --------------------------------------------------------
 
@@ -243,28 +245,25 @@ INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `pr
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbproveedor`
+-- Estructura de tabla para la tabla `tbproveedores`
 --
 
-CREATE TABLE `tbproveedor` (
+CREATE TABLE `tbproveedores` (
   `proveedorid` int(11) NOT NULL,
-  `personaid` varchar(50) NOT NULL,
-  `proveedordireccion` varchar(50) NOT NULL,
-  `proveedorestado` varchar(5) NOT NULL,
-  `materiaprimaid` varchar(50) NOT NULL
+  `personaid` int(11) NOT NULL,
+  `materiaprimaid` int(11) NOT NULL,
+  `proveedorcantidadproducto` int(11) NOT NULL,
+  `proveedortotalproducto` double NOT NULL,
+  `proveedorestado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbproveedor`
+-- Volcado de datos para la tabla `tbproveedores`
 --
 
-INSERT INTO `tbproveedor` (`proveedorid`, `personaid`, `proveedordireccion`, `proveedorestado`, `materiaprimaid`) VALUES
-(1, '3', 'rio frio', '1', '1'),
-(2, '5', 'san jose', '1', '1'),
-(3, '19', 'rio frio 150 de la una', '1', '1'),
-(4, '20', 'frente a la UNA', '1', '1'),
-(5, '21', 'a la par de la UNA', '1', '1'),
-(6, '22', '1', '1', '1');
+INSERT INTO `tbproveedores` (`proveedorid`, `personaid`, `materiaprimaid`, `proveedorcantidadproducto`, `proveedortotalproducto`, `proveedorestado`) VALUES
+(1, 6, 2, 50, 25000, 1),
+(2, 19, 3, 15, 15000, 1);
 
 -- --------------------------------------------------------
 
@@ -443,10 +442,12 @@ ALTER TABLE `tbproductos`
   ADD PRIMARY KEY (`productoid`);
 
 --
--- Indices de la tabla `tbproveedor`
+-- Indices de la tabla `tbproveedores`
 --
-ALTER TABLE `tbproveedor`
-  ADD PRIMARY KEY (`proveedorid`);
+ALTER TABLE `tbproveedores`
+  ADD PRIMARY KEY (`proveedorid`),
+  ADD KEY `personaid` (`personaid`),
+  ADD KEY `materiaprimaid` (`materiaprimaid`);
 
 --
 -- Indices de la tabla `tbtipoempleados`
@@ -490,7 +491,7 @@ ALTER TABLE `tbzonas`
 -- AUTO_INCREMENT de la tabla `tbclientes`
 --
 ALTER TABLE `tbclientes`
-  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `tbmateriasprimas`
 --
@@ -500,17 +501,17 @@ ALTER TABLE `tbmateriasprimas`
 -- AUTO_INCREMENT de la tabla `tbpersonas`
 --
 ALTER TABLE `tbpersonas`
-  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `tbproductos`
 --
 ALTER TABLE `tbproductos`
   MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT de la tabla `tbproveedor`
+-- AUTO_INCREMENT de la tabla `tbproveedores`
 --
-ALTER TABLE `tbproveedor`
-  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `tbproveedores`
+  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
@@ -520,7 +521,7 @@ ALTER TABLE `tbtipomateriasprimas`
 -- AUTO_INCREMENT de la tabla `tbvehiculos`
 --
 ALTER TABLE `tbvehiculos`
-  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
