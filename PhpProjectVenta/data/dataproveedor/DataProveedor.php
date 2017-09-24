@@ -6,7 +6,7 @@ class DataProveedor {
 
     function DataProveedor() {
         include_once '../../data/dbconexion/Conexion.php';
-        include_once '../../domain/proveedores/Proveedores.php';
+       /* include_once '../../domain/proveedores/Proveedores.php';*/
         $this->conexion = new Conexion();
     }
 
@@ -109,10 +109,9 @@ class DataProveedor {
             $array = array();
 
             $buscarProveedor = $this->conexion->crearConexion()->query("SELECT *
-                FROM tbproveedores e
+                FROM tbproveedor e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 INNER JOIN tbzonas z ON z.zonaid= p.zonaid
-                INNER JOIN tbmateriasprimas mp ON e.materiaprimaid= mp.materiaprimaid
                 WHERE e.proveedorid='" . $proveedorid . "' AND e.proveedorestado=1;");
 
             $this->conexion->cerrarConexion();
@@ -130,11 +129,10 @@ class DataProveedor {
             $array = array();
 
             $mostrarProveedor = $this->conexion->crearConexion()->query("SELECT *
-                FROM tbproveedores e
+                FROM tbproveedor e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 INNER JOIN tbzonas z ON z.zonaid= p.zonaid
-                INNER JOIN tbmateriasprimas mp ON e.materiaprimaid= mp.materiaprimaid
-                WHERE e.personaid=p.personaid AND e.proveedorestado=1;");
+                WHERE  e.proveedorestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarProveedor->fetch_assoc()) {
@@ -143,6 +141,7 @@ class DataProveedor {
             return $array;
         }
     }
+
 
 }
 

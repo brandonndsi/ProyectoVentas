@@ -55,15 +55,13 @@ VALUES ('" . $producto->getProductoCodigo() . "','" . $producto->getProductonomb
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarproducto = $this->conexion->crearConexion()->query("DELETE  FROM tbproductos 
-                where productoid='" . $productoid . "';");
+            $eliminarproducto = $this->conexion->crearConexion()->query("UPDATE `tbproductos` SET `productoestado`=0 WHERE productoid='".$productoid."';");
 
-            $result = mysql_query($eliminarproducto);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
+            if ($eliminarproducto==1) {
+                return "true";
             } else {
-                return $result;
+                return "false";
             }
         }
     }
@@ -103,7 +101,7 @@ productoid='" . $productoid . "' AND productoestado=1 OR productocodigo='" . $pr
                 array_push($array, $resultado);
             }
             return $array;
-        }
+        }   
     }
 
     //funcion de cargar los ingredientes

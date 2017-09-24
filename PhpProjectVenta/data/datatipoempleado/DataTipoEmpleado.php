@@ -14,11 +14,11 @@ class DataTipoEmpleado {
     public function insertarTipo($tipo) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
-            $insertartipo = $this->conexion->crearConexion()->query("INSERT INTO `tbtipoempleados`(`tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`)
+            $insertartipo = $this->conexion->crearConexion()->query("INSERT INTO `tbtipoempleados`(`tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra`,`tipoempleadoestado`)
                 VALUES ('" . $tipo->getTipoEmpleado() . "',
                 '" . $tipo->getTipoempleadosalariobase() . "',
                 '" . $tipo->getTipoempleadodescripcion() . "',
-                '" . $tipo->getTipoempleadohoraextra() . "');");
+                '" . $tipo->getTipoempleadohoraextra() . "',1);");
 
             $result = mysql_query($insertartipo);
             $this->conexion->cerrarConexion();
@@ -56,7 +56,7 @@ class DataTipoEmpleado {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminartipo = $this->conexion->crearConexion()->query("UPDATE `tbtipoempleados` SET `tipoempleadoestado`=0 "
+            $eliminartipo = $this->conexion->crearConexion()->query("UPDATE `tbtipoempleados` SET `tipoempleadoestado`= 0 "
             . "WHERE tipoempleado='".$tipoempleado."';");
 
 
@@ -78,7 +78,7 @@ class DataTipoEmpleado {
             $array = array();
 
             $buscarempleado = $this->conexion->crearConexion()->query("SELECT `tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra` FROM
-             `tbtipoempleados` WHERE tipoempleado='" . $tipoempleado . "';");
+             `tbtipoempleados` WHERE tipoempleado='" . $tipoempleado . "' AND tipoempleadoestado = 1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarempleado->fetch_assoc()) {
@@ -94,7 +94,7 @@ class DataTipoEmpleado {
 
             $array = array();
 
-            $mostrarempleados = $this->conexion->crearConexion()->query("SELECT * FROM `tbtipoempleados` ;");
+            $mostrarempleados = $this->conexion->crearConexion()->query("SELECT * FROM `tbtipoempleados` Where tipoempleadoestado = 1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarempleados->fetch_assoc()) {

@@ -10,28 +10,27 @@
     if(isset($_POST["nuevo"])){
 
     if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimacantidad']) 
-           && isset($_POST['materiaprimanombre']) && isset($_POST['tipomateriaprimaid'])
-           && isset($_POST['materiaprimacodigo'])) {
+        && isset($_POST['materiaprimanombre'])&& isset($_POST['materiaprimacodigo'])) {
              
         $materiaprimaprecio = $_POST['materiaprimaprecio'];
         $materiaprimacodigo = $_POST['materiaprimacodigo'];
         $materiaprimanombre = $_POST['materiaprimanombre'];
         $materiaprimacantidad = $_POST['materiaprimacantidad'];
-        $tipomateriaprimaid = $_POST['tipomateriaprimaid'];
         
-        if (strlen($materiaprimaprecio) > 0 && strlen($materiaprimacodigo) > 0 && strlen($materiaprimanombre) > 0 
-                && strlen($materiaprimacantidad) > 0 && strlen($tipomateriaprimaid) > 0) {
+        if (strlen($materiaprimaprecio) > 0 && strlen($materiaprimacodigo) > 0 
+            && strlen($materiaprimanombre) > 0 && strlen($materiaprimacantidad) > 0 ) {
+
             if (is_numeric($materiaprimaprecio)) {
                 
                 $materiaprimas = new MateriasPrimas(null,$materiaprimacodigo, $materiaprimanombre,
-                        $materiaprimaprecio, $materiaprimacantidad,$tipomateriaprimaid);
+                        $materiaprimaprecio, $materiaprimacantidad,null);
                 
                 include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
 
              $result= $MateriaPrimaBusiness->insertarMateriaPrima($materiaprimas);
-            if ($result == 1) {
+            if ($result =="true") {
                    return header("location: ../../view/registromateriaprima/RegistroMateriaPrima.php?success=updated");
                 } else {
                 
@@ -52,7 +51,7 @@
     }else if(isset($_POST["actualizar"])){
         
          if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimacantidad']) 
-           && isset($_POST['materiaprimanombre']) && isset($_POST['tipomateriaprimaid'])
+           && isset($_POST['materiaprimanombre']) /*&& isset($_POST['tipomateriaprimaid'])*/
            && isset($_POST['materiaprimacodigo']) && isset($_POST['materiaprimaid'])) {
              
         $materiaprimaid = $_POST['materiaprimaid'];
@@ -60,14 +59,15 @@
         $materiaprimacodigo = $_POST['materiaprimacodigo'];
         $materiaprimanombre = $_POST['materiaprimanombre'];
         $materiaprimacantidad = $_POST['materiaprimacantidad'];
-        $tipomateriaprimaid = $_POST['tipomateriaprimaid'];
+        /*$tipomateriaprimaid = $_POST['tipomateriaprimaid'];*/
         
         if (strlen($materiaprimaprecio) > 0 && strlen($materiaprimacodigo) > 0 && strlen($materiaprimanombre) > 0 
-                && strlen($materiaprimacantidad) > 0 && strlen($tipomateriaprimaid) > 0 && strlen($materiaprimaid) > 0) {
+                && strlen($materiaprimacantidad) > 0 /*&& strlen($tipomateriaprimaid) > 0*/ && strlen($materiaprimaid) > 0) {
             if (is_numeric($materiaprimaprecio)) {
                 
-                $materiaprimas = new MateriasPrimas($materiaprimaid,$materiaprimacodigo, $materiaprimanombre,
-                        $materiaprimaprecio, $materiaprimacantidad,$tipomateriaprimaid);
+                $materiaprimas = new MateriasPrimas($materiaprimaid,$materiaprimacodigo,
+                 $materiaprimanombre,$materiaprimaprecio, 
+                 $materiaprimacantidad,null);
                 
                 include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 

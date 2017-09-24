@@ -2,7 +2,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Registrar Vehiculo</title>
+<title>Vehiculo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php
     include '../../business/vehiculobusiness/vehiculoBusiness.php';
@@ -22,8 +22,8 @@ $allBusiness = $vehiculoBusiness->mostrarVehiculo();
                     <tr> 
                         <th></th>
                         <th>Marca</th>
-                        <th>Modelo</th>
                         <th>Placa</th>
+                        <th>Modelo</th>
                     </tr>
                 </thead>           
                 <?php foreach ($allBusiness as $current): ?>
@@ -41,20 +41,19 @@ $allBusiness = $vehiculoBusiness->mostrarVehiculo();
             </table>
             <a href="?action=registrar">Nuevo Vehiculo</a>
         </form>
-    </div> 
 
 <?php
 if(isset($_REQUEST['action'])){
     switch($_REQUEST['action']){
 
         case 'ver':
-             $zonaAll= $vehiculoBusiness->buscarVehiculo($_REQUEST['id']);
-            foreach ($zonaAll as $current) {
+             $vehiculoAll= $vehiculoBusiness->buscarVehiculo($_REQUEST['id']);
+            foreach ($vehiculoAll as $current) {
         echo '<form  action="RegistroVehiculo.php" method="Post">';
         echo '<h2>Datos del Vehiculo</h2>';
         echo '<p>Marca: <input type="text" name="vehiculomarca" id="vehiculomarca" value="' . $current['vehiculomarca'] . '" readonly /></p>';
         echo '<p>Placa: <input type="text" name="vehiculoplaca" id="vehiculoplaca"  value="' . $current['vehiculoplaca'] . '" readonly /></p>';
-        echo '<p>Precio: <input type="text" name="vehiculomodelo" id="vehiculomodelo"  value="' . $current['vehiculomodelo'] . '" readonly /></p>';
+        echo '<p>Modelo: <input type="text" name="vehiculomodelo" id="vehiculomodelo"  value="' . $current['vehiculomodelo'] . '" readonly /></p>';
         echo '<p>Accion: <input type="submit" value="cerrar" name="cerrar" id="cerrar"/></p>';
         echo '</form>';
             }
@@ -65,7 +64,7 @@ if(isset($_REQUEST['action'])){
         echo '<h2>Vehiculo nuevo</h2>';
         echo '<p>Marca: <input type="text" name="vehiculomarca" id="vehiculomarca"  /></p>';
         echo '<p>Placa: <input type="text" name="vehiculoplaca" id="vehiculoplaca"  /></p>';
-        echo '<p>Precio: <input type="text" name="vehiculomodelo" id="vehiculomodelo"  /></p>';
+        echo '<p>Modelo: <input type="text" name="vehiculomodelo" id="vehiculomodelo"  /></p>';
         echo '<p>Accion: <input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></p>';
         echo '</form>';
             break;
@@ -87,7 +86,7 @@ if(isset($_REQUEST['action'])){
         echo '<input type="hidden" name="vehiculoid" id="vehiculoid" value="'.$current['vehiculoid'].'" readonly/>';
         echo '<p>Marca: <input type="text" name="vehiculomarca" id="vehiculomarca" value="' . $current['vehiculomarca'] . '" /></p>';
         echo '<p>Placa: <input type="text" name="vehiculoplaca" id="vehiculoplaca"  value="' . $current['vehiculoplaca'] . '" /></p>';
-        echo '<p>Precio: <input type="text" name="vehiculomodelo" id="vehiculomodelo"  value="' . $current['vehiculomodelo'] . '" /></p>';
+        echo '<p>Modelo: <input type="text" name="vehiculomodelo" id="vehiculomodelo"  value="' . $current['vehiculomodelo'] . '" /></p>';
         echo '<p>Accion: <input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></p>';
         echo '</form>';
             }
@@ -96,10 +95,6 @@ if(isset($_REQUEST['action'])){
 }
 ?>
 
-<?php
-    /*action="../../business/vehiculoaccion/VehiculoAccion.php"*/
-    ?>
-</div>
 <p> <a href="../../index.php">Regresar</a> </p>
 
 <tr>

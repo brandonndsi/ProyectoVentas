@@ -90,9 +90,14 @@ include '../../domain/productos/Productos.php';
             $ProductoBusiness=new ProductoBusiness();
            
             $result= $ProductoBusiness->eliminarProducto($producto);
+            if($result=="true"){
+              return   header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
+          
+          }else{
+            return  header("location: ../../view/registroproducto/RegistroProducto.php?ErrorNumero=updated");
+          }
             
-             return   header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
-        
+             
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio
          $error="ErrorEliminar";

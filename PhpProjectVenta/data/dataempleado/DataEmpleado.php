@@ -97,8 +97,8 @@ class DataEmpleado {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarempleado = $this->conexion->crearConexion()->query("UPDATE `tbempleadoss` "
-            . "SET`empleadoestado`=0 WHERE empleadoid='".$empleadoid."';");
+            $eliminarempleado = $this->conexion->crearConexion()->query("UPDATE `tbempleados` SET `empleadoestado`=0
+             WHERE empleadoid='".$empleadoid."';");
 
             return $eliminarempleado;
         }
