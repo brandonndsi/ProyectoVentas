@@ -19,6 +19,8 @@
   <li><a href="view/registromateriaprima/RegistroMateriaPrima.php" target="_parent">Materia Prima</a></li>
   <li><a href="view/registrozona/RegistroZona.php" target="_parent">Zona</a></li>
   <li><a href="view/registrovehiculo/RegistroVehiculo.php" target="_parent">Vehiculo</a></li>
+  <li><a href="view/ventaview/facturaventa/FacturaVenta.php" target="_parent">Factura</a></li>
+  
 </ul>
 
 
