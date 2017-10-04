@@ -10,7 +10,7 @@
 <body>
 <h3>PRINCIPAL</h3>
 <ul>
-  <li><a href="view/ventaview/VentaView.php" target="_parent">Realizar venta</a></li>
+  <li><a href="view/compraview/CompraView.php" target="_parent">Realizar Venta</a></li>
   <li><a href="view/registroempleado/RegistroEmpleado.php" target="_parent">Empleado</a></li>
   <li><a href="view/registrocliente/RegistroCliente.php" target="_parent">Cliente</a></li>
   <li><a href="view/registroproveedor/RegistroProveedor.php" target="_parent">Proveedor</a></li>

@@ -31,7 +31,7 @@
                 </thead>           
                 <tr>
                 <?php foreach ($allBusiness as $current): ?>
-                    <td><input type="text" name="tipoempleado" class="tipoempleado" value="<?php echo $current['tipoempleado'];?>" readonly /> </td>
+                    <td><input type="text" name="tipoempleadoid" class="tipoempleadoid" value="<?php echo $current['tipoempleadoid'];?>" readonly /> </td>
                     <td><input type="text" name="tipoempleadosalariobase" class="tipoempleadosalariobase" value="<?php echo $current['tipoempleadosalariobase'];?>" readonly /> </td>
                     <td><input type="text" name="tipoempleadodescripcion" class="tipoempleadodescripcion" value="<?php echo $current['tipoempleadodescripcion'];?>" readonly />
                     <td><input type="text" name="tipoempleadohoraextra" class="tipoempleadohoraextra" value="<?php echo $current['tipoempleadohoraextra'];?>" readonly />
