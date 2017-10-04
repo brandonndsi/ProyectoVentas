@@ -15,8 +15,9 @@ class DataFactura {
 
             $array = array();
 
-            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT `productocodigo`, `productonombre` "
-            . "FROM `tbproductos` WHERE productoestado=1;");
+            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT facturaid,facturafecha,empleadoid
+              FROM tbfacturas
+              WHERE facturaestado=1");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarproductos->fetch_assoc()) {

@@ -1,10 +1,5 @@
 <?php
 
-/* 
- Autor david  salas lorente  Tools | Templates
- * and open the template in the editor.
- */
-//$accion = $_POST['accion'];//busca la accion a realizar 
 include '../../domain/ventas/Ventas';
 
 if(isset($_POST['todo'])){

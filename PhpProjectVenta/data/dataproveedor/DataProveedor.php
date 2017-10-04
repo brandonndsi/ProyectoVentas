@@ -109,7 +109,7 @@ class DataProveedor {
             $array = array();
 
             $buscarProveedor = $this->conexion->crearConexion()->query("SELECT *
-                FROM tbproveedor e
+                FROM tbproveedores e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 INNER JOIN tbzonas z ON z.zonaid= p.zonaid
                 WHERE e.proveedorid='" . $proveedorid . "' AND e.proveedorestado=1;");
@@ -129,7 +129,7 @@ class DataProveedor {
             $array = array();
 
             $mostrarProveedor = $this->conexion->crearConexion()->query("SELECT *
-                FROM tbproveedor e
+                FROM tbproveedores e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 INNER JOIN tbzonas z ON z.zonaid= p.zonaid
                 WHERE  e.proveedorestado=1;");

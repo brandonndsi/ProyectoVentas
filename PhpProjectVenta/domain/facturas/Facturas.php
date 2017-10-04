@@ -5,7 +5,7 @@
  *
  * @author Brandon
  */
-class Facturas extends Personas {
+class Facturas {
 
     private $facturaid;
     private $facturafecha;
