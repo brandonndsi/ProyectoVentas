@@ -29,6 +29,13 @@ class ventaBusiness {
     public function mostrarVenta() {
         return $this->DataCompra->mostrarCompra();
     }
+    /**
+     * manda a llamar al metodo de mostrar todos los productos de la data
+     * @return [Array] retorna la consulta en un array de datos.
+     */
+    public function cargarProducto(){
+        return $this->DataCompra->cargarProducto();
+    }
     
     //se encarga de buscar los datos del venta de la base de datos
     public function buscarVenta($ventacodigo) {
