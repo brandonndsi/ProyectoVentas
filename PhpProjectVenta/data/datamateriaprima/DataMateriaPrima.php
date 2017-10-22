@@ -125,8 +125,7 @@ class DataMateriaPrima {
 
             $array = array();
 
-            $mostrarmateriasprimas = $this->conexion->crearConexion()->query("SELECT materiaprimacodigo,
-              materiaprimanombre,materiaprimaprecio,materiaprimacantidad,tipomateriaprimaid
+            $mostrarmateriasprimas = $this->conexion->crearConexion()->query("SELECT *
               FROM tbmateriasprimas
               WHERE materiaprimaidestado=1");
 
