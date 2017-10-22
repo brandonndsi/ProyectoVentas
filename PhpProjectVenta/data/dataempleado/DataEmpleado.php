@@ -14,21 +14,20 @@ class DataEmpleado {
     public function insertarEmpleado($empleado) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
-
-            $insertarempleado = $this->conexion->crearConexion()->query("INSERT INTO tbempleados(empleadoid	,
-            personaid, tipoempleado, empleadocedula, empleadocontrasenia,
-            empleadoedad, empleadosexo,empleadoestadocivil,empleadocuentabancaria, empleadolicenciaid, empleadoestado) VALUES (
-                '" . $empleado->get_empleadoid() . "',
-		'" . $empleado->get_personaid() . "',
-		'" . $empleado->get_tipoempleado() . "',
-		'" . $empleado->get_empleadocedula() . "',
-		'" . $empleado->get_empleadocontrasenia() . "',
-		'" . $empleado->get_empleadoedad() . "',
-		'" . $empleado->get_empleadosexo() . "',
-		'" . $empleado->get_empleadoestadocivil() . "',
-                '" . $empleado->get_empleadocuentabancaria() . "',
-                '" . $empleado->get_empleadolicenciaid() . "',    
-		'" . $empleado->get_empleadoestado() . "')");
+            $insertarempleado = $this->conexion->crearConexion()->query("INSERT INTO `tbempleados`(`empleadoid`, `personaid`, `tipoempleado`, `empleadocedula`, `empleadofechaingreso`, `empleadocontrasenia`, `empleadoedad`, `empleadosexo`, `empleadoestadocivil`, `empleadobanco`, `empleadocuentabancaria`, `empleadolicenciaid`, `empleadoestado`) VALUES (
+                '" .$empleado->getEmpleadoid() . "',
+                '" .$empleado->getPersonaid() . "',
+                '" .$empleado->getTipoEmpleado() . "',
+                '" .$empleado->getEmpleadoCedula() . "',
+                '".$empleado->getFechaIngreso()."',
+                '".$empleado->getEmpleadoContrasenia()."',
+                '".$empleado->getEmpleadoEdad()."',
+                '".$empleado->getEmpleadoSexo()."',
+                '".$empleado->getEmpleadoEstadoCivil()."',
+                '".$empleado->getBanco()."',
+                '".$empleado->getEmpleadoCuentaBancaria()."',
+                '".$empleado->getEmpleadoLicenciaId()."',
+                '1');");
 
             $result = mysql_query($insertarempleado);
             $this->conexion->cerrarConexion();
@@ -46,20 +45,19 @@ class DataEmpleado {
        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             /*actualiza el nuevo empleado a la base de datos*/
-            $recuperandoIdempleado=$this->conexion->crearConexion()->query("UPDATE tbempleados SET 
-		empleadoid='" . $empleado->get_empleadoid() . "',
-		personaid='" . $empleado->get_personaid() . "',
-                tipoempleado='" . $empleado->get_tipoempleado() . "',    
-                empleadocedula='" . $empleado->get_empleadocedula() . "',
-                empleadocontrasenia='" . $empleado->get_empleadocontrasenia() . "',    
-                empleadoedad='" . $empleado->get_empleadoedad() . "',
-		empleadosexo='" . $empleado->get_empleadosexo() . "',
-		empleadoestadocivil='" . $empleado->get_empleadoestadocivil() . "',
-		empleadocuentabancaria='" . $empleado->get_empleadocuentabancaria() . "',
-                empleadolicenciaid='" . $empleado->get_empleadolicenciaid() . "',    
-		empleadoestado='" . $empleado->get_empleadoestado() . "',
-		WHERE empleadoid =" . $empleado->get_empleadoid() . "");
-
+             $recuperandoIdempleado=$this->conexion->crearConexion()->query("UPDATE `tbempleados` SET
+            `personaid`='" .$empleado->getPersonaid() . "',
+            `tipoempleado`='" .$empleado->getTipoEmpleado() . "',
+            `empleadocedula`='" .$empleado->getEmpleadoCedula() . "',
+            `empleadofechaingreso`='".$empleado->getFechaIngreso()."',
+            `empleadocontrasenia`='".$empleado->getEmpleadoContrasenia()."',`
+            empleadoedad`='".$empleado->getEmpleadoEdad()."',
+            `empleadosexo`='".$empleado->getEmpleadoSexo()."',
+            `empleadoestadocivil`='".$empleado->getEmpleadoEstadoCivil()."',
+            `empleadobanco`='".$empleado->getBanco()."',
+            `empleadocuentabancaria`='".$empleado->getEmpleadoCuentaBancaria()."',
+            `empleadolicenciaid`='".$empleado->getEmpleadoLicenciaId()."'
+             WHERE empleadoid='".$empleado->getEmpleadoid() ."';");
             /*para recupera el id del empleado.*/
             $recuperandoIdPersona=$this->conexion->crearConexion()->query("SELECT `personaid`
                 FROM `tbempleados` WHERE 
@@ -139,10 +137,9 @@ class DataEmpleado {
             $mostrarempleados = $this->conexion->crearConexion()->query("SELECT *
                 FROM tbempleados e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
-                INNER JOIN tbzonas z ON z.zonaid= p.zonaid
-                INNER JOIN tbempleadolicencias el ON el.empleadolicenciaid= e.empleadolicenciaid
-                INNER JOIN tbvehiculos v ON v.vehiculoid= el.vehiculoid");
-
+                INNER JOIN tbzonas z ON z.zonaid= p.zonaid");
+            /*INNER JOIN tbempleadolicencias el ON el.empleadolicenciaid= e.empleadolicenciaid
+                INNER JOIN tbvehiculos v ON v.vehiculoid= el.vehiculoid*/
             
             while ($resultado = $mostrarempleados->fetch_assoc()) {
                 array_push($array, $resultado);
