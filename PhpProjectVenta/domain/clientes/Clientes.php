@@ -13,13 +13,17 @@ class Clientes extends Personas{
     private $clienteDireccionExacta;
     private $clienteDescuento;
     private $clienteAcumulado;
+    private $millas;
 
     public function Clientes($clienteId, $personaId, $clientedireccionexacta) {
         $this->clienteId = $clienteId;
         $this->personaId = $personaId;
         $this->clienteDireccionExacta = $clientedireccionexacta;
+        $this->millas=null;
     }
-
+    public function getMillas(){
+        return $this->millas;
+    }
     public function getClienteId() {
         return $this->clienteId;
     }
@@ -37,7 +41,9 @@ class Clientes extends Personas{
     public function getClienteDireccionExacta() {
         return $this->clienteDireccionExacta;
     }
-
+    public function setMillas($millas){
+        $this->millas=$millas;
+    }
     public function setClienteId($clienteId) {
         $this->ClienteId = $clienteId;
     }

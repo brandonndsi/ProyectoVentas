@@ -46,6 +46,14 @@ class DataCliente {
             '".$cliente->getClienteDescuento()."',
             '".$cliente->getClienteAcumulado()."','1');");
 
+                /*lo de las millas del cliente*/
+                /*recuperando el id del cliente para meterlo a las millas del cliente.*/
+                $ClienteID = $this->conexion->crearConexion()->query("SELECT clienteid FROM `tbclientes` WHERE personaid ='".$cliente->getPersonaId()."';");
+                    /*creando las millas del cliente con el id del cliente.*/
+            $CreandoMillas = $this->conexion->crearConexion()->query("INSERT INTO `tbmillas`
+            (`clienteid`, `millacantidad`, `millaestado`) VALUES (
+            '".$ClienteID."',0,1");
+
         $this->conexion->cerrarConexion();
 
         return $recuperandoIdcliente;
@@ -67,7 +75,10 @@ class DataCliente {
             $recuperandoIdPersona=$this->conexion->crearConexion()->query("SELECT `personaid`
                 FROM `tbclientes` WHERE 
                 clienteid='".$cliente->getClienteId()."';");
-
+            /*actualizando las millas del cliente*/
+            $millasActualizar = $this->conexion->crearConexion()->query("UPDATE `tbmillas` SET 
+            `millacantidad`='".$cliente->getMillas()."' WHERE clienteid='".$cliente->getClienteId()."';");
+            
             /*transformando los datos del id objeto a un string*/
             $con;
 
