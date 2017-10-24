@@ -112,9 +112,10 @@ class DataProveedor {
                 FROM tbproveedores e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 INNER JOIN tbzonas z ON z.zonaid= p.zonaid
-                WHERE e.proveedorid='" . $proveedorid . "' AND e.proveedorestado=1;");
+                WHERE e.proveedorid='" . $proveedorid . "' AND e.proveedorestado = '1';");
 
             $this->conexion->cerrarConexion();
+            
             while ($resultado = $buscarProveedor->fetch_assoc()) {
                 array_push($array, $resultado);
             }
