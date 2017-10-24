@@ -1,12 +1,6 @@
 <?php
-/**
- * Descripcion valida que los datos y la accion a realizar sean correcta sino redirecciona
- * a paguinas de error y si los datos y la accion es correcta imboca a la businerss para
- * que se haga cargo de los datos y el metodo a efectuar.
- * @author David Salas.
- */
-//$accion = $_POST['accion'];//busca la accion a realizar 
-include '../../view/tipoempleadoview/TipoEmpleadoView.php';
+
+include '../../domain/tipoempleados/TipoEmpleados.php';
     if(isset($_POST["nuevo"])){
 
     if (isset($_POST['tipoempleado']) && isset($_POST['tipoempleadodescripcion']) 
@@ -89,9 +83,9 @@ include '../../view/tipoempleadoview/TipoEmpleadoView.php';
      */
     }else if(isset($_POST["eliminar"])){
         
-    if(isset($_POST['clientenombre'])){
+    if(isset($_POST['tipoempleado'])){
         
-            $empleado=$_POST['clientenombre'];
+            $empleado=$_POST['tipoempleado'];
            include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
            
            $tipoEmpleadoBusiness=new tipoEmpleadoBusiness();

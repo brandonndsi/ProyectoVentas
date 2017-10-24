@@ -1,25 +1,20 @@
 <?php
 
-/* 
- Autor david  salas lorente  Tools | Templates
- * and open the template in the editor.
- */
-//$accion = $_POST['accion'];//busca la accion a realizar 
 include '../../domain/productos/Productos.php';
     if(isset($_POST['nuevo'])){
 
-    if (isset($_POST['productoid']) && isset($_POST['productonombre']) 
+    if (isset($_POST['productocodigo']) && isset($_POST['productonombre']) 
            && isset($_POST['productoprecio'])) {
        
-        $productoid = $_POST['productoid'];
+        $productocodigo = $_POST['productocodigo'];
         $productonombre = $_POST['productonombre'];
         $productoprecio = $_POST['productoprecio'];
         
-        if (strlen($productoid) > 0 && strlen($productonombre) > 0 
+        if (strlen($productocodigo) > 0 && strlen($productonombre) > 0 
                 && strlen($productoprecio) > 0) {
-            if (!is_numeric($productoid)) {
+            if (is_numeric($productoprecio)) {
             
-                $producto = new Productos($productoid, $productonombre, $productoprecio);
+                $producto = new Productos(null,$productocodigo, $productonombre, $productoprecio);
                  
                 include '../productobusiness/ProductoBusiness.php';
 
@@ -31,6 +26,7 @@ include '../../domain/productos/Productos.php';
                    return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
                 
                   }
+                  return  header("location: ../../view/registroproducto/RegistroProducto.php?ErrorNumero=updated");
              
             }
              
@@ -43,18 +39,19 @@ include '../../domain/productos/Productos.php';
          * Verifica si la accion es la e actualizar los datos del cliente
          */
     }else if(isset($_POST['actualizar'])){
-           if (isset($_POST['productoid']) && isset($_POST['productonombre']) 
-           && isset($_POST['productoprecio'])) {
+           if (isset($_POST['productocodigo']) && isset($_POST['productonombre']) 
+           && isset($_POST['productoprecio']) && isset($_POST['productoid'])) {
              
         $productoid = $_POST['productoid'];
+        $productocodigo = $_POST['productocodigo'];
         $productonombre = $_POST['productonombre'];
         $productoprecio = $_POST['productoprecio'];
         
-        if (strlen($productoid) > 0 && strlen($productonombre) > 0 
+        if (strlen($productoid) > 0 && strlen($productocodigo) > 0 && strlen($productonombre) > 0 
                 && strlen($productoprecio) > 0) {
-            if (!is_numeric($productoid)) {
+            if (is_numeric($productoid)) {
                 
-                $producto = new Productos($productoid, $productonombre, $productoprecio);
+                $producto = new Productos($productoid,$productocodigo, $productonombre, $productoprecio);
                 
                 include '../productobusiness/ProductoBusiness.php';
 
@@ -88,9 +85,14 @@ include '../../domain/productos/Productos.php';
             $ProductoBusiness=new ProductoBusiness();
            
             $result= $ProductoBusiness->eliminarProducto($producto);
+            if($result=="true"){
+              return   header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
+          
+          }else{
+            return  header("location: ../../view/registroproducto/RegistroProducto.php?ErrorNumero=updated");
+          }
             
-             return   header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
-        
+             
     }else{
         //esto es porsi a la hora de eliminar el dato es vacio
          $error="ErrorEliminar";
@@ -133,6 +135,17 @@ include '../../domain/productos/Productos.php';
             $ProductoBusiness=new ProductoBusiness();
            
             $result= $ProductoBusiness->mostrarProductos();
+            
+            return $result;  
+            
+    }elseif(isset($_POST['materia'])){
+        
+            
+             include '../productobusiness/ProductoBusiness.php';
+
+            $ProductoBusiness=new ProductoBusiness();
+           
+            $result= $ProductoBusiness->mostrarMaterial();
             
             return $result;  
             

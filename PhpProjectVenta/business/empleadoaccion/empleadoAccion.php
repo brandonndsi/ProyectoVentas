@@ -1,18 +1,11 @@
 <?php
-/**
- * Descripcion valida que los datos y la accion a realizar sean correcta sino redirecciona
- * a paguinas de error y si los datos y la accion es correcta imboca a la businerss para
- * que se haga cargo de los datos y el metodo a efectuar.
- *
- * @author David Salas.
- */
 
     //$accion = $_POST['accion'];//busca la accion a realizar 
     include '../../domain/empleados/Empleados.php';
     if(isset($_POST["nuevo"])){
 
     if (isset($_POST['empleadoid']) && isset($_POST['personaid']) && isset($_POST['tipoempleado']) && 
-            isset($_POST['empleadocedula']) && isset($_POST['empleadocontrasena'])
+            isset($_POST['empleadocedula']) && isset($_POST['empleadocontrasenia'])
             && isset($_POST['empleadoedad']) && isset($_POST['empleadosexo']) && isset($_POST['empleadoestadocivil'])
              && isset($_POST['empleadocuentabancaria']) && isset($_POST['empleadolicenciaid'])) {
              

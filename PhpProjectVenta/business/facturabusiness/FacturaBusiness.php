@@ -1,27 +1,24 @@
 <?php
-/**
- * Description of FacturaBusiness
- *
- * @author Juancho
- */
-class FacturaBusiness {
-    
-     private $DataFactura;
 
-    public function facturaBusiness() {
+class FacturaBusiness {
+
+    private $DataFactura;
+
+    public function FacturaBusiness() {
         
-        require_once '../../data/datafacrua/DataFactura.php';
+        require_once '../../data/datafactura/DataFactura.php';
         $this->DataFactura = new DataFactura();
-        
     }
     
-    //se encarga de seleccionar todo los datos del cliente.
-    public function mostrarFacturas() {
-        return $this->DataFactura->mostrarFacturas();
+    public function insertarFactura($factura) {
+        return $this->DataFactura->insertarFactura($factura);
     }
     
-    //se encarga de la busqueda d elos clientes en la base de datos.
-    public function buscarFactura($faccturaid) {
+    public function mostrarFactura() {
+        return $this->DataFactura->mostrarFactura();
+    }
+    
+    public function buscarFactura($facturaid) {
         return $this->DataFactura->buscarFactura($facturaid);
     }
 }

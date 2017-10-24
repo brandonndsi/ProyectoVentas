@@ -6,7 +6,7 @@ class DataCompra {
 
     function DataCompra() {
         include_once '../../data/dbconexion/Conexion.php';
-        include_once '../../domain/ventas/Ventas.php';
+        include_once '../../domain/compras/Compras.php';
         $this->conexion = new Conexion();
     }
 
@@ -15,7 +15,7 @@ class DataCompra {
 
             $array = array();
 
-            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT `productocodigo`, `productonombre` FROM `tbproductos` WHERE productoestado=1;");
+            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT `materiaprimacodigo`, `materiaprimanombre` FROM `tbmateriasprimas` WHERE materiaprimaidestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarproductos->fetch_assoc()) {
@@ -31,7 +31,7 @@ class DataCompra {
     function cargarProducto(){
         if($this->conexion->crearConexion()->set_charset('utf8')){
             $Array= array();
-            $mostrarProductos = $this->conexion->crearConexion()->query("SELECT * FROM `tbproductos` WHERE productoestado=1;");/*Lo que hace es hacer la consulta  a la base de datos*/
+            $mostrarProductos = $this->conexion->crearConexion()->query("SELECT * FROM `tbmateriasprimas` WHERE materiaprimaidestado=1;");/*Lo que hace es hacer la consulta  a la base de datos*/
 
             $this->conexion->cerrarConexion();/*lo que se hace es cerrar la conexion ya obtenido los datos*/
             while($resultado =$mostrarProductos->fetch_assoc()){
@@ -48,9 +48,9 @@ class DataCompra {
             $indexVenta = $this->conexion->crearConexion()->query("SELECT MAX(compraid) FROM `tbcompras`");
             while ($lista <= $p) {
                 
-                $productoid= $this->conexion->crearConexion()->query("SELECT `productoid` FROM `tbproductos` WHERE productocodigo='".$p->codigo."' AND productoestado=1;");
+                $productoid= $this->conexion->crearConexion()->query("SELECT `materiaprimaid` FROM `tbmateriasprimas` WHERE materiaprimacodigo='".$p->codigo."' AND materiaprimaidestado=1;");
 
-                $this->conexion->crearConexion()->query("INSERT INTO `tbcompras`(`compraid`, `productoid`, `compracantidadproducto`, `compraestado`) VALUES ('".$indexVenta."','".$productoid."','".$p->cantidad."','1');");
+                $this->conexion->crearConexion()->query("INSERT INTO `tbcompras`(`compraid`, `materiaprimaid`, `compracantidadproducto`, `compraestado`) VALUES ('".$indexVenta."','".$productoid."','".$p->cantidad."','1');");
             }
         }
     } 

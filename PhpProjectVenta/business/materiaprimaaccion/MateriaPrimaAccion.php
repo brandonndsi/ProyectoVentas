@@ -1,35 +1,30 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-//$accion = $_POST['accion'];//busca la accion a realizar 
   include '../../domain/materiaprimas/MateriaPrimas.php';
     if(isset($_POST["nuevo"])){
 
-    if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimaid']) 
-           && isset($_POST['materiaprimanombre']) && isset($_POST['tipomateriaprimaid'])) {
+    if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimacantidad']) 
+        && isset($_POST['materiaprimanombre'])&& isset($_POST['materiaprimacodigo'])) {
              
         $materiaprimaprecio = $_POST['materiaprimaprecio'];
-        $materiaprimaid = $_POST['materiaprimaid'];
+        $materiaprimacodigo = $_POST['materiaprimacodigo'];
         $materiaprimanombre = $_POST['materiaprimanombre'];
-        $tipomateriaprimaid = $_POST['tipomateriaprimaid'];
+        $materiaprimacantidad = $_POST['materiaprimacantidad'];
         
-        if (strlen($materiaprimatipoempleadosalariobase) > 0 && strlen($materiaprimatipoempleadodescripcion) > 0 
-                && strlen($materiaprimatipoempleadohoraextra) > 0 && strlen($materiaprimatipoEmpleado) > 0) {
-            if (is_numeric($materiaprimaid)) {
+        if (strlen($materiaprimaprecio) > 0 && strlen($materiaprimacodigo) > 0 
+            && strlen($materiaprimanombre) > 0 && strlen($materiaprimacantidad) > 0 ) {
+
+            if (is_numeric($materiaprimaprecio)) {
                 
-                $materiaprimas = new MateriasPrimas($materiaprimaid, $materiaprimanombre,
-                        $materiaprimaprecio, $tipomateriaprimaid);
+                $materiaprimas = new MateriasPrimas(null,$materiaprimacodigo, $materiaprimanombre,
+                        $materiaprimaprecio, $materiaprimacantidad,null);
                 
                 include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 
             $MateriaPrimaBusiness=new MateriaPrimaBusiness();
 
              $result= $MateriaPrimaBusiness->insertarMateriaPrima($materiaprimas);
-            if ($result == 1) {
+            if ($result =="true") {
                    return header("location: ../../view/registromateriaprima/RegistroMateriaPrima.php?success=updated");
                 } else {
                 
@@ -49,20 +44,24 @@
          */
     }else if(isset($_POST["actualizar"])){
         
-         if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimaid']) 
-           && isset($_POST['materiaprimanombre']) && isset($_POST['tipomateriaprimaid'])) {
+         if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimacantidad']) 
+           && isset($_POST['materiaprimanombre']) /*&& isset($_POST['tipomateriaprimaid'])*/
+           && isset($_POST['materiaprimacodigo']) && isset($_POST['materiaprimaid'])) {
              
-        $materiaprimaprecio = $_POST['materiaprimaprecio'];
         $materiaprimaid = $_POST['materiaprimaid'];
+        $materiaprimaprecio = $_POST['materiaprimaprecio'];
+        $materiaprimacodigo = $_POST['materiaprimacodigo'];
         $materiaprimanombre = $_POST['materiaprimanombre'];
-        $tipomateriaprimaid = $_POST['tipomateriaprimaid'];
+        $materiaprimacantidad = $_POST['materiaprimacantidad'];
+        /*$tipomateriaprimaid = $_POST['tipomateriaprimaid'];*/
         
-        if (strlen($materiaprimatipoempleadosalariobase) > 0 && strlen($materiaprimatipoempleadodescripcion) > 0 
-                && strlen($materiaprimatipoempleadohoraextra) > 0 && strlen($materiaprimatipoEmpleado) > 0) {
-            if (is_numeric($materiaprimaid)) {
+        if (strlen($materiaprimaprecio) > 0 && strlen($materiaprimacodigo) > 0 && strlen($materiaprimanombre) > 0 
+                && strlen($materiaprimacantidad) > 0 /*&& strlen($tipomateriaprimaid) > 0*/ && strlen($materiaprimaid) > 0) {
+            if (is_numeric($materiaprimaprecio)) {
                 
-                $materiaprimas = new MateriasPrimas($materiaprimaid, $materiaprimanombre, 
-                        $materiaprimaprecio, $tipomateriaprimaid);
+                $materiaprimas = new MateriasPrimas($materiaprimaid,$materiaprimacodigo,
+                 $materiaprimanombre,$materiaprimaprecio, 
+                 $materiaprimacantidad,null);
                 
                 include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 
@@ -86,9 +85,9 @@
      */
     }else if(isset($_POST["eliminar"])){
         
-    if(isset($_POST['materiaprimanombre'])){
+    if(isset($_POST['materiaprimaid'])){
         
-            $materias=$_POST['materiaprimanombre'];
+            $materias=$_POST['materiaprimaid'];
             
              include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 
@@ -109,8 +108,8 @@
       */
     } else if(isset($_POST["buscar"])){
         
-       if(isset($_POST['materiaprimanombre'])){
-           $materias=$_POST['materiaprimanombre'];
+       if(isset($_POST['materiaprimaid'])){
+           $materias=$_POST['materiaprimaid'];
             
              include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 

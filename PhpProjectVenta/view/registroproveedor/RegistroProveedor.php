@@ -82,7 +82,7 @@
             case 'registrar':
 
                 echo '<form  action="../../business/proveedoraccion/ProveedorAccion.php" method="Post">';
-                echo '<h2>Nueva Proveedor</h2>';
+                echo '<h2>Nuevo Proveedor</h2>';
                 echo '<p>Nombre: <input type="text" name="personanombre" id="personanombre"/></p>';
                 echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1"/></p>';
                 echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2"/></p>';
@@ -90,6 +90,7 @@
                 echo '<p>Correo: <input type="text" name="personacorreo" id="personacorreo"/></p>';
                 echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"/></p>';
                 echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion"/></p>';
+                echo '<p>Productos que suministra: <input type="text" name="materiaprimaid" id="materiaprimaid"/></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
                 echo '</form>';
                 break;

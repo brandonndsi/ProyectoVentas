@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-10-2017 a las 06:16:09
+-- Tiempo de generación: 24-10-2017 a las 07:57:06
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -58,18 +58,10 @@ INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `c
 
 CREATE TABLE `tbcompras` (
   `compraid` int(20) NOT NULL,
-  `productoid` varchar(20) NOT NULL,
+  `materiaprima` varchar(20) NOT NULL,
   `compracantidadproducto` int(40) NOT NULL,
   `compraestado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbcompras`
---
-
-INSERT INTO `tbcompras` (`compraid`, `productoid`, `compracantidadproducto`, `compraestado`) VALUES
-(1, 'M1', 23, 1),
-(1, 'm4', 23, 1);
 
 -- --------------------------------------------------------
 
@@ -397,6 +389,12 @@ ALTER TABLE `tbclientes`
   ADD PRIMARY KEY (`clienteid`),
   ADD KEY `personaid` (`personaid`),
   ADD KEY `zonaid` (`zonaid`);
+
+--
+-- Indices de la tabla `tbcompras`
+--
+ALTER TABLE `tbcompras`
+  ADD PRIMARY KEY (`compraid`);
 
 --
 -- Indices de la tabla `tbempleadolicencias`
