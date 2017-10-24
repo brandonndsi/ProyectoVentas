@@ -13,6 +13,8 @@ class Proveedores extends Personas{
     private $MateriaPrimaid;
     private $proveedordireccion;
     private $personaid;
+    private $proveedorProductos;
+    private $proveedorUltimaCompra;
     
     
     public function Proveedores($Proveedorid,$personaid,$Proveedordireccion,$Materiaprimaid) {
@@ -20,8 +22,15 @@ class Proveedores extends Personas{
         $this->personaid = $personaid;
         $this->proveedordireccion = $Proveedordireccion;
         $this->MateriaPrimaid = $Materiaprimaid;
+        $this->proveedorProductos=null;
+        $this->proveedorUltimaCompra=null;
     }
-    
+    public function getProveedorProductos(){
+        return $this->proveedorProductos;
+    }
+    public function getProductorUltimaCompra(){
+        return $this->proveedorUltimaCompra;
+    }
     public function getProveedorId() {
         return $this->proveedorid;
     }
@@ -37,7 +46,13 @@ class Proveedores extends Personas{
     public function getMateriaPrimaid(){
         return $this->MateriaPrimaid;
     }
+    public function setProveedorProductos($proveedorProductos){
+        $this->proveedorProductos=$proveedorProductos;
+    }
+    public function setProveedorUltimaCompra($proveedorUltimaCompra){
+        $this->proveedorUltimaCompra=$proveedorUltimaCompra;
 
+    }
     public function setProveedorId($proveedorid) {
         $this->proveedorid = $proveedorid;
     }
