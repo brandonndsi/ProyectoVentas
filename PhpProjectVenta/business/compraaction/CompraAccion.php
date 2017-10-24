@@ -12,7 +12,7 @@ if (isset($_POST["agregar"])) {
         isset($_POST['productoid']) && isset($_POST['zonaid']) && isset($_POST['ventatotal'])&& 
         isset($_POST['ventapagacon']) && isset($_POST['ventavuelto']) && isset($_POST['facturaid'])) {
      
-        $ventaid = $_POST['empleadoid'];
+        $ventaid = $_POST['ventaid'];
         $empleadoid = $_POST['empleadoid'];
         $ventacantidadproducto = $_POST['ventacantidadproducto'];
         $zonaid = $_POST['zonaid'];

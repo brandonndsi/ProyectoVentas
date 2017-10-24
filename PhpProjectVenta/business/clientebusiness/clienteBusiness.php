@@ -45,8 +45,4 @@ class clienteBusiness {
     }
   
 }
-/*$data=new clienteBusiness();
-  $d=$data->mostrarClientes();
-  print_r($d); */
-
 ?>
