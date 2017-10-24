@@ -6,6 +6,9 @@
     <title>Producto </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <!--CSS-->    
+    <link rel="stylesheet" href="../../css/estilo.css">
+
     <?php
     include '../../business/productobusiness/ProductoBusiness.php';
     ?>
@@ -15,86 +18,94 @@
     $productoBusiness = new ProductoBusiness();
     $allBusiness = $productoBusiness->mostrarProductos();
     ?>
-                <h2>Producto.</h2>  
-        <form  action="../../business/productoaccion/ProductoAccion.php" method="Post" >
+
+    <h2>Producto.
+        <a href="?action=registrar" class="btn btn-primary">Nuevo Producto</a>
+        <a href="../../index.php" class="btn btn-secondary">Pagina Principal</a> 
+    </h2>
+    
+    <form  action="../../business/productoaccion/ProductoAccion.php" method="Post" >
         <table>
-                <thead>
-                    <tr><th></th>
-                        <th>Codigo</th>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                    </tr>
-                </thead>
-                <?php foreach ($allBusiness as $current): ?>           
+            <thead>
+                <tr><th></th>
+                    <th>Codigo</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <?php foreach ($allBusiness as $current): ?>           
                 <tr><td><input type="hidden" name="productoid" id="productoid" value="<?php echo $current['productoid']; ?>"></td>
                     <td><input type="text" id="productocodigo" name="productocodigo" class="productocodigo"  value="<?php echo $current['productocodigo']; ?>"/> </td>
                     <td><input type="text" id="productonombre" name="productonombre" class="productonombre" value="<?php echo $current['productonombre']; ?>"/> </td>
                     <td><input type="text" id="productoprecio" name="productoprecio" class="productoprecio" value="<?php echo $current['productoprecio']; ?>"/> </td>
 
-                    <td><a href="?action=editar&id=<?php echo $current['productoid']; ?> ">Modificar</a></td>
-                    <td><a href="?action=eliminar&id=<?php echo $current['productoid']; ?> ">Eliminar</a></td>
-                    <td><a href="?action=ver&id=<?php echo $current['productoid']; ?> ">ver</a></td>
-            
+                    <td><a href="?action=editar&id=<?php echo $current['productoid']; ?> " class="btn btn-primary">Editar</a></td>
+                    <td><a href="?action=ver&id=<?php echo $current['productoid']; ?> " class="btn btn-info">Ver mas</a></td>
+                    <td><a href="?action=eliminar&id=<?php echo $current['productoid']; ?> " class="btn btn-danger">Eliminar</a></td>
                 </tr> 
-                 <?php endforeach ?>
-            </table>
-            <a href="?action=registrar">Nuevo Producto</a>
-        </form>
+            <?php endforeach ?>
+        </table>
+    </form>
 
-<?php
-if(isset($_REQUEST['action'])){
-    switch($_REQUEST['action']){
+    <?php
+    if (isset($_REQUEST['action'])) {
+        switch ($_REQUEST['action']) {
 
-        case 'ver':
-             $productoObtenida= $productoBusiness->buscarProducto($_REQUEST['id']);
-            foreach ($productoObtenida as $current) {
-        echo '<form  action="RegistroProducto.php" method="Post">';
-        echo '<h2>Datos del producto</h2>';
-        echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '" readonly /></p>';
-        echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '" readonly /></p>';
-        echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '" readonly /></p>';
-        echo '<p>Accion: <input type="submit" value="cerrar" name="cerrar" id="cerrar"/></p>';
-        echo '</form>';
-            }
-            break;
+            case 'ver':
+                $productoObtenida = $productoBusiness->buscarProducto($_REQUEST['id']);
+                foreach ($productoObtenida as $current) {
+                    echo '<form  action="RegistroProducto.php" method="Post">';
+                    echo '<h2>Datos del producto</h2>';
+                    echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '" readonly /></p>';
+                    echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '" readonly /></p>';
+                    echo '<p>Tamaño: <input type="text" name="productotamanio" id="productotamanio" value="' . $current['productotamanio'] . '" readonly /></p>';
+                    echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion"  value="' . $current['productodescripcion'] . '" readonly /></p>';
+                    echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '" readonly /></p>';
+                    echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
+                    echo '</form>';
+                }
+                break;
 
-        case 'registrar':
+            case 'registrar':
 
-        echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post">';
-        echo '<h2>Nuevo Productor</h2>';
-        echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo"></p>';
-        echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre"></p>';
-        echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"></p>';
-        echo '<p>Accion: <input type="submit" value="Nuevo" name="nuevo" id="nuevo"/></p>';
-        echo '</form>';
-            break;
+                echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post">';
+                echo '<h2>Nuevo Productor</h2>';
+                echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo"></p>';
+                echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre"></p>';
+                echo '<p>Tamaño: <input type="text" name="productotamanio" id="productotamanio"></p>';
+                echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion"></p>';
+                echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
+                echo '</form>';
+                break;
 
-        case 'eliminar':
+            case 'eliminar':
 
-            $productoBusiness->eliminarProducto($_REQUEST['id']);
+                $productoBusiness->eliminarProducto($_REQUEST['id']);
 
-            header('Location: RegistroProducto.php');
+                header('Location: RegistroProducto.php');
 
-            break;
+                break;
 
-        case 'editar':
+            case 'editar':
 
-            $proObtenida= $productoBusiness->buscarProducto($_REQUEST['id']);
-            foreach ($proObtenida as $current) {
-        echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post">';
-        echo '<h2>Editar Productor</h2>';
-        echo '<input type="hidden" name="productoid" id="productoid"  value="' . $current['productoid'] . '"  readonly />';
-        echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/></p>';
-        echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/></p>';
-        echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '"/></p>';
-        echo '<p>Accion: <input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></p>';
-        echo '</form>';
-            }
-            break;
+                $proObtenida = $productoBusiness->buscarProducto($_REQUEST['id']);
+                foreach ($proObtenida as $current) {
+                    echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post">';
+                    echo '<h2>Editar Productor</h2>';
+                    echo '<input type="hidden" name="productoid" id="productoid"  value="' . $current['productoid'] . '"  readonly />';
+                    echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/></p>';
+                    echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/></p>';
+                    echo '<p>Tamaño: <input type="text" name="productotamanio" id="productotamanio" value="' . $current['productotamanio'] . '"/></p>';
+                    echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion"  value="' . $current['productodescripcion'] . '"/></p>';
+                    echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '"/></p>';
+                    echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
+                    echo '</form>';
+                }
+                break;
+        }
     }
-}
-?>
-<p> <a href="../../index.php">Regresar</a> </p>
+    ?>
 <tr>
     <td>
         <?php
@@ -112,6 +123,6 @@ if(isset($_REQUEST['action'])){
         ?>
     </td>
 </tr>
-   
+
 </body>
 </html>

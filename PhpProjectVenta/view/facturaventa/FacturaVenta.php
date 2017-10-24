@@ -5,6 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Facturas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!--CSS-->    
+    <link rel="stylesheet" href="../../css/bootstrap.css">
 
     <?php
     include_once '../../business/facturabusiness/FacturaBusiness.php';
@@ -20,6 +23,7 @@
     ?>
     <h2>
         Las facturas.
+        <a href="?action=registrar" class="btn btn-primary" >Nueva factura</a>
     </h2>  
     <form  action="../../business/facturaaccion/facturaAccion.php" method="Post">          
         <table>
@@ -36,12 +40,10 @@
                 <td><input type="hidden" name="facturaid" id="facturaid" value="<?php echo $current['facturaid']; ?>"></td>
                 <td><input type="text" name="facturafecha" class="facturafecha" value="<?php echo $current['facturafecha']; ?>"/> </td>
                 <td><input type="text" name="empleadoid" class="empleadoid" value="<?php echo $current['empleadoid']; ?>"/> </td>
-                <td><a href="?action=ver&id=<?php echo $current['facturaid']; ?> ">ver</a></td>
+                <td><a href="?action=ver&id=<?php echo $current['facturaid']; ?> " class="btn btn-info">ver mas</a></td>
             </tr>
             <?php endforeach ?>
         </table>
-
-        <a href="?action=registrar">Nueva factura.</a>
 
     </form>
 
@@ -85,7 +87,7 @@
         "  value="' . $current['facturabruto'] . '"  readonly /></p>';
                     echo '<p>Neto: <input type="text" name="facturaneto" id="facturaneto"
         "  value="' . $current['facturaneto'] . '"  readonly /></p>';
-                    echo '<p>Accion: <input type="submit" value="cerrar" name="cerrar" id="cerrar"/></p>';
+                    echo '<p><input type="submit"  class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                     echo '</form>';
                 }
                 break;
@@ -108,13 +110,14 @@
                 echo '<p>Fecha: <input type="text" name="facturafecha" id="facturafecha"/></p>';
                 echo '<p>Bruto: <input type="text" name="facturabruto" id="facturabruto"/></p>';
                 echo '<p>Neto: <input type="text" name="facturaneto" id="facturaneto"/></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
                 echo '</form>';
                 break;
 
         }
     }
     ?> 
-    <a href="../../index.php">Regresar</a>
+    <a href="../../index.php" class="btn btn-primary">Pagina Principal</a>
 
 <tr>
     <td>
