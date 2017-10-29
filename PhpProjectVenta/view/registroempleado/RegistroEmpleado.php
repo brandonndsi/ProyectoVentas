@@ -8,7 +8,7 @@
 
     <!--CSS-->    
     <link rel="stylesheet" href="../../css/estilo.css">
-    
+
     <!--JS-->  
     <script src="../../js/registroEmpleado.js"></script>
 
@@ -69,30 +69,20 @@
                     echo '<form  action="RegistroEmpleado.php" method="Post">';
                     echo '<h2>Datos de Empleado.</h2>';
                     echo '<td><input type="hidden" name="empleadoid" value="' . $current['empleadoid'] . '"></td>';
-                    echo '<p>Nombre: <input type="text" name="personanombre" id="personanombre" 
-        value="' . $current['personanombre'] . '" readonly /></p>';
-                    echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" 
-         value="' . $current['personaapellido1'] . '" readonly /></p>';
-                    echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2" 
-         value="' . $current['personaapellido2'] . '" readonly /></p>';
-                    echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono
-        "  value="' . $current['personatelefono'] . '" readonly /></p>';
-                    echo '<p>Correo: <input type="text" name="personacorreo" id="personacorreo
-        "  value="' . $current['personacorreo'] . '" readonly /></p>';
-                    echo '<p>Cuenta Bancaria: <input type="text" name="empleadocuentabancaria" id="empleadocuentabancaria"
-        "  value="' . $current['empleadocuentabancaria'] . '" readonly /></p>';
-                    echo '<p>Estado Civil: <input type="text" name="empleadoestadocivil" id="empleadoestadocivil"
-        "  value="' . $current['empleadoestadocivil'] . '"  readonly /></p>';
-                    echo '<p>Edad: <input type="text" name="empleadoedad" id="empleadoedad"
-        "  value="' . $current['empleadoedad'] . '"  readonly /></p>';
-                    echo '<p>Sexo: <input type="text" name="empleadosexo" id="empleadosexo"
-        "  value="' . $current['empleadosexo'] . '"  readonly /></p>';
-                    echo '<p>Tipo de Licencia: <input type="text" name="empleadotipolicencia" id="empleadotipolicencia"
-        "  value="' . $current['empleadotipolicencia'] . '"  readonly /></p>';
-                    echo '<p>Licencia Vigencia: <input type="text" name="empleadolicenciavigencia" id="empleadolicenciavigencia"
-        "  value="' . $current['empleadolicenciavigencia'] . '"  readonly /></p>';
-                    echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"
-        "  value="' . $current['zonanombre'] . '"  readonly /></p>';
+                    echo '<p>Nombre: <input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '" readonly /></p>';
+                    echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" value="' . $current['personaapellido1'] . '" readonly /></p>';
+                    echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2" value="' . $current['personaapellido2'] . '" readonly /></p>';
+                    echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono"  value="' . $current['personatelefono'] . '" readonly /></p>';
+                    echo '<p>Correo: <input type="text" name="personacorreo" id="personacorreo"  value="' . $current['personacorreo'] . '" readonly /></p>';
+                    echo '<p>Fecha de Ingreso: <input type="date" name="empleadofechaingreso" id="empleadofechaingreso""  value="' . $current['empleadofechaingreso'] . '"  readonly /></p>';
+                    echo '<p>Banco: <input type="text" name="empleadobanco" id="empleadobanco""  value="' . $current['empleadobanco'] . '"  readonly /></p>';
+                    echo '<p>Cuenta Bancaria: <input type="text" name="empleadocuentabancaria" id="empleadocuentabancaria""  value="' . $current['empleadocuentabancaria'] . '" readonly /></p>';
+                    echo '<p>Estado Civil: <input type="text" name="empleadoestadocivil" id="empleadoestadocivil""  value="' . $current['empleadoestadocivil'] . '"  readonly /></p>';
+                    echo '<p>Edad: <input type="text" name="empleadoedad" id="empleadoedad""  value="' . $current['empleadoedad'] . '"  readonly /></p>';
+                    echo '<p>Sexo: <input type="text" name="empleadosexo" id="empleadosexo""  value="' . $current['empleadosexo'] . '"  readonly /></p>';
+                    echo '<p>Tipo de Licencia: <input type="text" name="empleadotipolicencia" id="empleadotipolicencia""  value="' . $current['empleadotipolicencia'] . '"  readonly /></p>';
+                    echo '<p>Licencia Vigencia: <input type="text" name="empleadolicenciavigencia" id="empleadolicenciavigencia""  value="' . $current['empleadolicenciavigencia'] . '"  readonly /></p>';
+                    echo '<p>Pertene a la Zona: <input type="text" name="zonanombre" id="zonanombre""  value="' . $current['zonanombre'] . '"  readonly /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                     echo '</form>';
                 }
@@ -102,12 +92,12 @@
 
                 echo '<form  action="../../business/empleadoaccion/empleadoAccion.php" method="Post">';
                 echo '<h2>Nuevo Empleado</h2>';
-                echo '<p>Nombre Completo: <input type="text" name="personanombre" id="personanombre" required/></p>';
-                echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" required/></p>';
-                echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2" required/></p>';
-                echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono" required pattern="[0-100]{8}"/></p>';
+                echo '<p>Nombre Completo: <input type="text" name="personanombre" id="personanombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono" required pattern="[0-9]{8}"/></p>';
                 echo '<p>Correo: <input type="email" name="personacorreo" id="personacorreo" placeholder="empleado@express.com pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/></p>';
-                echo '<p>Fecha de Ingreso: <input type="date" name="Ingreso" step="1" min="2017-01-01" max="2050-12-31" value="000-00-00"> </p>';
+                echo '<p>Fecha de Ingreso: <input type="date" name="empleadofechaingreso" step="1" min="2017-01-01" max="2050-12-31" value="000-00-00"> </p>';
                 echo '<p>Banco: <select name = "combobanco"> required</p>';
                 echo '<option ></option>';
                 echo '<option value = "Nacional">Nacional</option>';
@@ -124,7 +114,7 @@
                 echo '<option value = "Cathay">Cathay</option>';
                 echo '<option value = "Desyfin">Desyfin</option>';
                 echo '  </select>';
-                echo '<p> Numero de Cuenta Bancaria: <input type="text" name="empleadocuentabancaria" id="empleadocuentabancaria" required pattern="[0-9]{17}"/></p>';
+                echo '<p> Numero de Cuenta Bancaria: <input type="text" name="empleadocuentabancaria" id="empleadocuentabancaria" required pattern="[0-9]{17,24}"/></p>';
                 echo '<p>Estado Civil: <select name = "comboestadocivil"> </p>';
                 echo '<option value = "Soltero">Soltero/a</option>';
                 echo '<option value = "Casado">Casado/a</option>';
@@ -177,30 +167,20 @@
                     echo '<form  action="../../business/empleadoaccion/empleadoAccion.php" method="Post">';
                     echo '<h2>Editar Empleado</h2>';
                     echo '<td><input type="hidden" name="empleadoid" value="' . $current['empleadoid'] . '"></td>';
-                    echo '<p>Nombre: <input type="text" name="personanombre" id="personanombre" 
-        value="' . $current['personanombre'] . '" /></p>';
-                    echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" 
-         value="' . $current['personaapellido1'] . '" /></p>';
-                    echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2" 
-         value="' . $current['personaapellido2'] . '" /></p>';
-                    echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono
-        "  value="' . $current['personatelefono'] . '" /></p>';
-                    echo '<p>Correo: <input type="text" name="personacorreo" id="personacorreo
-        "  value="' . $current['personacorreo'] . '" /></p>';
-                    echo '<p>Cuenta Bancaria: <input type="text" name="empleadocuentabancaria" id="empleadocuentabancaria"
-        "  value="' . $current['empleadocuentabancaria'] . '" /></p>';
-                    echo '<p>Estado Civil: <input type="text" name="empleadoestadocivil" id="empleadoestadocivil"
-        "  value="' . $current['empleadoestadocivil'] . '"  /></p>';
-                    echo '<p>Edad: <input type="text" name="empleadoedad" id="empleadoedad"
-        "  value="' . $current['empleadoedad'] . '"  /></p>';
-                    echo '<p>Sexo: <input type="text" name="empleadosexo" id="empleadosexo"
-        "  value="' . $current['empleadosexo'] . '"  /></p>';
-                    echo '<p>Tipo de Licencia: <input type="text" name="empleadotipolicencia" id="empleadotipolicencia"
-        "  value="' . $current['empleadotipolicencia'] . '"  /></p>';
-                    echo '<p>Licencia Vigencia: <input type="text" name="empleadolicenciavigencia" id="empleadolicenciavigencia"
-        "  value="' . $current['empleadolicenciavigencia'] . '" /></p>';
-                    echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"
-        "  value="' . $current['zonanombre'] . '" /></p>';
+                    echo '<p>Nombre: <input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})" /></p>';
+                    echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" value="' . $current['personaapellido1'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})" /></p>';
+                    echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2" value="' . $current['personaapellido2'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})" /></p>';
+                    echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono"  value="' . $current['personatelefono'] . '"  pattern="[0-9]{8}" /></p>';
+                    echo '<p>Correo: <input type="email" name="personacorreo" id="personacorreo"  value="' . $current['personacorreo'] . '" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" /></p>';
+                    echo '<p>Fecha en la que ingreso: <input type="date" name="empleadofechaingreso" id="empleadofechaingreso"" step="1" min="2017-01-01" max="2080-12-31" value="' . $current['empleadofechaingreso'] . '" /></p>';
+                    echo '<p>Banco: <input type="text" name="empleadobanco" id="empleadobanco""  value="' . $current['empleadobanco'] . '" /></p>';
+                    echo '<p>Cuenta Bancaria: <input type="text" name="empleadocuentabancaria" id="empleadocuentabancaria""  value="' . $current['empleadocuentabancaria'] . '" pattern="[0-9]{17,24}" /></p>';
+                    echo '<p>Estado Civil: <input type="text" name="empleadoestadocivil" id="empleadoestadocivil""  value="' . $current['empleadoestadocivil'] . '"  /></p>';
+                    echo '<p>Edad: <input type="number" name="empleadoedad" id="empleadoedad""  value="' . $current['empleadoedad'] . '"   min="18" max="80" pattern="[1-9]{2,3}" /></p>';
+                    echo '<p>Sexo: <input type="text" name="empleadosexo" id="empleadosexo""  value="' . $current['empleadosexo'] . '"  /></p>';
+                    echo '<p>Tipo de Licencia: <input type="text" name="empleadotipolicencia" id="empleadotipolicencia""  value="' . $current['empleadotipolicencia'] . '"  /></p>';
+                    echo '<p>Licencia Vigencia: <input type="date" name="empleadolicenciavigencia" id="empleadolicenciavigencia"" step="1" min="2017-01-01" max="2050-12-31" value="' . $current['empleadolicenciavigencia'] . '" /></p>';
+                    echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre""  value="' . $current['zonanombre'] . '" /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }
