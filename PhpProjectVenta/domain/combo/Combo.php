@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Descripcion de los combos
+ * Descripcion de los combos para llevar al go mas ordenado de la base de datos
  *
  * @author david salas
  */
 
-class Compras {
+class Combo {
     
     private $comboid;
     private $comboproductoid;
     private $comboestado;
     
-    public function Compras($comboid, $comboproductoid, $comboestado) {
+    public function Combo($comboid, $comboproductoid, $comboestado) {
         $this->comboid = $comboid;
         $this->comboproductoid = $comboproductoid;
         $this->comboestado = $comboestado;
