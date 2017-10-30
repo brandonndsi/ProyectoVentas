@@ -22,7 +22,7 @@
     ?>
     <h2>
         Lista de Productos Primos
-        <a href="../../index.php" class="btn btn-secondary">Pagina Principal</a>
+        <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a>
     </h2>  
 
 

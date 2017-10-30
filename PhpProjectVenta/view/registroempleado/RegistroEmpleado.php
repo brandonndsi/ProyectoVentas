@@ -25,7 +25,7 @@
     <h1>
         Empleados
         <a href="?action=registrar" class="btn btn-primary" >Nuevo Empleado</a>
-        <a href="../../index.php" class="btn btn-secondary">Pagina Principal</a>
+        <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a>
     </h1> 
 
     <form  action="RegistroEmpleado.php" method="Post">

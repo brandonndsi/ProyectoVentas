@@ -21,7 +21,7 @@
     <h2>
         Lista de Clientes
         <a href="?action=registrar" class="btn btn-primary"> Nuevo cliente</a>
-        <a href="../../index.php" class="btn btn-secondary">Pagina Principal</a>
+        <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a>
 
     </h2> 
     <form  action="RegistroCliente.php" method="Post">

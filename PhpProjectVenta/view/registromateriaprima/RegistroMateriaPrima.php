@@ -22,7 +22,7 @@
     <h2>
         Materia Prima.
         <a href="?action=registrar" class="btn btn-primary" >Nueva Materia Prima</a>
-        <a href="../../index.php" class="btn btn-secondary">Pagina Principal</a>
+        <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a>
     </h2>  
     <form  action="RegistroMateriaPrima.php" method="Post" >
         <table>

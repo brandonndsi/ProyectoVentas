@@ -22,7 +22,7 @@
     <h2>
         Formulario tipos de empleado
         <a href="?action=registrar" class="btn btn-primary" >Nuevo Tipo Empleado</a>
-        <a href="../../index.php" class="btn btn-secondary">Pagina Principal</a>
+        <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a>
     </h2>  
     <form  action="../../business/tipodeempleadoaccion/tipoEmpleadoAccion.php" method="Post">
 

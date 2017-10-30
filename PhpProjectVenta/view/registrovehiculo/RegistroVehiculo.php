@@ -20,7 +20,7 @@
     <h2>
         Formulario Vehiculo
         <a href="?action=registrar" class="btn btn-primary" >Nuevo Vehiculo</a>
-        <a href="../../index.php" class="btn btn-secondary">Pagina Principal</a>
+        <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a>
     </h2>  
     <form  action="RegistroVehiculo.php" method="Post" >
         <table>

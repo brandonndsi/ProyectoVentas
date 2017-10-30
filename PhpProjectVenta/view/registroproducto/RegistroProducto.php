@@ -21,7 +21,7 @@
 
     <h2>Producto.
         <a href="?action=registrar" class="btn btn-primary">Nuevo Producto</a>
-        <a href="../../index.php" class="btn btn-secondary">Pagina Principal</a> 
+        <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a> 
     </h2>
     
     <form  action="../../business/productoaccion/ProductoAccion.php" method="Post" >

@@ -24,7 +24,7 @@
     <h2>
         Las facturas.
         <a href="?action=registrar" class="btn btn-primary" >Nueva factura</a>
-        <a href="../../index.php" class="btn btn-secondary">Pagina Principal</a>
+        <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a>
     </h2>  
     <form  action="../../business/facturaaccion/facturaAccion.php" method="Post">          
         <table>

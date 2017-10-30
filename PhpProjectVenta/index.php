@@ -2,10 +2,7 @@
 
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>
-            Sistema de Ventas
-        </title>
+        <meta http-equiv="Refresh" content="0,url= view/loginview/LoginView.php">
     </head>
     <body>
         <?php
@@ -19,7 +16,6 @@
             session_unset($carrito);
             session_destroy();
         }
-        include ('view/VentanaPrincipalView.php');
         ?>
 
     </body>
