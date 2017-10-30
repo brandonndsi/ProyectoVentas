@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2017 a las 17:38:43
+-- Tiempo de generación: 30-10-2017 a las 20:20:57
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -306,7 +306,7 @@ INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `per
 --
 
 CREATE TABLE `tbpreferencias` (
-  `proferenciasid` int(11) NOT NULL,
+  `preferenciasid` int(11) NOT NULL,
   `clienteid` int(11) NOT NULL,
   `productoid` int(11) NOT NULL,
   `preferenciasfecha` date NOT NULL,
@@ -317,7 +317,7 @@ CREATE TABLE `tbpreferencias` (
 -- Volcado de datos para la tabla `tbpreferencias`
 --
 
-INSERT INTO `tbpreferencias` (`proferenciasid`, `clienteid`, `productoid`, `preferenciasfecha`, `preferenciasaccion`) VALUES
+INSERT INTO `tbpreferencias` (`preferenciasid`, `clienteid`, `productoid`, `preferenciasfecha`, `preferenciasaccion`) VALUES
 (1, 5, 4, '2017-10-03', 'v'),
 (2, 3, 3, '2017-10-06', 'e');
 
@@ -588,7 +588,7 @@ ALTER TABLE `tbpersonas`
 -- Indices de la tabla `tbpreferencias`
 --
 ALTER TABLE `tbpreferencias`
-  ADD PRIMARY KEY (`proferenciasid`);
+  ADD PRIMARY KEY (`preferenciasid`);
 
 --
 -- Indices de la tabla `tbproductos`
@@ -692,7 +692,7 @@ ALTER TABLE `tbpersonas`
 -- AUTO_INCREMENT de la tabla `tbpreferencias`
 --
 ALTER TABLE `tbpreferencias`
-  MODIFY `proferenciasid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `preferenciasid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tbproductos`
