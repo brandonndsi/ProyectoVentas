@@ -148,10 +148,10 @@ class DataEmpleado {
     }
 
 }
-
+/*
 $data= new DataEmpleado();
 $da="2";
 $d=$data->buscarEmpleado($da);
-print_r($d);
+print_r($d);*/
 
 ?>

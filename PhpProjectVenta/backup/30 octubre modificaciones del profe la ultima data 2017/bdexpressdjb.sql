@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2017 a las 15:23:05
+-- Tiempo de generación: 31-10-2017 a las 17:46:16
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -55,21 +55,22 @@ CREATE TABLE `tbclientes` (
   `clientedireccionexacta` varchar(200) NOT NULL,
   `clientedescuento` double NOT NULL,
   `clienteacumulado` int(11) NOT NULL,
-  `clienteestado` tinyint(1) NOT NULL,
-  `zonaid` varchar(20) NOT NULL
+  `clienteestado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbclientes`
 --
 
-INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`, `zonaid`) VALUES
-(7, '5', 'horquetas norte', 0, 0, 0, '1'),
-(10, '18', 'la victoria', 0, 0, 1, '2'),
-(12, '19', 'cerquita de aqui', 0, 0, 0, '3'),
-(13, '20', 'por alla', 0, 0, 1, '3'),
-(14, '21', 'cerca de mi casa', 0, 0, 0, '1'),
-(15, '22', 'alla no mas', 0, 0, 1, '2');
+INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) VALUES
+(7, '5', 'horquetas norte', 0, 0, 1),
+(10, '18', 'la victoria', 0, 0, 1),
+(12, '19', 'cerquita de aqui', 0, 0, 1),
+(13, '20', 'por alla', 0, 0, 1),
+(14, '21', 'cerca de mi casa', 0, 0, 1),
+(15, '22', 'alla no mas', 0, 0, 1),
+(23, '30', 'erew', 0, 0, 1),
+(24, '31', 'rio frio', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -188,7 +189,7 @@ CREATE TABLE `tbempleados` (
 --
 
 INSERT INTO `tbempleados` (`empleadoid`, `personaid`, `tipoempleado`, `empleadocedula`, `empleadofechaingreso`, `empleadocontrasenia`, `empleadoedad`, `empleadosexo`, `empleadoestadocivil`, `empleadobanco`, `empleadocuentabancaria`, `empleadolicenciaid`, `empleadoestado`) VALUES
-(1, '19', 'Secretaria', '206990365', '2017-10-03', '12345', '23', 'f', 'soltera', 'Nacional', '256889871', '1', '1'),
+(1, '19', 'Secretaria', '206990365', '2017-10-03', '12345', '23', 'f', 'soltera', 'Nacional', '256889871', '1', '0'),
 (2, '3', 'Administrador', '207890584', '2017-10-01', '12345', '48', 'm', 'soltero', 'Costa rica', '78965542458', '2', '1');
 
 -- --------------------------------------------------------
@@ -302,7 +303,16 @@ INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `per
 (19, 'alba', 'rios', 'carnaval', 23423, 'asdma@mail.com', '2', 1),
 (20, 'Ruben', 'chaves', 'angulo', 236423, 'rubrxk@hotmai.com', '2', 1),
 (21, 'keneth', 'flores', 'rivera', 34534634, 'askjdhas@hot.com', '1', 1),
-(22, 'juan', 'roas', 'fernds', 2133342, 'jarofe@mail.com', 'Z1', 1);
+(22, 'juan', 'roas', 'fernds', 2133342, 'jarofe@mail.com', 'Z1', 1),
+(23, '', '', '', 0, '', '', 1),
+(24, '', '', '', 0, '', '', 1),
+(25, '', '', '', 0, '', '', 1),
+(26, '', '', '', 0, '', '', 1),
+(27, '', '', '', 0, '', '', 1),
+(28, '', '', '', 0, '', '', 1),
+(29, '', '', '', 0, '', '', 1),
+(30, 'we', 'wreew', 'wer', 32433242, 'ewrew@gmail.com', '23r', 1),
+(31, 'natalia', 'angulo', 'aguilera', 78906785, 'natalia@gmail.com', '2', 1);
 
 -- --------------------------------------------------------
 
@@ -351,7 +361,7 @@ INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `pr
 (4, 'M2', 'Pizza grande', '2500', '', '1', ''),
 (6, 'M3', '2 piesas y un refresco', '2000', '', '1', ''),
 (8, 'M4', 'pollo entero', '12321', '', '1', ''),
-(9, 'M5', 'pizza', '7600', '', '1', '');
+(9, 'M5', 'pizza', '7600', '', '0', '');
 
 -- --------------------------------------------------------
 
@@ -480,10 +490,10 @@ CREATE TABLE `tbvehiculos` (
 --
 
 INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculomarca`, `vehiculoplaca`, `vehiculomodelo`, `vehiculoestado`) VALUES
-(1, 'YAMAHA', '12845', 'ybr-150', '1'),
+(1, 'YAMAHA', '12845', 'ybr-150', '0'),
 (2, 'TOYOTA', '2568955', '2018', '1'),
 (3, 'Honda', '9321', '2000', '1'),
-(4, 'honda', '3432', '2000', '1');
+(4, 'honda', '3432', '2000', '0');
 
 -- --------------------------------------------------------
 
@@ -526,8 +536,7 @@ ALTER TABLE `tbcategoriaproducto`
 --
 ALTER TABLE `tbclientes`
   ADD PRIMARY KEY (`clienteid`),
-  ADD KEY `personaid` (`personaid`),
-  ADD KEY `zonaid` (`zonaid`);
+  ADD KEY `personaid` (`personaid`);
 
 --
 -- Indices de la tabla `tbcombos`
@@ -665,7 +674,7 @@ ALTER TABLE `tbcategoriaproducto`
 -- AUTO_INCREMENT de la tabla `tbclientes`
 --
 ALTER TABLE `tbclientes`
-  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `tbcombos`
@@ -695,7 +704,7 @@ ALTER TABLE `tbmillas`
 -- AUTO_INCREMENT de la tabla `tbpersonas`
 --
 ALTER TABLE `tbpersonas`
-  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `tbpreferencias`

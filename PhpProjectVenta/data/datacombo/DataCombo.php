@@ -73,7 +73,7 @@ class DataCombo {
             $array = array();
 
             $buscarCombo = $this->conexion->crearConexion()->query("SELECT * FROM `tbcombos`
-                WHERE comboid='".$comboid."';");
+                WHERE combosid='".$comboid."';");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarCombo->fetch_assoc()) {
