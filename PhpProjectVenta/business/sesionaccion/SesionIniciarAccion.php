@@ -5,18 +5,17 @@ $correoPersona = $_POST['personacorreo'];
 $contraseniaPersona = $_POST['empleadocontrasenia'];
 
 if (isset($correoPersona)) {
-    
+
     //Proceso de conexion con la base de datos
-    //$conexion =new Conexion();
-   // $conex = $this->conexion->crearConexion();
-$conexion = mysql_connect("localhost", "root","");
-mysql_database("bdexpressdjb",$conexion) or die ("No se pudo realizar la conexion");
-            //or die("ERROR con la base de datos");
+    $conex = mysql_connect("localhost", "root", "")
+            or die("No se pudo realizar la conexion");
+    mysql_select_db("bdexpressdjb", $conex)
+            or die("ERROR con la base de datos");
 
     //Inicio de variables de sesion
     //Consultar si los datos est�n guardados en la base de datos
 
-    if ($conexion == true) {
+    if ($conex == true) {
         $consulta = "SELECT *
                 FROM tbempleados e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
