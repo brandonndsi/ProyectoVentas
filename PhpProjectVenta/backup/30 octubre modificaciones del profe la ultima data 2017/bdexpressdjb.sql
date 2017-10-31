@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2017 a las 06:03:00
+-- Tiempo de generación: 31-10-2017 a las 06:07:47
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -333,7 +333,7 @@ CREATE TABLE `tbproductos` (
   `productocodigo` varchar(50) NOT NULL,
   `productonombre` varchar(50) NOT NULL,
   `productoprecio` varchar(50) NOT NULL,
-  `tamano` varchar(50) NOT NULL,
+  `tamanioid` varchar(50) NOT NULL,
   `productoestado` varchar(50) NOT NULL,
   `descripcion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -342,7 +342,7 @@ CREATE TABLE `tbproductos` (
 -- Volcado de datos para la tabla `tbproductos`
 --
 
-INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `productoprecio`, `tamano`, `productoestado`, `descripcion`) VALUES
+INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `productoprecio`, `tamanioid`, `productoestado`, `descripcion`) VALUES
 (3, 'M1', 'papas fritas', '120', '', '0', ''),
 (4, 'M2', 'Pizza grande', '2500', '', '1', ''),
 (6, 'M3', '2 piesas y un refresco', '2000', '', '1', ''),
@@ -599,7 +599,7 @@ ALTER TABLE `tbpreferencias`
 --
 ALTER TABLE `tbproductos`
   ADD PRIMARY KEY (`productoid`),
-  ADD KEY `tamano` (`tamano`);
+  ADD KEY `tamano` (`tamanioid`);
 
 --
 -- Indices de la tabla `tbproveedores`

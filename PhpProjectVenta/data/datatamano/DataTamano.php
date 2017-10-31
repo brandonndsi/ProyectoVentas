@@ -10,6 +10,8 @@ class DataTamano {
         $this->conexion = new Conexion();
     }
 
+    
+
     //insertar Tamaños
     public function insertarTamano($tamano) {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
