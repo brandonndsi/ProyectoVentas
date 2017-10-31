@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Modificaciones del cliente de los datos.
+ * 
+ */
 class DataCliente {
 
         private $conexion;
@@ -25,8 +28,9 @@ class DataCliente {
                 '".$cliente->getIdZona()."','1');");
 
            /*para recupera el id del cliente.*/
-            $recuperandoIdPersona=$this->conexion->crearConexion()->query("SELECT `personaid`FROM `tbpersonas` WHERE 
-                personanombre='".$cliente->getPersonaNombre()."';");
+            $recuperandoIdPersona=$this->conexion->crearConexion()->query("
+            SELECT `personaid`FROM `tbpersonas`
+             WHERE personanombre='".$cliente->getPersonaNombre()."';");
 
             /*transformando los datos del id objeto a un string*/
             $con;
@@ -61,7 +65,7 @@ class DataCliente {
         }
     }
 
-    //modificar
+    //Modificar los clientes
     public function modificarCliente($cliente) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {

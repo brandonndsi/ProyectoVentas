@@ -22,7 +22,6 @@ class DataVehiculo {
 '".$vehiculo->getVehiculomarca()."',
 '1');");
 
-           
             $this->conexion->cerrarConexion();
             
                 return $insertarproducto;
@@ -95,3 +94,9 @@ class DataVehiculo {
         }
     }
 }
+
+/*$datos= new DataVehiculo();
+$vehiculo= new Vehiculos(null,"3432","honda","2000");
+$da = $datos->insertarVehiculo($vehiculo);
+print_r($da);*/
+?>
