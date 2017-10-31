@@ -122,7 +122,7 @@
                     echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"
         "  value="' . $current['zonanombre'] . '"/></p>';
                     echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion"
-        "  value="' . $current['proveedorproductosprimos'] . '" /></p>';
+        "  value="' . $current['proveedordireccion'] . '" /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }
