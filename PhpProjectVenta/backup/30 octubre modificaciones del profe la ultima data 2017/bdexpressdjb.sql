@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2017 a las 06:07:47
+-- Tiempo de generación: 31-10-2017 a las 15:23:05
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -79,7 +79,11 @@ INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `c
 
 CREATE TABLE `tbcombos` (
   `combosid` int(11) NOT NULL,
+  `combocodigo` varchar(50) NOT NULL,
+  `combonombre` varchar(50) NOT NULL,
   `combosproductoid` text NOT NULL,
+  `comboingredientes` varchar(100) NOT NULL,
+  `comboprecio` int(11) NOT NULL,
   `comboestado` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,9 +91,9 @@ CREATE TABLE `tbcombos` (
 -- Volcado de datos para la tabla `tbcombos`
 --
 
-INSERT INTO `tbcombos` (`combosid`, `combosproductoid`, `comboestado`) VALUES
-(1, 'M1,M2,M3,M4', 1),
-(2, 'M1,M2', 1);
+INSERT INTO `tbcombos` (`combosid`, `combocodigo`, `combonombre`, `combosproductoid`, `comboingredientes`, `comboprecio`, `comboestado`) VALUES
+(1, 'C1', 'tacos y piza', 'M1,M2,M3,M4', 'salsa', 5000, 1),
+(2, 'C2', 'pizzza y refresco', 'M1,M2', 'pizza', 2500, 1);
 
 -- --------------------------------------------------------
 
@@ -476,8 +480,8 @@ CREATE TABLE `tbvehiculos` (
 --
 
 INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculomarca`, `vehiculoplaca`, `vehiculomodelo`, `vehiculoestado`) VALUES
-(1, 'YAMAHA', '12845', 'ybr-150', '0'),
-(2, 'TOYOTA', '2568955', '2018', '0'),
+(1, 'YAMAHA', '12845', 'ybr-150', '1'),
+(2, 'TOYOTA', '2568955', '2018', '1'),
 (3, 'Honda', '9321', '2000', '1'),
 (4, 'honda', '3432', '2000', '1');
 
@@ -703,7 +707,7 @@ ALTER TABLE `tbpreferencias`
 -- AUTO_INCREMENT de la tabla `tbproductos`
 --
 ALTER TABLE `tbproductos`
-  MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tbproveedores`
