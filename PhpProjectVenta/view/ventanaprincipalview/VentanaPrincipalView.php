@@ -40,6 +40,7 @@
         <li><a href="../tipoempleadoview/TipoEmpleadoView.php" target="_parent" class="btn btn-info">Tipos de Empleados</a></li>
         <li><a href="../registrocliente/RegistroCliente.php" target="_parent" class="btn btn-info">Clientes</a></li>
         <li><a href="../registroproveedor/RegistroProveedor.php" target="_parent" class="btn btn-info">Proveedores</a></li>
+        <li><a href="../registrocombos/RegistroCombos.php" target="_parent" class="btn btn-info">Combos Disponibles</a></li>
         <li><a href="../registroproducto/RegistroProducto.php" target="_parent" class="btn btn-info">Catalogo de Productos</a></li>
         <li><a href="../registromateriaprima/RegistroMateriaPrima.php" target="_parent" class="btn btn-info">Bodega</a></li>
         <li><a href="../registrozona/RegistroZona.php" target="_parent" class="btn btn-info">Zonas</a></li>
