@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2017 a las 01:40:16
+-- Tiempo de generación: 31-10-2017 a las 06:00:22
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -64,9 +64,9 @@ CREATE TABLE `tbclientes` (
 --
 
 INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`, `zonaid`) VALUES
-(7, '5', 'horquetas norte', 0, 0, 1, '1'),
+(7, '5', 'horquetas norte', 0, 0, 0, '1'),
 (10, '18', 'la victoria', 0, 0, 1, '2'),
-(12, '19', 'cerquita de aqui', 0, 0, 1, '3'),
+(12, '19', 'cerquita de aqui', 0, 0, 0, '3'),
 (13, '20', 'por alla', 0, 0, 1, '3'),
 (14, '21', 'cerca de mi casa', 0, 0, 0, '1'),
 (15, '22', 'alla no mas', 0, 0, 1, '2');
@@ -79,7 +79,7 @@ INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `c
 
 CREATE TABLE `tbcombos` (
   `combosid` int(11) NOT NULL,
-  `comboproductoid` text NOT NULL,
+  `combosproductoid` text NOT NULL,
   `comboestado` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,7 +87,7 @@ CREATE TABLE `tbcombos` (
 -- Volcado de datos para la tabla `tbcombos`
 --
 
-INSERT INTO `tbcombos` (`combosid`, `comboproductoid`, `comboestado`) VALUES
+INSERT INTO `tbcombos` (`combosid`, `combosproductoid`, `comboestado`) VALUES
 (1, 'M1,M2,M3,M4', 1),
 (2, 'M1,M2', 1);
 
@@ -229,19 +229,20 @@ CREATE TABLE `tbmateriasprimas` (
   `materiaprimaprecio` varchar(50) NOT NULL,
   `materiaprimacantidad` varchar(50) NOT NULL,
   `tipomateriaprimaid` varchar(50) NOT NULL,
-  `materiaprimaidestado` tinyint(1) NOT NULL
+  `materiaprimaidestado` tinyint(1) NOT NULL,
+  `ultimacompra` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbmateriasprimas`
 --
 
-INSERT INTO `tbmateriasprimas` (`materiaprimaid`, `materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`, `materiaprimaidestado`) VALUES
-(1, 'M1', 'tomate', '250', '10', '1', 1),
-(2, 'L1', 'Desinfectante', '800', '15', '2', 1),
-(3, 'M2', 'Lechuga', '500', '25', '1', 1),
-(4, 'M4', 'Pan', '600', '35', '1', 1),
-(5, 'aksdg', 'dfb', '13', '123', '1', 0);
+INSERT INTO `tbmateriasprimas` (`materiaprimaid`, `materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`, `materiaprimaidestado`, `ultimacompra`) VALUES
+(1, 'M1', 'tomate', '250', '10', '1', 1, ''),
+(2, 'L1', 'Desinfectante', '800', '15', '2', 1, ''),
+(3, 'M2', 'Lechuga', '500', '25', '1', 1, ''),
+(4, 'M4', 'Pan', '600', '35', '1', 1, ''),
+(5, 'aksdg', 'dfb', '13', '123', '1', 0, '');
 
 -- --------------------------------------------------------
 
@@ -341,7 +342,7 @@ CREATE TABLE `tbproductos` (
 --
 
 INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `productoprecio`, `tamano`, `productoestado`) VALUES
-(3, 'M1', 'papas fritas', '120', '', '1'),
+(3, 'M1', 'papas fritas', '120', '', '0'),
 (4, 'M2', 'Pizza grande', '2500', '', '1'),
 (6, 'M3', '2 piesas y un refresco', '2000', '', '1'),
 (8, 'M4', 'pollo entero', '12321', '', '1'),
@@ -474,9 +475,10 @@ CREATE TABLE `tbvehiculos` (
 --
 
 INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculomarca`, `vehiculoplaca`, `vehiculomodelo`, `vehiculoestado`) VALUES
-(1, 'YAMAHA', '1282', 'ybr-150', '1'),
-(2, 'TOYOTA', '2568955', '2018', '1'),
-(3, 'Honda', '9321', '2000', '1');
+(1, 'YAMAHA', '12845', 'ybr-150', '0'),
+(2, 'TOYOTA', '2568955', '2018', '0'),
+(3, 'Honda', '9321', '2000', '1'),
+(4, 'honda', '3432', '2000', '1');
 
 -- --------------------------------------------------------
 
@@ -496,10 +498,13 @@ CREATE TABLE `tbzonas` (
 --
 
 INSERT INTO `tbzonas` (`zonaid`, `zonanombre`, `zonaprecio`, `zonaestado`) VALUES
-(1, 'PuertoViejo', 2000, 1),
+(1, 'PuertoViejo', 2012, 0),
 (2, 'Horquetas', 1000, 1),
 (3, 'Finca6', 1000, 1),
-(4, 'Finca11', 500, 1);
+(4, 'Finca11', 500, 0),
+(5, 'david', 123, 0),
+(6, 'david', 123, 0),
+(7, 'rio ginenes', 123, 0);
 
 --
 -- Índices para tablas volcadas
@@ -727,13 +732,13 @@ ALTER TABLE `tbunidades`
 -- AUTO_INCREMENT de la tabla `tbvehiculos`
 --
 ALTER TABLE `tbvehiculos`
-  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
