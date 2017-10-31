@@ -7,13 +7,13 @@
 include '../../domain/combo/Combo.php';
 if (isset($_POST['nuevo'])) {
 
-    if (isset($_POST['productoid'])) {
+    if (isset($_POST['productoid']) && isset($_POST['combonombre']) && isset($_POST['comboprecio'])) {
 
         $productoid = $_POST['productoid'];
 
-        if (strlen($productoid) > 0 ) {
+        if (strlen($productoid) > 0 && strlen($combonombre) > 0 && strlen($comboprecio) > 0) {
             
-                $combo = new Combos(null);
+                $combo = new Combos(null, $combonombre, $comboprecio);
 
                 $combo->setProductoid($productoid);
 
@@ -36,15 +36,18 @@ if (isset($_POST['nuevo'])) {
      * Verifica si la accion es la de actualizar los datos del combo
      */
 } else if (isset($_POST['actualizar'])) {
-    if (isset($_POST['comboid']) && isset($_POST['productoid'])) {
+    if (isset($_POST['comboid']) && isset($_POST['productoid']) 
+        && isset($_POST['combonombre']) && isset($_POST['comboprecio'])) {
 
         $comboid = $_POST['comboid'];
         $productoid = $_POST['productoid'];
+        $combonombre = $_POST['combonombre'];
+        $comboprecio = $_POST['comboprecio'];
 
-        if (strlen($comboid) > 0 && strlen($productoid) > 0 ) {
+        if (strlen($comboid) > 0 && strlen($productoid) > 0 && strlen($combonombre) > 0 && strlen($comboprecio) > 0 ) {
             if (is_numeric($comboid)) {
 
-                $combo = new Combos($comboid,"");
+                $combo = new Combos($comboid, "", $combonombre, $comboprecio);
 
                 $combo->setProductoid($productoid);
 
