@@ -36,10 +36,10 @@
             </thead>           
             <?php foreach ($allBusiness as $current): ?> 
                 <tr>
-                    <td><input type="hidden" name="proveedorid" id="proveedorid" value="<?php echo $current['proveedorid']; ?>"></td>
-                    <td><input type="text" name="personanombre" class="personanombre" value="<?php echo $current['personanombre']; ?>"/> </td>
-                    <td><input type="text" name="personaapellido1" class="personaapellido1" value="<?php echo $current['personaapellido1']; ?>"/> </td>
-                    <td><input type="text" name="personaapellido2" class="personaapellido2" value="<?php echo $current['personaapellido2']; ?>"/> </td>
+                    <td><input type="hidden" name="proveedorid" id="proveedorid" value="<?php echo $current['proveedorid']; ?>" readonly></td>
+                    <td><input type="text" name="personanombre" class="personanombre" value="<?php echo $current['personanombre']; ?>" readonly/> </td>
+                    <td><input type="text" name="personaapellido1" class="personaapellido1" value="<?php echo $current['personaapellido1']; ?>"readonly/> </td>
+                    <td><input type="text" name="personaapellido2" class="personaapellido2" value="<?php echo $current['personaapellido2']; ?>"readonly/> </td>
 
                     <td><a href="?action=editar&id=<?php echo $current['proveedorid']; ?> " class="btn btn-primary">Editar</a></td>
                     <td><a href="?action=ver&id=<?php echo $current['proveedorid']; ?> " class="btn btn-info">ver mas</a></td>
@@ -83,14 +83,13 @@
 
                 echo '<form  action="../../business/proveedoraccion/ProveedorAccion.php" method="Post">';
                 echo '<h2>Nuevo Proveedor</h2>';
-                echo '<p>Nombre: <input type="text" name="personanombre" id="personanombre"/></p>';
-                echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1"/></p>';
-                echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2"/></p>';
-                echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono"/></p>';
-                echo '<p>Correo: <input type="text" name="personacorreo" id="personacorreo"/></p>';
-                echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"/></p>';
-                echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion"/></p>';
-                echo '<p>Productos que suministra: <input type="text" name="materiaprimaid" id="materiaprimaid"/></p>';
+                echo '<p>Nombre: <input type="text" name="personanombre" id="personanombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono" required pattern="[0-9]{8}"/></p>';
+                echo '<p>Correo: <input type="email" name="personacorreo" id="personacorreo" placeholder="empleado@express.com pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/></p>';
+                echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre" required/></p>';
+                echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion" required/></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
                 echo '</form>';
                 break;
@@ -111,15 +110,15 @@
                     echo '<h2>Editar Proveedor</h2>';
                     echo '<td><input type="hidden" name="proveedorid" value="' . $current['proveedorid'] . '"></td>';
                     echo '<p>Nombre: <input type="text" name="personanombre" id="personanombre" 
-        value="' . $current['personanombre'] . '"/></p>';
+        value="' . $current['personanombre'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                     echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" 
-         value="' . $current['personaapellido1'] . '"/></p>';
+         value="' . $current['personaapellido1'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                     echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2" 
-         value="' . $current['personaapellido2'] . '"/></p>';
+         value="' . $current['personaapellido2'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                     echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono
-        "  value="' . $current['personatelefono'] . '"/></p>';
-                    echo '<p>Correo: <input type="text" name="personacorreo" id="personacorreo
-        "  value="' . $current['personacorreo'] . '"/></p>';
+        "  value="' . $current['personatelefono'] . '" pattern="[0-9]{8}"/></p>';
+                    echo '<p>Correo: <input type="email" name="personacorreo" id="personacorreo
+        "  value="' . $current['personacorreo'] . '" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"/></p>';
                     echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"
         "  value="' . $current['zonanombre'] . '"/></p>';
                     echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion"

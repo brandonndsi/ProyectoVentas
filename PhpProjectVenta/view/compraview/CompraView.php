@@ -97,7 +97,7 @@
         echo "</tr>";
         echo "<tr>";
         echo "<td colspan='3'>";
-        echo '<p>Provedor: <input type = "text" name = "proveedor" id = "proveedor" required/></p>';
+        echo '<p>Provedor Id: <input type = "text" name = "proveedorid" id = "proveedorid" required/></p>';
         echo '<p>Fecha de Compra: <input type = "date" name = "fechacompra" id = "fechacompra" required/></p>';
         echo "</td>";
         echo "<td colspan='3'>";

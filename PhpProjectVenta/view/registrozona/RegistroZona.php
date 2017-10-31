@@ -25,26 +25,28 @@
         <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a>
     </h2>
     <form  action="RegistroZona.php" method="Post">
-        <table><!-- lo que hace es poder inicailizar la tabla -->
-            <thead><!-- para poder asignar los valores de la tabla -->
+        
+       <table>
+            <thead>
                 <tr>
+                    <th></th>
                     <th></th>
                     <th>Nombre</th>
                     <th>Precio</th>
-                </tr>
-            </thead>
 
-            <?php foreach ($allBusiness as $current): ?>
-                <tr>
+                </tr>
+            </thead>           
+            <?php foreach ($allBusiness as $current): ?> 
+                <tr><td></td>
                     <td><input type="hidden" name="zonaid" id="zonaid" value="<?php echo $current['zonaid']; ?>"></td>
                     <td><input type="text" name="zonanombre" id="zonanombre" size="10" value="<?php echo $current['zonanombre']; ?>" readonly /></td>
                     <td><input type="text" name="zonaprecio" size="10" id="zonaprecio" value="<?php echo $current['zonaprecio']; ?>" readonly /></td>
 
                     <td><a href="?action=editar&id=<?php echo $current['zonaid']; ?> " class="btn btn-primary">Editar</a></td>
-                    <td><a href="?action=ver&id=<?php echo $current['zonaid']; ?> " class="btn btn-info">Buscar</a></td>
+                    <td><a href="?action=ver&id=<?php echo $current['zonaid']; ?> " class="btn btn-info">Ver mas</a></td>
                     <td><a href="?action=eliminar&id=<?php echo $current['zonaid']; ?> " class="btn btn-danger">Eliminar</a></td>
 
-                </tr>
+                </tr> 
             <?php endforeach ?>
         </table>
     </form>
@@ -68,8 +70,8 @@
 
                 echo '<form  action="../../business/zonaaccion/zonaAction.php" method="Post">';
                 echo '<h2>Nueva Zona</h2>';
-                echo '<p>Nombre: <input type="text" name="zonanombre" id="zonanombre"></p>';
-                echo '<p>Precio: <input type="text" name="zonaprecio" id="zonaprecio"></p>';
+                echo '<p>Nombre: <input type="text" name="zonanombre" id="zonanombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"></p>';
+                echo '<p>Precio: <input type="text" name="zonaprecio" id="zonaprecio" required pattern="[0-9]{3,5}"></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
                 echo '</form>';
                 break;
@@ -78,7 +80,7 @@
 
                 $zonaBusiness->eliminarZona($_REQUEST['id']);
 
-               header('Location: RegistroZona.php');
+                header('Location: RegistroZona.php');
 
                 break;
 
@@ -89,8 +91,8 @@
                     echo '<form  action="../../business/zonaaccion/zonaAction.php" method="Post">';
                     echo '<h2>Editar Zona</h2>';
                     echo '<input type="hidden" name="zonaid" id="zonaid"  value="' . $current['zonaid'] . '"  readonly />';
-                    echo '<p>Nombre: <input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '"/></p>';
-                    echo '<p>Precio: <input type="text" name="zonaprecio" id="zonaprecio"  value="' . $current['zonaprecio'] . '"/></p>';
+                    echo '<p>Nombre: <input type="text" name="zonanombre" id="zonanombre" value="' . $current['zonanombre'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                    echo '<p>Precio: <input type="text" name="zonaprecio" id="zonaprecio"  value="' . $current['zonaprecio'] . '" required pattern="[0-9]{3,5}"/></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }

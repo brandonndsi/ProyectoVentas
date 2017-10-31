@@ -73,10 +73,10 @@
 
                 echo '<form  action="../../business/tipodeempleadoaccion/tipoEmpleadoAccion.php" method="Post">';
                 echo '<h2>Datos Tipo Empleado</h2>';
-                echo '<p>Tipo Empleado: <input type="text" name="tipoempleado" id="tipoempleado"/></p>';
-                echo '<p>Salario Base: <input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase"/></p>';
-                echo '<p>Descripcion: <input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion"/></p>';
-                echo '<p>Hora Extra: <input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra"/></p>';
+                echo '<p>Tipo Empleado: <input type="text" name="tipoempleado" id="tipoempleado" required/></p>';
+                echo '<p>Salario Base: <input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase" required pattern="[0-9]{2,7}"/></p>';
+                echo '<p>Descripcion: <input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion" required/></p>';
+                echo '<p>Hora Extra: <input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra" required pattern="[0-9]{2,4}"/></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
                 echo '</form>';
                 break;
@@ -94,9 +94,9 @@
                     echo '<form  action="../../business/tipodeempleadoaccion/tipoEmpleadoAccion.php" method="Post">';
                     echo '<h2>Tipo empleado editar</h2>';
                     echo '<p>Tipo Empleado: <input type="text" name="tipoempleado" id="tipoempleado" value="' . $current['tipoempleado'] . '"/></p>';
-                    echo '<p>Salario Base: <input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase"  value="' . $current['tipoempleadosalariobase'] . '"/></p>';
+                    echo '<p>Salario Base: <input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase"  value="' . $current['tipoempleadosalariobase'] . '" pattern="[0-9]{2,7}"/></p>';
                     echo '<p>Descripcion: <input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion"  value="' . $current['tipoempleadodescripcion'] . '" /></p>';
-                    echo '<p>Hora Extra: <input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra" value="' . $current['tipoempleadohoraextra'] . '"/></p>';
+                    echo '<p>Hora Extra: <input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra" value="' . $current['tipoempleadohoraextra'] . '" pattern="[0-9]{2,4}"/></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }
