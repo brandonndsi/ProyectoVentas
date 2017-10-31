@@ -78,7 +78,7 @@
 
                 $zonaBusiness->eliminarZona($_REQUEST['id']);
 
-                header('Location: RegistroZona.php');
+               header('Location: RegistroZona.php');
 
                 break;
 

@@ -15,11 +15,13 @@ class DataMateriaPrima {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
             $Tipomaterianuevo = $this->conexion->crearConexion()->query("INSERT INTO `tbtipomateriasprimas`(
                 `tipomateriaprimacategoria`, `tipomateriaprimaestado`) VALUES (
-                '" . $materiaprima->tipomateriaprimacategoria() . "','1');");
+                '" . $materiaprima->tipomateriaprimacategoria() . "',
+                '1');");
 
 
-            $recuperandoIdtipomateriaprima = $this->conexion->crearConexion()->query("SELECT `tipomateriaid`FROM 
-                `tbtipomateriasprimas` WHERE tipomateriaprimacategoria='" . $materiaprima->getTipomateriaprimacategoria() . "';");
+            $recuperandoIdtipomateriaprima = $this->conexion->crearConexion()->query("SELECT `tipomateriaid`
+                FROM `tbtipomateriasprimas` WHERE 
+                tipomateriaprimacategoria='" . $materiaprima->getTipomateriaprimacategoria() . "';");
 
             $con;
             while ($resultado = $recuperandoIdtipomateriaprima->fetch_assoc()) {
@@ -51,10 +53,10 @@ class DataMateriaPrima {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $modificarmateriaprima = $this->conexion->crearConexion()->query("UPDATE `tbmateriasprimas` SET "
-                    . "`materiasprimasnombre`='" . $materiaprima->getMateriaprimanombre()
-                    . "`materiasprimasprecio`='" . $materiaprima->getMateriaprimaprecio() . "' WHERE materiaprimaid='"
-                    . $materiaprima->getMateriaprimaid() . "';");
+            $modificarmateriaprima = $this->conexion->crearConexion()->query("UPDATE `tbmateriasprimas` SET
+             ". "`materiasprimasnombre`='" . $materiaprima->getMateriaprimanombre(). ",
+              `materiasprimasprecio`='" . $materiaprima->getMateriaprimaprecio() . "'
+               WHERE materiaprimaid='". $materiaprima->getMateriaprimaid() . "';");
 
             $recuperandoIdtipomateriprima = $this->conexion->crearConexion()->query("SELECT `tipomateriaprimaid`
                 FROM `tbmateriasprimas` WHERE 
@@ -82,7 +84,7 @@ class DataMateriaPrima {
     //eliminar
     public function eliminarMateriaPrima($materiaprimaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $eliminarmateriaprima = $this->conexion->crearConexion()->query("UPDATE `tbmateriasprimas` SET "
                     . "`materiaprimaestado`= 0 WHERE materiaprimaid='" . $materiaprimaid . "';");
@@ -96,19 +98,15 @@ class DataMateriaPrima {
     //buscar
     public function buscarMateriaPrima($materiaprimaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
-            $buscarmateriaprima = $this->conexion->crearConexion()->query("SELECT
-              t.tipomateriaprimacategoria, 
-              m.materiaprimaid, m.materiaprimacodigo, m.materiaprimanombre`, 
-              m.materiaprimaprecio, m.materiaprimacantidad, m.tipomateriaprimaid
+            $buscarmateriaprima = $this->conexion->crearConexion()->query("SELECT *
               FROM tbmateriasprimas m 
-              INNER JOIN tbtipomateriasprimas t ON e.tipomateriaprimaid = m.tipomateriaprimaid
-              WHERE t.tipomateriaprimacategoria ='" . $tipomateriaprimaid . "' 
-              AND m.materiaprimaestado = 1 OR m.materiaprimaid='" . $materiaprimaid . "'
-              AND t.tipomateriaprimaestado = 1 OR m.tipomateriaprimaid='" . $materiaprimaid . "");
+              INNER JOIN tbtipomateriasprimas t ON m.tipomateriaprimaid = t.tipomateriaprimaid
+              WHERE m.materiaprimaid ='" . $materiaprimaid . "' 
+              AND m.materiaprimaidestado = 1 ;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarmateriaprima->fetch_assoc()) {
@@ -121,7 +119,7 @@ class DataMateriaPrima {
     //mostrar materias primas
     public function mostrarMateriaPrima() {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 

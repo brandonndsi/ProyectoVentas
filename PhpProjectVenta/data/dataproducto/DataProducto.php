@@ -19,13 +19,11 @@ class DataProducto {
 VALUES ('" . $producto->getProductoCodigo() . "','" . $producto->getProductonombre() . "',
 '" . $producto->getProductoprecio() . "','1' );");
 
-            $result = mysql_query($insertarproducto);
+            $result = $insertarproducto;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
@@ -40,13 +38,11 @@ VALUES ('" . $producto->getProductoCodigo() . "','" . $producto->getProductonomb
                 `productoprecio`='" . $producto->getProductoprecio() . "'
                     WHERE productoid='" . $producto->getProductoid() . "'");
 
-            $result = mysql_query($modificarproducto);
+            $result = $modificarproducto;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
@@ -79,11 +75,9 @@ productoid='" . $productoid . "' AND productoestado=1 OR productocodigo='" . $pr
             while ($resultado = $buscarproducto->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            if (!$array) {
-                return false;
-            } else {
+            
                 return $array;
-            }
+            
         }
     }
 

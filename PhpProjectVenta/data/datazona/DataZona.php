@@ -20,11 +20,9 @@ class DataZona {
             //$result = mysql_query($insertarzona);
             $result = $insertarzona;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
@@ -37,7 +35,7 @@ class DataZona {
             SET `zonanombre`='".$zona->getZonanombre()."',
             `zonaprecio`='".$zona->getZonaprecio()."' 
             WHERE zonaid='".$zona->getZonaid()."' AND zonaestado=1;");
-            $result = mysql_query($modificarzona);
+            $result = $modificarzona;
             $this->conexion->cerrarConexion();
             
                 return $result;
