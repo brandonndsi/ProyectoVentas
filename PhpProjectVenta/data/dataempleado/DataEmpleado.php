@@ -29,13 +29,11 @@ class DataEmpleado {
                 '".$empleado->getEmpleadoLicenciaId()."',
                 '1');");
 
-            $result = mysql_query($insertarempleado);
+            $result = $insertarempleado;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+           
                 return $result;
-            }
+            
         }
     }
 

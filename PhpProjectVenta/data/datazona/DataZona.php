@@ -13,11 +13,12 @@ class DataZona {
     //insertar
     function insertarZona($zona) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $insertarzona = $this->conexion->crearConexion()->query("INSERT INTO `tbzonas`(`zonanombre`, `zonaprecio`, `zonaestado`) VALUES ('".$zona->getZonanombre()."','".$zona->getZonaprecio()."','1');");
 
-            $result = mysql_query($insertarzona);
+            //$result = mysql_query($insertarzona);
+            $result = $insertarzona;
             $this->conexion->cerrarConexion();
             if (!$result) {
                 return false;
@@ -30,43 +31,38 @@ class DataZona {
     //modificar
     function modificarZona($zona) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $modificarzona = $this->conexion->crearConexion()->query("UPDATE `tbzonas` 
             SET `zonanombre`='".$zona->getZonanombre()."',
             `zonaprecio`='".$zona->getZonaprecio()."' 
             WHERE zonaid='".$zona->getZonaid()."' AND zonaestado=1;");
-/*getZonaid()*/
             $result = mysql_query($modificarzona);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
     
     //eliminar
     function eliminarZona($zonaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
             $eliminarzona = $this->conexion->crearConexion()->query("UPDATE `tbzonas` SET `zonaestado`=0 WHERE zonaid='".$zonaid."';");
 
-            $result = mysql_query($eliminarzona);
+            $result = $eliminarzona;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
     //buscar
     function buscarZona($zonaid) {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
@@ -79,18 +75,16 @@ class DataZona {
             while ($resultado = $buscarzona->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            if (!$array) {
-                return false;
-            } else {
+           
                 return $array;
-            }
+            
         }
     }
 
     //mostrar zonas
     function mostrarZona() {
 
-        if ($this->conexion->crearConexion()->set_charset('utf8') == true) {
+        if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
 
@@ -103,11 +97,15 @@ class DataZona {
             while ($resultado = $mostrarzonas->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            if (!$array) {
-                return false;
-            } else {
+           
                 return $array;
-            }
+            
         }
     }
 }
+/*$dat= new DataZona();
+$da = new Zonas(null,"david","123");
+$d = $dat->insertarZona($da);
+print_r($d);*/
+
+?>

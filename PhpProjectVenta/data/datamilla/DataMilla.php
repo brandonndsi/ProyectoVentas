@@ -23,14 +23,14 @@ class DataMilla {
             VALUES ('" . $milla->getClienteid() . "','" . $milla->getMillaCantidad() . "',
             '1' );");
 
-            $result = mysql_query($insertarmilla);
+            $result = $insertarmilla;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
 }
+
+?>

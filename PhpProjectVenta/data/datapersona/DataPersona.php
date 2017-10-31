@@ -26,13 +26,11 @@ class DataPersona {
             '" . $persona->get_zonaid() . "',     
             '" . $persona->get_personaestado() . "')";
 
-            $result = mysql_query($insertarpersona);
+            $result = $insertarpersona;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+           
                 return $result;
-            }
+            
         }
     }
 
@@ -52,13 +50,11 @@ class DataPersona {
                 personaestado='" . $persona->get_personaestado() . "',     
 		WHERE personaid =" . $persona->get_personaid() . "";
 
-            $result = mysql_query($modificarpersona);
+            $result = $modificarpersona;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
@@ -69,13 +65,11 @@ class DataPersona {
 
             $eliminarpersona = "CALL eliminarpersona('$personaid')";
 
-            $result = mysql_query($eliminarpersona);
+            $result = $eliminarpersona;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 

@@ -20,13 +20,11 @@ class DataTipoEmpleado {
                 '" . $tipo->getTipoempleadodescripcion() . "',
                 '" . $tipo->getTipoempleadohoraextra() . "',1);");
 
-            $result = mysql_query($insertartipo);
+            $result = $insertartipo;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
@@ -41,13 +39,11 @@ class DataTipoEmpleado {
             `tipoempleadohoraextra`='" . $tipo->getTipoempleadohoraextra() . "'
             WHERE tipoempleado='" . $tipo->getTipoEmpleado() . "';");
 
-            $result = mysql_query($modificartipo);
+            $result = $modificartipo;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
@@ -60,13 +56,11 @@ class DataTipoEmpleado {
             . "WHERE tipoempleado='".$tipoempleado."';");
 
 
-            $result = mysql_query($eliminartipo);
+            $result = $eliminartipo;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+    
         }
     }
 

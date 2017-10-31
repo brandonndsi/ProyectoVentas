@@ -21,13 +21,11 @@ class DataPreferencias {
              '".$preferencias->getPreferenciasFecha()."',
              '".$preferencias->getPreferenciasAccion()."'";
 
-            $result = mysql_query($insertarPreferencias);
+            $result = $insertarPreferencias;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
@@ -43,13 +41,11 @@ class DataPreferencias {
             `preferenciasaccion`='".$preferencias->getPreferenciasAccion()."'
              WHERE prefenciasid='".$preferencias->getPreferenciasId()."'";
 
-            $result = mysql_query($modificarPreferencias);
+            $result = $modificarPreferencias;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 
@@ -60,13 +56,11 @@ class DataPreferencias {
 
             $eliminarPreferencias = "DELETE FROM `tbpreferencias` WHERE preferenciasid='".$preferenciasid."';";
 
-            $result = mysql_query($eliminarPreferencias);
+            $result = $eliminarPreferencias;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+           
                 return $result;
-            }
+            
         }
     }
 
