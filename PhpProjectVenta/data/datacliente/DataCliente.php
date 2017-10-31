@@ -28,11 +28,13 @@ class DataCliente {
                 '".$cliente->getCorreo()."',
                 '".$cliente->getIdZona()."','1');");
 
+           $this->conexion->cerrarConexion();
            /*para recupera el id del cliente.*/
             $recuperandoIdPersona=$this->conexion->crearConexion()->query("
             SELECT `personaid`FROM `tbpersonas`
              WHERE personanombre='".$cliente->getPersonaNombre()."';");
 
+            $this->conexion->cerrarConexion();
             /*transformando los datos del id objeto a un string*/
             $con;
             while ($resultado = $recuperandoIdPersona->fetch_assoc()){
@@ -51,13 +53,24 @@ class DataCliente {
             '".$cliente->getClienteDescuento()."',
             '".$cliente->getClienteAcumulado()."','1');");
 
+            $this->conexion->cerrarConexion();
                 /*lo de las millas del cliente*/
                 /*recuperando el id del cliente para meterlo a las millas del cliente.*/
                 $ClienteID = $this->conexion->crearConexion()->query("SELECT clienteid FROM `tbclientes` WHERE personaid ='".$cliente->getPersonaId()."';");
+                $this->conexion->cerrarConexion();
+                /*transformando el id de cliente astring*/
+                $cont;
+                while ($result = $ClienteID->fetch_assoc()){
+                $cont=$result['clienteid'];     
+            }
+            /*verificamos si es un string ya formulado*/
+            if(is_string($cont)){
+                $cliente->setClienteId($cont);
+            }
                     /*creando las millas del cliente con el id del cliente.*/
             $CreandoMillas = $this->conexion->crearConexion()->query("INSERT INTO `tbmillas`
             (`clienteid`, `millacantidad`, `millaestado`) VALUES (
-            '".$ClienteID."','0','1'");
+            '".$cliente->getClienteId()."','0','1'");
 
         $this->conexion->cerrarConexion();
 
