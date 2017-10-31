@@ -114,8 +114,7 @@ class DataEmpleado {
                 INNER JOIN tbempleadolicencias el ON el.empleadolicenciaid= e.empleadolicenciaid
                 INNER JOIN tbvehiculos v ON v.vehiculoid= el.vehiculoid
                 WHERE e.empleadoid='".$empleadoid."' AND e.empleadoestado=1 OR 
-                p.personanombre='".$empleadoid."' AND e.empleadoestado=1 OR
-                p.personatelefono='".$empleadoid."' AND e.empleadoestado=1;"); 
+                p.personaid= e.personaid AND e.empleadoestado=1;"); 
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarempleado->fetch_assoc()) {
@@ -136,8 +135,8 @@ class DataEmpleado {
                 FROM tbempleados e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
                 INNER JOIN tbzonas z ON z.zonaid= p.zonaid");
-            /*INNER JOIN tbempleadolicencias el ON el.empleadolicenciaid= e.empleadolicenciaid
-                INNER JOIN tbvehiculos v ON v.vehiculoid= el.vehiculoid*/
+                //INNER JOIN tbempleadolicencias po ON e.empleadolicenciaid= po.empleadolicenciaid");
+                //INNER JOIN tbvehiculos v ON v.vehiculoid= el.vehiculoid");
             
             while ($resultado = $mostrarempleados->fetch_assoc()) {
                 array_push($array, $resultado);
@@ -149,3 +148,10 @@ class DataEmpleado {
     }
 
 }
+
+$data= new DataEmpleado();
+$da="2";
+$d=$data->buscarEmpleado($da);
+print_r($d);
+
+?>

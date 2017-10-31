@@ -16,6 +16,7 @@ class DataCliente {
     //insertar
     public function insertarCliente($cliente) {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
+
             /*Para ingresar nueva persona en la base de datos.*/
            $personanuevo= $this->conexion->crearConexion()->query("INSERT INTO `tbpersonas`(
                 `personanombre`,`personaapellido1`, `personaapellido2`, 
@@ -56,7 +57,7 @@ class DataCliente {
                     /*creando las millas del cliente con el id del cliente.*/
             $CreandoMillas = $this->conexion->crearConexion()->query("INSERT INTO `tbmillas`
             (`clienteid`, `millacantidad`, `millaestado`) VALUES (
-            '".$ClienteID."',0,1");
+            '".$ClienteID."','0','1'");
 
         $this->conexion->cerrarConexion();
 
@@ -172,5 +173,15 @@ class DataCliente {
 
 }
 
+/*$data= new DataCliente();
+$cliente = new Clientes(null, null, $clientedireccionexacta);
 
+$cliente->setPersonaNombre($personanombre);
+$cliente->setPersonaApellido1($personaapellido1);
+$cliente->setPersonaApellido2($personaapellido2);
+$cliente->setPersonaTelefono($personatelefono);
+$cliente->setIdZona($zonaid);
+$cliente->setCorreo($personacorreo);
+$d=$data->insertarCliente($cliente);
+print_r($d);*/
 ?>
