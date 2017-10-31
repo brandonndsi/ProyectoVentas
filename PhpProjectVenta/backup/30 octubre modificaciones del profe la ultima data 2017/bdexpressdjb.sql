@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2017 a las 20:20:57
+-- Tiempo de generación: 31-10-2017 a las 01:40:16
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -184,8 +184,8 @@ CREATE TABLE `tbempleados` (
 --
 
 INSERT INTO `tbempleados` (`empleadoid`, `personaid`, `tipoempleado`, `empleadocedula`, `empleadofechaingreso`, `empleadocontrasenia`, `empleadoedad`, `empleadosexo`, `empleadoestadocivil`, `empleadobanco`, `empleadocuentabancaria`, `empleadolicenciaid`, `empleadoestado`) VALUES
-(1, '19', 'Secretaria', '206990365', '2017-10-03', '12345', '23', 'f', 'soltera', 'Nacional', '256889871', '1', '0'),
-(2, '20', 'Administrador', '207890584', '2017-10-01', '89756', '48', 'm', 'soltero', 'Costa rica', '78965542458', '2', '0');
+(1, '19', 'Secretaria', '206990365', '2017-10-03', '12345', '23', 'f', 'soltera', 'Nacional', '256889871', '1', '1'),
+(2, '3', 'Administrador', '207890584', '2017-10-01', '12345', '48', 'm', 'soltero', 'Costa rica', '78965542458', '2', '1');
 
 -- --------------------------------------------------------
 
@@ -290,7 +290,7 @@ CREATE TABLE `tbpersonas` (
 INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `personaapellido2`, `personatelefono`, `personacorreo`, `zonaid`, `personaestado`) VALUES
 (1, 'Brandon', 'Rodriguez', 'Mendez', 62091232, 'brandon-ndsi@hotmail.com', '1', 1),
 (2, 'Juan', 'Chavarria', 'Arroyo', 14358765, 'juaracha@gmail.com', '2', 1),
-(3, 'David', 'Salas', 'Salas', 73950274, 'salasgates@hotmail.com', '3', 1),
+(3, 'David', 'Salas', 'Salas', 73950274, 'yoansalas76@gmail.com', '3', 1),
 (4, 'Elisabeth', 'Rodriguez', 'Castro', 12345436, 'elirodri@gmail.com', '2', 1),
 (5, 'Oscar', 'Mejias', 'Morera', 88940376, 'oscmeji@hotmail.com', '2', 1),
 (6, 'hola', 'aaa', 'bbb', 2222, 'aaa@hotmail.com', '1', 1),
@@ -332,6 +332,7 @@ CREATE TABLE `tbproductos` (
   `productocodigo` varchar(50) NOT NULL,
   `productonombre` varchar(50) NOT NULL,
   `productoprecio` varchar(50) NOT NULL,
+  `tamano` varchar(50) NOT NULL,
   `productoestado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -339,15 +340,12 @@ CREATE TABLE `tbproductos` (
 -- Volcado de datos para la tabla `tbproductos`
 --
 
-INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `productoprecio`, `productoestado`) VALUES
-(3, 'M1', 'papas fritas', '120', '1'),
-(4, 'M2', 'Pizza grande', '2500', '1'),
-(6, 'M3', '2 piesas y un refresco', '2000', '1'),
-(8, 'M4', 'pollo entero', '12321', '1'),
-(9, 'M5', 'pizza', '7600', '1'),
-(10, 'cod1', 'da', '1500', '1'),
-(11, 'cod1', 'da', '1500', '1'),
-(12, 'cod1', 'da', '1500', '1');
+INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `productoprecio`, `tamano`, `productoestado`) VALUES
+(3, 'M1', 'papas fritas', '120', '', '1'),
+(4, 'M2', 'Pizza grande', '2500', '', '1'),
+(6, 'M3', '2 piesas y un refresco', '2000', '', '1'),
+(8, 'M4', 'pollo entero', '12321', '', '1'),
+(9, 'M5', 'pizza', '7600', '', '1');
 
 -- --------------------------------------------------------
 
@@ -594,7 +592,8 @@ ALTER TABLE `tbpreferencias`
 -- Indices de la tabla `tbproductos`
 --
 ALTER TABLE `tbproductos`
-  ADD PRIMARY KEY (`productoid`);
+  ADD PRIMARY KEY (`productoid`),
+  ADD KEY `tamano` (`tamano`);
 
 --
 -- Indices de la tabla `tbproveedores`

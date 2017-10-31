@@ -2,7 +2,8 @@
 
 <html>
     <head>
-        <meta http-equiv="Refresh" content="0,url= view/loginview/LoginView.php">
+        <!-- <meta http-equiv="Refresh" content="0,url= view/loginview/LoginView.php">-->
+         <meta http-equiv="Refresh" content="0,url= view/ventanaprincipalview/VentanaPrincipalView.php">
     </head>
     <body>
         <?php
