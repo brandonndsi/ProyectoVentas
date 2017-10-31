@@ -73,7 +73,7 @@
                     echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"
         "  value="' . $current['zonanombre'] . '"  readonly /></p>';
                     echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion"
-        "  value="' . $current['proveedordireccion'] . '"  readonly /></p>';
+        "  value="' . $current['proveedorproductosprimos'] . '"  readonly /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                     echo '</form>';
                 }
@@ -122,7 +122,7 @@
                     echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"
         "  value="' . $current['zonanombre'] . '"/></p>';
                     echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion"
-        "  value="' . $current['proveedordireccion'] . '" /></p>';
+        "  value="' . $current['proveedorproductosprimos'] . '" /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }
