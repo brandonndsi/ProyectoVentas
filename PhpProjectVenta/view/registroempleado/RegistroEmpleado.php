@@ -44,10 +44,10 @@
             <?php foreach ($allBusiness as $current): ?> 
                 <tr><td></td>
                     <td><input type="hidden" name="empleadoid" id="empleadoid" value="<?php echo $current['empleadoid']; ?>"/></td>
-                    <td><input type="text" name="empleadocedula" class="empleadocedula" value="<?php echo $current['empleadocedula']; ?>"/> </td>
-                    <td><input type="text" name="personanombre" class="personanombre" value="<?php echo $current['personanombre']; ?>"/> </td>
-                    <td><input type="text" name="personaapellido1" class="personaapellido1" value="<?php echo $current['personaapellido1']; ?>"/> </td>
-                    <td><input type="text" name="personaapellido2" class="personaapellido2" value="<?php echo $current['personaapellido2']; ?>"/> </td>
+                    <td><input type="text" name="empleadocedula" class="empleadocedula" value="<?php echo $current['empleadocedula']; ?>" readonly /> </td>
+                    <td><input type="text" name="personanombre" class="personanombre" value="<?php echo $current['personanombre']; ?>" readonly /> </td>
+                    <td><input type="text" name="personaapellido1" class="personaapellido1" value="<?php echo $current['personaapellido1']; ?>" readonly /> </td>
+                    <td><input type="text" name="personaapellido2" class="personaapellido2" value="<?php echo $current['personaapellido2']; ?>" readonly /> </td>
 
                     <td><a href="?action=editar&id=<?php echo $current['empleadoid']; ?> " class="btn btn-primary">Editar</a></td>
                     <td><a href="?action=ver&id=<?php echo $current['empleadoid']; ?> " class="btn btn-info">ver mas</a></td>

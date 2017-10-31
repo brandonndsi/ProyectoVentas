@@ -44,7 +44,7 @@
                     <td><input type="text" id="materiaprimaprecio" name="materiaprimaprecio" class="materiaprimaprecio" value="<?php echo $current['materiaprimaprecio']; ?>" readonly /> </td>
 
                     <td><a href="?action=editar&id=<?php echo $current['materiaprimaid']; ?> " class="btn btn-primary">Editar</a></td>
-                    <td><a href="?action=ver&id=<?php echo $current['materiaprimaid']; ?> " class="btn btn-info">Buscar</a></td> 
+                    <td><a href="?action=ver&id=<?php echo $current['materiaprimaid']; ?> " class="btn btn-info">Ver mas</a></td> 
                     <td><a href="?action=eliminar&id=<?php echo $current['materiaprimaid']; ?> " class="btn btn-danger">Eliminar</a></td>  
                 </tr> 
             <?php endforeach ?>
@@ -75,11 +75,19 @@
 
                 echo '<form  action="../../business/materiaprimaaccion/MateriaPrimaAccion.php" method="Post">';
                 echo '<h2>Nueva Materia Prima</h2>';
-                echo '<p>Codigo: <input type="text" name="materiaprimacodigo" id="materiaprimacodigo"/></p>';
-                echo '<p>Nombre: <input type="text" name="materiaprimanombre" id="materiaprimanombre"/></p>';
-                echo '<p>Cantidad: <input type="text" name="materiaprimacantidad" id="materiaprimacantidad"/></p>';
-                echo '<p>Unidad: <input type="text" name="materiaprimaunidad" id="materiaprimaunidad"/></p>';
-                echo '<p>Precio: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio"/></p>';
+                echo '<p>Codigo: <input type="text" name="materiaprimacodigo" id="materiaprimacodigo" required/></p>';
+                echo '<p>Nombre: <input type="text" name="materiaprimanombre" id="materiaprimanombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                echo '<p>Cantidad: <input type="text" name="materiaprimacantidad" id="materiaprimacantidad" required pattern="[0-9]{1,5}"/></p>';
+                echo '<p>Unidad: <select name = "combobanco"> required</p>';
+                echo '<option ></option>';
+                echo '<option value = "Kilogramos">Kilogramos</option>';
+                echo '<option value = "Gramos">Gramos</option>';
+                echo '<option value = "Litros">Litros</option>';
+                echo '<option value = "Libras">Libras</option>';
+                echo '<option value = "Cajas">Cajas</option>';
+                echo '<option value = "Bolsas">Bolsas</option>';
+                echo '  </select>';
+                echo '<p>Precio: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio" required pattern="[0-9]{2,7}"/></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
                 echo '</form>';
                 break;
@@ -100,9 +108,9 @@
                     echo '<h2>Editar Materia Prima</h2>';
                     echo '<input type="hidden" name="materiaprimaid" id="materiaprimaid"  value="' . $current['materiaprimaid'] . '"  readonly />';
                     echo '<p>Codigo: <input type="text" name="materiaprimacodigo" id="materiaprimacodigo" value="' . $current['materiaprimacodigo'] . '" /></p>';
-                    echo '<p>Nombre: <input type="text" name="materiaprimanombre" id="materiaprimanombre"  value="' . $current['materiaprimanombre'] . '" /></p>';
-                    echo '<p>Precio: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio"  value="' . $current['materiaprimaprecio'] . '" /></p>';
-                    echo '<p>Cantidad: <input type="text" name="materiaprimacantidad" id="materiaprimacantidad"  value="' . $current['materiaprimacantidad'] . '" /></p>';
+                    echo '<p>Nombre: <input type="text" name="materiaprimanombre" id="materiaprimanombre"  value="' . $current['materiaprimanombre'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                    echo '<p>Precio: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio"  value="' . $current['materiaprimaprecio'] . '" pattern="[0-9]{2,7}"/></p>';
+                    echo '<p>Cantidad: <input type="text" name="materiaprimacantidad" id="materiaprimacantidad"  value="' . $current['materiaprimacantidad'] . '" pattern="[0-9]{1,5}"/></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }

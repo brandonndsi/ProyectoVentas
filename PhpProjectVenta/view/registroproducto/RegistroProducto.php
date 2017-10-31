@@ -35,9 +35,9 @@
             </thead>
             <?php foreach ($allBusiness as $current): ?>           
                 <tr><td><input type="hidden" name="productoid" id="productoid" value="<?php echo $current['productoid']; ?>"></td>
-                    <td><input type="text" id="productocodigo" name="productocodigo" class="productocodigo"  value="<?php echo $current['productocodigo']; ?>"/> </td>
-                    <td><input type="text" id="productonombre" name="productonombre" class="productonombre" value="<?php echo $current['productonombre']; ?>"/> </td>
-                    <td><input type="text" id="productoprecio" name="productoprecio" class="productoprecio" value="<?php echo $current['productoprecio']; ?>"/> </td>
+                    <td><input type="text" id="productocodigo" name="productocodigo" class="productocodigo"  value="<?php echo $current['productocodigo']; ?>" readonly/> </td>
+                    <td><input type="text" id="productonombre" name="productonombre" class="productonombre" value="<?php echo $current['productonombre']; ?>" readonly/> </td>
+                    <td><input type="text" id="productoprecio" name="productoprecio" class="productoprecio" value="<?php echo $current['productoprecio']; ?>" readonly/> </td>
 
                     <td><a href="?action=editar&id=<?php echo $current['productoid']; ?> " class="btn btn-primary">Editar</a></td>
                     <td><a href="?action=ver&id=<?php echo $current['productoid']; ?> " class="btn btn-info">Ver mas</a></td>
@@ -58,8 +58,8 @@
                     echo '<h2>Datos del producto</h2>';
                     echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '" readonly /></p>';
                     echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '" readonly /></p>';
-                    echo '<p>Tamaño: <input type="text" name="productotamanio" id="productotamanio" value="' . $current['productotamanio'] . '" readonly /></p>';
-                    echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion"  value="' . $current['productodescripcion'] . '" readonly /></p>';
+                    echo '<p>Tamaño: <input type="text" name="tamanonombre" id="tamanonombre" value="' . $current['tamanonombre'] . '" readonly /></p>';
+                    echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion" value="' . $current['productodescripcion'] . '" readonly /></p>';
                     echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '" readonly /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                     echo '</form>';
@@ -70,11 +70,16 @@
 
                 echo '<form  action="../../business/productoaccion/ProductoAccion.php" method="Post">';
                 echo '<h2>Nuevo Productor</h2>';
-                echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo"></p>';
-                echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre"></p>';
-                echo '<p>Tamaño: <input type="text" name="productotamanio" id="productotamanio"></p>';
+                echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo" required></p>';
+                echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"></p>';
+                echo '<p>Tamaño: <select name = "combotamanio"></p>';
+                echo '<option ></option>';
+                echo '<option value = "Grande">Grande</option>';
+                echo '<option value = "Mediano">Mediano</option>';
+                echo '<option value = "Pequeno">Pequeño</option>';
+                echo '</select>';
                 echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion"></p>';
-                echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"></p>';
+                echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio" required pattern="[0-9]{3,5}"></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
                 echo '</form>';
                 break;
@@ -95,10 +100,10 @@
                     echo '<h2>Editar Productor</h2>';
                     echo '<input type="hidden" name="productoid" id="productoid"  value="' . $current['productoid'] . '"  readonly />';
                     echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/></p>';
-                    echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '"/></p>';
-                    echo '<p>Tamaño: <input type="text" name="productotamanio" id="productotamanio" value="' . $current['productotamanio'] . '"/></p>';
-                    echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion"  value="' . $current['productodescripcion'] . '"/></p>';
-                    echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '"/></p>';
+                    echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                    echo '<p>Tamaño: <input type="text" name="tamanonombre" id="tamanonombre" value="' . $current['tamanonombre'] . '"/></p>';
+                    echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion" value="' . $current['productodescripcion'] . '"/></p>';
+                    echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '" required pattern="[0-9]{3,5}"/></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }

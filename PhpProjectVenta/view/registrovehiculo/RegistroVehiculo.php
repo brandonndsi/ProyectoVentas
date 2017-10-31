@@ -40,7 +40,7 @@
                     <td><input type="text" name="vehiculomodelo"  class="vehiculomodelo" value="<?php echo $current['vehiculomodelo']; ?>" readonly /> </td>
 
                     <td><a href="?action=editar&id=<?php echo $current['vehiculoid']; ?> " class="btn btn-primary">Editar</a></td>
-                    <td><a href="?action=ver&id=<?php echo $current['vehiculoid']; ?> " class="btn btn-info">Buscar</a></td>
+                    <td><a href="?action=ver&id=<?php echo $current['vehiculoid']; ?> " class="btn btn-info">Ver mas</a></td>
                     <td><a href="?action=eliminar&id=<?php echo $current['vehiculoid']; ?> " class="btn btn-danger">Eliminar</a></td>
                 </tr> 
             <?php endforeach ?>
@@ -67,9 +67,9 @@
             case 'registrar':
                 echo '<form  action="../../business/vehiculoaccion/VehiculoAccion.php" method="Post">';
                 echo '<h2>Vehiculo nuevo</h2>';
-                echo '<p>Marca: <input type="text" name="vehiculomarca" id="vehiculomarca"  /></p>';
-                echo '<p>Placa: <input type="text" name="vehiculoplaca" id="vehiculoplaca"  /></p>';
-                echo '<p>Modelo: <input type="text" name="vehiculomodelo" id="vehiculomodelo"  /></p>';
+                echo '<p>Marca: <input type="text" name="vehiculomarca" id="vehiculomarca" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})" /></p>';
+                echo '<p>Placa: <input type="text" name="vehiculoplaca" id="vehiculoplaca" required /></p>';
+                echo '<p>Modelo: <input type="text" name="vehiculomodelo" id="vehiculomodelo" required pattern="[0-9]{4}" /></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
                 echo '</form>';
                 break;
@@ -89,9 +89,9 @@
                     echo '<form  action="../../business/vehiculoaccion/VehiculoAccion.php" method="Post">';
                     echo '<h2>Vehiculo editar</h2>';
                     echo '<input type="hidden" name="vehiculoid" id="vehiculoid" value="' . $current['vehiculoid'] . '" readonly/>';
-                    echo '<p>Marca: <input type="text" name="vehiculomarca" id="vehiculomarca" value="' . $current['vehiculomarca'] . '" /></p>';
+                    echo '<p>Marca: <input type="text" name="vehiculomarca" id="vehiculomarca" value="' . $current['vehiculomarca'] . '" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                     echo '<p>Placa: <input type="text" name="vehiculoplaca" id="vehiculoplaca"  value="' . $current['vehiculoplaca'] . '" /></p>';
-                    echo '<p>Modelo: <input type="text" name="vehiculomodelo" id="vehiculomodelo"  value="' . $current['vehiculomodelo'] . '" /></p>';
+                    echo '<p>Modelo: <input type="text" name="vehiculomodelo" id="vehiculomodelo"  value="' . $current['vehiculomodelo'] . '" required pattern="[0-9]{4}"/></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }
