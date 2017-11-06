@@ -18,17 +18,17 @@
 
                 <tr>
                 <td>    
-                <input name="personacorreo" type="emal" id="personacorreo" class="username" size="30" placeholder="Correo Electr&oacute;nico" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/>
+                <input name="correo" type="emal" id="correo" class="username" size="30" placeholder="Correo Electr&oacute;nico" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/>
                 </td>
                 </tr>
                 <tr>
                 <td>     
-                <input name="empleadocontrasenia" type="password" id="empleadocontrasenia" class="password" size="30" placeholder="Contrase&ntilde;a" required/>
+                <input name="contrasenia" type="password" id="contrasenia" class="password" size="30" placeholder="Contrase&ntilde;a" required/>
                 </td>
                 </tr>
                 <tr>
                 <td >
-                <button type="submit" class="btn btn-success"name="Submit">Iniciar Sesi&oacute;n</button>
+                <button type="submit" class="btn btn-success"name="Entrar">Iniciar Sesi&oacute;n</button>
                 </td>
                 </tr>
             </table>

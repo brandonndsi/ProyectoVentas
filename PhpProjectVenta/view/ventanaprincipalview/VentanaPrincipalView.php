@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Express djb </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <!--CSS-->    
     <link rel="stylesheet" href="../../css/estilo.css">
 
@@ -16,10 +15,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="calltoaction-wrapper">
-                            <h3>Pagina oficial <span style="color:#ff6600; text-transform:uppercase;font-size:24px;">ventas express</span> <a href="../../business/sesionaccion/SesionDesconectarAccion.php" class="btn btn-danger" >Cerrar Sesion</a></h3> 
+                            <h3>Pagina oficial <span style="color:#ff6600; text-transform:uppercase;font-size:24px;">ventas express</span>
+                                <a href="../../business/sesionaccion/SesionDesconectarAccion.php" class="btn btn-danger" >Cerrar Sesion</a></h3> 
                             <?php
                             session_start();
-                            $nombrePersona = $_SESSION['personanombre'];
+                            $nombrePersona = $_SESSION['nombrePersona'];
                             ?>
                             <h3>Bienvenid@</h3>
                             <?php
