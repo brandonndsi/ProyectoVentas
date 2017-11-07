@@ -35,6 +35,7 @@
     <ul>    
         <li><a href="../ventaview/VentaView.php" target="_parent" class="btn btn-info">Realizar una Venta</a></li>
         <li><a href="../compraview/CompraView.php" target="_parent" class="btn btn-info">Registrar Compra</a></li>
+        <li><a href="../ordencompraview/OrdenCompraView.php" target="_parent" class="btn btn-info">Orden de Compra</a></li>
         <li><a href="../facturaventa/FacturaVenta.php" target="_parent" class="btn btn-info">Mostrar Facturas</a></li>
         <li><a href="../registroempleado/RegistroEmpleado.php" target="_parent" class="btn btn-info">Empleados</a></li>
         <li><a href="../tipoempleadoview/TipoEmpleadoView.php" target="_parent" class="btn btn-info">Tipos de Empleados</a></li>
@@ -45,6 +46,7 @@
         <li><a href="../registromateriaprima/RegistroMateriaPrima.php" target="_parent" class="btn btn-info">Bodega</a></li>
         <li><a href="../registrozona/RegistroZona.php" target="_parent" class="btn btn-info">Zonas</a></li>
         <li><a href="../registrovehiculo/RegistroVehiculo.php" target="_parent" class="btn btn-info">Vehiculos</a></li>
+       
     </ul>
 </body>
 </html>

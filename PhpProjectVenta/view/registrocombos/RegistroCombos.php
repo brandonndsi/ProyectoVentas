@@ -38,7 +38,7 @@
                 <tr><td><input type="hidden" name="combosid" id="combosid" value="<?php echo $current['combosid']; ?>"></td>
                     <td><input type="text" id="combocodigo" name="combocodigo" class="combocodigo"  value="<?php echo $current['combocodigo']; ?>" readonly/> </td>
                     <td><input type="text" id="combonombre" name="combonombre" class="combonombre" value="<?php echo $current['combonombre']; ?>" readonly/> </td>
-                    <td><input type="text" id="combosproductoid" name="combosproductoid" class="combosproductoid" value="<?php echo $current['comboingredientes']; ?>" readonly/> </td>
+                    <td><input type="text" id="comboingredientes" name="comboingredientes" class="comboingredientes" value="<?php echo $current['comboingredientes']; ?>" readonly/> </td>
                     <td><input type="text" id="comboprecio" name="comboprecio" class="comboprecio" value="<?php echo $current['comboprecio']; ?>" readonly/> </td>
 
                     <td><a href="?action=editar&id=<?php echo $current['combosid']; ?> " class="btn btn-primary">Editar</a></td>
@@ -60,7 +60,7 @@
                     echo '<h2>Datos del combo</h2>';
                     echo '<p>Codigo: <input type="text" name="combocodigo" id="combocodigo" value="' . $current['combocodigo'] . '" readonly /></p>';
                     echo '<p>Nombre: <input type="text" name="combonombre" id="combonombre" value="' . $current['combonombre'] . '" readonly /></p>';
-                    echo '<p>Ingredientes: <input type="text" name="combosproductoid" id="combosproductoid" value="' . $current['combosproductoid'] . '" readonly /></p>';
+                    echo '<p>Ingredientes: <input type="text" name="comboingredientes" id="comboingredientes" value="' . $current['comboingredientes'] . '" readonly /></p>';
                     echo '<p>Precio: <input type="text" name="comboprecio" id="comboprecio"  value="' . $current['comboprecio'] . '" readonly /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                     echo '</form>';
@@ -71,17 +71,17 @@
 
                 echo '<form  action="../../business/comboaccion/ComboAccion.php" method="Post">';
                 echo '<h2>Nuevo Combo</h2>';
-                echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo" required></p>';
-                echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"></p>';
-                echo '<p>Ingredientes: <input type="text" name="combosproductoid" id="combosproductoid"></p>';
-                echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio" required pattern="[0-9]{3,5}"></p>';
+                echo '<p>Codigo: <input type="text" name="combocodigo" id="combocodigo" required></p>';
+                echo '<p>Nombre: <input type="text" name="combonombre" id="combonombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"></p>';
+                echo '<p>Ingredientes: <input type="text" name="comboingredientes" id="comboingredientes"></p>';
+                echo '<p>Precio: <input type="text" name="comboprecio" id="comboprecio" required pattern="[0-9]{3,5}"></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
                 echo '</form>';
                 break;
 
             case 'eliminar':
 
-                $comboBusiness->eliminarCombo($_REQUEST['id']);
+                $comboBusiness->eliminarCombo($_REQUEST['combosid']);
 
                 header('Location: RegistroCombos.php');
 
@@ -93,11 +93,11 @@
                 foreach ($proObtenida as $current) {
                     echo '<form  action="../../business/comboaccion/ComboAccion.php" method="Post">';
                     echo '<h2>Editar Combo</h2>';
-                    echo '<input type="hidden" name="productoid" id="productoid"  value="' . $current['productoid'] . '"  readonly />';
-                    echo '<p>Codigo: <input type="text" name="productocodigo" id="productocodigo" value="' . $current['productocodigo'] . '"/></p>';
-                    echo '<p>Nombre: <input type="text" name="productonombre" id="productonombre" value="' . $current['productonombre'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
-                    echo '<p>Nombre: <input type="text" name="combosproductoid" id="combosproductoid" value="' . $current['combosproductoid'] . '"/></p>';
-                    echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '" required pattern="[0-9]{3,5}"/></p>';
+                    echo '<input type="hidden" name="combosid" id="combosid"  value="' . $current['combosid'] . '"  readonly />';
+                    echo '<p>Codigo: <input type="text" name="combocodigo" id="combocodigo" value="' . $current['combocodigo'] . '"/></p>';
+                    echo '<p>Nombre: <input type="text" name="combonombre" id="combonombre" value="' . $current['combonombre'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
+                    echo '<p>Ingredientes: <input type="text" name="comboingredientes" id="comboingredientes" value="' . $current['comboingredientes'] . '"/></p>';
+                    echo '<p>Precio: <input type="text" name="comboprecio" id="comboprecio"  value="' . $current['comboprecio'] . '" required pattern="[0-9]{3,5}"/></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }

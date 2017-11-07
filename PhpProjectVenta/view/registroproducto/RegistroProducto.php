@@ -9,7 +9,7 @@
     <!--CSS-->    
     <link rel="stylesheet" href="../../css/estilo.css">
     <link rel="stylesheet" href="../../css/menu.css" >
-    
+
     <?php
     include '../../business/productobusiness/ProductoBusiness.php';
     ?>

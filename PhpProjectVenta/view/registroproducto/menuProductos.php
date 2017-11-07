@@ -16,9 +16,9 @@
                         class="active"><a href="#" class="btn btn-warning" >Opciones <span style="font-size:16px;"></span></a>
                     </li>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="../registrocategoriaproducto/RegistroCategoriaProducto.php" target="_parent" class="btn btn-info">Categoria de Productos</a></li>
-                        <li><a href="../registrotamanioproducto/RegistroTamanioProducto.php" target="_parent" class="btn btn-info">Tamaño de Productos</a></li>
-                        <li><a href="../registrotipoproducto/RegistroTipoProducto.php" target="_parent" class="btn btn-info">Tipo de Productos</a></li>
+                        <li><a href="../registrocategoriaproductoview/RegistroCategoriaProductoView.php" target="_parent" class="btn btn-info">Categoria de Productos</a></li>
+                        <li><a href="../registrotamanioproductoview/RegistroTamanioProductoView.php" target="_parent" class="btn btn-info">Tamaño de Productos</a></li>
+                        <li><a href="../registrotipoproductoview/RegistroTipoProductoView.php" target="_parent" class="btn btn-info">Tipo de Productos</a></li>
                     </ul>  
                 </ul>
             </div>

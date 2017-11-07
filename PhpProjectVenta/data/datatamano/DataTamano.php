@@ -39,7 +39,7 @@ class DataTamano {
     }
 
     //eliminar tamanos
-    /*public function eliminarTamano($tamano) {
+    public function eliminarTamano($tamanoid) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
@@ -48,7 +48,7 @@ class DataTamano {
             return $eliminarTamano;
         }
     }
-*/
+
     //buscar Tamaños
     public function buscarTamano($tamanoid) {
 
