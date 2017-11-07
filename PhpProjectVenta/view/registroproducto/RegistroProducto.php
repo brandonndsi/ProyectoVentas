@@ -9,7 +9,7 @@
     <!--CSS-->    
     <link rel="stylesheet" href="../../css/estilo.css">
     <link rel="stylesheet" href="../../css/menu.css" >
-
+    
     <?php
     include '../../business/productobusiness/ProductoBusiness.php';
     ?>
@@ -33,7 +33,6 @@
             <div class="form-group">
                 <center><h2>Lista de los Productos.
                         <a href="?action=registrar" class="btn btn-primary">Nuevo Producto</a>
-                        <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a> 
                     </h2></center>
 
                 <center><form  action="../../business/productoaccion/ProductoAccion.php" method="Post" >
