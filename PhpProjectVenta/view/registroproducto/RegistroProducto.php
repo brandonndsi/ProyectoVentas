@@ -29,9 +29,8 @@
 
     <div class="col-sm-7 col-md-7">
         <div class="well panel panel-info">
-            <center><h1 >AGREGAR VENTA </h1></center>
             <div class="form-group">
-                <center><h2>Lista de los Productos.
+                <center><h2>Lista de los Productos
                         <a href="?action=registrar" class="btn btn-primary">Nuevo Producto</a>
                     </h2></center>
 
@@ -73,6 +72,7 @@
                             echo '<p>Tamaño: <input type="text" name="tamanonombre" id="tamanonombre" value="' . $current['tamanonombre'] . '" readonly /></p>';
                             echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion" value="' . $current['productodescripcion'] . '" readonly /></p>';
                             echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '" readonly /></p>';
+                            echo '<p>Imagen: <input type="text" name="productoimagen" id="productoimagen" value="' . $current['productoimagen'] . '" readonly /></p>';
                             echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                             echo '</form>';
                         }
@@ -92,6 +92,7 @@
                         echo '</select>';
                         echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion"></p>';
                         echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio" required pattern="[0-9]{3,5}"></p>';
+                        echo '<p>Imagen: <input type="text" name="productoimagen" id="productoimagen"></p>';
                         echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                         echo '</form>';
                         break;
@@ -116,6 +117,7 @@
                             echo '<p>Tamaño: <input type="text" name="tamanonombre" id="tamanonombre" value="' . $current['tamanonombre'] . '"/></p>';
                             echo '<p>Descripcion: <input type="text" name="productodescripcion" id="productodescripcion" value="' . $current['productodescripcion'] . '"/></p>';
                             echo '<p>Precio: <input type="text" name="productoprecio" id="productoprecio"  value="' . $current['productoprecio'] . '" required pattern="[0-9]{3,5}"/></p>';
+                            echo '<p>Imagen: <input type="text" name="productoimagen" id="productoimagen" value="' . $current['productoimagen'] . '" /></p>';
                             echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                             echo '</form>';
                         }
