@@ -86,10 +86,7 @@ class DataZona {
 
             $array = array();
 
-            $mostrarzonas = $this->conexion->crearConexion()->query("SELECT  `zonaid`,`zonanombre`, 
-            `zonaprecio` 
-            FROM `tbzonas` WHERE
-            zonaestado=1;");
+            $mostrarzonas = $this->conexion->crearConexion()->query("SELECT * FROM `tbzonas` WHERE zonaestado=1");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarzonas->fetch_assoc()) {
@@ -103,7 +100,7 @@ class DataZona {
 }
 /*$dat= new DataZona();
 $da = new Zonas(null,"david","123");
-$d = $dat->insertarZona($da);
+$d = $dat->mostrarzona();
 print_r($d);*/
 
 ?>
