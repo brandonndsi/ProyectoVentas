@@ -33,18 +33,23 @@ class DataCombo {
     public function modificarCombo($combo){
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
-
-            $modificarCombo = "UPDATE `tbcombos` SET 
+            $modificarCombo=$this->conexion->crearConexion()->query("UPDATE `tbcombos` SET
+             `combocodigo`='".$combo->getComboCodigo()."',
+             `combonombre`='".$combo->getComboNombre()."',
+             `combosproductoid`='".$combo->getComboproductoid()."',
+             `comboingredientes`='".$combo->getComboIngredientes()."',
+             `comboprecio`='".$combo->getComboPrecio()."',
+             `comboestado`='".$combo->getComboestado()."' 
+             WHERE combosid='".$combo->getComboid()."'");
+            /* "UPDATE `tbcombos` SET 
             `comboproductoid`='".$combo->getComboproductoid()."'
-             WHERE combosid='".$combo->getComboid() ."'";
+             WHERE combosid='".$combo->getComboid() ."'";*/
 
-            $result = mysql_query($modificarCombo);
+            $result = $modificarCombo;
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
+            
                 return $result;
-            }
+            
         }
     }
 

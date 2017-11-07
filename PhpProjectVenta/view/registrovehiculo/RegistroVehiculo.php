@@ -70,7 +70,7 @@
                 echo '<p>Marca: <input type="text" name="vehiculomarca" id="vehiculomarca" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})" /></p>';
                 echo '<p>Placa: <input type="text" name="vehiculoplaca" id="vehiculoplaca" required /></p>';
                 echo '<p>Modelo: <input type="text" name="vehiculomodelo" id="vehiculomodelo" required pattern="[0-9]{4}" /></p>';
-                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
 
