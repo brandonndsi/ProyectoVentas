@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2017 a las 01:57:44
+-- Tiempo de generación: 07-11-2017 a las 05:05:40
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -401,6 +401,26 @@ INSERT INTO `tbtamano` (`tamanoid`, `tamanonombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbtipo`
+--
+
+CREATE TABLE `tbtipo` (
+  `tipoid` int(11) NOT NULL,
+  `tiponombre` varchar(50) NOT NULL,
+  `tipoestado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbtipo`
+--
+
+INSERT INTO `tbtipo` (`tipoid`, `tiponombre`, `tipoestado`) VALUES
+(1, 'pepsi', 1),
+(2, 'coca cola', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbtipoempleados`
 --
 
@@ -487,7 +507,7 @@ INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculomarca`, `vehiculoplaca`, `vehi
 (2, 'TOYOTA', '2568955', '2018', '1'),
 (3, 'Honda', '4432', '2000', '0'),
 (4, 'honda', '3432', '2000', '0'),
-(5, 'juancho', '4234', '2012', '1');
+(5, 'MISUBICHI', 'lk789', '1999', '1');
 
 -- --------------------------------------------------------
 
@@ -513,7 +533,9 @@ INSERT INTO `tbzonas` (`zonaid`, `zonanombre`, `zonaprecio`, `zonaestado`) VALUE
 (4, 'Finca11', 500, 1),
 (5, 'San ramon', 2500, 1),
 (6, 'puerto gimenes', 2000, 1),
-(7, 'rio ginenes', 2800, 1);
+(7, 'RÃ­o gimenes', 2800, 1),
+(8, 'Las palmitas', 1500, 1),
+(9, 'rr', 432, 1);
 
 --
 -- Índices para tablas volcadas
@@ -623,6 +645,12 @@ ALTER TABLE `tbtamano`
   ADD PRIMARY KEY (`tamanoid`);
 
 --
+-- Indices de la tabla `tbtipo`
+--
+ALTER TABLE `tbtipo`
+  ADD PRIMARY KEY (`tipoid`);
+
+--
 -- Indices de la tabla `tbtipoempleados`
 --
 ALTER TABLE `tbtipoempleados`
@@ -725,6 +753,12 @@ ALTER TABLE `tbtamano`
   MODIFY `tamanoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `tbtipo`
+--
+ALTER TABLE `tbtipo`
+  MODIFY `tipoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
 ALTER TABLE `tbtipomateriasprimas`
@@ -746,7 +780,7 @@ ALTER TABLE `tbvehiculos`
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
