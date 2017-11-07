@@ -27,7 +27,7 @@ class comboBusiness{
     
     //se encarga de eliminar el combo de la tabla.
     public function eliminarCombo($comboid) {
-        return $this->DataCombo->elimiarCombo($comboid);
+        return $this->DataCombo->eliminarCombo($comboid);
     }
     
     //se encarga de realizar la consulta y retornar todos los combos

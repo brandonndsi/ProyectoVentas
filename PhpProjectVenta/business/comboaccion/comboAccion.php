@@ -2,20 +2,25 @@
 /**
  * Description of comboAccion
  *
- * @author Juancho
+ * @author Juancho modificado por david ese troll solo hiso copia y pege
  */
 include '../../domain/combo/Combo.php';
 if (isset($_POST['nuevo'])) {
 
-    if (isset($_POST['productoid']) && isset($_POST['combonombre']) && isset($_POST['comboprecio'])) {
+    if (isset($_POST['combocodigo']) && isset($_POST['combonombre']) 
+        && isset($_POST['comboprecio'])&& isset($_POST['comboprecio'])) {
 
-        $productoid = $_POST['productoid'];
+        $combocodigo = $_POST['combocodigo'];
+    $combonombre = $_POST['combonombre'];
+    $comboingredientes = $_POST['comboingredientes'];
+    $comboprecio = $_POST['comboprecio'];
 
-        if (strlen($productoid) > 0 && strlen($combonombre) > 0 && strlen($comboprecio) > 0) {
+        if (strlen($combocodigo) > 0 && strlen($combonombre) > 0 
+            && strlen($comboingredientes) > 0 && strlen($comboprecio) > 0) {
             
-                $combo = new Combos(null, $combonombre, $comboprecio);
-
-                $combo->setProductoid($productoid);
+                //$combo = new Combos(null, $combonombre, $comboprecio);
+                $combo = new Combo(null,$combocodigo,$combonombre,null,null,$comboprecio,1);
+                //$combo->setProductoid($productoid);
 
 
                 include '../combobusiness/comboBusiness.php';
@@ -36,20 +41,22 @@ if (isset($_POST['nuevo'])) {
      * Verifica si la accion es la de actualizar los datos del combo
      */
 } else if (isset($_POST['actualizar'])) {
-    if (isset($_POST['comboid']) && isset($_POST['productoid']) 
-        && isset($_POST['combonombre']) && isset($_POST['comboprecio'])) {
+    if (isset($_POST['combocodigo']) && isset($_POST['combonombre']) 
+        && isset($_POST['comboprecio'])&& isset($_POST['comboprecio'])) {
 
-        $comboid = $_POST['comboid'];
-        $productoid = $_POST['productoid'];
-        $combonombre = $_POST['combonombre'];
-        $comboprecio = $_POST['comboprecio'];
+        $combocodigo = $_POST['combocodigo'];
+    $combonombre = $_POST['combonombre'];
+    $comboingredientes = $_POST['comboingredientes'];
+    $comboprecio = $_POST['comboprecio'];
 
-        if (strlen($comboid) > 0 && strlen($productoid) > 0 && strlen($combonombre) > 0 && strlen($comboprecio) > 0 ) {
-            if (is_numeric($comboid)) {
+        if (strlen($combocodigo) > 0 && strlen($combonombre) > 0 
+            && strlen($comboingredientes) > 0 && strlen($comboprecio) > 0) {
+            
+            if (is_numeric($comboprecio)) {
 
-                $combo = new Combos($comboid, "", $combonombre, $comboprecio);
+                $combo = new Combo(null,$combocodigo,$combonombre,null,null,$comboprecio,1);
 
-                $combo->setProductoid($productoid);
+                //$combo->setProductoid($productoid);
 
                 include '../combobusiness/comboBusiness.php';
 

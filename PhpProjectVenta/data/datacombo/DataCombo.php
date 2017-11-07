@@ -6,7 +6,7 @@ class DataCombo {
 
     function DataCombo() {
         include_once '../../data/dbconexion/Conexion.php';
-        include_once '../..//domain/combo/Combo.php';
+        include_once '../../domain/combo/Combo.php';
         $this->conexion = new Conexion();
     }
 
@@ -58,15 +58,13 @@ class DataCombo {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarCombo = "UPDATE `tbcombos` SET `comboestado`=0 WHERE combosid='".$comboid."';";
+            $eliminarCombo = "UPDATE `tbcombos` SET `comboestado`= 0 WHERE combosid='".$comboid."';";
 
-            $result = mysql_query($eliminarCombo);
+            //$result = mysql_query($eliminarCombo);
             $this->conexion->cerrarConexion();
-            if (!$result) {
-                return false;
-            } else {
-                return $result;
-            }
+           
+                return $eliminarCombo;
+            
         }
     }
 
