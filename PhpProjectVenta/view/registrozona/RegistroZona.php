@@ -72,7 +72,7 @@
                 echo '<h2>Nueva Zona</h2>';
                 echo '<p>Nombre: <input type="text" name="zonanombre" id="zonanombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"></p>';
                 echo '<p>Precio: <input type="text" name="zonaprecio" id="zonaprecio" required pattern="[0-9]{3,5}"></p>';
-                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
 
