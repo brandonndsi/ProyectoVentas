@@ -4,7 +4,7 @@
 /**
  * Description of tipoBusiness
  *
- * @author Juancho
+ * @author Juancho modificado por david el problema es que las variable de este mae no consistian con las de la data y por ende tube que modificarla
  */
 class tipoBusiness {
    
@@ -17,7 +17,7 @@ class tipoBusiness {
         
     }    
     //se encarga de introducir el nuevo tipo
-    public function insertarTipo($tipo) {
+    public function insertaTipo($tipo) {
         return $this->DataTipo->insertarTipo($tipo);
     }
     
@@ -32,8 +32,8 @@ class tipoBusiness {
     }
     
     //se encarga de seleccionar todo los datos del tipo.
-    public function mostrartipos() {
-        return $this->Datatipo->mostrarTipos();
+    public function mostrarTipo() {
+        return $this->Datatipo->mostrarTipo();
     }
     
     //se encarga de la busqueda de tipos en la base de datos.

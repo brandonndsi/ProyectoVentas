@@ -91,7 +91,7 @@ if (isset($_POST['nuevo'])) {
 
         $tipoBusiness = new tipoBusiness();
 
-        $result = $tipoBusiness->buscartipo($tipo);
+        $result = $tipoBusiness->buscarTipo($tipo);
 
         return $result;
     } else {
