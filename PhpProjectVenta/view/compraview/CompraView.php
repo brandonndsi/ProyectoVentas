@@ -25,8 +25,6 @@
         <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a>
     </h2>  
 
-
-
     <table border ="1">
         <thead>
             <tr>

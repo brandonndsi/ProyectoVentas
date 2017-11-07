@@ -29,7 +29,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Codigo</th>
+                    <th>ID</th>
                     <th>Nombre</th>
                 </tr>
             </thead>
@@ -54,8 +54,8 @@
                 $categoriaObtenida = $tamanioBusiness->buscarCategoriaProducto($_REQUEST['id']);
                 foreach ($categoriaObtenida as $current) {
                     echo '<form  action="RegistroCategoriaProductoView.php" method="Post">';
-                    echo '<h2>Datos de la Categoria</h2>';
-                    echo '<p>Codigo: <input type="text" name="tamanoid" id="tamanoid" value="' . $current['tamanoid'] . '" readonly /></p>';
+                    echo '<h2>Tamanos de Productos</h2>';
+                    echo '<p>ID: <input type="text" name="tamanoid" id="tamanoid" value="' . $current['tamanoid'] . '" readonly /></p>';
                     echo '<p>Nombre: <input type="text" name="tamanonombre" id="tamanonombre" value="' . $current['tamanonombre'] . '" readonly /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                     echo '</form>';
@@ -65,7 +65,7 @@
             case 'registrar':
 
                 echo '<form  action="../../business/tamanioaccion/tamanioAccion.php" method="Post">';
-                echo '<h2>Nueva Categoria</h2>';
+                echo '<h2>Nuevo</h2>';
                 echo '<p>Nuevo: <input type="text" name="tamanonombre" id="tamanonombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
@@ -84,7 +84,7 @@
                 $proObtenida = $tamanioBusiness->modificarTamanio($_REQUEST['id']);
                 foreach ($proObtenida as $current) {
                     echo '<form  action="../../business/tamanioaccion/tamanioAccion.php" method="Post">';
-                    echo '<h2>Editar Categoria</h2>';
+                    echo '<h2>Editar</h2>';
                     echo '<input type="hidden" name="tamanoid" id="tamanoid"  value="' . $current['tamanoid'] . '"  readonly />';
                     echo '<p>Ingrese uno Nuevo: <input type="text" name="tamanonombre" id="tamanonombre" value="' . $current['tamanonombre'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';

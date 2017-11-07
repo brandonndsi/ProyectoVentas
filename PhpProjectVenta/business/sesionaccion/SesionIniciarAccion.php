@@ -19,7 +19,7 @@ if (isset($_POST["Entrar"])) {
             if ($current['tipoempleado'] == "Administrador") {
                 header("Location: ../../view/ventanaprincipalview/VentanaPrincipalView.php");
             } else {
-                header("Location: ../../view/ventanaprincipalCajeroview/ventanaprincipalCajeroview.php");
+                header("Location: ../../view/ventanaprincipalusuarioview/ventanaprincipalUsuarioview.php");
             }
         endforeach;
     } else {// si no no entra

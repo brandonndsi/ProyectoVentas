@@ -21,6 +21,7 @@
 
     <h2>Combos.
         <a href="?action=registrar" class="btn btn-primary">Nuevo Producto</a>
+        <a href="../registroproducto/RegistroProducto.php" class="btn btn-warning">Atras</a> 
         <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a> 
     </h2>
     
@@ -75,7 +76,7 @@
                 echo '<p>Nombre: <input type="text" name="combonombre" id="combonombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"></p>';
                 echo '<p>Ingredientes: <input type="text" name="comboingredientes" id="comboingredientes"></p>';
                 echo '<p>Precio: <input type="text" name="comboprecio" id="comboprecio" required pattern="[0-9]{3,5}"></p>';
-                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
 

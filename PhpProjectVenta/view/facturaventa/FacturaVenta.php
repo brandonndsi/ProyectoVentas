@@ -110,7 +110,7 @@
                 echo '<p>Fecha: <input type="text" name="facturafecha" id="facturafecha"/></p>';
                 echo '<p>Bruto: <input type="text" name="facturabruto" id="facturabruto"/></p>';
                 echo '<p>Neto: <input type="text" name="facturaneto" id="facturaneto"/></p>';
-                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
         }

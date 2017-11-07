@@ -19,6 +19,7 @@
                         <li><a href="../registrocategoriaproductoview/RegistroCategoriaProductoView.php" target="_parent" class="btn btn-info">Categoria de Productos</a></li>
                         <li><a href="../registrotamanioproductoview/RegistroTamanioProductoView.php" target="_parent" class="btn btn-info">Tamaño de Productos</a></li>
                         <li><a href="../registrotipoproductoview/RegistroTipoProductoView.php" target="_parent" class="btn btn-info">Tipo de Productos</a></li>
+                        <li><a href="../registrocombos/RegistroCombos.php" target="_parent" class="btn btn-info">Combos</a></li>
                     </ul>  
                 </ul>
             </div>

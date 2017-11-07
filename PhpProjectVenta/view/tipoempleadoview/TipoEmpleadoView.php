@@ -77,7 +77,7 @@
                 echo '<p>Salario Base: <input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase" required pattern="[0-9]{2,7}"/></p>';
                 echo '<p>Descripcion: <input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion" required/></p>';
                 echo '<p>Hora Extra: <input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra" required pattern="[0-9]{2,4}"/></p>';
-                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
 

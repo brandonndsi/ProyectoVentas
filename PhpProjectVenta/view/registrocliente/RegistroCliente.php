@@ -82,7 +82,7 @@
                 echo '<p>Correo: <input type="email" name="personacorreo" id="personacorreo" placeholder="empleado@express.com pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/></p>';
                 echo '<p>Zona Id: <input type="text" name="zonaid" id="zonaid" required/></p>';
                 echo '<p>Direccion: <textarea name="clientedireccionexacta" id="clientedireccionexacta" rows="4" cols="50" form="formregistro" ></textarea></p>';
-                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
 

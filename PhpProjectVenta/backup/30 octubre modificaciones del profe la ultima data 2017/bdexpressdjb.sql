@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2017 a las 03:44:48
+-- Tiempo de generación: 31-10-2017 a las 17:46:16
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -304,6 +304,13 @@ INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `per
 (20, 'Ruben', 'chaves', 'angulo', 236423, 'rubrxk@hotmai.com', '2', 1),
 (21, 'keneth', 'flores', 'rivera', 34534634, 'askjdhas@hot.com', '1', 1),
 (22, 'juan', 'roas', 'fernds', 2133342, 'jarofe@mail.com', 'Z1', 1),
+(23, '', '', '', 0, '', '', 1),
+(24, '', '', '', 0, '', '', 1),
+(25, '', '', '', 0, '', '', 1),
+(26, '', '', '', 0, '', '', 1),
+(27, '', '', '', 0, '', '', 1),
+(28, '', '', '', 0, '', '', 1),
+(29, '', '', '', 0, '', '', 1),
 (30, 'we', 'wreew', 'wer', 32433242, 'ewrew@gmail.com', '23r', 1),
 (31, 'natalia', 'angulo', 'aguilera', 78906785, 'natalia@gmail.com', '2', 1);
 
@@ -401,18 +408,6 @@ INSERT INTO `tbtamano` (`tamanoid`, `tamanonombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbtipo`
---
-
-CREATE TABLE `tbtipo` (
-  `tipoid` int(11) NOT NULL,
-  `tiponombre` varchar(50) NOT NULL,
-  `tipoestado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `tbtipoempleados`
 --
 
@@ -495,11 +490,10 @@ CREATE TABLE `tbvehiculos` (
 --
 
 INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculomarca`, `vehiculoplaca`, `vehiculomodelo`, `vehiculoestado`) VALUES
-(1, 'YAMAHA', '12845', 'ybr-150', '1'),
+(1, 'YAMAHA', '12845', 'ybr-150', '0'),
 (2, 'TOYOTA', '2568955', '2018', '1'),
-(3, 'Honda', '4432', '2000', '0'),
-(4, 'honda', '3432', '2000', '0'),
-(5, 'MISUBICHI', 'lk789', '1999', '1');
+(3, 'Honda', '9321', '2000', '1'),
+(4, 'honda', '3432', '2000', '0');
 
 -- --------------------------------------------------------
 
@@ -519,14 +513,13 @@ CREATE TABLE `tbzonas` (
 --
 
 INSERT INTO `tbzonas` (`zonaid`, `zonanombre`, `zonaprecio`, `zonaestado`) VALUES
-(1, 'PuertoViejo', 1500, 0),
-(2, 'Horquetas', 1000, 0),
-(3, 'Finca6', 1000, 0),
+(1, 'PuertoViejo', 2012, 0),
+(2, 'Horquetas', 1000, 1),
+(3, 'Finca6', 1000, 1),
 (4, 'Finca11', 500, 0),
-(5, 'San ramon', 2500, 0),
-(6, 'puerto gimenes', 2000, 0),
-(7, 'RÃ­o gimenes', 2800, 0),
-(8, 'Las palmitas', 1500, 0);
+(5, 'david', 123, 0),
+(6, 'david', 123, 0),
+(7, 'rio ginenes', 123, 0);
 
 --
 -- Índices para tablas volcadas
@@ -636,12 +629,6 @@ ALTER TABLE `tbtamano`
   ADD PRIMARY KEY (`tamanoid`);
 
 --
--- Indices de la tabla `tbtipo`
---
-ALTER TABLE `tbtipo`
-  ADD PRIMARY KEY (`tipoid`);
-
---
 -- Indices de la tabla `tbtipoempleados`
 --
 ALTER TABLE `tbtipoempleados`
@@ -744,12 +731,6 @@ ALTER TABLE `tbtamano`
   MODIFY `tamanoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `tbtipo`
---
-ALTER TABLE `tbtipo`
-  MODIFY `tipoid` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
 ALTER TABLE `tbtipomateriasprimas`
@@ -765,13 +746,13 @@ ALTER TABLE `tbunidades`
 -- AUTO_INCREMENT de la tabla `tbvehiculos`
 --
 ALTER TABLE `tbvehiculos`
-  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

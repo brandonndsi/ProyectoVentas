@@ -148,7 +148,7 @@
                 echo '<option value = "E2">E2</option>';
                 echo '  </select>';
                 echo '<p>Licencia Vigencia: <input type="date" name="Vigencia" step="1" min="2017-01-01" max="2050-12-31" value="0000-00-00"></p>';
-                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
 

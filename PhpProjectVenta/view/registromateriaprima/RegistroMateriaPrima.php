@@ -88,7 +88,7 @@
                 echo '<option value = "Bolsas">Bolsas</option>';
                 echo '  </select>';
                 echo '<p>Precio: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio" required pattern="[0-9]{2,7}"/></p>';
-                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="registrar" id="registrar"/></p>';
+                echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
 

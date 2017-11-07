@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2017 a las 05:05:40
--- Versión del servidor: 10.1.26-MariaDB
--- Versión de PHP: 7.1.9
+-- Tiempo de generación: 07-11-2017 a las 05:26:40
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -189,8 +187,8 @@ CREATE TABLE `tbempleados` (
 --
 
 INSERT INTO `tbempleados` (`empleadoid`, `personaid`, `tipoempleado`, `empleadocedula`, `empleadofechaingreso`, `empleadocontrasenia`, `empleadoedad`, `empleadosexo`, `empleadoestadocivil`, `empleadobanco`, `empleadocuentabancaria`, `empleadolicenciaid`, `empleadoestado`) VALUES
-(1, '19', 'Secretaria', '206990365', '2017-10-03', '12345', '23', 'f', 'soltera', 'Nacional', '256889871', '1', '0'),
-(2, '3', 'Administrador', '207890584', '2017-10-01', '12345', '48', 'm', 'soltero', 'Costa rica', '78965542458', '2', '1');
+(1, '1', 'Administrador', '206990365', '2017-10-03', 'Prueba12', '23', 'f', 'soltera', 'Nacional', '256889871', '1', '1'),
+(2, '3', 'Motorisado', '207890584', '2017-10-01', '12345', '48', 'm', 'soltero', 'Costa rica', '78965542458', '2', '1');
 
 -- --------------------------------------------------------
 
@@ -691,98 +689,81 @@ ALTER TABLE `tbzonas`
 --
 ALTER TABLE `tbcategoriaproducto`
   MODIFY `categoriaproductoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT de la tabla `tbclientes`
 --
 ALTER TABLE `tbclientes`
   MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
 --
 -- AUTO_INCREMENT de la tabla `tbcombos`
 --
 ALTER TABLE `tbcombos`
   MODIFY `combosid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT de la tabla `tbcombosproductos`
 --
 ALTER TABLE `tbcombosproductos`
   MODIFY `combosproductosid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT de la tabla `tbmateriasprimas`
 --
 ALTER TABLE `tbmateriasprimas`
   MODIFY `materiaprimaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT de la tabla `tbmillas`
 --
 ALTER TABLE `tbmillas`
   MODIFY `millaid` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT de la tabla `tbpersonas`
 --
 ALTER TABLE `tbpersonas`
   MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
 --
 -- AUTO_INCREMENT de la tabla `tbpreferencias`
 --
 ALTER TABLE `tbpreferencias`
   MODIFY `preferenciasid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT de la tabla `tbproductos`
 --
 ALTER TABLE `tbproductos`
   MODIFY `productoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT de la tabla `tbproveedores`
 --
 ALTER TABLE `tbproveedores`
   MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT de la tabla `tbtamano`
 --
 ALTER TABLE `tbtamano`
   MODIFY `tamanoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT de la tabla `tbtipo`
 --
 ALTER TABLE `tbtipo`
   MODIFY `tipoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
 --
 ALTER TABLE `tbtipomateriasprimas`
   MODIFY `tipomateriaprimaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT de la tabla `tbunidades`
 --
 ALTER TABLE `tbunidades`
   MODIFY `unidadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT de la tabla `tbvehiculos`
 --
 ALTER TABLE `tbvehiculos`
   MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
   MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
