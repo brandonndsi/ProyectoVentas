@@ -14,6 +14,7 @@ class MateriasPrimas {
     private $materiaprimatipoid;
     private $materiaprimacantidad;
     private $materiaprimacodigo;
+    private $materiaprimaultimacompra;
    
 
     public function MateriasPrimas($materiaprimaid,$materiaprimacodigo, $materiaprimanombre, $materiaprimaprecio, $materiaprimacantidad, $materiaprimatipoid) {
@@ -23,8 +24,12 @@ class MateriasPrimas {
         $this->materiaprimaprecio = $materiaprimaprecio;
         $this->materiaprimacantidad = $materiaprimacantidad;
         $this->materiaprimatipoid = $materiaprimatipoid;
+        $this->materiaprimaultimacompra=null;
     }
 
+    public function getMateriaPrimaUltimaCompra(){
+        return $this->materiaprimaultimacompra;
+    }
     public function getMateriaprimaid() {
         return $this->materiaprimaid;
     }
@@ -48,6 +53,9 @@ class MateriasPrimas {
         return $this->materiaprimacantidad;
     }
 
+    public function setMateriaPrimaUltimaCompra($materiaprimaultimacompra){
+        $this->materiaprimaultimacompra=$materiaprimaultimacompra;
+    }
     public function setMateriaprimaid($materiaprimaid) {
         $this->materiaprimaid = $materiaprimaid;
     }

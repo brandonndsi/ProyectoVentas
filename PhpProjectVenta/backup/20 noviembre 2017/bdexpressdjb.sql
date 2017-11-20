@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2017 a las 17:46:16
+-- Tiempo de generación: 21-11-2017 a las 00:39:44
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -63,14 +63,9 @@ CREATE TABLE `tbclientes` (
 --
 
 INSERT INTO `tbclientes` (`clienteid`, `personaid`, `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) VALUES
-(7, '5', 'horquetas norte', 0, 0, 1),
-(10, '18', 'la victoria', 0, 0, 1),
-(12, '19', 'cerquita de aqui', 0, 0, 1),
-(13, '20', 'por alla', 0, 0, 1),
-(14, '21', 'cerca de mi casa', 0, 0, 1),
-(15, '22', 'alla no mas', 0, 0, 1),
-(23, '30', 'erew', 0, 0, 1),
-(24, '31', 'rio frio', 0, 0, 1);
+(7, '5', 'Rio Frio Finca 2', 0, 0, 1),
+(12, '19', 'Rio Frio Finca 3', 0, 0, 1),
+(13, '20', 'Rio Frio Finca 4', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +88,7 @@ CREATE TABLE `tbcombos` (
 --
 
 INSERT INTO `tbcombos` (`combosid`, `combocodigo`, `combonombre`, `combosproductoid`, `comboingredientes`, `comboprecio`, `comboestado`) VALUES
-(1, 'C1', 'tacos y piza', 'M1,M2,M3,M4', 'salsa', 5000, 1),
+(1, 'C1', 'tacos y piza', 'M1,M2,M3,M4', 'salsa', 5000, 0),
 (2, 'C2', 'pizzza y refresco', 'M1,M2', 'pizza', 2500, 1);
 
 -- --------------------------------------------------------
@@ -243,11 +238,8 @@ CREATE TABLE `tbmateriasprimas` (
 --
 
 INSERT INTO `tbmateriasprimas` (`materiaprimaid`, `materiaprimacodigo`, `materiaprimanombre`, `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`, `materiaprimaidestado`, `ultimacompra`) VALUES
-(1, 'M1', 'tomate', '250', '10', '1', 1, ''),
-(2, 'L1', 'Desinfectante', '800', '15', '2', 1, ''),
-(3, 'M2', 'Lechuga', '500', '25', '1', 1, ''),
-(4, 'M4', 'Pan', '600', '35', '1', 1, ''),
-(5, 'aksdg', 'dfb', '13', '123', '1', 0, '');
+(1, 'M1', 'tomate', '250', '10', '1', 1, '500'),
+(2, 'L1', 'Desinfectante', '800', '15', '2', 1, '800');
 
 -- --------------------------------------------------------
 
@@ -298,21 +290,15 @@ INSERT INTO `tbpersonas` (`personaid`, `personanombre`, `personaapellido1`, `per
 (2, 'Juan', 'Chavarria', 'Arroyo', 14358765, 'juaracha@gmail.com', '2', 1),
 (3, 'David', 'Salas', 'Salas', 73950274, 'yoansalas76@gmail.com', '3', 1),
 (4, 'Elisabeth', 'Rodriguez', 'Castro', 12345436, 'elirodri@gmail.com', '2', 1),
-(5, 'Oscar', 'Mejias', 'Morera', 88940376, 'oscmeji@hotmail.com', '2', 1),
+(5, 'Oscar', 'Padilla', 'Morera', 88940376, 'oscmeji@hotmail.com', '2', 1),
 (6, 'hola', 'aaa', 'bbb', 2222, 'aaa@hotmail.com', '1', 1),
-(19, 'alba', 'rios', 'carnaval', 23423, 'asdma@mail.com', '2', 1),
-(20, 'Ruben', 'chaves', 'angulo', 236423, 'rubrxk@hotmai.com', '2', 1),
-(21, 'keneth', 'flores', 'rivera', 34534634, 'askjdhas@hot.com', '1', 1),
+(19, 'Alba', 'Rios', 'Carnaval', 87459653, 'asdma@mail.com', '2', 1),
+(20, 'Ruben', 'Chaves', 'Angulo', 23642345, 'rubrxk@hotmai.com', '2', 1),
+(21, 'Keneth', 'Flores', 'Rivera', 34534634, 'askjdhas@hot.com', '2', 1),
 (22, 'juan', 'roas', 'fernds', 2133342, 'jarofe@mail.com', 'Z1', 1),
-(23, '', '', '', 0, '', '', 1),
-(24, '', '', '', 0, '', '', 1),
-(25, '', '', '', 0, '', '', 1),
-(26, '', '', '', 0, '', '', 1),
-(27, '', '', '', 0, '', '', 1),
-(28, '', '', '', 0, '', '', 1),
-(29, '', '', '', 0, '', '', 1),
 (30, 'we', 'wreew', 'wer', 32433242, 'ewrew@gmail.com', '23r', 1),
-(31, 'natalia', 'angulo', 'aguilera', 78906785, 'natalia@gmail.com', '2', 1);
+(31, 'Natalia', 'Angulo', 'Aguilera', 78906785, 'natalia@gmail.com', '2', 1),
+(32, 'fdqe', 'hdwewe', 'kwewq', 89999999, 'dsd@gmail.com', '', 1);
 
 -- --------------------------------------------------------
 
@@ -344,24 +330,24 @@ INSERT INTO `tbpreferencias` (`preferenciasid`, `clienteid`, `productoid`, `pref
 
 CREATE TABLE `tbproductos` (
   `productoid` int(11) NOT NULL,
+  `productodescripcion` text NOT NULL,
   `productocodigo` varchar(50) NOT NULL,
   `productonombre` varchar(50) NOT NULL,
   `productoprecio` varchar(50) NOT NULL,
   `tamanioid` varchar(50) NOT NULL,
-  `productoestado` varchar(50) NOT NULL,
-  `descripcion` text NOT NULL
+  `productoestado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbproductos`
 --
 
-INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `productoprecio`, `tamanioid`, `productoestado`, `descripcion`) VALUES
-(3, 'M1', 'papas fritas', '120', '', '0', ''),
-(4, 'M2', 'Pizza grande', '2500', '', '1', ''),
-(6, 'M3', '2 piesas y un refresco', '2000', '', '1', ''),
-(8, 'M4', 'pollo entero', '12321', '', '1', ''),
-(9, 'M5', 'pizza', '7600', '', '0', '');
+INSERT INTO `tbproductos` (`productoid`, `productodescripcion`, `productocodigo`, `productonombre`, `productoprecio`, `tamanioid`, `productoestado`) VALUES
+(3, '', 'M1', 'papas fritas', '120', '', '1'),
+(4, '', 'M2', 'Pizza grande', '2500', '', '1'),
+(6, '', 'M3', '2 piesas y un refresco', '2000', '', '1'),
+(8, '', 'M4', 'pollo entero', '12321', '', '1'),
+(9, '', 'M5', 'pizza', '7600', '', '1');
 
 -- --------------------------------------------------------
 
@@ -383,7 +369,8 @@ CREATE TABLE `tbproveedores` (
 
 INSERT INTO `tbproveedores` (`proveedorid`, `personaid`, `materiaprimaid`, `proveedorproductosprimos`, `proveedorestado`) VALUES
 (1, 6, 2, 'M1,M2', 1),
-(2, 19, 3, 'M1', 1);
+(2, 19, 3, 'M1', 1),
+(3, 32, 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -393,17 +380,39 @@ INSERT INTO `tbproveedores` (`proveedorid`, `personaid`, `materiaprimaid`, `prov
 
 CREATE TABLE `tbtamano` (
   `tamanoid` int(11) NOT NULL,
-  `tamanonombre` varchar(10) NOT NULL
+  `tamanonombre` varchar(10) NOT NULL,
+  `tamanoestado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbtamano`
 --
 
-INSERT INTO `tbtamano` (`tamanoid`, `tamanonombre`) VALUES
-(1, 'grande'),
-(2, 'pequeño'),
-(3, 'mediano');
+INSERT INTO `tbtamano` (`tamanoid`, `tamanonombre`, `tamanoestado`) VALUES
+(1, 'grande', 1),
+(2, 'pequeño', 1),
+(3, 'mediano', 1),
+(6, 'david', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbtipo`
+--
+
+CREATE TABLE `tbtipo` (
+  `tipoid` int(11) NOT NULL,
+  `tiponombre` varchar(50) NOT NULL,
+  `tipoestado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbtipo`
+--
+
+INSERT INTO `tbtipo` (`tipoid`, `tiponombre`, `tipoestado`) VALUES
+(1, 'pepsi', 1),
+(2, 'coca cola', 1);
 
 -- --------------------------------------------------------
 
@@ -490,10 +499,9 @@ CREATE TABLE `tbvehiculos` (
 --
 
 INSERT INTO `tbvehiculos` (`vehiculoid`, `vehiculomarca`, `vehiculoplaca`, `vehiculomodelo`, `vehiculoestado`) VALUES
-(1, 'YAMAHA', '12845', 'ybr-150', '0'),
+(1, 'YAMAHA', '12845', 'ybr-150', '1'),
 (2, 'TOYOTA', '2568955', '2018', '1'),
-(3, 'Honda', '9321', '2000', '1'),
-(4, 'honda', '3432', '2000', '0');
+(3, 'Honda', '4432', '2000', '1');
 
 -- --------------------------------------------------------
 
@@ -513,13 +521,9 @@ CREATE TABLE `tbzonas` (
 --
 
 INSERT INTO `tbzonas` (`zonaid`, `zonanombre`, `zonaprecio`, `zonaestado`) VALUES
-(1, 'PuertoViejo', 2012, 0),
-(2, 'Horquetas', 1000, 1),
 (3, 'Finca6', 1000, 1),
-(4, 'Finca11', 500, 0),
-(5, 'david', 123, 0),
-(6, 'david', 123, 0),
-(7, 'rio ginenes', 123, 0);
+(4, 'Finca11', 500, 1),
+(10, 'Horquetas', 2500, 1);
 
 --
 -- Índices para tablas volcadas
@@ -629,6 +633,12 @@ ALTER TABLE `tbtamano`
   ADD PRIMARY KEY (`tamanoid`);
 
 --
+-- Indices de la tabla `tbtipo`
+--
+ALTER TABLE `tbtipo`
+  ADD PRIMARY KEY (`tipoid`);
+
+--
 -- Indices de la tabla `tbtipoempleados`
 --
 ALTER TABLE `tbtipoempleados`
@@ -674,7 +684,7 @@ ALTER TABLE `tbcategoriaproducto`
 -- AUTO_INCREMENT de la tabla `tbclientes`
 --
 ALTER TABLE `tbclientes`
-  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `clienteid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `tbcombos`
@@ -692,7 +702,7 @@ ALTER TABLE `tbcombosproductos`
 -- AUTO_INCREMENT de la tabla `tbmateriasprimas`
 --
 ALTER TABLE `tbmateriasprimas`
-  MODIFY `materiaprimaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `materiaprimaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tbmillas`
@@ -704,7 +714,7 @@ ALTER TABLE `tbmillas`
 -- AUTO_INCREMENT de la tabla `tbpersonas`
 --
 ALTER TABLE `tbpersonas`
-  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `personaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `tbpreferencias`
@@ -722,13 +732,19 @@ ALTER TABLE `tbproductos`
 -- AUTO_INCREMENT de la tabla `tbproveedores`
 --
 ALTER TABLE `tbproveedores`
-  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `proveedorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tbtamano`
 --
 ALTER TABLE `tbtamano`
-  MODIFY `tamanoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tamanoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `tbtipo`
+--
+ALTER TABLE `tbtipo`
+  MODIFY `tipoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tbtipomateriasprimas`
@@ -746,13 +762,13 @@ ALTER TABLE `tbunidades`
 -- AUTO_INCREMENT de la tabla `tbvehiculos`
 --
 ALTER TABLE `tbvehiculos`
-  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `vehiculoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tbzonas`
 --
 ALTER TABLE `tbzonas`
-  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `zonaid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

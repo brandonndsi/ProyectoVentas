@@ -72,7 +72,7 @@
         "  value="' . $current['personacorreo'] . '" readonly /></p>';
                     echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"
         "  value="' . $current['zonanombre'] . '"  readonly /></p>';
-                    echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion"
+                    echo '<p>Producto id: <input type="text" name="proveedorproductosprimos" id="proveedorproductosprimos"
         "  value="' . $current['proveedorproductosprimos'] . '"  readonly /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                     echo '</form>';
@@ -89,7 +89,7 @@
                 echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono" required pattern="[0-9]{8}"/></p>';
                 echo '<p>Correo: <input type="email" name="personacorreo" id="personacorreo" placeholder="empleado@express.com pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/></p>';
                 echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre" required/></p>';
-                echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion" required/></p>';
+                echo '<p>Producto id: <input type="text" name="proveedorproductosprimos" id="proveedorproductosprimos" required/></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
@@ -121,7 +121,7 @@
         "  value="' . $current['personacorreo'] . '" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"/></p>';
                     echo '<p>Zona Nombre: <input type="text" name="zonanombre" id="zonanombre"
         "  value="' . $current['zonanombre'] . '"/></p>';
-                    echo '<p>Direccion: <input type="text" name="proveedordireccion" id="proveedordireccion"
+                    echo '<p>Productos id: <input type="text" name="proveedorproductosprimos" id="proveedorproductosprimos"
         "  value="' . $current['proveedorproductosprimos'] . '" /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';

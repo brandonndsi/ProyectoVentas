@@ -4,20 +4,25 @@
     if(isset($_POST["nuevo"])){
 
     if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimacantidad']) 
-        && isset($_POST['materiaprimanombre'])&& isset($_POST['materiaprimacodigo'])) {
+        && isset($_POST['materiaprimanombre'])&& isset($_POST['materiaprimacodigo'])
+       && isset($_POST['tipomateriaprimaid'])&& isset($_POST['ultimacompra'])) {
              
         $materiaprimaprecio = $_POST['materiaprimaprecio'];
         $materiaprimacodigo = $_POST['materiaprimacodigo'];
         $materiaprimanombre = $_POST['materiaprimanombre'];
         $materiaprimacantidad = $_POST['materiaprimacantidad'];
+        $tipomateriaprimaid = $_POST['tipomateriaprimaid'];
+        $ultimacompra = $_POST['ultimacompra'];
         
         if (strlen($materiaprimaprecio) > 0 && strlen($materiaprimacodigo) > 0 
-            && strlen($materiaprimanombre) > 0 && strlen($materiaprimacantidad) > 0 ) {
+            && strlen($materiaprimanombre) > 0 && strlen($materiaprimacantidad) > 0
+            && strlen($tipomateriaprimaid) > 0 && strlen($ultimacompra) > 0 ) {
 
             if (is_numeric($materiaprimaprecio)) {
-                
+                //MateriasPrimas($materiaprimaid,$materiaprimacodigo, $materiaprimanombre, //$materiaprimaprecio, $materiaprimacantidad, $materiaprimatipoid)
                 $materiaprimas = new MateriasPrimas(null,$materiaprimacodigo, $materiaprimanombre,
-                        $materiaprimaprecio, $materiaprimacantidad,null);
+                        $materiaprimaprecio, $materiaprimacantidad,$tipomateriaprimaid);
+                $materiaprimas->setMateriaPrimaUltimaCompra($ultimacompra);
                 
                 include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 
@@ -45,23 +50,27 @@
     }else if(isset($_POST["actualizar"])){
         
          if (isset($_POST['materiaprimaprecio']) && isset($_POST['materiaprimacantidad']) 
-           && isset($_POST['materiaprimanombre']) /*&& isset($_POST['tipomateriaprimaid'])*/
-           && isset($_POST['materiaprimacodigo']) && isset($_POST['materiaprimaid'])) {
-             
+        && isset($_POST['materiaprimanombre'])&& isset($_POST['materiaprimacodigo'])
+       && isset($_POST['tipomateriaprimaid'])&& isset($_POST['ultimacompra'])
+            && isset($_POST['materiaprimaid'])) {
         $materiaprimaid = $_POST['materiaprimaid'];
         $materiaprimaprecio = $_POST['materiaprimaprecio'];
         $materiaprimacodigo = $_POST['materiaprimacodigo'];
         $materiaprimanombre = $_POST['materiaprimanombre'];
         $materiaprimacantidad = $_POST['materiaprimacantidad'];
-        /*$tipomateriaprimaid = $_POST['tipomateriaprimaid'];*/
+        $tipomateriaprimaid = $_POST['tipomateriaprimaid'];
+        $ultimacompra = $_POST['ultimacompra'];
         
-        if (strlen($materiaprimaprecio) > 0 && strlen($materiaprimacodigo) > 0 && strlen($materiaprimanombre) > 0 
-                && strlen($materiaprimacantidad) > 0 /*&& strlen($tipomateriaprimaid) > 0*/ && strlen($materiaprimaid) > 0) {
+        if (strlen($materiaprimaprecio) > 0 && strlen($materiaprimacodigo) > 0 
+            && strlen($materiaprimanombre) > 0 && strlen($materiaprimacantidad) > 0
+            && strlen($tipomateriaprimaid) > 0 && strlen($ultimacompra) > 0 
+                && strlen($materiaprimaid)) {
+
             if (is_numeric($materiaprimaprecio)) {
-                
-                $materiaprimas = new MateriasPrimas($materiaprimaid,$materiaprimacodigo,
-                 $materiaprimanombre,$materiaprimaprecio, 
-                 $materiaprimacantidad,null);
+                //MateriasPrimas($materiaprimaid,$materiaprimacodigo, $materiaprimanombre, //$materiaprimaprecio, $materiaprimacantidad, $materiaprimatipoid)
+                $materiaprimas = new MateriasPrimas($materiaprimaid,$materiaprimacodigo, $materiaprimanombre,
+                        $materiaprimaprecio, $materiaprimacantidad,$tipomateriaprimaid);
+                $materiaprimas->setMateriaPrimaUltimaCompra($ultimacompra);
                 
                 include '../materiaprimabusiness/MateriaPrimaBusiness.php';
 

@@ -10,18 +10,18 @@ include '../../domain/personas/Personas.php';
 class Proveedores extends Personas{
 
     private $proveedorid;
-    private $MateriaPrimaid;
-    private $proveedordireccion;
+    private $zonanombre;
+    private $proveedorproductosprimos;
     private $personaid;
     private $proveedorProductos;
     private $proveedorUltimaCompra;
     
     
-    public function Proveedores($Proveedorid,$personaid,$Proveedordireccion,$Materiaprimaid) {
+    public function Proveedores($Proveedorid,$personaid,$proveedorproductosprimos,$zonanombre) {
         $this->proveedorid = $Proveedorid;
         $this->personaid = $personaid;
-        $this->proveedordireccion = $Proveedordireccion;
-        $this->MateriaPrimaid = $Materiaprimaid;
+        $this->proveedorproductosprimos = $proveedorproductosprimos;
+        $this->zonanombre = $zonanombre;
         $this->proveedorProductos=null;
         $this->proveedorUltimaCompra=null;
     }
@@ -39,12 +39,12 @@ class Proveedores extends Personas{
         return $this->personaid;
     }
 
-    public function getProveedorDireccion() {
-        return $this->proveedordireccion;
+    public function getProveedorProductosPrimos() {
+        return $this->proveedorproductosprimos;
     }
 
-    public function getMateriaPrimaid(){
-        return $this->MateriaPrimaid;
+    public function getZonaNombre(){
+        return $this->zonanombre;
     }
     public function setProveedorProductos($proveedorProductos){
         $this->proveedorProductos=$proveedorProductos;
@@ -59,12 +59,12 @@ class Proveedores extends Personas{
     public function setPersonaId($personaid){
         $this->personaid =$personaid;
     }
-    public function setProveedorDireccion($proveedordireccion) {
-        $this->proveedordireccion = $proveedordireccion;
+    public function setProveedorProductosPrimos($proveedorproductosprimos) {
+        $this->proveedorproductosprimos = $proveedorproductosprimos;
     }
 
-    public function setMateriaPrimaid($materiaprimaid) {
-        $this->MateriaPrimaid = $materiaprimaid;
+    public function setZonaNombre($zonanombre) {
+        $this->zonanombre = $zonanombre;
     }
 
 }

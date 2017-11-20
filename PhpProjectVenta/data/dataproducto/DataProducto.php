@@ -68,7 +68,7 @@ VALUES ('" . $producto->getProductoCodigo() . "','" . $producto->getProductonomb
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
-            $buscarproducto = $this->conexion->crearConexion()->query("SELECT `productoid`,`productocodigo`, `productonombre`, `productoprecio` FROM `tbproductos` WHERE
+            $buscarproducto = $this->conexion->crearConexion()->query("SELECT * FROM `tbproductos` WHERE
 productoid='" . $productoid . "' AND productoestado=1 OR productocodigo='" . $productoid . "' AND productoestado=1 OR productoprecio='" . $productoid . "' AND productoestado=1;");
 
             $this->conexion->cerrarConexion();

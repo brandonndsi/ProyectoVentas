@@ -1,27 +1,27 @@
 <?php
 /**
- * Description of tamanioAccion
+ * Descripcion de el tamañio de los productos
  *
- * @author Juancho
+ * @author David Salas Lorente
  */
 include '../../domain/tamanio/tamanio.php';
+/*include '../../view/registrotamanioproductoview/RegistroTamanioProductoView.php';*/
 if (isset($_POST['nuevo'])) {
 
-    if (isset($_POST['tamanionombre'])) {
+    if (isset($_POST['tamanonombre'])) {
 
-        $tamanionombre = $_POST['tamanionombre'];
+        $tamanonombre = $_POST['tamanonombre'];
 
-        if (strlen($tamanionombre) > 0 ) {
-            
-                $tamanio = new tamanios($tamanionombre);
+        if (strlen($tamanonombre) > 0 ) {
 
                 include '../tamaniobusiness/tamanioBusiness.php';
 
                 $tamanioBusiness = new tamanioBusiness();
+                $tamanio= new tamanio(null,$tamanonombre,1);
 
                 $result = $tamanioBusiness->insertarTamanio($tamanio);
 
-                return header("location: ../../view/registrotamanio/RegistroTamanio.php?success=updated");
+                return header("location: ../../view/registrotamanioproductoview/RegistroTamanioProductoView.php?success=updated");
             
         }
     } else {
@@ -33,15 +33,15 @@ if (isset($_POST['nuevo'])) {
      * Verifica si la accion es la de actualizar los datos del tamanio
      */
 } else if (isset($_POST['actualizar'])) {
-    if (isset($_POST['tamanioid']) && isset($_POST['tamanionombre'])) {
+    if (isset($_POST['tamanoid']) && isset($_POST['tamanonombre'])) {
 
-        $tamanioid = $_POST['tamanioid'];
-        $tamanionombre = $_POST['tamaninombre'];
+        $tamanioid = $_POST['tamanoid'];
+        $tamanionombre = $_POST['tamanonombre'];
 
         if (strlen($tamanioid) > 0 && strlen($tamanionombre) > 0 ) {
             if (is_numeric($tamanioid)) {
 
-                $tamanio = new Tamanios($tamanioid,$tamanionombre);
+                $tamanio = new Tamanios($tamanioid,$tamanionombre,null);
 
                 include '../tamaniobusiness/tamanioBusiness.php';
 
@@ -49,7 +49,7 @@ if (isset($_POST['nuevo'])) {
 
                 $result = $tamanioBusiness->modificarTamanio($tamanio);
 
-                return header("location: ../../view/registrotamanio/RegistroTamanio.php?success=updated");
+                return header("location: ../../view/registrotamanioproductoview/RegistroTamanioProductoView.php?success=updated");
             }
         }
     } else {
@@ -62,9 +62,9 @@ if (isset($_POST['nuevo'])) {
      */
 } else if (isset($_POST['eliminar'])) {
 
-    if (isset($_POST['tamanioid'])) {
+    if (isset($_POST['tamanoid'])) {
 
-        $tamanio = $_POST['tamanioid'];
+        $tamanio = $_POST['tamanoid'];
 
         include '../tamaniobusiness/tamanioBusiness.php';
 
@@ -72,7 +72,7 @@ if (isset($_POST['nuevo'])) {
 
         $result = $tamanioBusiness->eliminarTamanio($tamanio);
 
-        return header("location: ../../view/registrocombo/RegistroCombo.php?success=updated");
+        return header("location: ../../view/registrotamanioproductoview/RegistroTamanioProductoView.php?success=updated");
     } else {
         //esto es porsi a la hora de eliminar el dato es vacio
         $error = "ErrorEliminar";
@@ -84,9 +84,9 @@ if (isset($_POST['nuevo'])) {
      */
 } else if (isset($_POST['buscar'])) {
 
-    if (isset($_POST['tamanioid'])) {
+    if (isset($_POST['tamanoid'])) {
 
-        $tamanio = $_POST['tamanioid'];
+        $tamanio = $_POST['tamanoid'];
 
         include '../tamaniobusiness/tamanioBusiness.php';
 

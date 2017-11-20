@@ -64,8 +64,12 @@
                     echo '<td><input type="hidden" name="materiaprimaid" value="' . $current['materiaprimaid'] . '"></td>';
                     echo '<p>Codigo: <input type="text" name="materiaprimacodigo" id="materiaprimacodigo" value="' . $current['materiaprimacodigo'] . '" readonly /></p>';
                     echo '<p>Nombre: <input type="text" name="materiaprimanombre" id="materiaprimanombre"  value="' . $current['materiaprimanombre'] . '" readonly /></p>';
-                    echo '<p>Precio: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio"  value="' . $current['materiaprimaprecio'] . '" readonly /></p>';
                     echo '<p>Cantidad: <input type="text" name="materiaprimacantidad" id="materiaprimacantidad"  value="' . $current['materiaprimacantidad'] . '" readonly /></p>';
+                    echo '<p>Precio Actual: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio"  value="' . $current['materiaprimaprecio'] . '" readonly /></p>';
+                    echo '<p>Precio Anterior: <input type="text" name="ultimacompra" id="ultimacompra" value="'.$current['ultimacompra'].'" readonly /></p>';
+                    echo '<p>Tipo materia prima id: <input type="text" name="tipomateriaprimaid" id="tipomateriaprimaid" value="'.$current['tipomateriaprimaid'].'" readonly /></p>';
+                    echo '<p>Tipo Materia Prima Nombre: <input type="text" name="tipomateriaprimaid" id="tipomateriaprimaid" value="'.$current['tipomateriaprimacategoria'].'" readonly /></p>';
+
                     echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                     echo '</form>';
                 }
@@ -78,7 +82,7 @@
                 echo '<p>Codigo: <input type="text" name="materiaprimacodigo" id="materiaprimacodigo" required/></p>';
                 echo '<p>Nombre: <input type="text" name="materiaprimanombre" id="materiaprimanombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                 echo '<p>Cantidad: <input type="text" name="materiaprimacantidad" id="materiaprimacantidad" required pattern="[0-9]{1,5}"/></p>';
-                echo '<p>Unidad: <select name = "combobanco"> required</p>';
+                /*echo '<p>Unidad: <select name = "combobanco"> required</p>';
                 echo '<option ></option>';
                 echo '<option value = "Kilogramos">Kilogramos</option>';
                 echo '<option value = "Gramos">Gramos</option>';
@@ -86,8 +90,10 @@
                 echo '<option value = "Libras">Libras</option>';
                 echo '<option value = "Cajas">Cajas</option>';
                 echo '<option value = "Bolsas">Bolsas</option>';
-                echo '  </select>';
-                echo '<p>Precio: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio" required pattern="[0-9]{2,7}"/></p>';
+                echo '  </select>';*/
+                echo '<p>Precio Actual: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio" required pattern="[0-9]{2,7}"/></p>';
+                echo '<p> Ultimo Precio: <input type="text" name="ultimacompra" id="ultimacompra" </p>';
+                echo '<p> Tipo Materiaprima Id: <input type="text" name ="tipomateriaprimaid" id="tipomateriaprimaid"/> </p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
@@ -95,7 +101,7 @@
             case 'eliminar':
 
                 $materiaprimabusiness->eliminarMateriaPrima($_REQUEST['id']);
-
+                
                 header('Location: RegistroMateriaPrima.php');
 
                 break;
@@ -109,8 +115,10 @@
                     echo '<input type="hidden" name="materiaprimaid" id="materiaprimaid"  value="' . $current['materiaprimaid'] . '"  readonly />';
                     echo '<p>Codigo: <input type="text" name="materiaprimacodigo" id="materiaprimacodigo" value="' . $current['materiaprimacodigo'] . '" /></p>';
                     echo '<p>Nombre: <input type="text" name="materiaprimanombre" id="materiaprimanombre"  value="' . $current['materiaprimanombre'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
-                    echo '<p>Precio: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio"  value="' . $current['materiaprimaprecio'] . '" pattern="[0-9]{2,7}"/></p>';
                     echo '<p>Cantidad: <input type="text" name="materiaprimacantidad" id="materiaprimacantidad"  value="' . $current['materiaprimacantidad'] . '" pattern="[0-9]{1,5}"/></p>';
+                     echo '<p>Precio Actual: <input type="text" name="materiaprimaprecio" id="materiaprimaprecio"  value="' . $current['materiaprimaprecio'] . '" pattern="[0-9]{2,7}"/></p>';
+                    echo '<p>Precio Anterior: <input type="text" name="ultimacompra" id="ultimacompra" value="'.$current['ultimacompra'].'"/></p>';
+                    echo '<p>tipomateriaprimaid: <input type="text" name="tipomateriaprimaid" id="tipomateriaprimaid" value="'.$current['tipomateriaprimaid'].'" /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';
                 }

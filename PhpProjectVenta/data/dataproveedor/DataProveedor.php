@@ -35,12 +35,10 @@ class DataProveedor {
              }
 
             $recuperandoIdProveedor = $this->conexion->crearConexion()->query("INSERT INTO `tbproveedores`(proveedorid, personaid,
-            materiaprimaid, proveedorcantidadproducto, proveedortotalproducto,proveedorestado ) VALUES (
+             proveedorproductosprimos,proveedorestado ) VALUES (
             '" . $proveedor->getProveedorId() . "',
             '" . $proveedor->getPersonaId() . "',
-            '" . $proveedor->getMateriaPrimaid() . "',                
-            '" . $proveedor->getProveedorcantidadproducto() . "',
-            '" . $proveedor->getproveedortotalproducto() . "',
+            " . $proveedor->getProveedorProductosPrimos() . "',
             '1');");
 
             $this->conexion->cerrarConexion();
@@ -55,10 +53,8 @@ class DataProveedor {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
             //modificando lo que es el proveedor.
             $actualizandoProveedor = $this->conexion->crearConexion()->query("UPDATE `tbproveedores` SET"
-                 . "`materiaprimaid`='" . $proveedor->getMateriaPrimaid()   
-                 . " `proveedorcantidadproducto`='" . $proveedor->getProveedorcantidadproducto() 
-                 . " `proveortotalproducto`='" . $proveedor->getProveedortotalproducto(). 
-                 "'WHERE proveedorid='" . $proveedor->getProveedorId() . "';");
+                 . "`materiaprimaid`='' `proveedorproductosprimos`='" . $proveedor->getProveedorProductosPrimos() . "' 
+                WHERE proveedorid='" . $proveedor->getProveedorId() . "';");
 
             //recuperando lo que es el id de la persona en proveedor.
             $recuperandoIdPersona = $this->conexion->crearConexion()->query("SELECT `personaid`

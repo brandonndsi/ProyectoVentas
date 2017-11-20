@@ -130,8 +130,8 @@ class DataCliente {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarcliente = $this->conexion->crearConexion()->query("UPDATE `tbclientes` SET`clienteestado`=0"
-            . " WHERE clienteid='".$clienteid."';");
+            $eliminarcliente = $this->conexion->crearConexion()->query("UPDATE `tbclientes` 
+                SET`clienteestado`= 0 WHERE clienteid='".$clienteid."';");
 
             return $eliminarCliente;
         }

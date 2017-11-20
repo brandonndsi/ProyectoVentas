@@ -13,13 +13,19 @@ class DataMateriaPrima {
     //insertar
     public function insertarMateriaPrima($materiaprima) {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
-            $Tipomaterianuevo = $this->conexion->crearConexion()->query("INSERT INTO `tbtipomateriasprimas`(
-                `tipomateriaprimacategoria`, `tipomateriaprimaestado`) VALUES (
-                '" . $materiaprima->tipomateriaprimacategoria() . "',
-                '1');");
+
+            $insertarmateriaprima = $this->conexion->crearConexion()->query("INSERT INTO `tbmateriasprimas`( `materiaprimacodigo`, `materiaprimanombre`,
+             `materiaprimaprecio`, `materiaprimacantidad`, `tipomateriaprimaid`, 
+             `materiaprimaidestado`, `ultimacompra`) VALUES (
+             '".$materiaprima->getMateriaprimacodigo()."',
+             '".$materiaprima->getMateriaprimanombre()."',
+             '".$materiaprima->getMateriaprimaprecio(). "',
+             '".$materiaprima->getMateriaprimacantidad()."',
+             '".$materiaprima->getMateriaprimatipoid()."',
+             '1','".$materiaprima->getMateriaPrimaUltimaCompra()."')");
 
 
-            $recuperandoIdtipomateriaprima = $this->conexion->crearConexion()->query("SELECT `tipomateriaid`
+            /*$recuperandoIdtipomateriaprima = $this->conexion->crearConexion()->query("SELECT `tipomateriaid`
                 FROM `tbtipomateriasprimas` WHERE 
                 tipomateriaprimacategoria='" . $materiaprima->getTipomateriaprimacategoria() . "';");
 
@@ -41,7 +47,7 @@ class DataMateriaPrima {
                 '" . $materiaprima->getMateriaprimaprecio() . "',
                 '" . $materiaprima->getMateriaprimacantidad() . "',
                 '1');");
-
+*/
             $this->conexion->cerrarConexion();
 
             return $insertarmateriaprima;
@@ -52,13 +58,19 @@ class DataMateriaPrima {
     public function modificarMateriaPrima($materiaprima) {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
+            /*UPDATE `tbmateriasprimas` SET `materiaprimaid`=[value-1],`materiaprimacodigo`=[value-2],`materiaprimanombre`=[value-3],`materiaprimaprecio`=[value-4],`materiaprimacantidad`=[value-5],`tipomateriaprimaid`=[value-6],`materiaprimaidestado`=[value-7],`ultimacompra`=[value-8] WHERE 1*/
 
-            $modificarmateriaprima = $this->conexion->crearConexion()->query("UPDATE `tbmateriasprimas` SET
-             ". "`materiasprimasnombre`='" . $materiaprima->getMateriaprimanombre(). ",
-              `materiasprimasprecio`='" . $materiaprima->getMateriaprimaprecio() . "'
-               WHERE materiaprimaid='". $materiaprima->getMateriaprimaid() . "';");
+            $modificarmateriaprima = $this->conexion->crearConexion()->query("
+                UPDATE `tbmateriasprimas` SET
+                `materiaprimacodigo`='".$materiaprima->getMateriaprimacodigo()."',
+                `materiaprimanombre`='".$materiaprima->getMateriaprimanombre()."',
+                `materiaprimaprecio`='".$materiaprima->getMateriaprimaprecio()."',
+                `materiaprimacantidad`='".$materiaprima->getMateriaprimacantidad()."',
+                `tipomateriaprimaid`='".$materiaprima->getMateriaprimatipoid()."',
+                `ultimacompra`='".$materiaprima->getMateriaPrimaUltimaCompra()."'
+                 WHERE materiaprimaid ='".$materiaprima->getMateriaprimaid()."';");
 
-            $recuperandoIdtipomateriprima = $this->conexion->crearConexion()->query("SELECT `tipomateriaprimaid`
+            /*$recuperandoIdtipomateriprima = $this->conexion->crearConexion()->query("SELECT `tipomateriaprimaid`
                 FROM `tbmateriasprimas` WHERE 
                 materiaprimaid='" . $materiaprima->getTipomateriaprimaid() . "';");
 
@@ -73,7 +85,7 @@ class DataMateriaPrima {
 
             $tipomateriaprimanuevo = $this->conexion->crearConexion()->query("UPDATE `tbtipomateriprimas` SET 
             `tipomanteriaprimacategoria`='" . $materiaprima->getTipomateriaprimacategoria() . "',
-             WHERE personaid='" . $materiaprima->getTipomateriaprimaid() . "';");
+             WHERE personaid='" . $materiaprima->getTipomateriaprimaid() . "';");*/
 
             $this->conexion->cerrarConexion();
 
@@ -86,8 +98,7 @@ class DataMateriaPrima {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarmateriaprima = $this->conexion->crearConexion()->query("UPDATE `tbmateriasprimas` SET "
-                    . "`materiaprimaestado`= 0 WHERE materiaprimaid='" . $materiaprimaid . "';");
+            $eliminarmateriaprima = $this->conexion->crearConexion()->query("UPDATE `tbmateriasprimas` SET `materiaprimaidestado`= 0 WHERE materiaprimaid='".$materiaprimaid."';");
 
             $this->conexion->cerrarConexion();
 
@@ -125,7 +136,7 @@ class DataMateriaPrima {
 
             $mostrarmateriasprimas = $this->conexion->crearConexion()->query("SELECT *
               FROM tbmateriasprimas
-              WHERE materiaprimaidestado=1");
+              WHERE materiaprimaidestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarmateriasprimas->fetch_assoc()) {

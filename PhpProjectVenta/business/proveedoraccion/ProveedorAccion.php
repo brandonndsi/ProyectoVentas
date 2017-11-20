@@ -6,32 +6,33 @@ if (isset($_POST["nuevo"])) {
 
     if (isset($_POST['personanombre']) && isset($_POST['personaapellido1']) &&
             isset($_POST['personaapellido2']) && isset($_POST['personatelefono']) &&
-            isset($_POST['personacorreo']) && isset($_POST['zonaid']) && isset($_POST['materiaprimaid']) &&
-            isset($_POST['proveedorcantidadproducto']) && isset($_POST['proveedortotalproducto'])) {
+            isset($_POST['personacorreo']) && isset($_POST['zonanombre']) && isset($_POST['proveedorproductosprimos']) /*&&
+            isset($_POST['proveedorcantidadproducto']) && isset($_POST['proveedortotalproducto'])*/) {
 
         $personanombre = $_POST['personanombre'];
         $personaapellido1 = $_POST['personaapellido1'];
         $personaapellido2 = $_POST['personaapellido2'];
         $personatelefono = $_POST['personatelefono'];
         $personacorreo = $_POST['personacorreo'];
-        $zonaid = $_POST['zonaid'];
-        $materiaprimanombre = $_POST['materiaprimaid'];
-        $proveedorcantidadproducto = $_POST['proveedorcantidadproducto'];
-        $proveedortotalproducto = $_POST['proveedortotalproducto'];
+        $zonanombre = $_POST['zonanombre'];//
+        $proveedorproductosprimos = $_POST['proveedorproductosprimos'];//
+       /* $proveedorcantidadproducto = $_POST['proveedorcantidadproducto'];
+        $proveedortotalproducto = $_POST['proveedortotalproducto'];*/
 
         if (strlen($personanombre) > 0 && strlen($personaapellido1) > 0 &&
                 strlen($personaapellido2) > 0 && strlen($personatelefono) > 0 &&
-                strlen($personacorreo) > 0 && strlen($zonaid) > 0 && strlen(materiaprimaid) > 0 &&
-                strlen($proveedorcantidadproducto) > 0 && strlen($proveedortotalproducto) > 0) {
+                strlen($personacorreo) > 0 && strlen($zonanombre) > 0 
+                && strlen($proveedorproductosprimos) > 0 /*&&
+                strlen($proveedorcantidadproducto) > 0 && strlen($proveedortotalproducto) > 0*/) {
 
             if (!is_numeric($personanombre)) {
-
-                $proveedor = new Proveedores(null, null, $materiaprimaid, $proveedorcantidadproducto, $proveedortotalproducto);
+                // Proveedores($Proveedorid,$personaid,$proveedorproductosprimos,$zonanombre)
+                $proveedor = new Proveedores(null, null,$proveedorproductosprimo,$zonanombre);
                 $proveedor->setPersonaNombre($personanombre);
                 $proveedor->setPersonaApellido1($personaapellido1);
                 $proveedor->setPersonaApellido2($personaapellido2);
                 $proveedor->setPersonaTelefono($personatelefono);
-                $proveedor->setIdZona($zonaid);
+               // $proveedor->setIdZona($zonaid);
                 $proveedor->setCorreo($personacorreo);
 
                 include '../../business/proveedorbusiness/ProveedorBusiness.php';
@@ -53,35 +54,36 @@ if (isset($_POST["nuevo"])) {
      */
 } else if (isset($_POST["actualizar"])) {
 
-    if (isset($_POST['personanombre']) && isset($_POST['personaapellido1']) &&
+   if (isset($_POST['personanombre']) && isset($_POST['personaapellido1']) &&
             isset($_POST['personaapellido2']) && isset($_POST['personatelefono']) &&
-            isset($_POST['personacorreo']) && isset($_POST['zonaid']) &&
-            isset($_POST['MateriaPrimaid']) && isset($_POST['proveedorcantidadproducto']) &&
-            isset($_POST['proveedortotalproducto'])) {
+            isset($_POST['personacorreo']) && isset($_POST['zonanombre']) && isset($_POST['proveedorproductosprimos']) /*&&
+            isset($_POST['proveedorcantidadproducto']) && isset($_POST['proveedortotalproducto'])*/) {
 
         $personanombre = $_POST['personanombre'];
         $personaapellido1 = $_POST['personaapellido1'];
         $personaapellido2 = $_POST['personaapellido2'];
         $personatelefono = $_POST['personatelefono'];
         $personacorreo = $_POST['personacorreo'];
-        $zonaid = $_POST['zonaid'];
-        $MateriaPrimaid = $_POST['MateriaPrimaid'];
-        $proveedorcantidadproducto = $_POST['proveedorcantidadproducto'];
-        $proveedortotalproducto = $_POST['proveedortotalproducto'];
+        $zonanombre = $_POST['zonanombre'];//
+        $proveedorproductosprimos = $_POST['proveedorproductosprimos'];//
+       /* $proveedorcantidadproducto = $_POST['proveedorcantidadproducto'];
+        $proveedortotalproducto = $_POST['proveedortotalproducto'];*/
 
         if (strlen($personanombre) > 0 && strlen($personaapellido1) > 0 &&
                 strlen($personaapellido2) > 0 && strlen($personatelefono) > 0 &&
-                strlen($personacorreo) > 0 && strlen($zonaid) > 0 && strlen($MateriaPrimaid) > 0 && strlen($proveedorcantidadproducto) > 0 && strlen($proveedortotalproducto) > 0) {
+                strlen($personacorreo) > 0 && strlen($zonanombre) > 0 
+                && strlen($proveedorproductosprimos) > 0 /*&&
+                strlen($proveedorcantidadproducto) > 0 && strlen($proveedortotalproducto) > 0*/) {
+
             if (!is_numeric($personanombre)) {
-
-                $proveedor = new Proveedores($proveedorid, null, $MateriaPrimaid, $proveedorcantidadproducto, $proveedortotalproducto);
-
+                // Proveedores($Proveedorid,$personaid,$proveedorproductosprimos,$zonanombre)
+                $proveedor = new Proveedores(null, null,$proveedorproductosprimo,$zonanombre);
                 $proveedor->setPersonaNombre($personanombre);
                 $proveedor->setPersonaApellido1($personaapellido1);
                 $proveedor->setPersonaApellido2($personaapellido2);
                 $proveedor->setPersonaTelefono($personatelefono);
+               // $proveedor->setIdZona($zonaid);
                 $proveedor->setCorreo($personacorreo);
-                $proveedor->setIdZona($zonaid);
 
                 include '../../business/proveedorbusiness/ProveedorBusiness.php';
 

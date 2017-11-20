@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Express djb </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!--CSS-->    
-    <link rel="stylesheet" href="../../css/estilo.css">
+    <!--CSS 
+    <link rel="stylesheet" href="../../css/estilo.css"> -->
 
 <body>
     <h3>
@@ -45,6 +45,7 @@
         <li><a href="../registromateriaprima/RegistroMateriaPrima.php" target="_parent" class="btn btn-info">Bodega</a></li>
         <li><a href="../registrozona/RegistroZona.php" target="_parent" class="btn btn-info">Zonas</a></li>
         <li><a href="../registrovehiculo/RegistroVehiculo.php" target="_parent" class="btn btn-info">Vehiculos</a></li>
+         <li><a href="../registrovehiculo/RegistroVehiculo.php" target="_parent" class="btn btn-info">Historial</a></li>
        
     </ul>
 </body>

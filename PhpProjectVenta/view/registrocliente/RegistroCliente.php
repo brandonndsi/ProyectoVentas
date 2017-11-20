@@ -73,7 +73,7 @@
 
             case 'registrar':
 
-                echo '<form  action="../../business/clienteaccion/clienteAccion.php" id="formregistro" method="Post">';
+                echo '<form  action="../../business/clienteaccion/clienteAccion.php"  method="Post">';
                 echo '<h2>Nuevo Cliente</h2>';
                 echo '<p>Nombre Completo: <input type="text" name="personanombre" id="personanombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                 echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
@@ -81,7 +81,7 @@
                 echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono" required pattern="[0-9]{8}"/></p>';
                 echo '<p>Correo: <input type="email" name="personacorreo" id="personacorreo" placeholder="empleado@express.com pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/></p>';
                 echo '<p>Zona Id: <input type="text" name="zonaid" id="zonaid" required/></p>';
-                echo '<p>Direccion: <textarea name="clientedireccionexacta" id="clientedireccionexacta" rows="4" cols="50" form="formregistro" ></textarea></p>';
+                echo '<p>Direccion: <input ="text"  name="clientedireccionexacta" id="clientedireccionexacta"></input></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;

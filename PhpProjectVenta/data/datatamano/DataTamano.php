@@ -17,7 +17,9 @@ class DataTamano {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
             /* Para ingresar el tamaño  en la base de datos. */
             $NuevoTamano = $this->conexion->crearConexion()->query("INSERT INTO 
-            `tbtamano`(`tamanonombre`) VALUES ('".$tamano->getTamanoNombre()."');");
+            `tbtamano`(`tamanonombre`,`tamanoestado`) VALUES (
+            '".$tamano->getTamanoNombre()."',
+            '".$tamano->getTamanoEstado()."');");
 
             $this->conexion->cerrarConexion();
             return $NuevoTamano;
