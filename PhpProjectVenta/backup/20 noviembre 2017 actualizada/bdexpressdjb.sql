@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2017 a las 04:00:52
+-- Tiempo de generación: 21-11-2017 a las 14:14:58
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -342,9 +342,11 @@ INSERT INTO `tbpreferencias` (`preferenciasid`, `clienteid`, `productoid`, `pref
 CREATE TABLE `tbproductos` (
   `productoid` int(11) NOT NULL,
   `productocodigo` varchar(50) NOT NULL,
+  `categoriaproductoid` int(11) NOT NULL,
   `productonombre` varchar(50) NOT NULL,
   `tamanoid` int(50) NOT NULL,
   `productoprecio` varchar(50) NOT NULL,
+  `productocantidad` int(11) NOT NULL,
   `productodescripcion` text NOT NULL,
   `productoestado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -353,22 +355,22 @@ CREATE TABLE `tbproductos` (
 -- Volcado de datos para la tabla `tbproductos`
 --
 
-INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `productonombre`, `tamanoid`, `productoprecio`, `productodescripcion`, `productoestado`) VALUES
-(3, 'M1', 'papas', 1, '120', 'son papas', '1'),
-(4, 'M2', 'Pizza grande', 3, '250', 'es pizza', '1'),
-(6, 'M3', '2 piesas y un refresco', 3, '2000', 'dos piezas', '1'),
-(8, 'M4', 'pollo entero', 1, '12321', 'pollo entero', '1'),
-(9, 'M5', 'pizza italiana', 3, '7650', 'pizza rica', '1'),
-(10, 'M9', 'mm', 3, '5000', 'no es nada', '1'),
-(11, 'M10', 'azucar', 1, '12000', 'nada', '1'),
-(12, 'M11', 'adasdas', 0, '', '', '0'),
-(13, 'J1', 'adasdfd', 2000, '', '', '0'),
-(14, 'j2', 'dsgfhfd', 3, '', '4000', '0'),
-(15, 'j3', 'kalalsklas', 2, 'ajhdgJHGDJ', '2300', '1'),
-(16, 'j52', 'lalala', 0, '5000', 'kjasdhjsadh', '1'),
-(17, 'K1', 'cocacola', 0, '1200', 'bebida', '1'),
-(18, 'l3', 'loco', 1, '100', 'jHGDj', '1'),
-(19, 'l3', 'loco', 1, '100', 'jHGDj', '1');
+INSERT INTO `tbproductos` (`productoid`, `productocodigo`, `categoriaproductoid`, `productonombre`, `tamanoid`, `productoprecio`, `productocantidad`, `productodescripcion`, `productoestado`) VALUES
+(3, 'M1', 2, 'papas', 1, '120', 100, 'son papas', '1'),
+(4, 'M2', 2, 'Pizza grande', 3, '250', 100, 'es pizza', '1'),
+(6, 'M3', 1, '2 piesas y un refresco', 3, '2000', 100, 'dos piezas', '1'),
+(8, 'M4', 2, 'pollo entero', 1, '12321', 100, 'pollo entero', '1'),
+(9, 'M5', 3, 'pizza italiana', 3, '7650', 100, 'pizza rica', '1'),
+(10, 'M9', 2, 'mm', 3, '5000', 100, 'no es nada', '1'),
+(11, 'M10', 2, 'azucar', 1, '12000', 100, 'nada', '1'),
+(12, 'M11', 1, 'adasdas', 0, '', 100, '', '1'),
+(13, 'J1', 1, 'adasdfd', 2000, '', 100, '', '1'),
+(14, 'j2', 1, 'dsgfhfd', 3, '', 100, '4000', '1'),
+(15, 'j3', 2, 'kalalsklas', 2, 'ajhdgJHGDJ', 100, '2300', '1'),
+(16, 'j52', 2, 'lalala', 0, '5000', 100, 'kjasdhjsadh', '1'),
+(17, 'K1', 1, 'cocacola', 0, '1200', 100, 'bebida', '1'),
+(18, 'l3', 1, 'loco', 1, '100', 100, 'jHGDj', '1'),
+(19, 'l3', 1, 'loco', 1, '100', 100, 'jHGDj', '1');
 
 -- --------------------------------------------------------
 
@@ -668,7 +670,8 @@ ALTER TABLE `tbpreferencias`
 --
 ALTER TABLE `tbproductos`
   ADD PRIMARY KEY (`productoid`),
-  ADD KEY `tamano` (`tamanoid`);
+  ADD KEY `tamano` (`tamanoid`),
+  ADD KEY `categoriaproductoid` (`categoriaproductoid`);
 
 --
 -- Indices de la tabla `tbproveedores`
