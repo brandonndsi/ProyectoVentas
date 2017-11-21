@@ -18,7 +18,7 @@
 
                 <tr>
                 <td>    
-                <input name="correo" type="emal" id="correo" class="username" size="30" placeholder="Correo Electr&oacute;nico" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/>
+                <input name="correo" type="emal" id="correo" class="username" size="30" placeholder="Correo Electr&oacute;nico" required/> <!-- pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"  -->
                 </td>
                 </tr>
                 <tr>

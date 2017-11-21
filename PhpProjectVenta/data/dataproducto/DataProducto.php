@@ -85,9 +85,12 @@ class DataProducto {
 
             $array = array();
 
-            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT * "
-                    . "FROM `tbproductos` WHERE productoestado=1;");
-
+            $mostrarproductos = $this->conexion->crearConexion()->query("SELECT p.productoid, c.categoriaproductonombre, 
+                p.productocodigo, p.productocantidad, 
+                p.productonombre, t.tamanonombre, p.productodescripcion, p.productoprecio FROM tbproductos p 
+                INNER JOIN tbtamano t ON t.tamanoid = p.tamanoid
+                INNER JOIN tbcategoriaproducto c ON c.categoriaproductoid = p.categoriaproductoid
+                WHERE productoestado=1;");
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarproductos->fetch_assoc()) {
                 array_push($array, $resultado);

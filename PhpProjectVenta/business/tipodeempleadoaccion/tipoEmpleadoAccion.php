@@ -3,10 +3,10 @@
 include '../../domain/tipoempleados/TipoEmpleados.php';
     if(isset($_POST["nuevo"])){
 
-    if (isset($_POST['tipoempleado']) && isset($_POST['tipoempleadodescripcion']) 
+    if (isset($_POST['tipoempleadoid']) && isset($_POST['tipoempleadodescripcion']) 
            && isset($_POST['tipoempleadosalariobase']) && isset($_POST['tipoempleadohoraextra'])) {
              
-        $tipoEmpleado = $_POST['tipoempleado'];
+        $tipoEmpleado = $_POST['tipoempleadoid'];
         $tipoempleadodescripcion = $_POST['tipoempleadodescripcion'];
         $tipoempleadosalariobase = $_POST['tipoempleadosalariobase'];
         $tipoempleadohoraextra = $_POST['tipoempleadohoraextra'];
@@ -46,10 +46,10 @@ include '../../domain/tipoempleados/TipoEmpleados.php';
          */
     }else if(isset($_POST["actualizar"])){
         
-        if (isset($_POST['tipoempleado']) && isset($_POST['tipoempleadodescripcion']) 
+        if (isset($_POST['tipoempleadoid']) && isset($_POST['tipoempleadodescripcion']) 
            && isset($_POST['tipoempleadosalariobase']) && isset($_POST['tipoempleadohoraextra'])) {
              
-        $tipoEmpleado = $_POST['tipoempleado'];
+        $tipoEmpleado = $_POST['tipoempleadoid'];
         $tipoempleadodescripcion = $_POST['tipoempleadodescripcion'];
         $tipoempleadosalariobase = $_POST['tipoempleadosalariobase'];
         $tipoempleadohoraextra = $_POST['tipoempleadohoraextra'];
@@ -105,8 +105,8 @@ include '../../domain/tipoempleados/TipoEmpleados.php';
       */
     } else if(isset($_POST["buscar"])){
         
-       if(isset($_POST['tipoempleado'])){
-           $empleadonombre=$_POST['tipoempleado'];
+       if(isset($_POST['tipoempleadoid'])){
+           $empleadonombre=$_POST['tipoempleadoid'];
             
            include '../tipoempleadobusiness/tipoEmpleadoBusiness.php';
            

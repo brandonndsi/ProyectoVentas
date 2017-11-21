@@ -37,7 +37,7 @@ class DataTipoEmpleado {
             `tipoempleadosalariobase`='" . $tipo->getTipoempleadosalariobase() . "',
             `tipoempleadodescripcion`='" . $tipo->getTipoempleadodescripcion() . "',
             `tipoempleadohoraextra`='" . $tipo->getTipoempleadohoraextra() . "'
-            WHERE tipoempleado='" . $tipo->getTipoEmpleado() . "';");
+            WHERE tipoempleadoid='" . $tipo->getTipoEmpleado() . "';");
 
             $result = $modificartipo;
             $this->conexion->cerrarConexion();
@@ -53,13 +53,12 @@ class DataTipoEmpleado {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $eliminartipo = $this->conexion->crearConexion()->query("UPDATE `tbtipoempleados` SET `tipoempleadoestado`= 0 "
-            . "WHERE tipoempleado='".$tipoempleado."';");
+            . "WHERE tipoempleadoid='".$tipoempleado."';");
 
 
-            $result = $eliminartipo;
             $this->conexion->cerrarConexion();
             
-                return $result;
+                return $eliminartipo;
     
         }
     }
@@ -71,8 +70,8 @@ class DataTipoEmpleado {
 
             $array = array();
 
-            $buscarempleado = $this->conexion->crearConexion()->query("SELECT `tipoempleado`, `tipoempleadosalariobase`, `tipoempleadodescripcion`, `tipoempleadohoraextra` FROM
-             `tbtipoempleados` WHERE tipoempleado='" . $tipoempleado . "' AND tipoempleadoestado = 1;");
+            $buscarempleado = $this->conexion->crearConexion()->query("SELECT * FROM
+             `tbtipoempleados` WHERE tipoempleadoid='" . $tipoempleado . "' AND tipoempleadoestado = 1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarempleado->fetch_assoc()) {

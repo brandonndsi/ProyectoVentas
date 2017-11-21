@@ -42,9 +42,9 @@
                     <td><input type="text" name="tipoempleadodescripcion" class="tipoempleadodescripcion" value="<?php echo $current['tipoempleadodescripcion']; ?>" readonly />
                     <td><input type="text" name="tipoempleadohoraextra" class="tipoempleadohoraextra" value="<?php echo $current['tipoempleadohoraextra']; ?>" readonly />
                     </td>
-                    <td><a href="?action=editar=<?php echo $current['tipoempleado']; ?> " class="btn btn-primary">Editar</a></td>
-                    <td><a href="?action=ver=<?php echo $current['tipoempleado']; ?> " class="btn btn-info">ver mas</a></td>
-                    <td><a href="?action=eliminar=<?php echo $current['tipoempleado']; ?> " class="btn btn-danger">Eliminar</a></td>                    
+                    <td><a href="?action=editar&id=<?php echo $current['tipoempleadoid']; ?> " class="btn btn-primary">Editar</a></td>
+                    <td><a href="?action=ver&id=<?php echo $current['tipoempleadoid']; ?> " class="btn btn-info">ver mas</a></td>
+                    <td><a href="?action=eliminar&id=<?php echo $current['tipoempleadoid']; ?> " class="btn btn-danger">Eliminar</a></td>                    
                 </tr> 
             <?php endforeach ?>
         </table>
@@ -60,7 +60,7 @@
                 foreach ($tipoempleadoAll as $current) {
                     echo '<form  action="TipoEmpleadoView.php" method="Post">';
                     echo '<h2>Datos Tipo Empleado</h2>';
-                    echo '<p>Tipo Empleado: <input type="text" name="tipoempleado" id="tipoempleado" value="' . $current['tipoempleado'] . '" readonly /></p>';
+                    echo '<p>Tipo Empleado: <input type="text" name="tipoempleadoid" id="tipoempleadoid" value="' . $current['tipoempleadoid'] . '" readonly /></p>';
                     echo '<p>Salario Base: <input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase"  value="' . $current['tipoempleadosalariobase'] . '" readonly /></p>';
                     echo '<p>Descripcion: <input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion"  value="' . $current['tipoempleadodescripcion'] . '" readonly /></p>';
                     echo '<p>Hora Extra: <input type="text" value="tipoempleadohoraextra" name="tipoempleadohoraextra" id="tipoempleadohoraextra" value="' . $current['tipoempleadohoraextra'] . '" readonly /></p>';
@@ -73,7 +73,7 @@
 
                 echo '<form  action="../../business/tipodeempleadoaccion/tipoEmpleadoAccion.php" method="Post">';
                 echo '<h2>Datos Tipo Empleado</h2>';
-                echo '<p>Tipo Empleado: <input type="text" name="tipoempleado" id="tipoempleado" required/></p>';
+                echo '<p>Tipo Empleado: <input type="text" name="tipoempleadoid" id="tipoempleadoid" required/></p>';
                 echo '<p>Salario Base: <input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase" required pattern="[0-9]{2,7}"/></p>';
                 echo '<p>Descripcion: <input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion" required/></p>';
                 echo '<p>Hora Extra: <input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra" required pattern="[0-9]{2,4}"/></p>';
@@ -93,7 +93,7 @@
                 foreach ($tipoempleadoObtenido as $current) {
                     echo '<form  action="../../business/tipodeempleadoaccion/tipoEmpleadoAccion.php" method="Post">';
                     echo '<h2>Tipo empleado editar</h2>';
-                    echo '<p>Tipo Empleado: <input type="text" name="tipoempleado" id="tipoempleado" value="' . $current['tipoempleado'] . '"/></p>';
+                    echo '<p>Tipo Empleado: <input type="text" name="tipoempleadoid" id="tipoempleadoid" value="' . $current['tipoempleadoid'] . '"/></p>';
                     echo '<p>Salario Base: <input type="text" name="tipoempleadosalariobase" id="tipoempleadosalariobase"  value="' . $current['tipoempleadosalariobase'] . '" pattern="[0-9]{2,7}"/></p>';
                     echo '<p>Descripcion: <input type="text" name="tipoempleadodescripcion" id="tipoempleadodescripcion"  value="' . $current['tipoempleadodescripcion'] . '" /></p>';
                     echo '<p>Hora Extra: <input type="text" name="tipoempleadohoraextra" id="tipoempleadohoraextra" value="' . $current['tipoempleadohoraextra'] . '" pattern="[0-9]{2,4}"/></p>';
