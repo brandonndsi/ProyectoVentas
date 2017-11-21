@@ -16,7 +16,7 @@
 <body>
     <?php
     $tipoBusiness = new tipoBusiness();
-    $allBusiness = $tipoBusiness->mostrartipos();
+    $allBusiness = $tipoBusiness->mostrartipo();
     ?>
 
     <h2>Tipo de los productos.
@@ -33,14 +33,14 @@
                     <th>Nombre</th>
                 </tr>
             </thead>
-            <?php foreach ($allBusiness as $current): ?>           
+            <?php foreach ($allBusiness as $curren): ?>           
                 <tr>
-                    <td><input type="text" id="categoriaproductoid" name="categoriaproductoid" class="categoriaproductoid"  value="<?php echo $current['categoriaproductoid']; ?>" readonly/> </td>
-                    <td><input type="text" id="categoriaproductonombre" name="categoriaproductonombre" class="categoriaproductonombre" value="<?php echo $current['categoriaproductonombre']; ?>" readonly/> </td>
+                    <td><input type="text" id="tipoid" name="tipoid" class="tipoid"  value="<?php echo $curren['tipoid']; ?>" readonly/> </td>
+                    <td><input type="text" id="tiponombre" name="tiponombre" class="tiponombre" value="<?php echo $curren['tiponombre']; ?>" readonly/> </td>
 
-                    <td><a href="?action=editar&id=<?php echo $current['categoriaproductoid']; ?> " class="btn btn-primary">Editar</a></td>
-                    <td><a href="?action=ver&id=<?php echo $current['categoriaproductoid']; ?> " class="btn btn-info">Ver mas</a></td>
-                    <td><a href="?action=eliminar&id=<?php echo $current['categoriaproductoid']; ?> " class="btn btn-danger">Eliminar</a></td>
+                    <td><a href="?action=editar&id=<?php echo $curren['tipoid']; ?> " class="btn btn-primary">Editar</a></td>
+                    <td><a href="?action=ver&id=<?php echo $curren['tipoid']; ?> " class="btn btn-info">Ver mas</a></td>
+                    <td><a href="?action=eliminar&id=<?php echo $curren['tipoid']; ?> " class="btn btn-danger">Eliminar</a></td>
                 </tr> 
             <?php endforeach ?>
         </table>

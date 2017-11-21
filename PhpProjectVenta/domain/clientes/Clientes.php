@@ -1,13 +1,9 @@
 <?php
-/**
- * Description of Cliente
- *
- * @author Juan
- */
-  include '../../domain/personas/Personas.php';
 
-class Clientes extends Personas{
-    
+include '../../domain/personas/Personas.php';
+
+class Clientes extends Personas {
+
     private $clienteId;
     private $personaId;
     private $clienteDireccionExacta;
@@ -15,25 +11,19 @@ class Clientes extends Personas{
     private $clienteAcumulado;
     private $millas;
 
-    public function Clientes($clienteId, $personaId, $clientedireccionexacta) {
+    public function Clientes($clienteId, $personaId, $clienteDireccionExacta, $clienteDescuento, $clienteAcumulado, $millas) {
         $this->clienteId = $clienteId;
         $this->personaId = $personaId;
-        $this->clienteDireccionExacta = $clientedireccionexacta;
-        $this->millas=null;
+        $this->clienteDireccionExacta = $clienteDireccionExacta;
+        $this->clienteDescuento = $clienteDescuento;
+        $this->clienteAcumulado = $clienteAcumulado;
+        $this->millas = $millas;
     }
-    public function getMillas(){
-        return $this->millas;
-    }
+
     public function getClienteId() {
         return $this->clienteId;
     }
 
-    public function getClienteAcumulado(){
-        return $this->clienteAcumulado;
-    }
-    public function getClienteDescuento(){
-        return $this->clienteDescuento;
-    }
     public function getPersonaId() {
         return $this->personaId;
     }
@@ -41,27 +31,43 @@ class Clientes extends Personas{
     public function getClienteDireccionExacta() {
         return $this->clienteDireccionExacta;
     }
-    public function setMillas($millas){
-        $this->millas=$millas;
-    }
-    public function setClienteId($clienteId) {
-        $this->ClienteId = $clienteId;
+
+    public function getClienteDescuento() {
+        return $this->clienteDescuento;
     }
 
-    public function setClienteAcumulado($clienteacumulado){
-        $this->clienteAcumulado=$clienteacumulado;
+    public function getClienteAcumulado() {
+        return $this->clienteAcumulado;
     }
-    public function setClienteDescuento($clientedescuento){
-        $this->clienteDescuento=$clientedescuento;
+
+    public function getMillas() {
+        return $this->millas;
     }
+
+    public function setClienteId($clienteId) {
+        $this->clienteId = $clienteId;
+    }
+
     public function setPersonaId($personaId) {
         $this->personaId = $personaId;
     }
 
-    public function setClienteDireccionExacta($clienteEireccionExacta) {
+    public function setClienteDireccionExacta($clienteDireccionExacta) {
         $this->clienteDireccionExacta = $clienteDireccionExacta;
     }
-    
+
+    public function setClienteDescuento($clienteDescuento) {
+        $this->clienteDescuento = $clienteDescuento;
+    }
+
+    public function setClienteAcumulado($clienteAcumulado) {
+        $this->clienteAcumulado = $clienteAcumulado;
+    }
+
+    public function setMillas($millas) {
+        $this->millas = $millas;
+    }
+
 }
 
 ?>

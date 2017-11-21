@@ -18,8 +18,8 @@
     $comboBusiness = new ComboBusiness();
     $allBusiness = $comboBusiness->mostrarCombo();
     ?>
-
-    <h2>Combos.
+    <h2>
+        Combos.
         <a href="?action=registrar" class="btn btn-primary">Nuevo Producto</a>
         <a href="../registroproducto/RegistroProducto.php" class="btn btn-warning">Atras</a> 
         <a href="../ventanaprincipalview/VentanaPrincipalView.php" class="btn btn-secondary">Pagina Principal</a> 

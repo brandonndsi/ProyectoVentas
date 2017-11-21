@@ -104,8 +104,5 @@ class DataCombo {
     }
 
 }
-$dato=new DataCombo();
-$da="1";
-print_r($da);
 
 ?>

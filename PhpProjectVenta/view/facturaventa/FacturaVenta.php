@@ -55,40 +55,22 @@
             case 'ver':
                 $Obtenida = $facturaBusiness->buscarFactura($_REQUEST['id']);
                 foreach ($Obtenida as $current) {
-                    echo '<form  action="../../business/facturaaccion/facturaAccion.php" method="Post">';
-                    echo '<h2>Datos de factura.</h2>';
-                    echo '<td><input type="hidden" name="facturaid" value="' . $current['facturaid'] . '"></td>';
-                    echo '<p>ID empleado: <input type="text" name="empleadoid" id="empleadoid" 
-        value="' . $current['empleadoid'] . '" readonly /></p>';
-                    echo '<p>ID persona: <input type="text" name="personaid" id="personaid" 
-         value="' . $current['personaid'] . '" readonly /></p>';
-                    echo '<p>Tipo Empleado: <input type="text" name="tipoempleadoid"" id="tipoempleadoid" 
-         value="' . $current['tipoempleadoid"'] . '" readonly /></p>';
-                    echo '<p>ID cliente: <input type="text" name="clienteid" id="clienteid
-        "  value="' . $current['clienteid'] . '" readonly /></p>';
-
-                    echo '<p>Direccion: <input type="text" name="cientedireccionexacta" id="cientedireccionexacta
-        "  value="' . $current['cientedireccionexacta'] . '" readonly /></p>';
-                    echo '<p>Descuento: <input type="text" name="cientedescuento" id="cientedescuento"
-        "  value="' . $current['cientedescuento'] . '"  readonly /></p>';
-                    echo '<p>Acumulado: <input type="text" name="clienteacumulado" id="clienteacumulado"
-        "  value="' . $current['clienteacumulado'] . '"  readonly /></p>';
-                    echo '<p>ID compra: <input type="text" name="compraid" id="compraid"
-        "  value="' . $current['compraid'] . '"  readonly /></p>';
-                    echo '<p>ID producto: <input type="text" name="productoid" id="productoid"
-        "  value="' . $current['productoid'] . '"  readonly /></p>';
-                    echo '<p>Cantidad Producto: <input type="text" name="compracantidadproducto" id="compracantidadproducto"
-        "  value="' . $current['compracantidadproducto'] . '"  readonly /></p>';
-                    echo '<p>ID tipo compra: <input type="text" name="tipocompraid" id="tipocompraid"
-        "  value="' . $current['tipocompraid'] . '"  readonly /></p>';
-                    echo '<p>Fecha: <input type="text" name="facturafecha" id="facturafecha"
-        "  value="' . $current['facturafecha'] . '"  readonly /></p>';
-                    echo '<p>Bruto: <input type="text" name="facturabruto" id="facturabruto"
-        "  value="' . $current['facturabruto'] . '"  readonly /></p>';
-                    echo '<p>Neto: <input type="text" name="facturaneto" id="facturaneto"
-        "  value="' . $current['facturaneto'] . '"  readonly /></p>';
-                    echo '<p><input type="submit"  class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
-                    echo '</form>';
+                echo '<form  action="../../business/facturaaccion/facturaAccion.php" method="Post">';
+                echo '<h2>Datos de factura.</h2>';
+                echo '<td><input type="hidden" name="facturaid" value="' . $current['facturaid'] . '"></td>';
+                echo '<p>ID Venta: <input type="text" name="ventaid" id="ventaid""  value="' . $current['ventaid'] . '"  readonly /></p>';
+                echo '<p>Empleado: <input type="text" name="personanombre" id="personanombre" value="' . $current['personanombre'] . '" readonly /></p>';
+                echo '<p>Descuento: <input type="text" name="clientedescuento" id="clientedescuento""  value="' . $current['clientedescuento'] . '"  readonly /></p>';
+                echo '<p>Acumulado: <input type="text" name="clienteacumulado" id="clienteacumulado""  value="' . $current['clienteacumulado'] . '"  readonly /></p>';
+                echo '<p>Productos: <input type="text" name="ventaproducto" id="ventaproducto""  value="' . $current['ventaproducto'] . '"  readonly /></p>';
+                echo '<p>Cantidad de Producto: <input type="text" name="ventacantidad" id="ventacantidad""  value="' . $current['ventacantidad'] . '"  readonly /></p>';
+                echo '<p>Fecha: <input type="text" name="facturafecha" id="facturafecha""  value="' . $current['facturafecha'] . '"  readonly /></p>';
+                echo '<p>Bruto: <input type="text" name="facturabruta" id="facturabruta""  value="' . $current['facturabruta'] . '"  readonly /></p>';
+                echo '<p>Neto: <input type="text" name="facturaneta" id="facturaneta""  value="' . $current['facturaneta'] . '"  readonly /></p>';
+                echo '<p>Direccion: <input type="text" name="clientedireccionexacta" id="clientedireccionexacta"  value="' . $current['clientedireccionexacta'] . '" readonly /></p>';
+                echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono"  value="' . $current['personatelefono'] . '" readonly /></p>';
+                echo '<p><input type="submit"  class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
+                echo '</form>';
                 }
                 break;
 

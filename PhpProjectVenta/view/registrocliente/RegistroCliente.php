@@ -66,6 +66,9 @@
                     echo '<p>Correo: <input type="text" name="personacorreo" id="personacorreo"  value="' . $current['personacorreo'] . '" readonly /></p>';
                     echo '<p>Zona id: <input type="text" name="zonaid" id="zonaid""  value="' . $current['zonaid'] . '" readonly /></p>';
                     echo '<p>Direccion: <input type="text" name="clientedireccionexacta" id="clientedireccionexacta""  value="' . $current['clientedireccionexacta'] . '"  readonly /></p>';
+                    echo '<p>Millas: <input type="text" name="millacantidad" id="millacantidad""  value="' . $current['millacantidad'] . '" readonly /></p>';
+                    echo '<p>Acumulado: <input type="text" name="clienteacumulado" id="clienteacumulado""  value="' . $current['clienteacumulado'] . '" readonly /></p>';
+                    echo '<p>Descuento: <input type="text" name="clientedescuento" id="clientedescuento""  value="' . $current['clientedescuento'] . '"  readonly /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Salir" name="salir" id="salir"/></p>';
                     echo '</form>';
                 }
@@ -73,15 +76,15 @@
 
             case 'registrar':
 
-                echo '<form  action="../../business/clienteaccion/clienteAccion.php"  method="Post">';
+                echo '<form  action="../../business/clienteaccion/clienteAccion.php" id="formregistro" method="Post">';
                 echo '<h2>Nuevo Cliente</h2>';
                 echo '<p>Nombre Completo: <input type="text" name="personanombre" id="personanombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                 echo '<p>Apellido 1: <input type="text" name="personaapellido1" id="personaapellido1" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                 echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})"/></p>';
                 echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono" required pattern="[0-9]{8}"/></p>';
                 echo '<p>Correo: <input type="email" name="personacorreo" id="personacorreo" placeholder="empleado@express.com pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/></p>';
-                echo '<p>Zona Id: <input type="text" name="zonaid" id="zonaid" required/></p>';
-                echo '<p>Direccion: <input ="text"  name="clientedireccionexacta" id="clientedireccionexacta"></input></p>';
+                echo '<p>ID de la Zona: <input type="text" name="zonaid" id="zonaid" required/></p>';
+                echo '<p>Direccion: <input type="text" name="clientedireccionexacta" id="clientedireccionexacta" rows="4" cols="50" form="formregistro" ></textarea></p>';
                 echo '<p><input type="submit" class="btn btn-primary" value="Registrar" name="nuevo" id="nuevo"/></p>';
                 echo '</form>';
                 break;
@@ -89,9 +92,12 @@
             case 'eliminar':
 
                 $clienteBusiness->eliminarCliente($_REQUEST['id']);
-
-                header('Location: RegistroCliente.php');
-
+                if (headers_sent()) {
+                    echo '<p style="color: green">Transacción realizada</p>';
+                    die(" <a href='../registrocliente/RegistroCliente.php' class='btn btn-info' >Continuar");
+                } else {
+                    exit(header('Location: RegistroCliente.php'));
+                }
                 break;
 
             case 'editar':
@@ -106,7 +112,7 @@
                     echo '<p>Apellido 2: <input type="text" name="personaapellido2" id="personaapellido2"  value="' . $current['personaapellido2'] . '" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]{2,25})" /></p>';
                     echo '<p>Telefono: <input type="text" name="personatelefono" id="personatelefono"  value="' . $current['personatelefono'] . '" pattern="[0-9]{8}"/></p>';
                     echo '<p>Correo: <input type="text" name="personacorreo" id="personacorreo"  value="' . $current['personacorreo'] . '" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" /></p>';
-                    echo '<p>Zona id: <input type="text" name="zonaid" id="zonaid""  value="' . $current['zonaid'] . '" /></p>';
+                    echo '<p>ID de la Zona: <input type="text" name="zonaid" id="zonaid""  value="' . $current['zonaid'] . '" /></p>';
                     echo '<p>Direccion: <input type="text" name="clientedireccionexacta" id="clientedireccionexacta""  value="' . $current['clientedireccionexacta'] . '" /></p>';
                     echo '<p><input type="submit" class="btn btn-primary" value="Actualizar" name="actualizar" id="actualizar"/></p>';
                     echo '</form>';

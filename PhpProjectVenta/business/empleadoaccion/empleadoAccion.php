@@ -1,6 +1,5 @@
 <?php
 
-//$accion = $_POST['accion'];//busca la accion a realizar 
 include '../../domain/empleados/Empleados.php';
 if (isset($_POST["Registrar"])) {
 
@@ -47,29 +46,47 @@ if (isset($_POST["Registrar"])) {
      */
 } else if (isset($_POST["actualizar"])) {
 
-    if (isset($_POST['empleadoid']) && isset($_POST['personaid']) && isset($_POST['tipoempleado']) &&
-            isset($_POST['empleadocedula']) && isset($_POST['empleadocontrasena']) && isset($_POST['empleadoedad']) && isset($_POST['empleadosexo']) && isset($_POST['empleadoestadocivil']) && isset($_POST['empleadocuentabancaria']) && isset($_POST['empleadolicenciaid'])) {
+    if (isset($_POST['empleadoid']) && isset($_POST['personanombre']) && isset($_POST['personaapellido1']) 
+            && isset($_POST['personaapellido2']) &&
+            isset($_POST['personatelefono']) && isset($_POST['personacorreo']) && isset($_POST['tipoempleado']) 
+            && isset($_POST['empleadocontrasenia']) && isset($_POST['empleadoestadocivil']) && isset($_POST['empleadoedad']) 
+            && isset($_POST['empleadobanco']) && isset($_POST['empleadocuentabancaria'])&& isset($_POST['zonaid'])) {
 
         $empleadoid = $_POST['empleadoid'];
-        $personaid = $_POST['perdonaid'];
+        $personanombre = $_POST['personanombre'];
+        $personaapellido1 = $_POST['personaapellido1'];
+        $personaapellido2 = $_POST['personaapellido2'];
+        $personatelefono = $_POST['personatelefono'];
+        $personacorreo = $_POST['personacorreo'];
         $empleadotipo = $_POST['tipoempleado'];
-        $empleadocedula = $_POST['empleadocedula'];
         $empleadocontrasena = $_POST['empleadocontrasena'];
         $empleadoedad = $_POST['empleadoedad'];
-        $empleadosexo = $_POST['empleadosexo'];
         $empleadoestadoCivil = $_POST['empleadoestadocivil'];
+        $empleadobanco = $_POST['empleadobanco'];
         $empleadocuentabancaria = $_POST['empleadocuentabancaria'];
         $empleadolicenciaid = $_POST['empleadolicenciaid'];
+        $zonaid = $_POST['zonaid'];
 
-        if (strlen($empleadoid) > 0 && strlen($personaid) > 0 && strlen($empeladotipo) > 0 &&
-                strlen($empleadocedula) > 0 && strlen($empleadocontrasena) > 0 && strlen($empleadoedad) > 0 && strlen($empleadosexo) > 0 && strlen($empleadoestadoCivil) >
-                0 && strlen($empleadoestadocuentabancaria) > 0 && strlen($empleadolicenciaid) > 0) {
-            if (is_numeric($empleadocedula)) {
-                $empleado = new Empleados($empleadoid, $personaid, $empleadotipo, $empleadocedula, $empleadocontrasena, $empleadoedad, $empleadosexo, $empleadoestadoCivil, $empleadocuentabancaria, $empleadolicenciaid);
+        if (strlen($empleadoid) > 0 && strlen($personanombre) > 0 && strlen($personaapellido1) > 0 &&
+                strlen($personaapellido2) > 0 && strlen($personatelefono) > 0 && strlen($personacorreo) > 0 && strlen($empleadotipo) > 0 
+                && strlen($empleadocontrasena) >
+                0 && strlen($empleadoedad) > 0 && strlen($empleadoestadoCivil) > 0 && strlen($empleadobanco) > 0
+                && strlen($empleadocuentabancaria) > 0 && strlen($empleadolicenciaid) > 0 && strlen($zonaid) > 0) {
+            if (!is_numeric($personanombre)) {
+                $empleado = new Empleados($empleadoid, " ", $tipoempleado, $empleadocedula, $empleadocontrasenia, 
+                        $fechaingreso, $empleadoedad, $empleadosexo, $empleadoestadocivil, $empleadobanco, 
+                        $empleadocuentabancaria, $empleadolicenciaid);
+                
+                $empleado->setPersonaNombre($personanombre);
+                $empleado->setPersonaApellido1($personaapellido1);
+                $empleado->setPersonaApellido2($personaapellido2);
+                $empleado->setPersonaTelefono($personatelefono);
+                $empleado->setCorreo($personacorreo);
+                $empleado->setIdZona($zonaid);
+                
                 include '../empleadobusiness/empleadoBusiness.php';
 
                 $empleadoBusiness = new empleadoBusiness();
-
                 $result = $empleadoBusiness->modificarEmpleado($empleado);
 
                 return header("location: ../../view/registroempleado/RegistroEmpleado.php?success=updated");
@@ -106,8 +123,8 @@ if (isset($_POST["Registrar"])) {
      */
 } else if (isset($_POST["buscar"])) {
 
-    if (isset($_POST['clientenombre'])) {
-        $empleadonombre = $_POST['clientenombre'];
+    if (isset($_POST['personaid'])) {
+        $empleadonombre = $_POST['personaid'];
 
         include '../empleadobusiness/empleadoBusiness.php';
 

@@ -13,11 +13,11 @@ class Empleados extends Personas {
     private $empleadoedad;
     private $empleadosexo;
     private $empleadoestadocivil;
-    private $banco;
+    private $empleadobanco;
     private $empleadocuentabancaria;
     private $empleadolicenciaid;
 
-    public function Empleados($empleadoid, $personaid, $tipoempleado, $empleadocedula, $empleadocontrasenia,$fechaingreso,$empleadoedad, $empleadosexo, $empleadoestadocivil,$banco, $empleadocuentabancaria, $empleadolicenciaid) {
+    public function Empleados($empleadoid, $personaid, $tipoempleado, $empleadocedula, $empleadocontrasenia,$fechaingreso,$empleadoedad, $empleadosexo, $empleadoestadocivil,$empleadobanco, $empleadocuentabancaria, $empleadolicenciaid) {
         $this->empleadoid = $empleadoid;
         $this->personaid = $personaid;
         $this->tipoempleado = $tipoempleado;
@@ -27,12 +27,12 @@ class Empleados extends Personas {
         $this->empleadoedad = $empleadoedad;
         $this->empleadosexo = $empleadosexo;
         $this->empleadoestadocivil = $empleadoestadocivil;
-        $this->banco = $banco;
+        $this->empleadobanco = $empleadobanco;
         $this->empleadocuentabancaria = $empleadocuentabancaria;
         $this->empleadolicenciaid = $empleadolicenciaid;
     }
-    public function getBanco(){
-        return $this->banco;
+    public function getEmpleadoBanco(){
+        return $this->empleadobanco;
     }
     public function getFechaIngreso(){
         return $this->fechaingreso;

@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Modificaciones del cliente de los datos.
  * 
  */
 class DataCliente {
 
-        private $conexion;
+    private $conexion;
 
     function DataCliente() {
         include_once '../../data/dbconexion/Conexion.php';
@@ -17,65 +18,64 @@ class DataCliente {
     public function insertarCliente($cliente) {
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            /*Para ingresar nueva persona en la base de datos.*/
-           $personanuevo= $this->conexion->crearConexion()->query("INSERT INTO `tbpersonas`(
+            /* Para ingresar nueva persona en la base de datos. */
+            $personanuevo = $this->conexion->crearConexion()->query("INSERT INTO `tbpersonas`(
                 `personanombre`,`personaapellido1`, `personaapellido2`, 
                 `personatelefono`, `personacorreo`, `zonaid`, `personaestado`) VALUES (
-                '".$cliente->getPersonaNombre()."',
-                '".$cliente->getPersonaApellido1()."',
-                '".$cliente->getPersonaApellido2()."',
-                '".$cliente->getPersonaTelefono()."',
-                '".$cliente->getCorreo()."',
-                '".$cliente->getIdZona()."','1');");
-
-           $this->conexion->cerrarConexion();
-           /*para recupera el id del cliente.*/
-            $recuperandoIdPersona=$this->conexion->crearConexion()->query("
-            SELECT `personaid`FROM `tbpersonas`
-             WHERE personanombre='".$cliente->getPersonaNombre()."';");
+                '" . $cliente->getPersonaNombre() . "',
+                '" . $cliente->getPersonaApellido1() . "',
+                '" . $cliente->getPersonaApellido2() . "',
+                '" . $cliente->getPersonaTelefono() . "',
+                '" . $cliente->getCorreo() . "',
+                '" . $cliente->getIdZona() . "','1');");
 
             $this->conexion->cerrarConexion();
-            /*transformando los datos del id objeto a un string*/
+            /* para recupera el id del cliente. */
+            $recuperandoIdPersona = $this->conexion->crearConexion()->query("
+            SELECT `personaid`FROM `tbpersonas`
+             WHERE personanombre='" . $cliente->getPersonaNombre() . "';");
+
+            $this->conexion->cerrarConexion();
+            /* transformando los datos del id objeto a un string */
             $con;
-            while ($resultado = $recuperandoIdPersona->fetch_assoc()){
-                $con=$resultado['personaid'];     
+            while ($resultado = $recuperandoIdPersona->fetch_assoc()) {
+                $con = $resultado['personaid'];
             }
-            /*verificamos si es un string ya formulado*/
-            if(is_string($con)){
+            /* verificamos si es un string ya formulado */
+            if (is_string($con)) {
                 $cliente->setPersonaId($con);
             }
-            /*Creamos el nuevo cliente a la base de datos*/
-            $recuperandoIdcliente=$this->conexion->crearConexion()->query("INSERT INTO `tbclientes`(`personaid`, 
+            /* Creamos el nuevo cliente a la base de datos */
+            $recuperandoIdcliente = $this->conexion->crearConexion()->query("INSERT INTO `tbclientes`(`personaid`, 
             `clientedireccionexacta`, `clientedescuento`, `clienteacumulado`, `clienteestado`) 
             VALUES (
-            '".$cliente->getPersonaId()."',
-            '".$cliente->getClienteDireccionExacta()."',
-            '".$cliente->getClienteDescuento()."',
-            '".$cliente->getClienteAcumulado()."','1');");
+            '" . $cliente->getPersonaId() . "',
+            '" . $cliente->getClienteDireccionExacta() . "',
+            '" . $cliente->getClienteDescuento() . "',
+            '" . $cliente->getClienteAcumulado() . "','1');");
 
             $this->conexion->cerrarConexion();
-                /*lo de las millas del cliente*/
-                /*recuperando el id del cliente para meterlo a las millas del cliente.*/
-                $ClienteID = $this->conexion->crearConexion()->query("SELECT clienteid FROM `tbclientes` WHERE personaid ='".$cliente->getPersonaId()."';");
-                $this->conexion->cerrarConexion();
-                /*transformando el id de cliente astring*/
-                $cont;
-                while ($result = $ClienteID->fetch_assoc()){
-                $cont=$result['clienteid'];     
+            /* lo de las millas del cliente */
+            /* recuperando el id del cliente para meterlo a las millas del cliente. */
+            $ClienteID = $this->conexion->crearConexion()->query("SELECT clienteid FROM `tbclientes` WHERE personaid ='" . $cliente->getPersonaId() . "';");
+            $this->conexion->cerrarConexion();
+            /* transformando el id de cliente astring */
+            $cont;
+            while ($result = $ClienteID->fetch_assoc()) {
+                $cont = $result['clienteid'];
             }
-            /*verificamos si es un string ya formulado*/
-            if(is_string($cont)){
+            /* verificamos si es un string ya formulado */
+            if (is_string($cont)) {
                 $cliente->setClienteId($cont);
             }
-                    /*creando las millas del cliente con el id del cliente.*/
+            /* creando las millas del cliente con el id del cliente. */
             $CreandoMillas = $this->conexion->crearConexion()->query("INSERT INTO `tbmillas`
             (`clienteid`, `millacantidad`, `millaestado`) VALUES (
-            '".$cliente->getClienteId()."','0','1'");
+            '" . $cliente->getClienteId() . "','0','1'");
 
-        $this->conexion->cerrarConexion();
+            $this->conexion->cerrarConexion();
 
-        return $recuperandoIdcliente;
-         
+            return $recuperandoIdcliente;
         }
     }
 
@@ -84,44 +84,43 @@ class DataCliente {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            /*actualiza el nuevo cliente a la base de datos*/
-            $recuperandoIdcliente=$this->conexion->crearConexion()->query("UPDATE `tbclientes` SET "
-             . "`clientedireccionexacta`='".$cliente->getClienteDireccionExacta()."' WHERE clienteid='"
-              .$cliente->getClienteId()."';");
+            /* actualiza el nuevo cliente a la base de datos */
+            $recuperandoIdcliente = $this->conexion->crearConexion()->query("UPDATE `tbclientes` SET "
+                    . "`clientedireccionexacta`='" . $cliente->getClienteDireccionExacta() . "' WHERE clienteid='"
+                    . $cliente->getClienteId() . "';");
 
-            /*para recupera el id del cliente.*/
-            $recuperandoIdPersona=$this->conexion->crearConexion()->query("SELECT `personaid`
+            /* para recupera el id del cliente. */
+            $recuperandoIdPersona = $this->conexion->crearConexion()->query("SELECT `personaid`
                 FROM `tbclientes` WHERE 
-                clienteid='".$cliente->getClienteId()."';");
-            /*actualizando las millas del cliente*/
+                clienteid='" . $cliente->getClienteId() . "';");
+            /* actualizando las millas del cliente */
             $millasActualizar = $this->conexion->crearConexion()->query("UPDATE `tbmillas` SET 
-            `millacantidad`='".$cliente->getMillas()."' WHERE clienteid='".$cliente->getClienteId()."';");
-            
-            /*transformando los datos del id objeto a un string*/
+            `millacantidad`='" . $cliente->getMillas() . "' WHERE clienteid='" . $cliente->getClienteId() . "';");
+
+            /* transformando los datos del id objeto a un string */
             $con;
 
-            while ($resultado = $recuperandoIdPersona->fetch_assoc()){
-                $con=$resultado['personaid'];     
+            while ($resultado = $recuperandoIdPersona->fetch_assoc()) {
+                $con = $resultado['personaid'];
             }
-            /*verificamos si es un string ya formulado*/
-            if(is_string($con)){
+            /* verificamos si es un string ya formulado */
+            if (is_string($con)) {
                 $cliente->setPersonaId($con);
             }
-            
-            /*Para ingresar nueva persona en la base de datos.*/
-           $personanuevo= $this->conexion->crearConexion()->query("UPDATE `tbpersonas` SET 
-            `personanombre`='".$cliente->getPersonaNombre()."',
-            `personaapellido1`='".$cliente->getPersonaApellido1()."',
-            `personaapellido2`='".$cliente->getPersonaApellido2()."',
-            `personatelefono`='".$cliente->getPersonaTelefono()."',
-            `personacorreo`='".$cliente->getCorreo()."',
-            `zonaid`='".$cliente->getIdZona()."' 
-            WHERE personaid='".$cliente->getPersonaId()."';");
 
-        $this->conexion->cerrarConexion();
+            /* Para ingresar nueva persona en la base de datos. */
+            $personanuevo = $this->conexion->crearConexion()->query("UPDATE `tbpersonas` SET 
+            `personanombre`='" . $cliente->getPersonaNombre() . "',
+            `personaapellido1`='" . $cliente->getPersonaApellido1() . "',
+            `personaapellido2`='" . $cliente->getPersonaApellido2() . "',
+            `personatelefono`='" . $cliente->getPersonaTelefono() . "',
+            `personacorreo`='" . $cliente->getCorreo() . "',
+            `zonaid`='" . $cliente->getIdZona() . "' 
+            WHERE personaid='" . $cliente->getPersonaId() . "';");
 
-        return $recuperandoIdcliente;
-         
+            $this->conexion->cerrarConexion();
+
+            return $recuperandoIdcliente;
         }
     }
 
@@ -130,10 +129,12 @@ class DataCliente {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarcliente = $this->conexion->crearConexion()->query("UPDATE `tbclientes` 
-                SET`clienteestado`= 0 WHERE clienteid='".$clienteid."';");
-
-            return $eliminarCliente;
+            $eliminar = $this->conexion->crearConexion()->query("UPDATE `tbclientes` SET`clienteestado`=0"
+                    . " WHERE clienteid='" . $clienteid . "';");
+            $this->conexion->cerrarConexion();
+            
+            $result = $eliminar;
+            return $result;
         }
     }
 
@@ -149,12 +150,14 @@ class DataCliente {
                 p.personaapellido1,p.personaapellido2
                 ,p.personatelefono,
                 p.personacorreo,p.zonaid,
-                e.clientedireccionexacta 
+                e.clientedireccionexacta,e.clienteacumulado,e.clientedescuento,
+                m.millacantidad
                 FROM tbclientes e
                 INNER JOIN tbpersonas p ON e.personaid= p.personaid
-                WHERE p.personanombre='".$clienteid."' AND e.clienteestado=1 OR 
-                e.clienteid='".$clienteid."' AND e.clienteestado=1 OR
-                p.personatelefono='".$clienteid."' AND e.clienteestado=1;");
+                INNER JOIN tbmillas m ON e.millaid= m.millaid
+                WHERE p.personanombre='" . $clienteid . "' AND e.clienteestado=1 OR 
+                e.clienteid='" . $clienteid . "' AND e.clienteestado=1 OR
+                p.personatelefono='" . $clienteid . "' AND e.clienteestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarcliente->fetch_assoc()) {
@@ -186,15 +189,4 @@ class DataCliente {
 
 }
 
-/*$data= new DataCliente();
-$cliente = new Clientes(null, null, $clientedireccionexacta);
-
-$cliente->setPersonaNombre($personanombre);
-$cliente->setPersonaApellido1($personaapellido1);
-$cliente->setPersonaApellido2($personaapellido2);
-$cliente->setPersonaTelefono($personatelefono);
-$cliente->setIdZona($zonaid);
-$cliente->setCorreo($personacorreo);
-$d=$data->insertarCliente($cliente);
-print_r($d);*/
 ?>

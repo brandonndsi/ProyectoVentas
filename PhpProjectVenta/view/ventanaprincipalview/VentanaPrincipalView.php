@@ -3,10 +3,10 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Express djb </title>
+    <title>Express </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!--CSS 
-    <link rel="stylesheet" href="../../css/estilo.css"> -->
+    <!--CSS-->    
+    <link rel="stylesheet" href="../../css/estilo.css">
 
 <body>
     <h3>
@@ -16,7 +16,8 @@
                     <div class="col-md-12">
                         <div class="calltoaction-wrapper">
                             <h3>Pagina oficial <span style="color:#ff6600; text-transform:uppercase;font-size:24px;">ventas express</span>
-                                <a href="../../business/sesionaccion/SesionDesconectarAccion.php" class="btn btn-danger" >Cerrar Sesion</a></h3> 
+                                <a href="../../business/sesionaccion/SesionDesconectarAccion.php" class="btn btn-danger" >Cerrar Sesion</a>
+                            </h3> 
                             <?php
                             session_start();
                             $nombrePersona = $_SESSION['nombrePersona'];
@@ -33,7 +34,6 @@
         
     </h3>
     <ul>    
-        <li><a href="../ventaview/VentaView.php" target="_parent" class="btn btn-info">Realizar una Venta</a></li>
         <li><a href="../compraview/CompraView.php" target="_parent" class="btn btn-info">Registrar Compra</a></li>
         <li><a href="../ordencompraview/OrdenCompraView.php" target="_parent" class="btn btn-info">Orden de Compra</a></li>
         <li><a href="../facturaventa/FacturaVenta.php" target="_parent" class="btn btn-info">Mostrar Facturas</a></li>
@@ -45,8 +45,7 @@
         <li><a href="../registromateriaprima/RegistroMateriaPrima.php" target="_parent" class="btn btn-info">Bodega</a></li>
         <li><a href="../registrozona/RegistroZona.php" target="_parent" class="btn btn-info">Zonas</a></li>
         <li><a href="../registrovehiculo/RegistroVehiculo.php" target="_parent" class="btn btn-info">Vehiculos</a></li>
-         <li><a href="../registrovehiculo/RegistroVehiculo.php" target="_parent" class="btn btn-info">Historial</a></li>
-       
+        <li><a href="../registrohistorial/Historial.php" target="_parent" class="btn btn-info">Historial</a></li>
     </ul>
 </body>
 </html>

@@ -15,15 +15,15 @@ class DataProducto {
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
             $insertarproducto = $this->conexion->crearConexion()->query("INSERT INTO `tbproductos`(
-            `productocodigo`, `productonombre`, `productoprecio`, `productoestado`) 
-VALUES ('" . $producto->getProductoCodigo() . "','" . $producto->getProductonombre() . "',
-'" . $producto->getProductoprecio() . "','1' );");
+            `productocodigo`, `productonombre`,`tamanoid`,`productodescripcion`, `productoprecio`, `productoestado`) 
+            VALUES ('" . $producto->getProductoCodigo() . "','" . $producto->getProductonombre() . "',
+            '" . $producto->getProductotamano() . "','" . $producto->getProductodescripcion() . "',    
+            '" . $producto->getProductoprecio() . "','1' );");
 
             $result = $insertarproducto;
             $this->conexion->cerrarConexion();
-            
-                return $result;
-            
+
+            return $result;
         }
     }
 
@@ -35,14 +35,15 @@ VALUES ('" . $producto->getProductoCodigo() . "','" . $producto->getProductonomb
             $modificarproducto = $this->conexion->crearConexion()->query("UPDATE `tbproductos` 
                 SET `productocodigo`='" . $producto->getProductoCodigo() . "',
                 `productonombre`='" . $producto->getProductonombre() . "',
+                `tamanoid`='" . $producto->getProductotamano() . "',
+                `productodescripcion`='" . $producto->getProductodescripcion() . "',    
                 `productoprecio`='" . $producto->getProductoprecio() . "'
                     WHERE productoid='" . $producto->getProductoid() . "'");
 
             $result = $modificarproducto;
             $this->conexion->cerrarConexion();
-            
-                return $result;
-            
+
+            return $result;
         }
     }
 
@@ -51,14 +52,10 @@ VALUES ('" . $producto->getProductoCodigo() . "','" . $producto->getProductonomb
 
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
-            $eliminarproducto = $this->conexion->crearConexion()->query("UPDATE `tbproductos` SET `productoestado`=0 WHERE productoid='".$productoid."';");
+            $eliminarproducto = $this->conexion->crearConexion()->query("UPDATE `tbproductos` SET `productoestado`=0 WHERE productoid='" . $productoid . "';");
 
             $this->conexion->cerrarConexion();
-            if ($eliminarproducto==1) {
-                return "true";
-            } else {
-                return "false";
-            }
+            return $eliminarproducto;
         }
     }
 
@@ -68,16 +65,17 @@ VALUES ('" . $producto->getProductoCodigo() . "','" . $producto->getProductonomb
         if ($this->conexion->crearConexion()->set_charset('utf8')) {
 
             $array = array();
-            $buscarproducto = $this->conexion->crearConexion()->query("SELECT * FROM `tbproductos` WHERE
-productoid='" . $productoid . "' AND productoestado=1 OR productocodigo='" . $productoid . "' AND productoestado=1 OR productoprecio='" . $productoid . "' AND productoestado=1;");
+            $buscarproducto = $this->conexion->crearConexion()->query("SELECT p.productoid,p.productocodigo, 
+                p.productonombre, t.tamanonombre, p.productodescripcion, p.productoprecio FROM tbproductos p 
+                INNER JOIN tbtamano t ON t.tamanoid = p.tamanoid
+                WHERE productoid='" . "$productoid" . "' AND productoestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $buscarproducto->fetch_assoc()) {
                 array_push($array, $resultado);
             }
-            
-                return $array;
-            
+
+            return $array;
         }
     }
 
@@ -88,14 +86,14 @@ productoid='" . $productoid . "' AND productoestado=1 OR productocodigo='" . $pr
             $array = array();
 
             $mostrarproductos = $this->conexion->crearConexion()->query("SELECT * "
-            . "FROM `tbproductos` WHERE productoestado=1;");
+                    . "FROM `tbproductos` WHERE productoestado=1;");
 
             $this->conexion->cerrarConexion();
             while ($resultado = $mostrarproductos->fetch_assoc()) {
                 array_push($array, $resultado);
             }
             return $array;
-        }   
+        }
     }
 
     //funcion de cargar los ingredientes
@@ -104,8 +102,8 @@ productoid='" . $productoid . "' AND productoestado=1 OR productocodigo='" . $pr
             $array = array();
 
             $mostrarmaterial = $this->conexion->crearConexion()->query("SELECT   `materiaprimanombre` "
-            . "FROM `tbmateriasprimas` "
-            . "WHERE materiaprimacantidad>=10 AND tipomateriaprimaid=1;");
+                    . "FROM `tbmateriasprimas` "
+                    . "WHERE materiaprimacantidad>=10 AND tipomateriaprimaid=1;");
 
             $this->conexion->cerrarConexion();
 

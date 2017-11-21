@@ -1,11 +1,5 @@
 <?php
 
-
-/**
- * Description of tipoBusiness
- *
- * @author Juancho modificado por david el problema es que las variable de este mae no consistian con las de la data y por ende tube que modificarla
- */
 class tipoBusiness {
    
     private $DataTipo;
@@ -33,11 +27,11 @@ class tipoBusiness {
     
     //se encarga de seleccionar todo los datos del tipo.
     public function mostrarTipo() {
-        return $this->Datatipo->mostrarTipo();
+        return $this->DataTipo->mostrarTipo();
     }
     
     //se encarga de la busqueda de tipos en la base de datos.
     public function buscarTipo($tipoid) {
-        return $this->Datatipo->buscarTipo($tipoid);
+        return $this->DataTipo->buscarTipo($tipoid);
     }
 }

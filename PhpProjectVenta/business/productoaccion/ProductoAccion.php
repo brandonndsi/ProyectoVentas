@@ -1,158 +1,146 @@
 <?php
 
 include '../../domain/productos/Productos.php';
-    if(isset($_POST['nuevo'])){
+if (isset($_POST['nuevo'])) {
 
-    if (isset($_POST['productocodigo']) && isset($_POST['productonombre']) 
-           && isset($_POST['productoprecio'])) {
-       
+    if (isset($_POST['productocodigo']) && isset($_POST['productonombre'])&& isset($_POST['tamanoid']) && isset($_POST['productoprecio'])&& isset($_POST['productodescripcion'])) {
+
         $productocodigo = $_POST['productocodigo'];
         $productonombre = $_POST['productonombre'];
+        $productotamano = $_POST['tamanoid'];
         $productoprecio = $_POST['productoprecio'];
-        
-        if (strlen($productocodigo) > 0 && strlen($productonombre) > 0 
-                && strlen($productoprecio) > 0) {
+        $productodescripcion = $_POST['productodescripcion'];
+
+        if (strlen($productocodigo) > 0 && strlen($productonombre) > 0 && strlen($productotamano) > 0 && strlen($productoprecio) > 0 && strlen($productodescripcion) > 0) {
             if (is_numeric($productoprecio)) {
-            
-                $producto = new Productos(null,$productocodigo, $productonombre, $productoprecio);
-                 
+
+                $producto = new Productos(null, $productocodigo, $productonombre,$productotamano, $productodescripcion,$productoprecio);
+
                 include '../productobusiness/ProductoBusiness.php';
 
-            $productoBusiness=new ProductoBusiness();
+                $productoBusiness = new ProductoBusiness();
 
-             $result= $productoBusiness->insertarProducto($producto);
-             
-                
-                   return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
-                
-                  }
-                  return  header("location: ../../view/registroproducto/RegistroProducto.php?ErrorNumero=updated");
-             
+                $result = $productoBusiness->insertarProducto($producto);
+
+
+                return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
             }
-             
-         }else  {
-             // retorna un error al tratar de ingresar los datos del nuevo cliente
-               $error="ErrorNuevo";
-               return $error;
-             } 
-        /*
-         * Verifica si la accion es la e actualizar los datos del cliente
-         */
-    }else if(isset($_POST['actualizar'])){
-           if (isset($_POST['productocodigo']) && isset($_POST['productonombre']) 
-           && isset($_POST['productoprecio']) && isset($_POST['productoid'])) {
-             
+            return header("location: ../../view/registroproducto/RegistroProducto.php?ErrorNumero=updated");
+        }
+    } else {
+        // retorna un error al tratar de ingresar los datos del nuevo cliente
+        $error = "ErrorNuevo";
+        return $error;
+    }
+    /*
+     * Verifica si la accion es la e actualizar los datos del cliente
+     */
+} else if (isset($_POST['editar'])) {
+    if (isset($_POST['productocodigo']) && isset($_POST['productonombre'])
+        && isset($_POST['tamanoid'])&& isset($_POST['productodescripcion'])
+        && isset($_POST['productoprecio']) && isset($_POST['productoid'])) {
+
         $productoid = $_POST['productoid'];
         $productocodigo = $_POST['productocodigo'];
         $productonombre = $_POST['productonombre'];
+        $productotamano = $_POST['tamanoid'];
+        $productodescripcion = $_POST['productodescripcion'];
         $productoprecio = $_POST['productoprecio'];
-        
-        if (strlen($productoid) > 0 && strlen($productocodigo) > 0 && strlen($productonombre) > 0 
-                && strlen($productoprecio) > 0) {
+
+        if (strlen($productoid) > 0 && strlen($productocodigo) > 0 && strlen($productonombre) 
+            > 0 && strlen($productotamano) > 0 && strlen($productodescripcion) > 0 && strlen($productoprecio) > 0) {
             if (is_numeric($productoid)) {
-                
-                $producto = new Productos($productoid,$productocodigo, $productonombre, $productoprecio);
-                
+
+                $producto = new Productos($productoid, $productocodigo, $productonombre, $productotamano, $productodescripcion, $productoprecio);
+
                 include '../productobusiness/ProductoBusiness.php';
 
-            $productoBusiness=new ProductoBusiness();
+                $productoBusiness = new ProductoBusiness();
 
-             $result= $productoBusiness->modificarProducto($producto);
-            
-                 return   header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
-                         }
-             
+                $result = $productoBusiness->modificarProducto($producto);
+
+                return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
             }
-            
-            
-            
-    }else       {
+        }
+    } else {
         // presenta el error al actualizar los datos algun dato esta mal o esta basio.
-                    $error="ErrorActualizar";
-                   return $error;
-                } 
+        $error = "ErrorActualizar";
+        return $error;
+    }
     /*
      * La accion de eliminar provando si es esta accion la que desea realizar
      */
-    }else if(isset($_POST['eliminar'])){
-        
-    if(isset($_POST['productoid'])){
-        
-            $producto=$_POST['productoid'];
-            
-             include '../productobusiness/ProductoBusiness.php';
+} else if (isset($_POST['eliminar'])) {
 
-            $ProductoBusiness=new ProductoBusiness();
-           
-            $result= $ProductoBusiness->eliminarProducto($producto);
-            if($result=="true"){
-              return   header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
-          
-          }else{
-            return  header("location: ../../view/registroproducto/RegistroProducto.php?ErrorNumero=updated");
-          }
-            
-             
-    }else{
+    if (isset($_POST['productoid'])) {
+
+        $producto = $_POST['productoid'];
+
+        include '../productobusiness/ProductoBusiness.php';
+
+        $ProductoBusiness = new ProductoBusiness();
+
+        $result = $ProductoBusiness->eliminarProducto($producto);
+        if ($result == "true") {
+            return header("location: ../../view/registroproducto/RegistroProducto.php?success=updated");
+        } else {
+            return header("location: ../../view/registroproducto/RegistroProducto.php?ErrorNumero=updated");
+        }
+    } else {
         //esto es porsi a la hora de eliminar el dato es vacio
-         $error="ErrorEliminar";
+        $error = "ErrorEliminar";
         return $error;
     }
-    
+
     /*
      *  Esta consulta lo que debe devolver es el datos del cliente.por nombre   
-      */
-    } else if(isset($_POST['buscar'])){
-        
-       if(isset($_POST['productoid'])){
-           
-           $producto=$_POST['productoid'];
-            
-             include '../productobusiness/ProductoBusiness.php';
+     */
+} else if (isset($_POST['buscar'])) {
 
-            $ProductoBusiness=new ProductoBusiness();
-           
-            $result= $ProductoBusiness->buscarProducto($producto);
-            
-            return $result; 
-    
-        
-    }else{
+    if (isset($_POST['productoid'])) {
+
+        $producto = $_POST['productoid'];
+
+        include '../productobusiness/ProductoBusiness.php';
+
+        $ProductoBusiness = new ProductoBusiness();
+
+        $result = $ProductoBusiness->buscarProducto($producto);
+
+        return $result;
+    } else {
         //lo que hace es retornar el error en un json el cual informa que algun
         // dato de busqueda no esta bieno no se encontro nada
-         $error="ErrorBuscar";
+        $error = "ErrorBuscar";
         return $error;
     }
-    
+
     /*
      *  Esta conuslta lo que debe devolver es todos los datos de los productos.   
-      */
-    }else  if(isset($_POST['todo'])){
-        
-            
-             include '../productobusiness/ProductoBusiness.php';
+     */
+} else if (isset($_POST['todo'])) {
 
-            $ProductoBusiness=new ProductoBusiness();
-           
-            $result= $ProductoBusiness->mostrarProductos();
-            
-            return $result;  
-            
-    }elseif(isset($_POST['materia'])){
-        
-            
-             include '../productobusiness/ProductoBusiness.php';
 
-            $ProductoBusiness=new ProductoBusiness();
-           
-            $result= $ProductoBusiness->mostrarMaterial();
-            
-            return $result;  
-            
-    }else{
-        //esto lo que retorna es un json  que dice que hay un error al tratar de obtener todos lo datos
-                $error="ErrorTodo";
-                return $error;
-                }
-    
+    include '../productobusiness/ProductoBusiness.php';
+
+    $ProductoBusiness = new ProductoBusiness();
+
+    $result = $ProductoBusiness->mostrarProductos();
+
+    return $result;
+} elseif (isset($_POST['materia'])) {
+
+
+    include '../productobusiness/ProductoBusiness.php';
+
+    $ProductoBusiness = new ProductoBusiness();
+
+    $result = $ProductoBusiness->mostrarMaterial();
+
+    return $result;
+} else {
+    //esto lo que retorna es un json  que dice que hay un error al tratar de obtener todos lo datos
+    $error = "ErrorTodo";
+    return $error;
+}
 ?>

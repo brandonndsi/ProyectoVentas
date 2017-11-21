@@ -37,8 +37,5 @@ class clienteBusiness {
     }
   
 }
-/*$data=new clienteBusiness();
-  $d=$data->eliminarCliente(1);
-  print_r($d); */
 
 ?>
